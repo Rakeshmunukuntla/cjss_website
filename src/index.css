@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  background-color: #030712;
+  color: #f9fafb;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #030712;
+  color: #f9fafb;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: #030712;
+  color: #f9fafb;
+}
+
+/* GPU acceleration for smooth scrolling */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+section {
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+/* Optimize animations */
+@supports (animation-timeline: scroll()) {
+  .animate-blob,
+  .animate-float,
+  .animate-parallaxUp,
+  .animate-slideUp,
+  .animate-slideDown,
+  .animate-fadeIn,
+  .animate-fadeInUp {
+    will-change: transform, opacity;
+  }
+}
+
+/* Horizontal scrolling animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 24px));
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(50% + 24px));
+  }
+}
+
+/* Utility to hide scrollbars while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
