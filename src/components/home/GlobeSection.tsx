@@ -129,21 +129,21 @@
 //     </section>
 //   );
 // };
-import React, { useState, useEffect } from 'react';
-import Globe from '../Globe';
+import { useEffect, useState } from 'react'
+import Globe from '../Globe'
 
 export const GlobeSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setIsVisible(true),
-      { threshold: 0.1 }
-    );
-    const element = document.querySelector('.globe-section');
-    if (element) observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+      { threshold: 0.1 },
+    )
+    const element = document.querySelector('.globe-section')
+    if (element) observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="globe-section relative overflow-visible min-h-[110vh] flex flex-col items-center justify-center text-white">
@@ -312,7 +312,7 @@ export const GlobeSection = () => {
         `}
       </style>
     </section>
-  );
-};
+  )
+}
 
-export default GlobeSection;
+export default GlobeSection
