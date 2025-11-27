@@ -26,7 +26,8 @@ export const ResourcesPage = ({ navigateTo }: ResourcesPageProps) => {
 
   useEffect(() => {
     // fetch("https://6923ecdc3ad095fb84720a16.mockapi.io/blogs/blogscjss")
-    fetch("http://localhost:5000/blogs")
+    // fetch("http://localhost:5000/blogs")
+    fetch("https://server-node-cjss.onrender.com/blogs")
       .then((res) => res.json())
       .then((data) => setResources(data))
       .catch((err) => console.log("Error fetching blogs:", err));
