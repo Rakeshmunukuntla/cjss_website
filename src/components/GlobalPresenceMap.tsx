@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Globe from 'react-globe.gl'
+import Globe from 'react-globe.gl';
 
 export default function GlobalPresenceMap() {
   const globeRef = useRef<any>(null)

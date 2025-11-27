@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { RESOURCES, RESOURCE_CATEGORIES } from "../lib/Constants";
+import { RESOURCE_CATEGORIES } from "../lib/Constants";
 
 interface ResourcesPageProps {
   navigateTo: (page: string) => void;
