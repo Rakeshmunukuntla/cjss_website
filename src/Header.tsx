@@ -396,7 +396,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
   const navItems = [
     { label: 'Overview', page: 'home' },
-    { label: 'Careers', page: 'careers' },
+    { label: 'Careers', page: 'CarrierHome' },
     { label: 'Resources', page: 'resources' },
     { label: 'About Us', page: 'about' },
   ];
