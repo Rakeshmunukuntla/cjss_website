@@ -125,8 +125,8 @@ export default function GlobalPresenceMerged() {
 
   // when clicking a point: focus on it
   const onPointClick = (
-    point: object,
-    event: MouseEvent,
+    // point: object,
+    // event: MouseEvent,
     coords: { lat: number; lng: number; altitude: number },
   ) => {
     if (!coords) return
