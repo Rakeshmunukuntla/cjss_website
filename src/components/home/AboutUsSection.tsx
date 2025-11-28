@@ -246,21 +246,21 @@ export const AboutUsSection = () => {
       title: 'Our Vision',
       content: COMPANY_INFO.vision,
       animation: 'revealLeft',
-      bgImage: '/images/Vision.png',
+      bgImage: '/images/NewVision.png',
     },
     {
       id: 'mission',
       title: 'Our Mission',
       content: COMPANY_INFO.mission,
       animation: 'revealUp',
-      bgImage: '/images/Mission.png',
+      bgImage: '/images/NewMission.png',
     },
     {
       id: 'values',
       title: 'Our Values',
       content: null,
       animation: 'revealRight',
-      bgImage: '/images/Values.png',
+      bgImage: '/images/NewValues.png',
     },
   ];
 
