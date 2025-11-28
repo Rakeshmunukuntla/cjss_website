@@ -1,4 +1,3 @@
-// src/components/GlobalPresenceMerged.tsx
 'use client'
 
 import type { CSSProperties } from 'react'
@@ -14,14 +13,14 @@ const countryCodeToEmoji = (code: string) =>
 type Location = {
   id: string
   name: string
-  country: string // ISO2 (e.g. "IN", "SG")
+  country: string // ISO2
   lat: number
   lng: number
   color: string
 }
 
 /**
- * Data: update/add offices here
+ * Office Data
  */
 const OFFICES: Location[] = [
   {
@@ -42,35 +41,37 @@ const OFFICES: Location[] = [
   },
 ]
 
-export default function GlobalPresenceMerged() {
+export default function GlobalPresenceMap() {
+  /** FIX #1 — Correct ref typing */
   const globeRef = useRef<GlobeMethods | null>(null)
 
-  // Points state (we'll mutate altitude for bounce)
+  /** Points state */
   const [points, setPoints] = useState(OFFICES.map((o) => ({ ...o, altitude: 0.02 })))
 
-  // For animation phase
+  /** Animation */
   const phaseRef = useRef(0)
   useEffect(() => {
     let raf = 0
-    const animate = (t: number) => {
+
+    /** FIX #2 — removed unused parameter (t) */
+    const animate = () => {
       phaseRef.current += 0.03
-      // produce smooth bounce for each point
+
       setPoints((prev) =>
         prev.map((p, idx) => {
           const bounce = 0.015 * Math.abs(Math.sin(phaseRef.current + idx * 0.8))
-          return {
-            ...p,
-            altitude: 0.015 + bounce, // base altitude + bounce
-          }
+          return { ...p, altitude: 0.015 + bounce }
         }),
       )
+
       raf = requestAnimationFrame(animate)
     }
+
     raf = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  // Arc (connection) data - from Hyderabad -> Singapore
+  /** Arc data */
   const arcs = [
     {
       startLat: OFFICES[0].lat,
@@ -83,31 +84,30 @@ export default function GlobalPresenceMerged() {
     },
   ]
 
-  // camera focus helper
+  /** Camera focus */
   const focusOn = (lat: number, lng: number, altitude = 2.5) => {
     try {
       globeRef.current?.pointOfView({ lat, lng, altitude }, 1000)
-    } catch (e) {
-      // ignore if not ready yet
-      console.warn('focusOn error', e)
+    } catch {
+      // ignore
     }
   }
 
-  // auto-rotate + camera options
+  /** Auto rotate + globe options */
   useEffect(() => {
     const g = globeRef.current
     if (!g) return
-    // Wait a tick
+
     setTimeout(() => {
       try {
         g.controls().autoRotate = true
-        g.controls().autoRotateSpeed = 0.3 // slow, elegant rotate
-        g.controls().enableZoom = false // avoid scroll hijack
+        g.controls().autoRotateSpeed = 0.3
+        g.controls().enableZoom = false
         g.controls().enableDamping = true
         g.controls().dampingFactor = 0.08
-        // remove fog if any
+
+        // remove fog
         if (g.scene && (g.scene() as any)?.fog !== undefined) {
-          // some versions: g.scene().fog = null
           try {
             // @ts-ignore
             g.scene().fog = null
@@ -115,24 +115,15 @@ export default function GlobalPresenceMerged() {
             // ignore
           }
         }
-      } catch (e) {
-        console.warn('globe controls not ready', e)
+      } catch {
+        // ignore
       }
     }, 200)
   }, [])
 
-  // when clicking a point: focus on it
-  const onPointClick = (pt: any) => {
-    if (!pt) return
-    focusOn(pt.lat, pt.lng, 2.2)
-  }
+  const onPointClick = (pt: any) => pt && focusOn(pt.lat, pt.lng, 2.2)
+  const onLabelClick = (loc: Location) => focusOn(loc.lat, loc.lng, 2.2)
 
-  // when clicking a right-hand label
-  const onLabelClick = (loc: Location) => {
-    focusOn(loc.lat, loc.lng, 2.2)
-  }
-
-  // styling for the right-side label container
   const rightListStyle: CSSProperties = {
     position: 'absolute',
     right: 28,
@@ -141,7 +132,6 @@ export default function GlobalPresenceMerged() {
     flexDirection: 'column',
     gap: 18,
     zIndex: 40,
-    pointerEvents: 'auto',
   }
 
   return (
@@ -152,49 +142,38 @@ export default function GlobalPresenceMerged() {
         width={900}
         height={900}
         backgroundColor="rgba(0,0,0,0)"
-        // IMPORTANT: put your COBE-like texture at public/globe-dark-texture.jpg
         globeImageUrl="/mapq.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-        // subtle atmosphere ring (feel free to tweak)
         showAtmosphere={true}
         atmosphereColor="rgba(10,120,200,0.25)"
         atmosphereAltitude={0.14}
-        // Points
         pointsData={points}
-        pointLat={(d: any) => d.lat}
-        pointLng={(d: any) => d.lng}
-        pointAltitude={(d: any) => d.altitude}
-        pointColor={(d: any) => d.color}
+        pointLat={(d) => d.lat}
+        pointLng={(d) => d.lng}
+        pointAltitude={(d) => d.altitude}
+        pointColor={(d) => d.color}
         pointRadius={0.7}
-        // Native hover tooltip (simple)
-        pointLabel={(d: any) =>
+        pointLabel={(d) =>
           `<div style="padding:6px 10px; color:white; font-weight:600; background:rgba(0,0,0,0.6); border-radius:6px">${d.name}</div>`
         }
         onPointClick={onPointClick}
-        onPointHover={() => {
-          /* default tooltip handled by prop above */
-        }}
-        // Arcs (animated connection)
         arcsData={arcs}
-        arcStartLat={(d: any) => d.startLat}
-        arcStartLng={(d: any) => d.startLng}
-        arcEndLat={(d: any) => d.endLat}
-        arcEndLng={(d: any) => d.endLng}
+        arcStartLat={(d) => d.startLat}
+        arcStartLng={(d) => d.startLng}
+        arcEndLat={(d) => d.endLat}
+        arcEndLng={(d) => d.endLng}
         arcAltitude={0.2}
-        arcStroke={(d: any) => d.stroke ?? 1}
-        arcColor={(d: any) => d.color ?? '#fff'}
+        arcStroke={(d) => d.stroke ?? 1}
+        arcColor={(d) => d.color ?? '#fff'}
         arcDashLength={0.3}
         arcDashGap={0.6}
         arcDashInitialGap={() => Math.random()}
         arcDashAnimateTime={2000}
-        // visual niceties:
-        // keep globe centered & scaled nicely
         globeMaterialOptions={{ metalness: 0.1, roughness: 0.8 }}
-        // optimize
         animateIn={true}
       />
 
-      {/* RIGHT: Always-visible labels with flags and click-to-focus */}
+      {/* Right side labels */}
       <div style={rightListStyle}>
         {OFFICES.map((loc) => (
           <button
