@@ -1,28 +1,44 @@
-// src/components/GlobalPresenceMerged.tsx
 'use client'
 
 import type { CSSProperties } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import Globe, { type GlobeMethods } from 'react-globe.gl'
 
-/**
- * Helpers
- */
+/* ---------------- Helpers ---------------- */
 const countryCodeToEmoji = (code: string) =>
   code.toUpperCase().replace(/./g, (char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
 
+/* ---------------- Types ---------------- */
 type Location = {
   id: string
   name: string
-  country: string // ISO2 (e.g. "IN", "SG")
+  country: string
   lat: number
   lng: number
   color: string
 }
 
-/**
- * Data: update/add offices here
- */
+type PointData = {
+  id: string
+  name: string
+  country: string
+  lat: number
+  lng: number
+  color: string
+  altitude: number
+}
+
+/** Arc type must match react-globe.gl expectations (generic object allowed) */
+type ArcData = {
+  startLat: number
+  startLng: number
+  endLat: number
+  endLng: number
+  color: string[] | string
+  stroke?: number
+}
+
+/* ---------------- Office Data ---------------- */
 const OFFICES: Location[] = [
   {
     id: 'hyderabad',
@@ -42,36 +58,40 @@ const OFFICES: Location[] = [
   },
 ]
 
-export default function GlobalPresenceMerged() {
-  const globeRef = useRef<GlobeMethods | null>(null)
+/* ---------------- Component ---------------- */
+export default function GlobalPresenceMap() {
+  const globeRef = useRef<GlobeMethods | undefined>(undefined)
 
-  // Points state (we'll mutate altitude for bounce)
-  const [points, setPoints] = useState(OFFICES.map((o) => ({ ...o, altitude: 0.02 })))
+  const [points, setPoints] = useState<PointData[]>(
+    OFFICES.map((o) => ({
+      ...o,
+      altitude: 0.02,
+    })),
+  )
 
-  // For animation phase
+  /* Bounce Animation */
   const phaseRef = useRef(0)
   useEffect(() => {
     let raf = 0
-    const animate = (t: number) => {
+    const animate = () => {
       phaseRef.current += 0.03
-      // produce smooth bounce for each point
+
       setPoints((prev) =>
-        prev.map((p, idx) => {
-          const bounce = 0.015 * Math.abs(Math.sin(phaseRef.current + idx * 0.8))
-          return {
-            ...p,
-            altitude: 0.015 + bounce, // base altitude + bounce
-          }
-        }),
+        prev.map((p, i) => ({
+          ...p,
+          altitude: 0.015 + 0.015 * Math.abs(Math.sin(phaseRef.current + i * 0.8)),
+        })),
       )
+
       raf = requestAnimationFrame(animate)
     }
+
     raf = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  // Arc (connection) data - from Hyderabad -> Singapore
-  const arcs = [
+  /* Arcs */
+  const arcs: ArcData[] = [
     {
       startLat: OFFICES[0].lat,
       startLng: OFFICES[0].lng,
@@ -79,60 +99,32 @@ export default function GlobalPresenceMerged() {
       endLng: OFFICES[1].lng,
       color: [OFFICES[0].color, OFFICES[1].color],
       stroke: 0.8,
-      dashLength: 0.5,
     },
   ]
 
-  // camera focus helper
-  const focusOn = (lat: number, lng: number, altitude = 2.5) => {
-    try {
-      globeRef.current?.pointOfView({ lat, lng, altitude }, 1000)
-    } catch (e) {
-      // ignore if not ready yet
-      console.warn('focusOn error', e)
-    }
+  /* Camera Focus */
+  const focusOn = (lat: number, lng: number, altitude = 2.4) => {
+    globeRef.current?.pointOfView({ lat, lng, altitude }, 900)
   }
 
-  // auto-rotate + camera options
+  /* Auto Rotate */
   useEffect(() => {
     const g = globeRef.current
     if (!g) return
-    // Wait a tick
+
     setTimeout(() => {
-      try {
-        g.controls().autoRotate = true
-        g.controls().autoRotateSpeed = 0.3 // slow, elegant rotate
-        g.controls().enableZoom = false // avoid scroll hijack
-        g.controls().enableDamping = true
-        g.controls().dampingFactor = 0.08
-        // remove fog if any
-        if (g.scene && (g.scene() as any)?.fog !== undefined) {
-          // some versions: g.scene().fog = null
-          try {
-            // @ts-ignore
-            g.scene().fog = null
-          } catch {
-            // ignore
-          }
-        }
-      } catch (e) {
-        console.warn('globe controls not ready', e)
-      }
-    }, 200)
+      const controls = g.controls()
+      controls.autoRotate = true
+      controls.autoRotateSpeed = 0.3
+      controls.enableZoom = false
+      controls.enableDamping = true
+      controls.dampingFactor = 0.08
+
+      const sceneObj = g.scene?.() as any
+      if (sceneObj?.fog) sceneObj.fog = null
+    }, 300)
   }, [])
 
-  // when clicking a point: focus on it
-  const onPointClick = (pt: any) => {
-    if (!pt) return
-    focusOn(pt.lat, pt.lng, 2.2)
-  }
-
-  // when clicking a right-hand label
-  const onLabelClick = (loc: Location) => {
-    focusOn(loc.lat, loc.lng, 2.2)
-  }
-
-  // styling for the right-side label container
   const rightListStyle: CSSProperties = {
     position: 'absolute',
     right: 28,
@@ -140,66 +132,53 @@ export default function GlobalPresenceMerged() {
     display: 'flex',
     flexDirection: 'column',
     gap: 18,
-    zIndex: 40,
-    pointerEvents: 'auto',
+    zIndex: 30,
   }
 
   return (
     <div className="relative w-full h-[680px] flex items-center justify-center">
-      {/* Globe */}
       <Globe
         ref={globeRef}
         width={900}
         height={900}
         backgroundColor="rgba(0,0,0,0)"
-        // IMPORTANT: put your COBE-like texture at public/globe-dark-texture.jpg
         globeImageUrl="/mapq.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-        // subtle atmosphere ring (feel free to tweak)
         showAtmosphere={true}
         atmosphereColor="rgba(10,120,200,0.25)"
         atmosphereAltitude={0.14}
-        // Points
+        /* POINTS */
         pointsData={points}
-        pointLat={(d: any) => d.lat}
-        pointLng={(d: any) => d.lng}
-        pointAltitude={(d: any) => d.altitude}
-        pointColor={(d: any) => d.color}
+        pointLat={(obj: any) => obj.lat}
+        pointLng={(obj: any) => obj.lng}
+        pointAltitude={(obj: any) => obj.altitude}
+        pointColor={(obj: any) => obj.color}
         pointRadius={0.7}
-        // Native hover tooltip (simple)
-        pointLabel={(d: any) =>
-          `<div style="padding:6px 10px; color:white; font-weight:600; background:rgba(0,0,0,0.6); border-radius:6px">${d.name}</div>`
+        pointLabel={(obj: any) =>
+          `<div style="padding:6px 10px;color:white;font-weight:600;background:rgba(0,0,0,0.6);border-radius:6px">${obj.name}</div>`
         }
-        onPointClick={onPointClick}
-        onPointHover={() => {
-          /* default tooltip handled by prop above */
-        }}
-        // Arcs (animated connection)
+        onPointClick={(obj: any) => focusOn(obj.lat, obj.lng, 2.2)}
+        /* ARCS */
         arcsData={arcs}
-        arcStartLat={(d: any) => d.startLat}
-        arcStartLng={(d: any) => d.startLng}
-        arcEndLat={(d: any) => d.endLat}
-        arcEndLng={(d: any) => d.endLng}
-        arcAltitude={0.2}
-        arcStroke={(d: any) => d.stroke ?? 1}
-        arcColor={(d: any) => d.color ?? '#fff'}
+        arcStartLat={(obj: any) => obj.startLat}
+        arcStartLng={(obj: any) => obj.startLng}
+        arcEndLat={(obj: any) => obj.endLat}
+        arcEndLng={(obj: any) => obj.endLng}
+        arcColor={(obj: any) => obj.color}
+        arcStroke={(obj: any) => obj.stroke ?? 1}
         arcDashLength={0.3}
         arcDashGap={0.6}
         arcDashInitialGap={() => Math.random()}
         arcDashAnimateTime={2000}
-        // visual niceties:
-        // keep globe centered & scaled nicely
-        globeMaterialOptions={{ metalness: 0.1, roughness: 0.8 }}
-        // optimize
         animateIn={true}
       />
 
-      {/* RIGHT: Always-visible labels with flags and click-to-focus */}
+      {/* Right labels */}
       <div style={rightListStyle}>
         {OFFICES.map((loc) => (
           <button
             key={loc.id}
-            onClick={() => onLabelClick(loc)}
+            onClick={() => focusOn(loc.lat, loc.lng, 2.2)}
             onMouseEnter={() => focusOn(loc.lat, loc.lng, 2.6)}
             style={{
               display: 'flex',
