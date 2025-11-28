@@ -1,8 +1,7 @@
 'use client'
 
-import GlobalPresenceMap from '@/components/GlobalPresenceMap'
+import GlobalPresenceMerged from '@/components/GlobalPresenceMap'
 import type React from 'react'
-
 import { useEffect, useRef, useState } from 'react'
 import { LeadershipSection } from '../components/about/LeadershipSection'
 import { ADVANTAGES, CERTIFICATIONS, EXPERTISE, TECH_USAGE } from '../lib/Constants'
@@ -563,10 +562,9 @@ export const AboutPage = () => {
         </div>
       </section> */}
 
-      <section className="py-24 bg-neutral-950">
-        <h2 className="mb-10 text-4xl font-bold text-center text-white">Our Global Presence</h2>
-
-        <GlobalPresenceMap />
+      <section className="py-28 bg-neutral-950">
+        <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
+        <GlobalPresenceMerged />
       </section>
     </div>
   )
