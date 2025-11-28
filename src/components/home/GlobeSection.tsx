@@ -129,21 +129,44 @@
 //     </section>
 //   );
 // };
-import { useEffect, useState } from 'react'
-import Globe from '../Globe'
+
+import { useEffect, useRef, useState } from 'react';
+import Globe from '../Globe';
 
 export const GlobeSection = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visibility, setVisibility] = useState(0); // 0 = hidden, 1 = fully visible
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setIsVisible(true),
-      { threshold: 0.1 },
-    )
-    const element = document.querySelector('.globe-section')
-    if (element) observer.observe(element)
-    return () => observer.disconnect()
-  }, [])
+    const handleScroll = () => {
+      if (!textRef.current) return;
+
+      const rect = textRef.current.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const vh = window.innerHeight || 1;
+
+      // We'll keep it fully visible around the vertical center
+      const viewportCenter = vh * 0.5;
+      const maxDistance = vh * 0.7; // how far before it fully fades
+
+      const distance = Math.abs(centerY - viewportCenter);
+      let v = 1 - distance / maxDistance;
+
+      if (v < 0) v = 0;
+      if (v > 1) v = 1;
+
+      setVisibility(v);
+    };
+
+    handleScroll(); // initial state on load
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   return (
     <section className="globe-section relative overflow-visible min-h-[110vh] flex flex-col items-center justify-center text-white">
@@ -211,11 +234,14 @@ export const GlobeSection = () => {
       {/* Text Content */}
       <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
         <div className="w-full px-6 py-20 mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
+          <div ref={textRef} className="mb-12 text-center">
+            {/* visibility (0–1) controls fade + subtle slide */}
             <div
-              className={`transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
+              style={{
+                opacity: visibility,
+                transform: `translateY(${(1 - visibility) * 24}px)`,
+                transition: 'opacity 0.25s ease-out, transform 0.25s ease-out',
+              }}
             >
               <span
                 className="text-xs font-semibold tracking-wide text-teal-300 uppercase"
@@ -312,7 +338,7 @@ export const GlobeSection = () => {
         `}
       </style>
     </section>
-  )
-}
+  );
+};
 
-export default GlobeSection
+export default GlobeSection;

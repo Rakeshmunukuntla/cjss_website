@@ -402,20 +402,18 @@ export const TechShowcaseSection = () => {
       className="relative py-24 overflow-hidden bg-gradient-to-b from-[#020617] via-[#03051f] to-[#020617]"
     >
       {/* Background layers */}
-      <div className="absolute inset-0 -z-10">
-        {/* Aurora glows */}
-        <div className="absolute -top-40 -right-24 w-[640px] h-[640px] rounded-full bg-cyan-400/20 blur-3xl animate-blob" />
-        <div className="absolute -bottom-40 -left-24 w-[640px] h-[640px] rounded-full bg-fuchsia-500/18 blur-3xl animate-blob animation-delay-2000" />
+      <div className="absolute inset-0 overflow-hidden -z-10">
+        {/* Soft corner blobs */}
+        <div className="absolute -top-48 -left-32 w-[620px] h-[620px] rounded-full bg-cyan-400/18 blur-[160px]" />
+        <div className="absolute -bottom-52 -right-28 w-[640px] h-[640px] rounded-full bg-fuchsia-500/18 blur-[170px]" />
 
-        {/* Central nebula ring */}
-        <div className="absolute top-1/2 left-1/2 w-[820px] h-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.2),transparent_65%)] blur-3xl" />
-
-        {/* Conic sweep highlight */}
+        {/* Conic sweep highlight – off-center so it doesn't spin from the middle */}
         <div
-          className="absolute inset-0 opacity-70"
+          className="absolute -inset-[30%] opacity-75 animate-conicFlow"
           style={{
             backgroundImage:
-              'conic-gradient(from 220deg, transparent, rgba(56,189,248,0.2), transparent 40%, rgba(147,51,234,0.22), transparent 70%, rgba(59,130,246,0.18), transparent)',
+              'conic-gradient(from 160deg at 85% 10%, transparent, rgba(56,189,248,0.20), transparent 40%, rgba(168,85,247,0.22), transparent 70%, rgba(59,130,246,0.20), transparent)',
+            transformOrigin: '85% 10%',
           }}
         />
 
@@ -461,10 +459,7 @@ export const TechShowcaseSection = () => {
         {/* Scrolling rows */}
         <div className="space-y-4 md:space-y-6">
           {groupedCards.map((row, rowIdx) => (
-            <div
-              key={rowIdx}
-              className="w-full py-4 overflow-x-hidden overflow-y-visible" // gives room for hover lift
-            >
+            <div key={rowIdx} className="w-full py-4 overflow-x-hidden overflow-y-visible">
               <div
                 className="flex gap-6 px-6 pb-2 md:px-10"
                 style={{
@@ -534,6 +529,19 @@ export const TechShowcaseSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Local keyframes just for this section */}
+      <style>
+        {`
+          @keyframes conicFlow {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          .animate-conicFlow {
+            animation: conicFlow 52s linear infinite;
+          }
+        `}
+      </style>
     </section>
   );
 };

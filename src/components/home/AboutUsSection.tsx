@@ -214,7 +214,6 @@
 //     </section>
 //   );
 // };
-
 import { COMPANY_INFO } from '../../lib/Constants';
 import { useState, useEffect, useRef } from 'react';
 
@@ -247,21 +246,21 @@ export const AboutUsSection = () => {
       title: 'Our Vision',
       content: COMPANY_INFO.vision,
       animation: 'revealLeft',
-      bgImage: '/images/Vision.png',
+      bgImage: '/images/NewVision.png',
     },
     {
       id: 'mission',
       title: 'Our Mission',
       content: COMPANY_INFO.mission,
       animation: 'revealUp',
-      bgImage: '/images/Mission.png',
+      bgImage: '/images/NewMission.png',
     },
     {
       id: 'values',
       title: 'Our Values',
       content: null,
       animation: 'revealRight',
-      bgImage: '/images/Values.png',
+      bgImage: '/images/NewValues.png',
     },
   ];
 
@@ -285,25 +284,21 @@ export const AboutUsSection = () => {
     >
       {/* Animated background */}
       <div className="absolute inset-0 -z-10">
-        {/* Layer 1: soft moving aurora blobs */}
-        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-cyan-400/28 blur-[150px] animate-orbFloat" />
-        <div className="absolute -bottom-48 -right-24 w-[600px] h-[600px] rounded-full bg-fuchsia-500/24 blur-[190px] animate-[spin_30s_linear_infinite]" />
+        {/* Layer 1: soft blobs */}
+        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-cyan-400/22 blur-[150px] animate-orbFloat" />
+        <div className="absolute -bottom-48 -right-24 w-[600px] h-[600px] rounded-full bg-fuchsia-500/20 blur-[190px]" />
 
-        {/* Layer 2: central animated halo with slight horizontal drift */}
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl animate-gradientShift">
-          <div className="w-full h-full rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.26),transparent_65%)]" />
-        </div>
-
-        {/* Layer 3: rotating conic highlight */}
+        {/* Layer 2: main conic gradient (center moved away from middle) */}
         <div
-          className="absolute inset-0 opacity-70 animate-[spin_40s_linear_infinite]"
+          className="absolute -inset-[30%] opacity-70 animate-conicDrift"
           style={{
             backgroundImage:
-              'conic-gradient(from 220deg, transparent, rgba(56,189,248,0.22), transparent 40%, rgba(168,85,247,0.26), transparent 70%, rgba(59,130,246,0.22), transparent)',
+              'conic-gradient(from 220deg at 10% 0%, rgba(56,189,248,0.18), transparent 20%, rgba(168,85,247,0.24), transparent 55%, rgba(59,130,246,0.2), transparent 80%, rgba(236,72,153,0.22), transparent)',
+            transformOrigin: '10% 0%',
           }}
         />
 
-        {/* Layer 4: grid */}
+        {/* Layer 3: subtle grid */}
         <div
           className="absolute inset-0 opacity-[0.16]"
           style={{
@@ -313,18 +308,18 @@ export const AboutUsSection = () => {
           }}
         />
 
-        {/* Layer 5: sweeping light band across the middle */}
+        {/* Layer 4: sweeping band */}
         <div className="absolute inset-x-0 h-64 overflow-hidden -translate-y-1/2 pointer-events-none top-1/2">
           <div className="relative w-full h-full opacity-70">
-            <div className="absolute inset-y-0 w-1/2 -left-1/2 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.35),transparent_70%)] blur-3xl animate-sweep" />
+            <div className="absolute inset-y-0 w-1/2 -left-1/2 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.24),transparent_70%)] blur-3xl animate-sweep" />
           </div>
         </div>
 
-        {/* Subtle spinning ring mask */}
+        {/* Layer 5: static ring (no rotation now) */}
         <div
-          className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 opacity-40 animate-[spin_45s_linear_infinite]"
+          className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/6 opacity-25"
           style={{
-            maskImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 32%, transparent 72%)',
+            maskImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 30%, transparent 70%)',
           }}
         />
       </div>
@@ -506,16 +501,15 @@ export const AboutUsSection = () => {
         </div>
       </div>
 
-      {/* Local keyframes for extra animations */}
+      {/* Local keyframes */}
       <style>
         {`
-          @keyframes gradientShift {
-            0% { transform: translate3d(-8%, -4%, 0); }
-            50% { transform: translate3d(8%, 4%, 0); }
-            100% { transform: translate3d(-8%, -4%, 0); }
+          @keyframes conicDrift {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
-          .animate-gradientShift {
-            animation: gradientShift 28s ease-in-out infinite;
+          .animate-conicDrift {
+            animation: conicDrift 48s linear infinite;
           }
 
           @keyframes sweep {

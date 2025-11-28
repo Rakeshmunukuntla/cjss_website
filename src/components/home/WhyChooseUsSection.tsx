@@ -71,10 +71,8 @@
 //     </section>
 //   );
 // };
-
 import { WHY_CHOOSE_US } from '../../lib/Constants';
 import { useState, useEffect, useRef } from 'react';
-import Icon from '../Icon';
 
 export const WhyChooseUsSection = () => {
   const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
@@ -98,6 +96,39 @@ export const WhyChooseUsSection = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // SVGs array (will rotate if card count > 4)
+  const svgs = [
+    // Concept (Lightbulb)
+    `<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M9 18h6"></path>
+     <path d="M10 22h4"></path>
+     <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.7 4.8 4 6v1h6v-1c2.3-1.2 4-3.4 4-6a7 7 0 0 0-7-7z"></path>
+   </svg>`,
+
+    // Development (Laptop / Coding)
+    `<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+     <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+     <path d="M2 18h20"></path>
+     <path d="M9 10l-2 2 2 2"></path>
+     <path d="M15 10l2 2-2 2"></path>
+   </svg>`,
+
+    // Data Analyst (Chart / Analytics)
+    `<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M3 3v18h18"></path>
+     <rect x="7" y="13" width="3" height="5" rx="1"></rect>
+     <rect x="12" y="9" width="3" height="9" rx="1"></rect>
+     <rect x="17" y="5" width="3" height="13" rx="1"></rect>
+   </svg>`,
+
+    // Cyber Security (Shield + Lock)
+    `<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M12 2l8 4v6c0 6-4 10-8 10s-8-4-8-10V6l8-4z"></path>
+     <circle cx="12" cy="12" r="2"></circle>
+     <path d="M12 14v2"></path>
+   </svg>`,
+  ];
 
   return (
     <section
@@ -139,10 +170,13 @@ export const WhyChooseUsSection = () => {
               {/* Smooth hover glow */}
               <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),transparent_75%)]" />
 
-              {/* Blue square with icon (from WHY_CHOOSE_US.icon) */}
+              {/* 🔥 Inline SVG inside the blue box */}
               <div className="relative mb-4">
                 <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-500 shadow-[0_8px_18px_rgba(15,23,42,0.7)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-0.5 animate-iconFloat">
-                  <Icon name={item.icon} className="w-6 h-6 text-white" />
+                  <span
+                    className="w-6 h-6"
+                    dangerouslySetInnerHTML={{ __html: svgs[idx % svgs.length] }}
+                  />
                 </div>
               </div>
 
