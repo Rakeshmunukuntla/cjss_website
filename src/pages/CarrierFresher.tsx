@@ -1,4 +1,5 @@
 import CareerNavigationBar from "@/components/Career/CareeerNavigationBar";
+import JobOpenings from "./jobs/JobOpeningsFresher";
 
 // import React from 'react';
 interface CarrierFresherProps {
@@ -19,6 +20,7 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
       <section className="w-full h-28">
         <p>Career Fresher</p>
       </section>
+      <JobOpenings filterMode="fresher"></JobOpenings>
     </>
   );
 };
