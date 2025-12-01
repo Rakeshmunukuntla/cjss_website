@@ -7,11 +7,11 @@ interface CarrierExperiencedProps {
 const CarrierExperienced = ({ navigateTo }: CarrierExperiencedProps) => {
   const links = [
     { label: 'Home', page: 'CarrierHome' },
-    { label: 'Life', page: 'CarrierLife' }, // 👈 must match App key
-    { label: 'Job Fresher', page: 'CarrierFresher' }, // or whatever you use
-    { label: 'Job Experience', page: 'CarrierExperienced' },
-    { label: 'Problems', page: 'CarrierProblems' },
-  ]
+    { label: 'Life at CJSS', page: 'CarrierLife' }, // 👈 must match App key
+    { label: 'Job for Fresher', page: 'CarrierFresher' }, // or whatever you use
+    { label: 'Job for Experienced', page: 'CarrierExperienced' },
+    { label: 'Problems we solve', page: 'CarrierProblems' },
+  ];
 
   return (
     <>

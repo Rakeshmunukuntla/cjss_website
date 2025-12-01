@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
 interface FooterProps {
-  navigateTo: (page: string) => void
+  navigateTo: (page: string) => void;
 }
 
 export const Footer = ({ navigateTo }: FooterProps) => {
@@ -10,7 +10,7 @@ export const Footer = ({ navigateTo }: FooterProps) => {
     { label: 'Careers', page: 'careers' },
     { label: 'Blog', page: 'resources' },
     { label: 'Capabilities', page: 'capabilities' },
-  ]
+  ];
 
   const serviceLinks = [
     { label: 'Quality Engineering', page: 'service-quality-engineering' },
@@ -18,7 +18,7 @@ export const Footer = ({ navigateTo }: FooterProps) => {
     { label: 'Application Services', page: 'service-application-services' },
     { label: 'Digital Platforms', page: 'service-digital-platforms' },
     { label: 'AI Services', page: 'service-ai-services' },
-  ]
+  ];
 
   return (
     <footer className="relative px-6 py-16 overflow-hidden text-white border-t border-neutral-800 bg-neutral-950">
@@ -72,32 +72,154 @@ export const Footer = ({ navigateTo }: FooterProps) => {
             </div>
             <div>
               <h4 className="mb-4 font-bold text-white">Connect</h4>
-              <ul className="space-y-2 text-neutral-400">
+
+              <ul className="flex items-center gap-6 text-neutral-300">
+                {/* --- COMMON STYLES: GLASS CARD + GLOW RING + ANIMATION --- */}
+                {/* You only change the SVG inside each icon */}
+
+                {/* LinkedIn */}
                 <li>
                   <a
                     href="https://www.linkedin.com/company/cjss-technologies/posts/?feedView=all"
                     target="_blank"
-                    className="transition-colors hover:text-purple-400 cursor-hover"
+                    rel="noopener noreferrer"
+                    className="
+        relative flex items-center justify-center
+        w-12 h-12
+        rounded-xl
+        backdrop-blur-md bg-white/10
+        transition-all duration-500
+        group
+
+        /* 3D LIFT */
+        hover:-translate-y-2 hover:scale-110 hover:rotate-2
+
+        /* SOFT SHADOW */
+        hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
+      "
                   >
-                    LinkedIn
+                    {/* Animated Border Ring */}
+                    <span
+                      className="
+        absolute inset-0 rounded-xl
+        bg-gradient-to-r from-blue-500 via-purple-500 to-fuchsia-500
+        opacity-0 group-hover:opacity-100
+        transition-all duration-700
+        animate-spin-slow
+        p-[2px]
+      "
+                    >
+                      <span className="block w-full h-full rounded-xl bg-black/80 backdrop-blur-xl"></span>
+                    </span>
+
+                    {/* Icon */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="relative z-10 transition-all duration-300 group-hover:text-purple-300 group-hover:scale-125"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect width="4" height="12" x="2" y="9" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
                   </a>
                 </li>
+
+                {/* Twitter */}
                 <li>
                   <a
                     href="https://twitter.com/CJSS8102021"
                     target="_blank"
-                    className="transition-colors hover:text-purple-400 cursor-hover"
+                    rel="noopener noreferrer"
+                    className="
+        relative flex items-center justify-center
+        w-12 h-12
+        rounded-xl
+        backdrop-blur-md bg-white/10
+        transition-all duration-500
+        group
+        hover:-translate-y-2 hover:scale-110 hover:rotate-2
+        hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
+      "
                   >
-                    Twitter
+                    <span
+                      className="
+        absolute inset-0 rounded-xl
+        bg-gradient-to-r from-blue-500 via-purple-500 to-fuchsia-500
+        opacity-0 group-hover:opacity-100
+        transition-all duration-700 animate-spin-slow
+        p-[2px]
+      "
+                    >
+                      <span className="block w-full h-full rounded-xl bg-black/80 backdrop-blur-xl"></span>
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="relative z-10 transition-all duration-300 group-hover:text-purple-300 group-hover:scale-125"
+                    >
+                      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 12 8v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                    </svg>
                   </a>
                 </li>
+
+                {/* Facebook */}
                 <li>
                   <a
                     href="https://www.facebook.com/Customer-Journey-Software-Solutions-112603838118106"
                     target="_blank"
-                    className="transition-colors hover:text-purple-400 cursor-hover"
+                    rel="noopener noreferrer"
+                    className="
+        relative flex items-center justify-center
+        w-12 h-12 rounded-xl
+        backdrop-blur-md bg-white/10
+        transition-all duration-500
+        group
+        hover:-translate-y-2 hover:scale-110 hover:rotate-2
+        hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
+      "
                   >
-                    Facebook
+                    <span
+                      className="
+        absolute inset-0 rounded-xl
+        bg-gradient-to-r from-blue-500 via-purple-500 to-fuchsia-500
+        opacity-0 group-hover:opacity-100
+        transition-all duration-700 animate-spin-slow
+        p-[2px]
+      "
+                    >
+                      <span className="block w-full h-full rounded-xl bg-black/80 backdrop-blur-xl"></span>
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="relative z-10 transition-all duration-300 group-hover:text-purple-300 group-hover:scale-125"
+                    >
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
                   </a>
                 </li>
               </ul>
@@ -109,5 +231,5 @@ export const Footer = ({ navigateTo }: FooterProps) => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

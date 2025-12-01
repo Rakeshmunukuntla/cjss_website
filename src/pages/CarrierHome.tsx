@@ -1,17 +1,17 @@
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
 
 interface CarrierHomeProps {
-  navigateTo: (page: string) => void
+  navigateTo: (page: string) => void;
 }
 
 const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
   const links = [
     { label: 'Home', page: 'CarrierHome' },
-    { label: 'Life', page: 'CarrierLife' }, // 👈 must match App key
-    { label: 'Job Fresher', page: 'CarrierFresher' }, // or whatever you use
-    { label: 'Job Experience', page: 'CarrierExperienced' },
-    { label: 'Problems', page: 'CarrierProblems' }, // if you add later
-  ]
+    { label: 'Life at CJSS', page: 'CarrierLife' }, // 👈 must match App key
+    { label: 'Job for Fresher', page: 'CarrierFresher' }, // or whatever you use
+    { label: 'Job for Experienced', page: 'CarrierExperienced' },
+    { label: 'Problems we solve', page: 'CarrierProblems' }, // if you add later
+  ];
 
   return (
     <>
@@ -208,7 +208,7 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
         </p>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default CarrierHome
+export default CarrierHome;

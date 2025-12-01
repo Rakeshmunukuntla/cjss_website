@@ -1,17 +1,17 @@
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
 
 // import React from 'react';
 interface CarrierProblemsProps {
-  navigateTo: (page: string) => void
+  navigateTo: (page: string) => void;
 }
 const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
   const links = [
     { label: 'Home', page: 'CarrierHome' },
-    { label: 'Life', page: 'CarrierLife' }, // 👈 must match App key
-    { label: 'Job Fresher', page: 'CarrierFresher' }, // or whatever you use
-    { label: 'Job Experience', page: 'CarrierExperienced' },
-    { label: 'Problems', page: 'CarrierProblems' },
-  ]
+    { label: 'Life at CJSS', page: 'CarrierLife' }, // 👈 must match App key
+    { label: 'Job for Fresher', page: 'CarrierFresher' }, // or whatever you use
+    { label: 'Job for Experienced', page: 'CarrierExperienced' },
+    { label: 'Problems we solve', page: 'CarrierProblems' },
+  ];
 
   return (
     <>
@@ -20,7 +20,7 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
         <p>Career life</p>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default CarrierProblems
+export default CarrierProblems;
