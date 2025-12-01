@@ -1593,7 +1593,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
             </div>
           </div>
 
-          <style jsx>{`
+          <style>{`
             @keyframes podFade {
               0% {
                 opacity: 0;
