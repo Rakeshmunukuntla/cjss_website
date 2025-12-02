@@ -18,6 +18,9 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.1.1",
     "react-globe.gl": "^2.37.0",
+    "react-intersection-observer": "^10.0.0",
+    "react-swiper": "^0.1.5",
+    "swiper": "^12.0.3",
     "three": "^0.181.2"
   },
   "devDependencies": {

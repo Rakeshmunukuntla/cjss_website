@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 html {
   scroll-behavior: smooth;
@@ -74,4 +74,9 @@ section {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+.swiper-slide,
+.swiper-wrapper,
+.swiper {
+  overflow: visible !important;
 }

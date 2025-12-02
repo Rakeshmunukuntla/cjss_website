@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   ArrowRight,
@@ -18,8 +18,8 @@ import {
   Users,
   Users2,
   Zap,
-} from "lucide-react";
-import { useEffect, useState } from "react";
+} from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 // export const CareersPage = () => {
 // const [selectedCategory, setSelectedCategory] = useState("all");
@@ -125,66 +125,66 @@ import { useEffect, useState } from "react";
 
 // ---- Types for jobs coming from server ----
 type JobFromApi = {
-  _id: string;
-  title: string;
-  category: string;
-  experience: string;
-  description: string;
-  skills: string[];
-  location: string; // city name
-  locationType: "Hybrid" | "Remote" | "On-site";
-};
+  _id: string
+  title: string
+  category: string
+  experience: string
+  description: string
+  skills: string[]
+  location: string // city name
+  locationType: 'Hybrid' | 'Remote' | 'On-site'
+}
 
 type RoleCard = {
-  id: string;
-  title: string;
-  category: string;
-  experience: string;
-  description: string;
-  skills: string[];
-  location: string; // what we display in card
-};
+  id: string
+  title: string
+  category: string
+  experience: string
+  description: string
+  skills: string[]
+  location: string // what we display in card
+}
 
 export const CareersPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
   // NEW: jobs from API
-  const [jobs, setJobs] = useState<JobFromApi[]>([]);
-  const [loadingJobs, setLoadingJobs] = useState(true);
-  const [jobsError, setJobsError] = useState<string | null>(null);
+  const [jobs, setJobs] = useState<JobFromApi[]>([])
+  const [loadingJobs, setLoadingJobs] = useState(true)
+  const [jobsError, setJobsError] = useState<string | null>(null)
 
   // ---- Fetch jobs using fetch() ----
   useEffect(() => {
     const loadJobs = async () => {
       try {
-        setLoadingJobs(true);
-        setJobsError(null);
+        setLoadingJobs(true)
+        setJobsError(null)
 
         // If you need full URL, change to:
         // const res = await fetch("http://localhost:5000/jobs")
         // const res = await fetch('http://localhost:5000/jobs')
-        const res = await fetch("https://server-node-cjss.onrender.com/jobs");
+        const res = await fetch('https://server-node-cjss.onrender.com/jobs')
 
         if (!res.ok) {
-          throw new Error("Failed to load jobs");
+          throw new Error('Failed to load jobs')
         }
 
-        const data: JobFromApi[] = await res.json();
-        setJobs(data);
+        const data: JobFromApi[] = await res.json()
+        setJobs(data)
         // console.log("data :" + res.json());
       } catch (err) {
-        console.error(err);
-        setJobsError("Unable to load open positions right now.");
-        console.log(jobsError);
+        console.error(err)
+        setJobsError('Unable to load open positions right now.')
+        console.log(jobsError)
       } finally {
-        setLoadingJobs(false);
-        console.log(loadingJobs);
+        setLoadingJobs(false)
+        console.log(loadingJobs)
       }
-    };
+    }
 
-    loadJobs();
-  }, []);
+    loadJobs()
+  }, [])
 
   // Map backend jobs → UI-friendly roles
   const openRoles: RoleCard[] = jobs.map((job) => ({
@@ -195,185 +195,178 @@ export const CareersPage = () => {
     description: job.description,
     skills: job.skills || [],
     location: job.locationType, // show Hybrid / Remote / On-site
-  }));
+  }))
 
   // Filter + categories exactly like before
   const filteredRoles =
-    selectedCategory === "all"
+    selectedCategory === 'all'
       ? openRoles
-      : openRoles.filter((role) => role.category === selectedCategory);
+      : openRoles.filter((role) => role.category === selectedCategory)
 
-  const categories = [
-    "all",
-    ...Array.from(new Set(openRoles.map((r) => r.category))),
-  ];
+  const categories = ['all', ...Array.from(new Set(openRoles.map((r) => r.category)))]
 
   const benefits = [
     {
       icon: Heart,
-      title: "Health Insurance",
-      description: "Comprehensive medical, dental, and vision coverage",
-      accent: "from-rose-500/40 to-pink-500/10",
+      title: 'Health Insurance',
+      description: 'Comprehensive medical, dental, and vision coverage',
+      accent: 'from-rose-500/40 to-pink-500/10',
     },
     {
       icon: Globe,
-      title: "Remote / Hybrid Work",
-      description: "Flexible work arrangements that suit your lifestyle",
-      accent: "from-cyan-500/30 to-blue-500/10",
+      title: 'Remote / Hybrid Work',
+      description: 'Flexible work arrangements that suit your lifestyle',
+      accent: 'from-cyan-500/30 to-blue-500/10',
     },
     {
       icon: BookOpen,
-      title: "Learning Budget",
-      description: "$2000+ annual budget for courses and certifications",
-      accent: "from-amber-400/40 to-orange-500/10",
+      title: 'Learning Budget',
+      description: '$2000+ annual budget for courses and certifications',
+      accent: 'from-amber-400/40 to-orange-500/10',
     },
     {
       icon: Award,
-      title: "Paid Certifications",
-      description: "SAP Hybris, Adobe AEM, AWS, and more",
-      accent: "from-purple-500/40 to-indigo-500/10",
+      title: 'Paid Certifications',
+      description: 'SAP Hybris, Adobe AEM, AWS, and more',
+      accent: 'from-purple-500/40 to-indigo-500/10',
     },
     {
       icon: DollarSign,
-      title: "Performance Bonus",
-      description: "Up to 20% annual performance incentive",
-      accent: "from-emerald-500/40 to-lime-500/10",
+      title: 'Performance Bonus',
+      description: 'Up to 20% annual performance incentive',
+      accent: 'from-emerald-500/40 to-lime-500/10',
     },
     {
       icon: Clock,
-      title: "Flexible Timings",
+      title: 'Flexible Timings',
       description: "Work when you're most productive",
-      accent: "from-sky-500/30 to-purple-500/10",
+      accent: 'from-sky-500/30 to-purple-500/10',
     },
     {
       icon: Users2,
-      title: "Team Outings",
-      description: "Regular team building and social events",
-      accent: "from-pink-500/30 to-cyan-500/10",
+      title: 'Team Outings',
+      description: 'Regular team building and social events',
+      accent: 'from-pink-500/30 to-cyan-500/10',
     },
     {
       icon: Trophy,
-      title: "Recognition Program",
-      description: "Monthly awards and peer recognition",
-      accent: "from-yellow-400/40 to-amber-500/10",
+      title: 'Recognition Program',
+      description: 'Monthly awards and peer recognition',
+      accent: 'from-yellow-400/40 to-amber-500/10',
     },
-  ];
+  ]
 
   const cultureHighlights = [
     {
       icon: Zap,
-      title: "Growth-Focused",
-      description: "Continuous learning and career advancement opportunities",
-      accent: "from-purple-500/30 to-indigo-500/20",
+      title: 'Growth-Focused',
+      description: 'Continuous learning and career advancement opportunities',
+      accent: 'from-purple-500/30 to-indigo-500/20',
     },
     {
       icon: Users,
-      title: "Transparent Culture",
-      description: "Open communication and honest feedback",
-      accent: "from-cyan-500/30 to-blue-500/10",
+      title: 'Transparent Culture',
+      description: 'Open communication and honest feedback',
+      accent: 'from-cyan-500/30 to-blue-500/10',
     },
     {
       icon: Brain,
-      title: "Learning Opportunities",
-      description: "Access to latest technologies and platforms",
-      accent: "from-amber-400/30 to-pink-500/10",
+      title: 'Learning Opportunities',
+      description: 'Access to latest technologies and platforms',
+      accent: 'from-amber-400/30 to-pink-500/10',
     },
     {
       icon: Globe,
-      title: "Global Projects",
-      description: "Work with enterprise clients worldwide",
-      accent: "from-emerald-500/30 to-teal-500/10",
+      title: 'Global Projects',
+      description: 'Work with enterprise clients worldwide',
+      accent: 'from-emerald-500/30 to-teal-500/10',
     },
     {
       icon: Sparkles,
-      title: "Innovation-Driven",
-      description: "Freedom to experiment and innovate",
-      accent: "from-rose-500/30 to-purple-500/10",
+      title: 'Innovation-Driven',
+      description: 'Freedom to experiment and innovate',
+      accent: 'from-rose-500/30 to-purple-500/10',
     },
     {
       icon: Heart,
-      title: "Work-Life Balance",
-      description: "We respect your personal time and wellbeing",
-      accent: "from-fuchsia-500/30 to-cyan-500/10",
+      title: 'Work-Life Balance',
+      description: 'We respect your personal time and wellbeing',
+      accent: 'from-fuchsia-500/30 to-cyan-500/10',
     },
-  ];
+  ]
 
   const testimonials = [
     {
-      name: "Venkat Krishna",
-      role: "Director & Co-founder",
-      image: "/images/rahul.png",
+      name: 'Venkat Krishna',
+      role: 'Director & Co-founder',
+      image: '/images/rahul.png',
       quote:
         "The team here genuinely cares about your growth. I've built this company with a vision to create opportunities for talented professionals to work on cutting-edge enterprise solutions.",
     },
     {
-      name: "Srikanth Banthu",
-      role: "Director & Co-founder",
-      image: "/images/raman.png",
+      name: 'Srikanth Banthu',
+      role: 'Director & Co-founder',
+      image: '/images/raman.png',
       quote:
-        "Working with talented professionals across the globe has been incredible. Our focus on technical excellence and mentorship creates an environment where innovation thrives.",
+        'Working with talented professionals across the globe has been incredible. Our focus on technical excellence and mentorship creates an environment where innovation thrives.',
     },
     {
-      name: "Priya Sharma",
-      role: "Senior React Developer",
-      image: "/images/priya.png",
+      name: 'Priya Sharma',
+      role: 'Senior React Developer',
+      image: '/images/priya.png',
       quote:
         "The team here genuinely cares about your growth. I've learned more in 2 years than in my entire previous career. The projects are challenging and the impact is real.",
     },
-  ];
+  ]
 
   const faqs = [
     {
-      question: "What is your hiring process?",
+      question: 'What is your hiring process?',
       answer:
-        "Our typical hiring process includes: 1) Initial screening call with HR, 2) Technical interview with team leads, 3) System design round (for senior roles), 4) Final discussion with hiring manager. Total timeline: 2-3 weeks.",
+        'Our typical hiring process includes: 1) Initial screening call with HR, 2) Technical interview with team leads, 3) System design round (for senior roles), 4) Final discussion with hiring manager. Total timeline: 2-3 weeks.',
     },
     {
-      question: "How many interview rounds?",
+      question: 'How many interview rounds?',
       answer:
-        "Usually 3-4 rounds depending on the role. Each round focuses on different aspects: coding skills, system design, cultural fit, and role-specific expertise.",
+        'Usually 3-4 rounds depending on the role. Each round focuses on different aspects: coding skills, system design, cultural fit, and role-specific expertise.',
     },
     {
-      question: "Is remote work available?",
+      question: 'Is remote work available?',
       answer:
-        "Yes! We offer flexible arrangements. Most roles are Hybrid (2-3 days in office) or fully Remote. Work-from-home options are always available when needed.",
+        'Yes! We offer flexible arrangements. Most roles are Hybrid (2-3 days in office) or fully Remote. Work-from-home options are always available when needed.',
     },
     {
-      question: "Do you offer internships?",
+      question: 'Do you offer internships?',
       answer:
-        "Absolutely. We run a structured 3-6 month internship program with mentorship, project exposure, and potential for full-time conversion.",
+        'Absolutely. We run a structured 3-6 month internship program with mentorship, project exposure, and potential for full-time conversion.',
     },
     {
-      question: "Do you support certifications?",
+      question: 'Do you support certifications?',
       answer:
-        "Yes, we cover costs for relevant certifications (SAP, Adobe, AWS, etc.) and provide study time. Many team members have earned professional certifications here.",
+        'Yes, we cover costs for relevant certifications (SAP, Adobe, AWS, etc.) and provide study time. Many team members have earned professional certifications here.',
     },
     {
-      question: "What are growth opportunities?",
+      question: 'What are growth opportunities?',
       answer:
-        "We promote from within. Clear career paths exist for technical (staff engineer, principal) and management (team lead, manager) tracks. Regular feedback and development planning is part of our culture.",
+        'We promote from within. Clear career paths exist for technical (staff engineer, principal) and management (team lead, manager) tracks. Regular feedback and development planning is part of our culture.',
     },
-  ];
+  ]
 
   const stats = [
-    { label: "Years in Industry", value: "12+" },
-    { label: "Team Members", value: "150+" },
-    { label: "Countries", value: "8+" },
-    { label: "Happy Employees", value: "98%" },
-  ];
+    { label: 'Years in Industry', value: '12+' },
+    { label: 'Team Members', value: '150+' },
+    { label: 'Countries', value: '8+' },
+    { label: 'Happy Employees', value: '98%' },
+  ]
 
-  const aboutPills = [
-    "Commerce-native pods",
-    "Multi-cloud craftsmanship",
-    "Design + build + run",
-  ];
+  const aboutPills = ['Commerce-native pods', 'Multi-cloud craftsmanship', 'Design + build + run']
 
   const cultureGallery = [
-    { image: "/images/cjssfam.jpeg", caption: "Townhalls & demos" },
-    { image: "/images/Venkat.png", caption: "Leadership reviews" },
-    { image: "/images/Srikanth.png", caption: "Architecture jams" },
-    { image: "/images/priya.png", caption: "Frontend studio" },
-  ];
+    { image: '/images/cjssfam.jpeg', caption: 'Townhalls & demos' },
+    { image: '/images/Venkat.png', caption: 'Leadership reviews' },
+    { image: '/images/Srikanth.png', caption: 'Architecture jams' },
+    { image: '/images/priya.png', caption: 'Frontend studio' },
+  ]
 
   return (
     <>
@@ -394,10 +387,10 @@ export const CareersPage = () => {
             </h1>
             <p
               className="max-w-3xl mx-auto mb-10 text-xl leading-relaxed text-white animate-slideUp"
-              style={{ animationDelay: "0.2s" }}
+              style={{ animationDelay: '0.2s' }}
             >
-              Join our talented team working on SAP Hybris, AEM, React, and
-              cloud-native commerce platforms for global brands
+              Join our talented team working on SAP Hybris, AEM, React, and cloud-native commerce
+              platforms for global brands
             </p>
             <button className="flex items-center gap-2 px-8 py-4 mx-auto text-lg font-bold text-white transition-all bg-purple-500 rounded-full shadow-lg hover:bg-purple-600 hover:scale-105 shadow-purple-500/30">
               View Open Positions
@@ -414,14 +407,13 @@ export const CareersPage = () => {
             className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 10% 20%, rgba(168,85,247,0.35), transparent 45%)",
+                'radial-gradient(circle at 10% 20%, rgba(168,85,247,0.35), transparent 45%)',
             }}
           ></div>
           <div
             className="absolute inset-0 opacity-40"
             style={{
-              backgroundImage:
-                "linear-gradient(120deg, rgba(14,165,233,0.15), transparent 60%)",
+              backgroundImage: 'linear-gradient(120deg, rgba(14,165,233,0.15), transparent 60%)',
             }}
           ></div>
           <div className="absolute -top-32 -right-40 w-[520px] h-[520px] bg-cyan-500/30 rounded-full blur-[180px]"></div>
@@ -442,10 +434,9 @@ export const CareersPage = () => {
                 </span>
               </h2>
               <p className="text-lg leading-relaxed text-white/75">
-                We design, build, and scale SAP Hybris, AEM, React, and
-                cloud-native programs for global commerce brands. Every pod
-                blends architects, designers, and engineers who obsess over
-                craft, delivery speed, and measurable business impact.
+                We design, build, and scale SAP Hybris, AEM, React, and cloud-native programs for
+                global commerce brands. Every pod blends architects, designers, and engineers who
+                obsess over craft, delivery speed, and measurable business impact.
               </p>
               <div className="flex flex-wrap gap-3">
                 {aboutPills.map((pill) => (
@@ -464,9 +455,7 @@ export const CareersPage = () => {
                     className="relative p-6 overflow-hidden border rounded-3xl border-white/10 bg-neutral-900/60 backdrop-blur"
                   >
                     <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-40"></div>
-                    <p className="relative text-3xl font-bold text-white">
-                      {stat.value}
-                    </p>
+                    <p className="relative text-3xl font-bold text-white">{stat.value}</p>
                     <p className="text-sm uppercase tracking-[0.35em] text-white/50 mt-2 relative">
                       {stat.label}
                     </p>
@@ -483,7 +472,7 @@ export const CareersPage = () => {
                     <div
                       key={frame.caption}
                       className={`relative rounded-3xl overflow-hidden ${
-                        idx === 0 ? "col-span-2 h-64" : "h-40"
+                        idx === 0 ? 'col-span-2 h-64' : 'h-40'
                       }`}
                     >
                       <img
@@ -503,8 +492,8 @@ export const CareersPage = () => {
                         Inside pods
                       </p>
                       <p className="text-lg font-semibold">
-                        Weekly demos, design critiques, and co-innovation
-                        sprints keep momentum high.
+                        Weekly demos, design critiques, and co-innovation sprints keep momentum
+                        high.
                       </p>
                     </div>
                     <p className="text-sm text-white/60">
@@ -519,9 +508,7 @@ export const CareersPage = () => {
                     <p className="text-xs uppercase tracking-[0.4em] text-white/60">
                       Culture pulse
                     </p>
-                    <p className="font-semibold text-white">
-                      People-first rituals
-                    </p>
+                    <p className="font-semibold text-white">People-first rituals</p>
                   </div>
                 </div>
                 <div className="absolute px-5 py-3 text-sm border -bottom-8 right-6 rounded-2xl border-white/10 bg-neutral-950/70 text-white/70 backdrop-blur">
@@ -538,12 +525,10 @@ export const CareersPage = () => {
       <section className="px-6 py-24 bg-neutral-950">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center">
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-              Our Culture
-            </h2>
+            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">Our Culture</h2>
             <p className="max-w-3xl mx-auto text-xl text-white/80">
-              Screenshots from real squads, not stock photos. Collaboration,
-              candor, and creativity are visible in every ritual.
+              Screenshots from real squads, not stock photos. Collaboration, candor, and creativity
+              are visible in every ritual.
             </p>
           </div>
 
@@ -556,10 +541,10 @@ export const CareersPage = () => {
                     key={frame.caption}
                     className={`relative overflow-hidden rounded-3xl border border-white/5 ${
                       idx === 0
-                        ? "sm:col-span-2 sm:row-span-2 h-64 md:h-80"
+                        ? 'sm:col-span-2 sm:row-span-2 h-64 md:h-80'
                         : idx === 3
-                        ? "col-span-2 h-40"
-                        : "h-36 md:h-44"
+                        ? 'col-span-2 h-40'
+                        : 'h-36 md:h-44'
                     }`}
                   >
                     <img
@@ -577,12 +562,8 @@ export const CareersPage = () => {
               <div className="absolute z-20 flex items-center gap-4 px-5 py-3 border bottom-6 left-6 bg-neutral-950/80 border-white/10 rounded-2xl text-white/80 backdrop-blur">
                 <PartyPopper className="w-5 h-5 text-purple-300" />
                 <div>
-                  <p className="text-sm font-semibold text-white">
-                    Quarterly townhalls
-                  </p>
-                  <p className="text-xs text-white/60">
-                    Live music, demos, gratitude wall
-                  </p>
+                  <p className="text-sm font-semibold text-white">Quarterly townhalls</p>
+                  <p className="text-xs text-white/60">Live music, demos, gratitude wall</p>
                 </div>
               </div>
             </div>
@@ -590,29 +571,26 @@ export const CareersPage = () => {
             <div className="space-y-6">
               <div className="p-6 border rounded-3xl border-white/10 bg-neutral-900/60 backdrop-blur">
                 <p className="text-lg leading-relaxed text-white/80">
-                  Hybrid doesn't mean disconnected. Pods pair on Miro, gather in
-                  experience centers, and rotate squad leaders to keep
-                  mentorship flowing.
+                  Hybrid doesn't mean disconnected. Pods pair on Miro, gather in experience centers,
+                  and rotate squad leaders to keep mentorship flowing.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-5">
-                  {[
-                    "Leadership AMA Fridays",
-                    "Design + code crits",
-                    "Community volunteering",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/60 border border-white/10 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {['Leadership AMA Fridays', 'Design + code crits', 'Community volunteering'].map(
+                    (tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/60 border border-white/10 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ),
+                  )}
                 </div>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
                 {cultureHighlights.map((item, idx) => {
-                  const Icon = item.icon;
+                  const Icon = item.icon
                   return (
                     <div
                       key={idx}
@@ -623,15 +601,11 @@ export const CareersPage = () => {
                       ></div>
                       <div className="relative z-10">
                         <Icon className="w-10 h-10 mb-4 text-white" />
-                        <h3 className="mb-2 text-xl font-semibold text-white">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-white/75">
-                          {item.description}
-                        </p>
+                        <h3 className="mb-2 text-xl font-semibold text-white">{item.title}</h3>
+                        <p className="text-sm leading-relaxed text-white/75">{item.description}</p>
                       </div>
                     </div>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -648,12 +622,10 @@ export const CareersPage = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-              Benefits & Perks
-            </h2>
+            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">Benefits & Perks</h2>
             <p className="max-w-3xl mx-auto text-xl text-white/80">
-              Packages designed for builders who care about craftsmanship,
-              community, and continuous learning.
+              Packages designed for builders who care about craftsmanship, community, and continuous
+              learning.
             </p>
           </div>
 
@@ -667,27 +639,22 @@ export const CareersPage = () => {
                 Everything you need to grow with balance
               </h3>
               <p className="text-lg leading-relaxed text-white/70">
-                Wellness stipends, learning budgets, and transparent career
-                ladders ensure you can focus on the work and the people you
-                love.
+                Wellness stipends, learning budgets, and transparent career ladders ensure you can
+                focus on the work and the people you love.
               </p>
               <div className="space-y-4 text-white/80">
                 <div className="flex items-start gap-3">
                   <Handshake className="w-5 h-5 mt-1 text-purple-300" />
                   <p>
-                    <span className="font-semibold text-white">
-                      Clear comp bands
-                    </span>{" "}
-                    with annual pay reviews and quarterly feedback loops.
+                    <span className="font-semibold text-white">Clear comp bands</span> with annual
+                    pay reviews and quarterly feedback loops.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <Sparkles className="w-5 h-5 mt-1 text-cyan-300" />
                   <p>
-                    <span className="font-semibold text-white">
-                      Learning sabbaticals
-                    </span>{" "}
-                    for conferences, certifications, or passion projects.
+                    <span className="font-semibold text-white">Learning sabbaticals</span> for
+                    conferences, certifications, or passion projects.
                   </p>
                 </div>
               </div>
@@ -699,7 +666,7 @@ export const CareersPage = () => {
 
             <div className="grid gap-6 md:grid-cols-2">
               {benefits.map((benefit, idx) => {
-                const Icon = benefit.icon;
+                const Icon = benefit.icon
                 return (
                   <div
                     key={idx}
@@ -710,15 +677,11 @@ export const CareersPage = () => {
                     ></div>
                     <div className="relative z-10">
                       <Icon className="w-10 h-10 mb-4 text-white" />
-                      <h3 className="mb-2 text-lg font-semibold text-white">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-white/75">
-                        {benefit.description}
-                      </p>
+                      <h3 className="mb-2 text-lg font-semibold text-white">{benefit.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/75">{benefit.description}</p>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -729,9 +692,7 @@ export const CareersPage = () => {
       <section className="px-6 py-20 bg-neutral-950">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-              Open Positions
-            </h2>
+            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">Open Positions</h2>
             <p className="max-w-3xl mx-auto mb-12 text-xl text-white">
               We're looking for talented people to join our growing team
             </p>
@@ -744,8 +705,8 @@ export const CareersPage = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-6 py-2 rounded-full font-semibold transition-all ${
                     selectedCategory === cat
-                      ? "bg-purple-500/20 text-purple-300 border border-purple-500/30"
-                      : "bg-neutral-900 text-white border border-neutral-800 hover:border-purple-500/30"
+                      ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                      : 'bg-neutral-900 text-white border border-neutral-800 hover:border-purple-500/30'
                   }`}
                 >
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -764,13 +725,11 @@ export const CareersPage = () => {
               {Array.from({ length: 3 }, (_, colIdx) =>
                 filteredRoles
                   .map((role, idx) => ({ ...role, originalIndex: idx }))
-                  .filter((_, idx) => idx % 3 === colIdx)
+                  .filter((_, idx) => idx % 3 === colIdx),
               ).map((column, colIdx) => (
                 <div
                   key={colIdx}
-                  className={`space-y-8 ${
-                    colIdx === 1 ? "mt-12" : colIdx === 2 ? "mt-24" : ""
-                  }`}
+                  className={`space-y-8 ${colIdx === 1 ? 'mt-12' : colIdx === 2 ? 'mt-24' : ''}`}
                 >
                   {column.map((role) => (
                     <div
@@ -791,9 +750,7 @@ export const CareersPage = () => {
                         </span>
                       </div>
 
-                      <p className="text-sm leading-relaxed text-white/70">
-                        {role.description}
-                      </p>
+                      <p className="text-sm leading-relaxed text-white/70">{role.description}</p>
 
                       <div className="flex items-center justify-between text-xs text-white/60">
                         <div className="flex items-center gap-2">
@@ -818,12 +775,10 @@ export const CareersPage = () => {
                       </div>
 
                       <div className="pt-4 overflow-hidden text-sm transition-all duration-500 ease-out border-t opacity-0 border-white/5 text-white/70 max-h-0 group-hover:max-h-40 group-hover:opacity-100">
-                        <p className="mb-1 font-semibold text-white">
-                          What you'll do
-                        </p>
+                        <p className="mb-1 font-semibold text-white">What you'll do</p>
                         <p>
-                          Work with cross-functional squads delivering SAP
-                          Hybris, AEM, and cloud-native programs.
+                          Work with cross-functional squads delivering SAP Hybris, AEM, and
+                          cloud-native programs.
                         </p>
                       </div>
 
@@ -844,9 +799,7 @@ export const CareersPage = () => {
       <section className="px-6 py-20 bg-neutral-950">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-              What Our Team Says
-            </h2>
+            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">What Our Team Says</h2>
             <p className="max-w-3xl mx-auto text-xl text-white">
               Hear from people who are building the future with us
             </p>
@@ -860,7 +813,7 @@ export const CareersPage = () => {
               >
                 {/* Image Section - Top Half */}
                 <div className="relative overflow-hidden h-96 bg-neutral-900">
-                  {testimonial.image.startsWith("/images/") ? (
+                  {testimonial.image.startsWith('/images/') ? (
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -896,9 +849,7 @@ export const CareersPage = () => {
             <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-white">
-              Everything you need to know about joining us
-            </p>
+            <p className="text-xl text-white">Everything you need to know about joining us</p>
           </div>
 
           <div className="space-y-4">
@@ -908,17 +859,13 @@ export const CareersPage = () => {
                 className="overflow-hidden transition-all border group bg-neutral-900 border-neutral-800 rounded-2xl hover:border-purple-500/30"
               >
                 <button
-                  onClick={() =>
-                    setExpandedFaq(expandedFaq === idx ? null : idx)
-                  }
+                  onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
                   className="flex items-center justify-between w-full px-8 py-6 transition-colors hover:bg-neutral-900"
                 >
-                  <h3 className="text-lg font-bold text-left text-white">
-                    {faq.question}
-                  </h3>
+                  <h3 className="text-lg font-bold text-left text-white">{faq.question}</h3>
                   <CheckCircle2
                     className={`w-6 h-6 text-purple-400 shrink-0 transition-transform ${
-                      expandedFaq === idx ? "rotate-0" : "-rotate-90"
+                      expandedFaq === idx ? 'rotate-0' : '-rotate-90'
                     }`}
                   />
                 </button>
@@ -936,12 +883,10 @@ export const CareersPage = () => {
       {/* CTA Section */}
       <section className="px-6 py-20 mx-6 mb-20 border bg-linear-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl border-neutral-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-            Ready to Join Us?
-          </h2>
+          <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">Ready to Join Us?</h2>
           <p className="max-w-2xl mx-auto mb-10 text-xl text-white">
-            Find the perfect role for you and start your journey with us today
-            send your application!
+            Find the perfect role for you and start your journey with us today send your
+            application!
           </p>
           <p className="max-w-2xl mx-auto mb-10 text-xl font-semibold text-purple-300">
             hr.cjsstechnologies.com
@@ -949,5 +894,5 @@ export const CareersPage = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
