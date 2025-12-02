@@ -17,9 +17,7 @@ const CarrierExperienced = ({ navigateTo }: CarrierExperiencedProps) => {
   return (
     <>
       <CareerNavigationBar links={links} navigateTo={navigateTo} />
-      <section className="w-full h-28">
-        <p>Career Experienced</p>
-      </section>
+      <section className="w-full h-28"></section>
       <JobOpenings></JobOpenings>
     </>
   );

@@ -17,9 +17,7 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
   return (
     <>
       <CareerNavigationBar links={links} navigateTo={navigateTo} />
-      <section className="w-full h-28">
-        <p>Career Fresher</p>
-      </section>
+      <section className="w-full h-28"></section>
       <JobOpenings></JobOpenings>
     </>
   );
