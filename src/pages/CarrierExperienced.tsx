@@ -20,7 +20,7 @@ const CarrierExperienced = ({ navigateTo }: CarrierExperiencedProps) => {
       <section className="w-full h-28">
         <p>Career Experienced</p>
       </section>
-      <JobOpenings filterMode="experinced"></JobOpenings>
+      <JobOpenings></JobOpenings>
     </>
   );
 };

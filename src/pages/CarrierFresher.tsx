@@ -20,7 +20,7 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
       <section className="w-full h-28">
         <p>Career Fresher</p>
       </section>
-      <JobOpenings filterMode="fresher"></JobOpenings>
+      <JobOpenings></JobOpenings>
     </>
   );
 };
