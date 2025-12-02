@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -15,7 +12,7 @@ export default {
           blue: '#0066FF',
           purple: '#6C5CE7',
           dark: '#0F172A',
-        }
+        },
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-in-out forwards',
@@ -47,8 +44,9 @@ export default {
         orbFloat: 'orbFloat 8s ease-in-out infinite',
         pulseglow: 'pulseglow 4s ease-in-out infinite',
         breathe: 'breathe 6s ease-in-out infinite',
-        'scroll': 'scroll 30s linear infinite',
+        scroll: 'scroll 30s linear infinite',
         'scroll-reverse': 'scroll-reverse 30s linear infinite',
+        'spin-slow': 'spin 4s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -156,7 +154,7 @@ export default {
           '33%': { transform: 'translate(40px, -60px) scale(1.1)', opacity: '0.6' },
           '66%': { transform: 'translate(-40px, 60px) scale(0.9)', opacity: '0.5' },
         },
-        'pulseglow': {
+        pulseglow: {
           '0%, 100%': { boxShadow: '0 0 20px rgba(0, 221, 179, 0.3)' },
           '50%': { boxShadow: '0 0 40px rgba(0, 221, 179, 0.6)' },
         },
