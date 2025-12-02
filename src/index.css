@@ -23,7 +23,6 @@ body {
   color: #f9fafb;
 }
 
-/* GPU acceleration for smooth scrolling */
 * {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -34,7 +33,6 @@ section {
   will-change: scroll-position;
 }
 
-/* Optimize animations */
 @supports (animation-timeline: scroll()) {
   .animate-blob,
   .animate-float,
@@ -47,7 +45,6 @@ section {
   }
 }
 
-/* Horizontal scrolling animations */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -66,7 +63,6 @@ section {
   }
 }
 
-/* Utility to hide scrollbars while keeping scroll functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
