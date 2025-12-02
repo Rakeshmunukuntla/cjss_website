@@ -1,4 +1,4 @@
-import { Baby, BookOpen, Clock, ShieldCheck, Users } from 'lucide-react'
+import { Baby, BookOpen, Clock, HeartPulse, ShieldCheck, Users } from 'lucide-react'
 import { useState } from 'react'
 
 const benefits = [
@@ -21,6 +21,13 @@ const benefits = [
     gradient: 'from-blue-400/20 to-cyan-500/10',
   },
   {
+    icon: HeartPulse,
+    title: 'Wellness & Mental Health Support',
+    desc: 'Access to wellness programs, mental health breaks, and employee assistance.',
+    gradient: 'from-red-400/20 to-pink-500/10',
+  },
+
+  {
     icon: Clock,
     title: 'Generous Personal Time Off',
     desc: 'Flexible vacation, wellness days, and holidays.',
@@ -39,13 +46,14 @@ export default function BenefitsSection() {
 
   return (
     <section
-      className="relative px-6 overflow-hidden text-white py-28"
-      style={{
-        backgroundImage:
-          'linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)',
-        backgroundSize: '80px 80px',
-        backgroundColor: 'rgb(2,6,23)',
-      }}
+      // className="relative px-6 pt-10 pb-24 overflow-hidden text-white"
+      className="px-6 pt-10 pb-24"
+      // style={{
+      //   backgroundImage:
+      //     'linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)',
+      //   backgroundSize: '80px 80px',
+      //   backgroundColor: 'rgb(2,6,23)',
+      // }}
       onMouseMove={(e) => {
         setCursorPos({ x: e.clientX, y: e.clientY })
       }}

@@ -103,14 +103,15 @@ const MentorStoriesSection = () => {
 
   return (
     <section
-      className="w-full px-8 overflow-visible text-white py-28"
-      style={{
-        // grid background for whole section (user provided style)
-        backgroundImage:
-          'linear-gradient(transparent 79px, rgba(148, 163, 184, 0.08) 80px), linear-gradient(90deg, transparent 79px, rgba(148, 163, 184, 0.08) 80px)',
-        backgroundSize: '80px 80px',
-        backgroundColor: 'rgba(2,6,23,1)',
-      }}
+      // className="w-full px-8 overflow-visible text-white py-28"
+      className="px-6 py-28"
+      // style={{
+      //   // grid background for whole section (user provided style)
+      //   backgroundImage:
+      //     'linear-gradient(transparent 79px, rgba(148, 163, 184, 0.08) 80px), linear-gradient(90deg, transparent 79px, rgba(148, 163, 184, 0.08) 80px)',
+      //   backgroundSize: '80px 80px',
+      //   backgroundColor: 'rgba(2,6,23,1)',
+      // }}
     >
       {/* Heading */}
       <h2 className="mb-12 text-5xl font-extrabold text-center select-none">

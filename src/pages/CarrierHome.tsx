@@ -2,7 +2,10 @@
 
 import BenefitsSection from '@/components/Career/BenefitsSection'
 import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
+import CareerBackgroundWrapper from '@/components/Career/CareerBackgroundWrapper'
+import ISOSection from '@/components/Career/ISOSection'
 import MentorStoriesSection from '@/components/Career/MentorStoriesSection'
+import UploadResumeSection from '@/components/Career/UploadResumeSection'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
@@ -152,8 +155,13 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
           </div>
         </div>
       </section>
-      <MentorStoriesSection />
-      <BenefitsSection />
+
+      <CareerBackgroundWrapper>
+        <MentorStoriesSection />
+        <BenefitsSection />
+        <ISOSection />
+        <UploadResumeSection />
+      </CareerBackgroundWrapper>
     </>
   )
 }
