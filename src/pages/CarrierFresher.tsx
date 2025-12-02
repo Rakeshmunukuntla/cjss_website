@@ -1,4 +1,5 @@
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
+import CareerNavigationBar from "@/components/Career/CareeerNavigationBar";
+import JobOpenings from "./jobs/JobOpeningsFresher";
 
 // import React from 'react';
 interface CarrierFresherProps {
@@ -6,11 +7,11 @@ interface CarrierFresherProps {
 }
 const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
   const links = [
-    { label: 'Home', page: 'CarrierHome' },
-    { label: 'Life at CJSS', page: 'CarrierLife' }, // 👈 must match App key
-    { label: 'Job for Fresher', page: 'CarrierFresher' }, // or whatever you use
-    { label: 'Job for Experienced', page: 'CarrierExperienced' },
-    { label: 'Problems we solve', page: 'CarrierProblems' },
+    { label: "Home", page: "CarrierHome" },
+    { label: "Life at CJSS", page: "CarrierLife" }, // 👈 must match App key
+    { label: "Job for Fresher", page: "CarrierFresher" }, // or whatever you use
+    { label: "Job for Experienced", page: "CarrierExperienced" },
+    { label: "Problems we solve", page: "CarrierProblems" },
   ];
 
   return (
@@ -19,6 +20,7 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
       <section className="w-full h-28">
         <p>Career Fresher</p>
       </section>
+      <JobOpenings filterMode="fresher"></JobOpenings>
     </>
   );
 };
