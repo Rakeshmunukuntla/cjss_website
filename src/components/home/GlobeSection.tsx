@@ -277,7 +277,7 @@ export const GlobeSection = () => {
                 className="max-w-2xl mx-auto mb-6 text-base leading-relaxed text-blue-100"
                 // style={{ fontFamily: '"Sora", sans-serif' }}
               >
-                Delivering transformative technology solutions across 47+ countries, powering
+                Delivering transformative technology solutions across 1+ countries, powering
                 thousands of businesses with our expertise in cloud, AI, and digital transformation.
               </p>
             </div>
