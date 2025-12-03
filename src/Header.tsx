@@ -493,7 +493,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 //   );
 
 //   // class used to blur non-tech nav links on desktop when dropdown open
-//   // ✅ removed pointer-events-none so links stay clickable
+//   // ✅ removed pointer-events-none so links are still clickable
 //   const blurredNavClass = desktopTechOpen ? 'blur-sm' : '';
 //   // class used to blur non-tech nav links on mobile when tech dropdown open
 //   const blurredMobileNavClass = mobileTechOpen ? 'blur-sm' : '';
@@ -633,24 +633,24 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 //           </button>
 //         </div>
 
-//         {/* Arrow centered vertically – 3D button + clear Menu text */}
+//         {/* Arrow centered vertically – 3D button + Menu label */}
 //         <div className="absolute inset-y-0 z-30 flex items-center left-1">
 //           <div className="flex items-center gap-3">
 //             <button
 //               aria-label={isSidebarOpen ? 'Close navigation menu' : 'Open navigation menu'}
 //               className={`
-//                 relative flex items-center justify-center
-//                 w-10 h-10 rounded-full
-//                 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-cyan-400
-//                 shadow-[0_12px_28px_rgba(0,0,0,0.8)]
-//                 border border-white/40
-//                 transform-gpu
-//                 transition-all duration-300
-//                 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(59,130,246,0.9)]
-//                 active:translate-y-0 active:shadow-[0_8px_20px_rgba(0,0,0,0.95)]
-//                 before:absolute before:inset-[2px] before:rounded-full
-//                 before:bg-neutral-950 before:opacity-90
-//               `}
+//                   relative flex items-center justify-center
+//                   w-10 h-10 rounded-full
+//                   bg-gradient-to-br from-purple-500 via-fuchsia-500 to-cyan-400
+//                   shadow-[0_12px_28px_rgba(0,0,0,0.9)]
+//                   border border-white/40
+//                   transform-gpu
+//                   transition-all duration-300
+//                   hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(59,130,246,0.9)]
+//                   active:translate-y-0 active:shadow-[0_8px_20px_rgba(0,0,0,0.95)]
+//                   before:absolute before:inset-[2px] before:rounded-full
+//                   before:bg-neutral-950 before:opacity-90
+//                 `}
 //               onClick={() => setIsSidebarOpen((s) => !s)}
 //             >
 //               {/* subtle glow ping when closed, to attract attention */}
@@ -663,9 +663,9 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 //                 fill="none"
 //                 xmlns="http://www.w3.org/2000/svg"
 //                 className={`
-//                   w-4 h-4 relative z-10 transition-transform duration-300
-//                   ${isSidebarOpen ? 'rotate-180' : 'translate-x-[1px]'}
-//                 `}
+//                       w-4 h-4 relative z-10 transition-transform duration-300
+//                       ${isSidebarOpen ? 'rotate-180' : 'translate-x-[1px]'}
+//                     `}
 //                 aria-hidden
 //               >
 //                 <path
@@ -678,7 +678,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 //               </svg>
 //             </button>
 
-//             {/* Clean, small indication so user knows this opens the menu */}
+//             {/* Simple, clean indication for the user */}
 //             <div
 //               className={`
 //                 origin-left transition-all duration-300
@@ -689,7 +689,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 //                 }
 //               `}
 //             >
-//               <span className="px-3 py-1 text-[11px] font-semibold tracking-[0.18em] uppercase rounded-full bg-neutral-900/95 border border-white/20 text-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.85)] animate-pulse">
+//               <span className="px-3 py-1 text-[11px] font-medium tracking-[0.16em] uppercase rounded-full bg-neutral-900/95 border border-white/20 text-white/80 shadow-[0_10px_26px_rgba(0,0,0,0.85)]">
 //                 Menu
 //               </span>
 //             </div>
