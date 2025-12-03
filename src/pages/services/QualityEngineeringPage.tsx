@@ -161,14 +161,14 @@ export default function QualityEngineeringPage() {
             </div>
 
             <img
-              src="/images/qe_maturity_graph.png"
+              src="/images/cloud1.jpg"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/qe_team_work.png"
+              src="/images/cloud2.jpg"
               className="w-full rounded-xl shadow-xl"
             />
 
@@ -239,14 +239,14 @@ export default function QualityEngineeringPage() {
             </div>
 
             <img
-              src="/images/test_automation_web.png"
+              src="/images/cloud3.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/test_automation_tools.png"
+              src="/images/cloud5.png"
               className="w-full rounded-xl shadow-xl"
             />
 
@@ -315,14 +315,14 @@ export default function QualityEngineeringPage() {
             </div>
 
             <img
-              src="/images/test_domain_1.png"
+              src="/images/cloud6.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/test_domain_2.png"
+              src="\images\cloud7.png"
               className="w-full rounded-xl shadow-xl"
             />
 
@@ -393,14 +393,14 @@ export default function QualityEngineeringPage() {
             </div>
 
             <img
-              src="/images/data_quality_1.png"
+              src="/images/cloud8.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/data_quality_2.png"
+              src="/images/cloud9.png"
               className="w-full rounded-xl shadow-xl"
             />
 
