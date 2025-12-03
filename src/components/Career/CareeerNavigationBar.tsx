@@ -270,7 +270,7 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
       {/* MOBILE SLIDE MENU */}
       <div
         ref={sidebarRef}
-        className={`slide-menu fixed top-[73px] left-0 h-[calc(100vh-207px)]
+        className={`slide-menu fixed top-[73px] left-0 h-[calc(100vh-73px)]
                     bg-neutral-900/70 backdrop-blur-2xl border-r border-white/10
                     transition-all duration-500 z-[10050]
                     ${open ? 'w-[220px] opacity-100' : 'w-0 opacity-0'}
