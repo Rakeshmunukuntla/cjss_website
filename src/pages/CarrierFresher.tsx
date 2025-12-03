@@ -1,9 +1,9 @@
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
-import JobOpenings from './jobs/JobOpeningsFresher';
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
+import JobOpenings from './jobs/JobOpeningsFresher'
 
 // import React from 'react';
 interface CarrierFresherProps {
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string) => void
 }
 const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
   const links = [
@@ -12,15 +12,17 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
     { label: 'Job for Fresher', page: 'CarrierFresher' }, // or whatever you use
     { label: 'Job for Experienced', page: 'CarrierExperienced' },
     { label: 'Problems we solve', page: 'CarrierProblems' },
-  ];
+  ]
 
   return (
     <>
       <CareerNavigationBar links={links} navigateTo={navigateTo} />
+      {/* Push content down to avoid navbar overlap */}
+      <div className="h-[80px] md:h-[80px]"></div>
       <section className="w-full h-0"></section>
       <JobOpenings></JobOpenings>
     </>
-  );
-};
+  )
+}
 
-export default CarrierFresher;
+export default CarrierFresher

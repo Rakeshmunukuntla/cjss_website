@@ -1,16 +1,16 @@
-import BenefitsSection from '@/components/Career/BenefitsSection';
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
-import CareerBackgroundWrapper from '@/components/Career/CareerBackgroundWrapper';
-import ISOSection from '@/components/Career/ISOSection';
-import MentorStoriesSection from '@/components/Career/MentorStoriesSection';
-import UploadResumeSection from '@/components/Career/UploadResumeSection';
+import BenefitsSection from '@/components/Career/BenefitsSection'
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
+import CareerBackgroundWrapper from '@/components/Career/CareerBackgroundWrapper'
+import ISOSection from '@/components/Career/ISOSection'
+import MentorStoriesSection from '@/components/Career/MentorStoriesSection'
+import UploadResumeSection from '@/components/Career/UploadResumeSection'
 
-import { useEffect, useState } from 'react';
-import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react'
+import CountUp from 'react-countup'
+import { useInView } from 'react-intersection-observer'
 
 interface CarrierHomeProps {
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string) => void
 }
 
 const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
@@ -20,27 +20,27 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
     { label: 'Job for Fresher', page: 'CarrierFresher' },
     { label: 'Job for Experienced', page: 'CarrierExperienced' },
     { label: 'Problems we solve', page: 'CarrierProblems' },
-  ];
+  ]
 
   // Scroll-trigger: counter animation
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
-  });
+  })
 
   // Parallax background
-  const [offsetY, setOffsetY] = useState(0);
+  const [offsetY, setOffsetY] = useState(0)
 
   const handleScroll = () => {
     // reduce parallax effect on mobiles
-    const multiplier = window.innerWidth < 768 ? 0.1 : 0.25;
-    setOffsetY(window.scrollY * multiplier);
-  };
+    const multiplier = window.innerWidth < 768 ? 0.1 : 0.25
+    setOffsetY(window.scrollY * multiplier)
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <>
@@ -50,6 +50,9 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
       {/* Push content down to avoid overlapping navbar */}
       {/* <div className="pt-[86px]"></div> */}
       {/* <div className="hidden md:block h-[66px]"></div> */}
+
+      {/* Push content down to avoid navbar overlap */}
+      <div className="h-[80px] md:h-[80px]"></div>
 
       {/* ⭐ HERO SECTION */}
       <section
@@ -128,7 +131,7 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
         <UploadResumeSection />
       </CareerBackgroundWrapper>
     </>
-  );
-};
+  )
+}
 
-export default CarrierHome;
+export default CarrierHome
