@@ -378,51 +378,51 @@
 
 // export default Header;
 
-import { useEffect, useRef, useState } from 'react';
-import TechnologyDropdown from './components/TechnologyDropdown';
+import { useEffect, useRef, useState } from 'react'
+import TechnologyDropdown from './components/TechnologyDropdown'
 
 interface HeaderProps {
-  currentPage: string;
-  navigateTo: (page: string) => void;
+  currentPage: string
+  navigateTo: (page: string) => void
 }
 
 export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // mobile menu
-  const [mobileTechOpen, setMobileTechOpen] = useState(false); // mobile Technology Services
-  const [desktopTechOpen, setDesktopTechOpen] = useState(false); // desktop/tablet Technology Services
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // desktop/tablet arrow toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false) // mobile menu
+  const [mobileTechOpen, setMobileTechOpen] = useState(false) // mobile Technology Services
+  const [desktopTechOpen, setDesktopTechOpen] = useState(false) // desktop/tablet Technology Services
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false) // desktop/tablet arrow toggle
 
-  const techContainerRef = useRef<HTMLDivElement | null>(null);
+  const techContainerRef = useRef<HTMLDivElement | null>(null)
 
   const navItems = [
     { label: 'Overview', page: 'home' },
     { label: 'Careers', page: 'CarrierHome' },
     { label: 'Resources', page: 'resources' },
     { label: 'About Us', page: 'about' },
-  ];
+  ]
 
   const handleNavClick = (page: string) => {
-    navigateTo(page);
-    setIsMenuOpen(false);
-    setMobileTechOpen(false);
-    setDesktopTechOpen(false);
-  };
+    navigateTo(page)
+    setIsMenuOpen(false)
+    setMobileTechOpen(false)
+    setDesktopTechOpen(false)
+  }
 
   // Close desktop tech dropdown on outside click
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
-      const target = e.target as Node | null;
+      const target = e.target as Node | null
       if (
         desktopTechOpen &&
         techContainerRef.current &&
         !techContainerRef.current.contains(target)
       ) {
-        setDesktopTechOpen(false);
+        setDesktopTechOpen(false)
       }
     }
-    document.addEventListener('mousedown', onDocClick);
-    return () => document.removeEventListener('mousedown', onDocClick);
-  }, [desktopTechOpen]);
+    document.addEventListener('mousedown', onDocClick)
+    return () => document.removeEventListener('mousedown', onDocClick)
+  }, [desktopTechOpen])
 
   // Shared line component – SAME for every nav item
   const Line = ({ active }: { active: boolean }) => (
@@ -432,7 +432,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
       }`}
       style={{ transformOrigin: 'left' }}
     />
-  );
+  )
 
   // Reusable nav item
   const NavItem = ({
@@ -442,11 +442,11 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
     active,
     expanded,
   }: {
-    label: string;
-    page: string;
-    onClick: () => void;
-    active: boolean;
-    expanded: boolean;
+    label: string
+    page: string
+    onClick: () => void
+    active: boolean
+    expanded: boolean
   }) => (
     <div className="relative flex flex-col items-start w-full group" key={page}>
       <button
@@ -474,12 +474,12 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
         </button>
       </div>
     </div>
-  );
+  )
 
   // class used to blur non-tech nav links on desktop when dropdown open
-  const blurredNavClass = desktopTechOpen ? 'blur-sm pointer-events-none' : '';
+  const blurredNavClass = desktopTechOpen ? 'blur-sm pointer-events-none' : ''
   // class used to blur non-tech nav links on mobile when tech dropdown open
-  const blurredMobileNavClass = mobileTechOpen ? 'blur-sm' : '';
+  const blurredMobileNavClass = mobileTechOpen ? 'blur-sm' : ''
 
   return (
     <>
@@ -501,8 +501,8 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
           <button
             onClick={() => {
-              setIsMenuOpen((s) => !s);
-              setMobileTechOpen(false);
+              setIsMenuOpen((s) => !s)
+              setMobileTechOpen(false)
             }}
             aria-expanded={isMenuOpen}
             className="flex flex-col items-center justify-center gap-1.5"
@@ -559,9 +559,9 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
                 <div className="p-2 mt-2 border rounded-xl bg-neutral-900 border-neutral-800">
                   <TechnologyDropdown
                     navigateTo={(p: string) => {
-                      navigateTo(p);
-                      setMobileTechOpen(false);
-                      setIsMenuOpen(false);
+                      navigateTo(p)
+                      setMobileTechOpen(false)
+                      setIsMenuOpen(false)
                     }}
                     currentPage={currentPage}
                     /* no extra header / toggle inside dropdown on mobile */
@@ -598,7 +598,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
       {/* DESKTOP / TABLET COLLAPSIBLE SIDEBAR */}
       <aside
         className={`relative hidden overflow-visible transition-all duration-500 ease-out bg-transparent md:fixed md:inset-y-0 md:left-0 md:z-40 md:flex md:flex-col group
-        ${isSidebarOpen ? 'md:w-56' : 'md:w-16'}`}
+            ${isSidebarOpen ? 'md:w-56' : 'md:w-16'}`}
         aria-hidden={false}
       >
         {/* Logo pinned at top */}
@@ -621,17 +621,17 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
           <button
             aria-label="Toggle navigation"
             className={`
-              relative flex items-center justify-center
-              w-9 h-9 rounded-full
-              bg-neutral-900/90 border border-white/10
-              shadow-lg shadow-black/40
-              hover:shadow-purple-500/30
-              hover:border-purple-400/50
-              transition-all duration-300
-              before:absolute before:inset-[-2px] before:rounded-full
-              before:bg-linear-to-br before:from-purple-500/40 before:to-cyan-500/40
-              before:opacity-0 hover:before:opacity-100 before:transition-opacity
-            `}
+                  relative flex items-center justify-center
+                  w-9 h-9 rounded-full
+                  bg-neutral-900/90 border border-white/10
+                  shadow-lg shadow-black/40
+                  hover:shadow-purple-500/30
+                  hover:border-purple-400/50
+                  transition-all duration-300
+                  before:absolute before:inset-[-2px] before:rounded-full
+                  before:bg-linear-to-br before:from-purple-500/40 before:to-cyan-500/40
+                  before:opacity-0 hover:before:opacity-100 before:transition-opacity
+                `}
             onClick={() => setIsSidebarOpen((s) => !s)}
           >
             <svg
@@ -639,9 +639,9 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className={`
-                w-4 h-4 relative z-10 transition-transform duration-300
-                ${isSidebarOpen ? 'rotate-180' : 'translate-x-[1px]'}
-              `}
+                    w-4 h-4 relative z-10 transition-transform duration-300
+                    ${isSidebarOpen ? 'rotate-180' : 'translate-x-[1px]'}
+                  `}
               aria-hidden
             >
               <path
@@ -658,14 +658,14 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
         {/* Nav content — smooth slide + fade when arrow toggles */}
         <div
           className={`
-            flex flex-col items-start w-full gap-4 pb-6 mt-2 pr-3
-            transform-gpu transition-all duration-500 ease-out
-            ${
-              isSidebarOpen
-                ? 'opacity-100 pointer-events-auto pl-4 translate-x-0'
-                : 'opacity-0 pointer-events-none -translate-x-3'
-            }
-          `}
+                flex flex-col items-start w-full gap-4 pb-6 mt-2 pr-3
+                transform-gpu transition-all duration-500 ease-out
+                ${
+                  isSidebarOpen
+                    ? 'opacity-100 pointer-events-auto pl-4 translate-x-0'
+                    : 'opacity-0 pointer-events-none -translate-x-3'
+                }
+              `}
         >
           <nav className="flex flex-col items-start w-full gap-3 mt-0">
             {/* OVERVIEW (blurred when dropdown open) */}
@@ -681,8 +681,8 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
             {/* TECHNOLOGY SERVICES (never blurred) */}
             {(() => {
-              const active = currentPage.startsWith('service-');
-              const labelVisible = isSidebarOpen;
+              const active = currentPage.startsWith('service-')
+              const labelVisible = isSidebarOpen
 
               return (
                 <div
@@ -715,16 +715,16 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
                   {desktopTechOpen && (
                     <div
                       className="
-                        absolute left-8 top-full mt-[2px]
-                        w-[320px] sm:w-[340px] lg:w-[360px] max-w-[86vw]
-                        p-3 z-50
-                        bg-transparent
-                      "
+                            absolute left-8 top-full mt-[2px]
+                            w-[320px] sm:w-[340px] lg:w-[360px] max-w-[86vw]
+                            p-3 z-50
+                            bg-transparent
+                          "
                     >
                       <TechnologyDropdown
                         navigateTo={(p: string) => {
-                          handleNavClick(p);
-                          setDesktopTechOpen(false);
+                          handleNavClick(p)
+                          setDesktopTechOpen(false)
                         }}
                         currentPage={currentPage}
                         showToggle={false}
@@ -735,7 +735,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
                     </div>
                   )}
                 </div>
-              );
+              )
             })()}
 
             {/* Remaining nav items (blurred when dropdown open) */}
@@ -747,7 +747,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
                   onClick: () => handleNavClick(item.page),
                   active: currentPage === item.page,
                   expanded: isSidebarOpen,
-                })
+                }),
               )}
             </div>
           </nav>
@@ -771,7 +771,5 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
         />
       )}
     </>
-  );
-};
-
-export default Header;
+  )
+}
