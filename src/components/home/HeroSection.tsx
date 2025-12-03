@@ -362,7 +362,7 @@ export const HeroSection = () => {
               </span>
               <span
                 style={{
-                  fontFamily: '"Sora", system-ui, sans-serif',
+                  // fontFamily: '"Sora", system-ui, sans-serif',
                   letterSpacing: '0.08em',
                 }}
                 className="uppercase text-[10px] sm:text-[11px] tracking-[0.18em]"
@@ -381,10 +381,12 @@ export const HeroSection = () => {
                 min-h-[120px] sm:min-h-[160px] md:min-h-[220px]
                 text-slate-50
               "
-              style={{
-                fontFamily: '"Sora", system-ui, sans-serif',
-                letterSpacing: '-0.05em',
-              }}
+              style={
+                {
+                  // fontFamily: '"Sora", system-ui, sans-serif',
+                  // letterSpacing: '-0.05em',
+                }
+              }
             >
               {completedLines.map((line, idx) => (
                 <div key={idx}>{line}</div>
@@ -399,10 +401,10 @@ export const HeroSection = () => {
 
             {/* Subheading */}
             <p
-              className="max-w-xl mb-8 text-sm leading-relaxed  sm:mb-10 sm:text-base md:text-lg text-slate-300 animate-slideUp"
+              className="max-w-xl mb-8 text-sm leading-relaxed sm:mb-10 sm:text-base md:text-lg text-slate-300 animate-slideUp"
               style={{
                 animationDelay: '0.2s',
-                fontFamily: '"Sora", system-ui, sans-serif',
+                // fontFamily: '"Sora", system-ui, sans-serif',
               }}
             >
               Accelerating brands with Hybris, AEM, headless frontends and multi-cloud commerce

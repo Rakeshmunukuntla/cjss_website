@@ -368,13 +368,14 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
                       </button>
                       <button
                         onClick={() => setApplyJob(job)}
-                        className=" w-1/2 py-2 rounded-xl 
-  bg-gradient-to-r from-purple-500 via-blue-400 to-green-400
-  text-neutral-900 font-semibold
-  shadow-lg shadow-purple-500/20
-  hover:shadow-[0_0_25px_rgba(155,92,255,0.6)]
-  hover:scale-[1.05]
-  transition-all duration-300"
+                        className=" w-1/2 py-2 rounded-xl
+bg-gradient-to-r from-purple-400 to-cyan-300
+text-neutral-900 font-semibold
+shadow-lg shadow-purple-400/20
+hover:shadow-[0_0_20px_rgba(168,85,247,0.45)]
+hover:scale-[1.05]
+transition-all duration-300
+"
                       >
                         Apply
                       </button>
@@ -797,7 +798,7 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
                     <div className="flex justify-between mt-6">
                       <button
                         onClick={() => setApplyStep(1)}
-                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
+                        className="px-6 py-2 transition-all border rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>
@@ -850,7 +851,7 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
                     <div className="flex justify-between mt-6">
                       <button
                         onClick={() => setApplyStep(2)}
-                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
+                        className="px-6 py-2 transition-all border rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>
@@ -904,7 +905,7 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
                     <div className="flex items-center justify-between">
                       <button
                         onClick={() => setApplyStep(3)}
-                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
+                        className="px-6 py-2 transition-all border rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>

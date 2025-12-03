@@ -245,7 +245,7 @@ export const GlobeSection = () => {
             >
               <span
                 className="text-xs font-semibold tracking-wide text-teal-300 uppercase"
-                style={{ fontFamily: '"Sora", sans-serif' }}
+                // style={{ fontFamily: '"Sora", sans-serif' }}
               >
                 Global Reach
               </span>
@@ -253,7 +253,7 @@ export const GlobeSection = () => {
               <h2
                 className="mb-4 text-4xl leading-tight text-white md:text-5xl"
                 style={{
-                  fontFamily: '"Sora", sans-serif',
+                  // fontFamily: '"Sora", sans-serif',
                   fontWeight: 800,
                   letterSpacing: '-0.7px',
                 }}
@@ -263,7 +263,7 @@ export const GlobeSection = () => {
                 <span
                   className="text-transparent bg-gradient-to-r from-[#00F5FF] via-[#00D1FF] to-[#0077FF] bg-clip-text"
                   style={{
-                    fontFamily: '"Sora", sans-serif',
+                    // fontFamily: '"Sora", sans-serif',
                     fontWeight: 800,
                     letterSpacing: '-0.7px',
                     textShadow: '0 0 14px rgba(0, 210, 255, 0.42)',
@@ -275,10 +275,10 @@ export const GlobeSection = () => {
 
               <p
                 className="max-w-2xl mx-auto mb-6 text-base leading-relaxed text-blue-100"
-                style={{ fontFamily: '"Sora", sans-serif' }}
+                // style={{ fontFamily: '"Sora", sans-serif' }}
               >
-                Delivering transformative technology solutions across 47+ countries, powering
-                thousands of businesses with our expertise in cloud, AI, and digital transformation.
+                Empowering businesses with transformative technology solutions driven by our
+                expertise in cloud, AI, and digital transformation.
               </p>
             </div>
           </div>

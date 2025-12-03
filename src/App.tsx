@@ -16,10 +16,10 @@ import CarrierHome from "./pages/CarrierHome";
 import CarrierLife from "./pages/CarrierLife";
 import CarrierProblems from "./pages/CarrierProblems";
 import { AIServicesPage } from "./pages/services/AIServicesPage";
-import ApplicationServicesPage from "./pages/services/ApplicationServicesPage";
-import CloudTechnologiesPage from "./pages/services/CloudTechnologiesPage";
+import { ApplicationServicesPage } from "./pages/services/ApplicationServicesPage";
+import { CloudTechnologiesPage } from "./pages/services/CloudTechnologiesPage";
 import { DigitalPlatformsPage } from "./pages/services/DigitalPlatformsPage";
-import QualityEngineeringPage from "./pages/services/QualityEngineeringPage";
+import { QualityEngineeringPage } from "./pages/services/QualityEngineeringPage";
 
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");

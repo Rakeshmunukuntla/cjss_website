@@ -436,21 +436,23 @@ export const TechShowcaseSection = () => {
               <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-cyan-400 animate-ping" />
               <span className="relative inline-flex w-2 h-2 rounded-full bg-cyan-300" />
             </span>
-            <span style={{ fontFamily: '"Sora", system-ui, sans-serif' }}>Trusted Tech Stack</span>
+            <span>Trusted Tech Stack</span>
           </div>
 
           <h2
             className="mb-4 text-4xl font-extrabold md:text-5xl text-slate-50 animate-slideUp"
-            style={{
-              fontFamily: '"Sora", system-ui, sans-serif',
-              letterSpacing: '-0.04em',
-            }}
+            style={
+              {
+                // fontFamily: '"Sora", system-ui, sans-serif',
+                // letterSpacing: '-0.04em',
+              }
+            }
           >
             Loved by devs worldwide
           </h2>
           <p
             className="text-base md:text-lg text-slate-300/90 animate-fadeInUp"
-            style={{ animationDelay: '0.2s', fontFamily: '"Sora", system-ui, sans-serif' }}
+            style={{ animationDelay: '0.2s' }}
           >
             What engineering teams say about the platforms powering their digital commerce.
           </p>
@@ -491,7 +493,7 @@ export const TechShowcaseSection = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
                       <span
                         className="text-[11px] font-semibold text-cyan-100 tracking-wide"
-                        style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                        // style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
                       >
                         {card.tech}
                       </span>
@@ -500,7 +502,7 @@ export const TechShowcaseSection = () => {
                     {/* Quote */}
                     <p
                       className="relative mb-4 text-[13px] leading-relaxed text-slate-200 line-clamp-3 h-16 transition-colors duration-200 group-hover:text-slate-50"
-                      style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                      // style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
                     >
                       “{card.text}”
                     </p>
@@ -515,7 +517,7 @@ export const TechShowcaseSection = () => {
                       <div className="min-w-0">
                         <p
                           className="text-sm font-semibold truncate text-slate-100"
-                          style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                          // style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
                         >
                           {card.author}
                         </p>
