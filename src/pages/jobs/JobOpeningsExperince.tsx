@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Brain, MapPin, Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Brain, MapPin, Search, X } from 'lucide-react';
 
 type JobFromApi = {
   _id: string;
@@ -26,30 +26,22 @@ type RoleCard = {
   createdAt?: string;
 };
 
-type SortOption =
-  | "relevance"
-  | "title-asc"
-  | "title-desc"
-  | "exp-asc"
-  | "exp-desc";
+type SortOption = 'relevance' | 'title-asc' | 'title-desc' | 'exp-asc' | 'exp-desc';
 
-type FilterMode = "fresher" | "experienced" | "all";
+type FilterMode = 'fresher' | 'experienced' | 'all';
 
 interface JobOpeningsBaseProps {
   filterMode: FilterMode;
   pageSize?: number;
 }
 
-const JobOpeningsBase = ({
-  filterMode,
-  pageSize = 6,
-}: JobOpeningsBaseProps) => {
+const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => {
   const [jobs, setJobs] = useState<JobFromApi[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState<SortOption>("relevance");
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<SortOption>('relevance');
   const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedJob, setSelectedJob] = useState<RoleCard | null>(null);
@@ -57,13 +49,13 @@ const JobOpeningsBase = ({
 
   // Multi-step apply form state
   const [applyStep, setApplyStep] = useState(1);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [qualification, setQualification] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [qualification, setQualification] = useState('');
   const [resumeFile, setResumeFile] = useState<File | null>(null);
-  const [formError, setFormError] = useState("");
+  const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   const [showSuccess, setShowSuccess] = useState(false);
@@ -72,13 +64,13 @@ const JobOpeningsBase = ({
   useEffect(() => {
     if (applyJob) {
       setApplyStep(1);
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPhone("");
-      setQualification("");
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPhone('');
+      setQualification('');
       setResumeFile(null);
-      setFormError("");
+      setFormError('');
       setSubmitting(false);
     }
   }, [applyJob]);
@@ -88,11 +80,11 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("https://server-node-cjss.onrender.com/jobs");
+        const res = await fetch('https://server-node-cjss.onrender.com/jobs');
         const data = await res.json();
         setJobs(data);
       } catch (e) {
-        console.error("Error fetching jobs", e);
+        console.error('Error fetching jobs', e);
       } finally {
         setLoading(false);
       }
@@ -116,30 +108,28 @@ const JobOpeningsBase = ({
     [jobs]
   );
 
-  const isFresher = (exp: string) => exp.trim().startsWith("0");
-  const isExperienced = (exp: string) => !exp.trim().startsWith("0");
+  const isFresher = (exp: string) => exp.trim().startsWith('0');
+  const isExperienced = (exp: string) => !exp.trim().startsWith('0');
 
   // Filter by mode
   const rolesByMode = useMemo(() => {
-    if (filterMode === "fresher")
-      return openRoles.filter((r) => isFresher(r.experience));
-    if (filterMode === "experienced")
-      return openRoles.filter((r) => isExperienced(r.experience));
+    if (filterMode === 'fresher') return openRoles.filter((r) => isFresher(r.experience));
+    if (filterMode === 'experienced') return openRoles.filter((r) => isExperienced(r.experience));
     return openRoles;
   }, [filterMode, openRoles]);
 
   // Categories
-  const categories = ["all", ...new Set(rolesByMode.map((r) => r.category))];
+  const categories = ['all', ...new Set(rolesByMode.map((r) => r.category))];
 
   // Category filter
   const rolesByCategory =
-    selectedCategory === "all"
+    selectedCategory === 'all'
       ? rolesByMode
       : rolesByMode.filter((r) => r.category === selectedCategory);
 
   // Search filter
   const rolesBySearch = rolesByCategory.filter((r) =>
-    (r.title + " " + r.description + " " + r.skills.join(" "))
+    (r.title + ' ' + r.description + ' ' + r.skills.join(' '))
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -150,13 +140,13 @@ const JobOpeningsBase = ({
   const sortedRoles = useMemo(() => {
     let arr = [...rolesBySearch];
     switch (sortBy) {
-      case "title-asc":
+      case 'title-asc':
         return arr.sort((a, b) => a.title.localeCompare(b.title));
-      case "title-desc":
+      case 'title-desc':
         return arr.sort((a, b) => b.title.localeCompare(a.title));
-      case "exp-asc":
+      case 'exp-asc':
         return arr.sort((a, b) => expNum(a.experience) - expNum(b.experience));
-      case "exp-desc":
+      case 'exp-desc':
         return arr.sort((a, b) => expNum(b.experience) - expNum(a.experience));
       default:
         return arr;
@@ -165,10 +155,7 @@ const JobOpeningsBase = ({
 
   // Pagination
   const totalPages = Math.ceil(sortedRoles.length / pageSize) || 1;
-  const paginatedRoles = sortedRoles.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  const paginatedRoles = sortedRoles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   // Submit handler
   const handleSubmitApplication = async () => {
@@ -176,56 +163,56 @@ const JobOpeningsBase = ({
 
     // extra sanity validation
     if (!firstName || !lastName) {
-      setFormError("Please enter your full name.");
+      setFormError('Please enter your full name.');
       return;
     }
     if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      setFormError("Please enter a valid email address.");
+      setFormError('Please enter a valid email address.');
       return;
     }
     if (!phone.match(/^[0-9]{10}$/)) {
-      setFormError("Please enter a valid 10-digit mobile number.");
+      setFormError('Please enter a valid 10-digit mobile number.');
       return;
     }
     if (!qualification) {
-      setFormError("Please select your highest qualification.");
+      setFormError('Please select your highest qualification.');
       return;
     }
     if (!resumeFile) {
-      setFormError("Please upload your resume.");
+      setFormError('Please upload your resume.');
       return;
     }
 
     const allowedTypes = [
-      "application/pdf",
-      "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     ];
 
     if (!allowedTypes.includes(resumeFile.type)) {
-      setFormError("Only PDF, DOC, or DOCX files are allowed.");
+      setFormError('Only PDF, DOC, or DOCX files are allowed.');
       return;
     }
 
-    setFormError("");
+    setFormError('');
     setSubmitting(true);
 
     try {
       const formData = new FormData();
-      formData.append("jobId", applyJob.id);
-      formData.append("jobTitle", applyJob.title);
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("qualification", qualification);
-      formData.append("resume", resumeFile);
+      formData.append('jobId', applyJob.id);
+      formData.append('jobTitle', applyJob.title);
+      formData.append('firstName', firstName);
+      formData.append('lastName', lastName);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('qualification', qualification);
+      formData.append('resume', resumeFile);
 
       const res = await fetch(
-        "https://server-node-cjss.onrender.com/applications/apply",
+        'https://server-node-cjss.onrender.com/applications/apply',
         // "http://localhost:5000/applications/apply",
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
         }
       );
@@ -233,7 +220,7 @@ const JobOpeningsBase = ({
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        setFormError(data.error || "Something went wrong. Please try again.");
+        setFormError(data.error || 'Something went wrong. Please try again.');
         setSubmitting(false);
         return;
       }
@@ -249,7 +236,7 @@ const JobOpeningsBase = ({
       }, 2500);
     } catch (err) {
       console.error(err);
-      setFormError("Server error. Please try again later.");
+      setFormError('Server error. Please try again later.');
       setSubmitting(false);
     }
   };
@@ -267,28 +254,28 @@ const JobOpeningsBase = ({
     relative
   "
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           {/* HEADER */}
-          <h2 className="text-4xl font-bold text-center mb-3">
-            {filterMode === "fresher"
-              ? "Fresher Job Opportunities"
-              : filterMode === "experienced"
-              ? "Experienced Job Openings"
-              : "Open Positions"}
+          <h2 className="mt-10 mb-3 text-4xl font-bold text-center">
+            {filterMode === 'fresher'
+              ? 'Fresher Job Opportunities'
+              : filterMode === 'experienced'
+              ? 'Experienced Job Openings'
+              : 'Open Positions'}
           </h2>
 
-          <p className="text-center text-white/60 mb-12">
+          <p className="mb-12 text-center text-white/60">
             Search, filter & apply for your dream role.
           </p>
 
           {/* SEARCH + SORT */}
-          <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center w-full gap-2 lg:flex-row">
             {/* SEARCH */}
             <div className="relative w-full lg:w-[55%]">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40" />
+              <Search className="absolute -translate-y-1/2 left-4 top-1/2 text-white/40" />
               <input
                 placeholder="Search by title, skills, or description…"
-                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-purple-400"
+                className="w-full py-3 pl-12 pr-4 text-white border outline-none bg-neutral-900 border-neutral-700 rounded-xl focus:border-purple-400"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -297,7 +284,7 @@ const JobOpeningsBase = ({
             {/* SORT */}
             <div className="w-full lg:w-[25%] ">
               <select
-                className="w-full bg-neutral-900 border border-neutral-700 px-4 py-3 rounded-xl outline-none focus:border-purple-400 "
+                className="w-full px-4 py-3 border outline-none bg-neutral-900 border-neutral-700 rounded-xl focus:border-purple-400 "
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
               >
@@ -321,8 +308,8 @@ const JobOpeningsBase = ({
                 }}
                 className={`px-6 py-2 rounded-full font-medium text-sm transition-all ${
                   selectedCategory === cat
-                    ? "bg-purple-600 text-white shadow-md"
-                    : "bg-neutral-900 border border-neutral-700 hover:border-purple-400"
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'bg-neutral-900 border border-neutral-700 hover:border-purple-400'
                 }`}
               >
                 {cat}
@@ -334,11 +321,9 @@ const JobOpeningsBase = ({
           {loading ? (
             <p className="text-center text-white/60">Loading jobs…</p>
           ) : paginatedRoles.length === 0 ? (
-            <p className="text-center text-white/60">
-              No jobs found for the selected filters.
-            </p>
+            <p className="text-center text-white/60">No jobs found for the selected filters.</p>
           ) : (
-            <div className="grid gap-8 lg:grid-cols-3 mt-6">
+            <div className="grid gap-8 mt-6 lg:grid-cols-3">
               <AnimatePresence>
                 {paginatedRoles.map((job, index) => (
                   <motion.div
@@ -356,14 +341,12 @@ const JobOpeningsBase = ({
                   >
                     <div className="flex items-center justify-between">
                       <h3 className="text-xl font-semibold">{job.title}</h3>
-                      <span className="px-3 py-1 text-xs rounded-full border border-white/10 text-white/70">
+                      <span className="px-3 py-1 text-xs border rounded-full border-white/10 text-white/70">
                         {job.category}
                       </span>
                     </div>
 
-                    <p className="text-white/70 mt-3 line-clamp-3">
-                      {job.description}
-                    </p>
+                    <p className="mt-3 text-white/70 line-clamp-3">{job.description}</p>
 
                     <div className="flex items-center justify-between mt-4 text-sm text-white/60">
                       <span className="flex items-center gap-2">
@@ -379,7 +362,7 @@ const JobOpeningsBase = ({
                     <div className="flex gap-3 mt-5">
                       <button
                         onClick={() => setSelectedJob(job)}
-                        className="w-1/2 py-2 rounded-xl bg-neutral-800 border border-neutral-700 hover:border-purple-400"
+                        className="w-1/2 py-2 border rounded-xl bg-neutral-800 border-neutral-700 hover:border-purple-400"
                       >
                         View
                       </button>
@@ -410,8 +393,8 @@ const JobOpeningsBase = ({
                 onClick={() => setCurrentPage(idx + 1)}
                 className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm ${
                   currentPage === idx + 1
-                    ? "border-purple-600 bg-purple-500/30"
-                    : "border-neutral-700 bg-neutral-900"
+                    ? 'border-purple-600 bg-purple-500/30'
+                    : 'border-neutral-700 bg-neutral-900'
                 }`}
               >
                 {idx + 1}
@@ -423,57 +406,57 @@ const JobOpeningsBase = ({
         {/* <AnimatePresence>
         {selectedJob && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-neutral-900 p-8 rounded-3xl w-full max-w-2xl border border-neutral-700 relative"
+              className="relative w-full max-w-2xl p-8 border bg-neutral-900 rounded-3xl border-neutral-700"
             >
               <button
                 onClick={() => setSelectedJob(null)}
-                className="absolute top-4 right-4 bg-neutral-800 p-2 rounded-full"
+                className="absolute p-2 rounded-full top-4 right-4 bg-neutral-800"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <h3 className="text-3xl font-bold mb-3">{selectedJob.title}</h3>
+              <h3 className="mb-3 text-3xl font-bold">{selectedJob.title}</h3>
 
-              <p className="text-purple-400 font-medium mb-2">
+              <p className="mb-2 font-medium text-purple-400">
                 Category: {selectedJob.category}
               </p>
 
-              <div className="flex items-center gap-2 text-white/70 mb-3">
+              <div className="flex items-center gap-2 mb-3 text-white/70">
                 <Brain className="w-4 h-4 text-purple-300 group-hover:drop-shadow-[0_0_6px_rgba(155,92,255,0.8)] transition" />
                 Experience:{" "}
                 <span className="text-white">{selectedJob.experience}</span>
               </div>
 
-              <div className="flex items-center gap-2 text-white/70 mb-3">
+              <div className="flex items-center gap-2 mb-3 text-white/70">
                 <MapPin className="w-4 h-4 text-blue-300 group-hover:drop-shadow-[0_0_6px_rgba(94,231,255,0.8)] transition" />
                 Location:{" "}
                 <span className="text-white">{selectedJob.location}</span>
               </div>
 
               {selectedJob.createdAt && (
-                <p className="text-white/50 text-sm mb-4">
+                <p className="mb-4 text-sm text-white/50">
                   Posted on: {new Date(selectedJob.createdAt).toDateString()}
                 </p>
               )}
 
-              <h4 className="text-xl font-semibold mt-4 mb-2">Description</h4>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <h4 className="mt-4 mb-2 text-xl font-semibold">Description</h4>
+              <p className="mb-4 leading-relaxed text-white/70">
                 {selectedJob.description}
               </p>
 
-              <h4 className="text-xl font-semibold mb-2">Skills Required</h4>
+              <h4 className="mb-2 text-xl font-semibold">Skills Required</h4>
               <div className="flex flex-wrap gap-2 mb-6">
                 {selectedJob.skills.map((skill, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 text-xs bg-neutral-800 border border-neutral-700 rounded-full"
+                    className="px-3 py-1 text-xs border rounded-full bg-neutral-800 border-neutral-700"
                   >
                     {skill}
                   </span>
@@ -485,7 +468,7 @@ const JobOpeningsBase = ({
                   setApplyJob(selectedJob);
                   setSelectedJob(null);
                 }}
-                className="w-full py-3 bg-purple-600 hover:bg-purple-700 rounded-xl transition"
+                className="w-full py-3 transition bg-purple-600 hover:bg-purple-700 rounded-xl"
               >
                 Apply Now
               </button>
@@ -496,14 +479,14 @@ const JobOpeningsBase = ({
         <AnimatePresence>
           {selectedJob && (
             <motion.div
-              className="fixed inset-0 bg-black/70 backdrop-blur-xl flex items-center justify-center p-4 z-50"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               <motion.div
                 initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 120, damping: 15 }}
+                transition={{ type: 'spring', stiffness: 120, damping: 15 }}
                 className="
           w-full max-w-2xl relative p-8 rounded-3xl
           bg-gradient-to-br from-[#1a1a1a]/80 via-[#222]/50 to-[#0f0f0f]/80
@@ -527,7 +510,7 @@ const JobOpeningsBase = ({
                 </button>
 
                 {/* Title */}
-                <h3 className="text-3xl font-extrabold bg-gradient-to-r from-purple-400 via-blue-300 to-green-300 text-transparent bg-clip-text">
+                <h3 className="text-3xl font-extrabold text-transparent bg-gradient-to-r from-purple-400 via-blue-300 to-green-300 bg-clip-text">
                   {selectedJob.title}
                 </h3>
 
@@ -536,17 +519,15 @@ const JobOpeningsBase = ({
                 </p>
 
                 {/* Experience */}
-                <div className="mt-4 flex items-center gap-3 text-white/80">
+                <div className="flex items-center gap-3 mt-4 text-white/80">
                   <span className="flex items-center gap-2 text-purple-300">
                     <Brain className="w-5 h-5" /> Experience:
                   </span>
-                  <span className="font-semibold">
-                    {selectedJob.experience}
-                  </span>
+                  <span className="font-semibold">{selectedJob.experience}</span>
                 </div>
 
                 {/* Location */}
-                <div className="mt-3 flex items-center gap-3 text-white/80">
+                <div className="flex items-center gap-3 mt-3 text-white/80">
                   <span className="flex items-center gap-2 text-green-300">
                     <MapPin className="w-5 h-5" /> Location:
                   </span>
@@ -555,8 +536,8 @@ const JobOpeningsBase = ({
 
                 {/* Posted Date */}
                 {selectedJob.createdAt && (
-                  <p className="mt-3 text-white/50 text-sm">
-                    Posted on:{" "}
+                  <p className="mt-3 text-sm text-white/50">
+                    Posted on:{' '}
                     <span className="text-white">
                       {new Date(selectedJob.createdAt).toDateString()}
                     </span>
@@ -564,16 +545,14 @@ const JobOpeningsBase = ({
                 )}
 
                 {/* Description */}
-                <h4 className="text-xl mt-8 mb-2 font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-blue-300">
+                <h4 className="mt-8 mb-2 text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-blue-300">
                   Job Description
                 </h4>
 
-                <p className="text-white/70 leading-relaxed">
-                  {selectedJob.description}
-                </p>
+                <p className="leading-relaxed text-white/70">{selectedJob.description}</p>
 
                 {/* Skills */}
-                <h4 className="text-xl mt-8 mb-2 font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-purple-300">
+                <h4 className="mt-8 mb-2 text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-purple-300">
                   Skills Required
                 </h4>
 
@@ -619,7 +598,7 @@ const JobOpeningsBase = ({
         <AnimatePresence>
           {applyJob && (
             <motion.div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
@@ -647,9 +626,7 @@ const JobOpeningsBase = ({
                   <X className="w-5 h-5" />
                 </button>
 
-                <h3 className="text-2xl font-bold mb-5">
-                  Apply for {applyJob.title}
-                </h3>
+                <h3 className="mb-5 text-2xl font-bold">Apply for {applyJob.title}</h3>
 
                 {/* Step indicators */}
                 <div className="flex justify-center gap-3 mb-6">
@@ -661,8 +638,8 @@ const JobOpeningsBase = ({
   transition-all duration-300
   ${
     applyStep === s
-      ? "bg-gradient-to-br from-purple-500 via-blue-400 to-green-400 text-black shadow-[0_0_12px_rgba(155,92,255,0.7)] scale-105"
-      : "bg-white/10 text-white/40 backdrop-blur-md"
+      ? 'bg-gradient-to-br from-purple-500 via-blue-400 to-green-400 text-black shadow-[0_0_12px_rgba(155,92,255,0.7)] scale-105'
+      : 'bg-white/10 text-white/40 backdrop-blur-md'
   }
 `}
                     >
@@ -673,7 +650,7 @@ const JobOpeningsBase = ({
 
                 {/* Error banner */}
                 {formError && (
-                  <p className="text-red-400 bg-red-400/10 border border-red-500/40 p-2 rounded-lg text-sm mb-4">
+                  <p className="p-2 mb-4 text-sm text-red-400 border rounded-lg bg-red-400/10 border-red-500/40">
                     {formError}
                   </p>
                 )}
@@ -760,20 +737,18 @@ const JobOpeningsBase = ({
                       <button
                         onClick={() => {
                           if (!firstName || !lastName) {
-                            setFormError("Please enter your full name.");
+                            setFormError('Please enter your full name.');
                             return;
                           }
                           if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-                            setFormError("Please enter a valid email address.");
+                            setFormError('Please enter a valid email address.');
                             return;
                           }
                           if (!phone.match(/^[0-9]{10}$/)) {
-                            setFormError(
-                              "Please enter a valid 10-digit mobile number."
-                            );
+                            setFormError('Please enter a valid 10-digit mobile number.');
                             return;
                           }
-                          setFormError("");
+                          setFormError('');
                           setApplyStep(2);
                         }}
                         className="
@@ -796,9 +771,7 @@ const JobOpeningsBase = ({
                 {applyStep === 2 && (
                   <div className="space-y-5">
                     <div>
-                      <label className="text-white/70">
-                        Highest Education Qualification
-                      </label>
+                      <label className="text-white/70">Highest Education Qualification</label>
                       <select
                         className="
   w-full px-4 py-2 mt-1 rounded-xl 
@@ -824,25 +797,17 @@ const JobOpeningsBase = ({
                     <div className="flex justify-between mt-6">
                       <button
                         onClick={() => setApplyStep(1)}
-                        className="
-  px-6 py-2 rounded-xl 
-  bg-white/10 backdrop-blur-md 
-  border border-white/20 
-  hover:bg-white/20 
-  transition-all
-"
+                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>
                       <button
                         onClick={() => {
                           if (!qualification) {
-                            setFormError(
-                              "Please select your highest qualification."
-                            );
+                            setFormError('Please select your highest qualification.');
                             return;
                           }
-                          setFormError("");
+                          setFormError('');
                           setApplyStep(3);
                         }}
                         className="
@@ -865,9 +830,7 @@ const JobOpeningsBase = ({
                 {applyStep === 3 && (
                   <div className="space-y-5">
                     <div>
-                      <label className="text-white/70">
-                        Upload Resume (PDF / DOC / DOCX)
-                      </label>
+                      <label className="text-white/70">Upload Resume (PDF / DOC / DOCX)</label>
                       <input
                         type="file"
                         accept=".pdf,.doc,.docx"
@@ -880,36 +843,27 @@ const JobOpeningsBase = ({
   outline-none
   transition-all
 "
-                        onChange={(e) =>
-                          setResumeFile(e.target.files?.[0] ?? null)
-                        }
+                        onChange={(e) => setResumeFile(e.target.files?.[0] ?? null)}
                       />
                     </div>
 
                     <div className="flex justify-between mt-6">
                       <button
                         onClick={() => setApplyStep(2)}
-                        className="
-  px-6 py-2 rounded-xl 
-  bg-white/10 backdrop-blur-md 
-  border border-white/20 
-  hover:bg-white/20 
-  transition-all
-"
+                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>
                       <button
                         onClick={() => {
                           if (!resumeFile) {
-                            setFormError("Please upload your resume.");
+                            setFormError('Please upload your resume.');
                             return;
                           }
-                          setFormError("");
+                          setFormError('');
                           setApplyStep(4);
                         }}
-                        className="px-6 py-2 bg-purple-600 rounded-xl
-                       hover:bg-purple-700"
+                        className="px-6 py-2 bg-purple-600 rounded-xl hover:bg-purple-700"
                       >
                         Next →
                       </button>
@@ -920,9 +874,7 @@ const JobOpeningsBase = ({
                 {/* STEP 4 – Review & Submit */}
                 {applyStep === 4 && (
                   <div className="space-y-6">
-                    <h4 className="text-xl font-semibold">
-                      Review Your Details
-                    </h4>
+                    <h4 className="text-xl font-semibold">Review Your Details</h4>
 
                     <div
                       className="
@@ -945,21 +897,14 @@ const JobOpeningsBase = ({
                         <strong>Qualification:</strong> {qualification}
                       </p>
                       <p>
-                        <strong>Resume:</strong>{" "}
-                        {resumeFile?.name ?? "No file selected"}
+                        <strong>Resume:</strong> {resumeFile?.name ?? 'No file selected'}
                       </p>
                     </div>
 
-                    <div className="flex justify-between items-center">
+                    <div className="flex items-center justify-between">
                       <button
                         onClick={() => setApplyStep(3)}
-                        className="
-  px-6 py-2 rounded-xl 
-  bg-white/10 backdrop-blur-md 
-  border border-white/20 
-  hover:bg-white/20 
-  transition-all
-"
+                        className="px-6 py-2 transition-all border  rounded-xl bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20"
                       >
                         ← Back
                       </button>
@@ -969,11 +914,11 @@ const JobOpeningsBase = ({
                         onClick={handleSubmitApplication}
                         className={`px-6 py-2 rounded-xl ${
                           submitting
-                            ? "bg-purple-400 cursor-not-allowed"
-                            : "bg-purple-600 hover:bg-purple-700"
+                            ? 'bg-purple-400 cursor-not-allowed'
+                            : 'bg-purple-600 hover:bg-purple-700'
                         }`}
                       >
-                        {submitting ? "Submitting..." : "Submit Application"}
+                        {submitting ? 'Submitting...' : 'Submit Application'}
                       </button>
                     </div>
                   </div>
@@ -996,7 +941,7 @@ const JobOpeningsBase = ({
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               className="
           px-8 py-6 rounded-3xl 
           bg-gradient-to-br from-purple-600/90 via-blue-500/90 to-green-400/90
@@ -1006,7 +951,7 @@ const JobOpeningsBase = ({
         "
             >
               <div className="flex items-center gap-4">
-                <span className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-xl">
+                <span className="flex items-center justify-center w-8 h-8 text-xl rounded-full bg-white/20">
                   ✓
                 </span>
                 <p>Application submitted successfully!</p>

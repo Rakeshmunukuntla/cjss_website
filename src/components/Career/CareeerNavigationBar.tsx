@@ -165,19 +165,19 @@
 
 // export default CareerNavigationBar
 
-import { ChevronRight, ChevronLeft } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 interface CareerNavigationBarProps {
-  links: { label: string; page: string }[]
-  navigateTo: (page: string) => void
-  activePage?: string
+  links: { label: string; page: string }[];
+  navigateTo: (page: string) => void;
+  activePage?: string;
 }
 
 const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigationBarProps) => {
-  const [open, setOpen] = useState(false)
-  const sidebarRef = useRef<HTMLDivElement | null>(null)
-  const toggleBtnRef = useRef<HTMLButtonElement | null>(null)
+  const [open, setOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
 
   /* -------------------- CLOSE ON OUTSIDE CLICK -------------------- */
   useEffect(() => {
@@ -189,13 +189,13 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
         !sidebarRef.current.contains(e.target as Node) &&
         !toggleBtnRef.current.contains(e.target as Node)
       ) {
-        setOpen(false)
+        setOpen(false);
       }
-    }
+    };
 
-    window.addEventListener('click', handler)
-    return () => window.removeEventListener('click', handler)
-  }, [open])
+    window.addEventListener('click', handler);
+    return () => window.removeEventListener('click', handler);
+  }, [open]);
 
   return (
     <>
@@ -224,10 +224,10 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
       </style>
 
       {/* DESKTOP NAV */}
-      <nav className="fixed top-[86px] left-0 right-0 hidden md:flex z-[9999] h-[66px] items-center bg-neutral-950/50 backdrop-blur-xl border-b border-white/10">
-        <div className="flex items-center justify-center w-full gap-12 mx-auto px-14 max-w-7xl">
+      <nav className="fixed top-0 left-0 right-0 hidden md:flex z-[9999] h-[80px] items-center bg-neutral-950/50 backdrop-blur-xl border-b border-white/10">
+        <div className="flex items-center justify-end w-full gap-12 px-10 mx-auto max-w-7xl">
           {links.map((link) => {
-            const isActive = activePage === link.page
+            const isActive = activePage === link.page;
 
             return (
               <button
@@ -245,7 +245,7 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
                   }`}
                 />
               </button>
-            )
+            );
           })}
         </div>
       </nav>
@@ -254,8 +254,8 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
       <button
         ref={toggleBtnRef}
         onClick={(e) => {
-          e.stopPropagation()
-          setOpen(!open)
+          e.stopPropagation();
+          setOpen(!open);
         }}
         className="md:hidden fixed top-[90px] left-0 z-[10060] bg-neutral-900/60 backdrop-blur-xl
                    rounded-r-xl px-3 py-3 shadow-lg border border-white/10"
@@ -278,14 +278,14 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
       >
         <div className="flex flex-col gap-5 px-6 pt-20">
           {links.map((link, index) => {
-            const isActive = activePage === link.page
+            const isActive = activePage === link.page;
 
             return (
               <button
                 key={link.page}
                 onClick={() => {
-                  navigateTo(link.page)
-                  setOpen(false)
+                  navigateTo(link.page);
+                  setOpen(false);
                 }}
                 className={`text-left text-[16px] tracking-wide fade-in ${
                   isActive ? 'nav-gradient' : 'text-white/70 hover:nav-gradient'
@@ -294,12 +294,12 @@ const CareerNavigationBar = ({ links, navigateTo, activePage }: CareerNavigation
               >
                 {link.label}
               </button>
-            )
+            );
           })}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CareerNavigationBar
+export default CareerNavigationBar;
