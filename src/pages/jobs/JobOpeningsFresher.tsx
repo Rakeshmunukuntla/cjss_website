@@ -368,13 +368,13 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
                       </button>
                       <button
                         onClick={() => setApplyJob(job)}
-                        className=" w-1/2 py-2 rounded-xl 
-  bg-gradient-to-r from-purple-500 via-blue-400 to-green-400
-  text-neutral-900 font-semibold
-  shadow-lg shadow-purple-500/20
-  hover:shadow-[0_0_25px_rgba(155,92,255,0.6)]
-  hover:scale-[1.05]
-  transition-all duration-300"
+                        className="w-1/2 py-2 rounded-xl
+bg-gradient-to-r from-purple-400 to-cyan-300
+text-neutral-900 font-semibold
+shadow-lg shadow-purple-400/20
+hover:shadow-[0_0_20px_rgba(168,85,247,0.45)]
+hover:scale-[1.05]
+transition-all duration-300"
                       >
                         Apply
                       </button>
@@ -476,6 +476,7 @@ const JobOpeningsBase = ({ filterMode, pageSize = 6 }: JobOpeningsBaseProps) => 
           </motion.div>
         )}
       </AnimatePresence> */}
+
         <AnimatePresence>
           {selectedJob && (
             <motion.div
