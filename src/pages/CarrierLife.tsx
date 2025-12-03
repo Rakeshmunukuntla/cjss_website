@@ -1041,9 +1041,9 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
 
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
               BUILD THE{' '}
-              <span className="text-transparent bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-purple-300 via-indigo-300 to-sky-300 bg-clip-text">
                 FUTURE
-              </span>{' '}
+              </span>
               WITH US
             </h1>
 
