@@ -937,10 +937,12 @@
 
 // export default CarrierProblems;
 
-'use client';
+'use client'
 
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
 import {
+  ArrowRight,
+  CheckCircle2,
   CloudCog,
   Gauge,
   LineChart,
@@ -948,12 +950,10 @@ import {
   ShoppingCart,
   Users,
   Workflow,
-  CheckCircle2,
-  ArrowRight,
-} from 'lucide-react';
+} from 'lucide-react'
 
 interface CarrierProblemsProps {
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string) => void
 }
 
 const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
@@ -963,12 +963,14 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
     { label: 'Job for Fresher', page: 'CarrierFresher' },
     { label: 'Job for Experienced', page: 'CarrierExperienced' },
     { label: 'Problems we solve', page: 'CarrierProblems' },
-  ];
+  ]
 
   return (
     <>
       <CareerNavigationBar links={links} navigateTo={navigateTo} />
 
+      {/* Push content down to avoid navbar overlap */}
+      <div className="h-[80px] md:h-[80px]"></div>
       {/* GLOBAL WRAPPER – single continuous background for all sections */}
       <main className="relative w-full min-h-screen overflow-hidden text-white bg-slate-950">
         {/* unified background */}
@@ -1872,7 +1874,7 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default CarrierProblems;
+export default CarrierProblems
