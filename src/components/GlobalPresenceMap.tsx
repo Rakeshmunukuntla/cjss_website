@@ -142,7 +142,7 @@ export default function GlobalPresenceMap() {
         width={900}
         height={900}
         backgroundColor="rgba(0,0,0,0)"
-        globeImageUrl="/mapq.jpg"
+        globeImageUrl="/map3.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
         showAtmosphere={true}
         atmosphereColor="rgba(10,120,200,0.25)"
