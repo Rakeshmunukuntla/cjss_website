@@ -9,7 +9,7 @@ export default function QualityEngineeringPage() {
       <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
-            src="/images/bannerfortesting.png"
+            src="/images/testingBanner.png"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/70" />

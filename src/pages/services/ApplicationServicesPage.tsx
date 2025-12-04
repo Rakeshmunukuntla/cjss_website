@@ -9,7 +9,7 @@ export default function ApplicationServicesPage() {
       <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
-            src="/images/bannerfortesting.png"
+            src="/images/bannerApplicationPage.png"
             className="w-full h-full object-cover"
             alt="Application Services Banner"
           />
@@ -213,7 +213,7 @@ export default function ApplicationServicesPage() {
             </div>
 
             <img
-              src="/images/app_modernization.png"
+              src="/images/Appli1.png"
               className="w-full rounded-xl shadow-xl"
               alt="Application modernization"
             />
@@ -270,7 +270,7 @@ export default function ApplicationServicesPage() {
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/microservices_api.png"
+              src="/images/Appli2.png"
               className="w-full rounded-xl shadow-xl"
               alt="Microservices and APIs"
             />
@@ -349,7 +349,7 @@ export default function ApplicationServicesPage() {
             </div>
 
             <img
-              src="/images/frontend_engineering.png"
+              src="/images/Appli3.jpg"
               className="w-full rounded-xl shadow-xl"
               alt="Frontend engineering"
             />
@@ -402,7 +402,7 @@ export default function ApplicationServicesPage() {
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/node_backend.png"
+              src="/images/Appli4.png"
               className="w-full rounded-xl shadow-xl"
               alt="Node backend"
             />
