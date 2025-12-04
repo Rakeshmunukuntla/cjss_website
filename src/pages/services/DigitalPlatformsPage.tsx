@@ -572,8 +572,10 @@ export const DigitalPlatformsPage: React.FC = () => {
 
               {/* DETAILS */}
               <div>
-                <h3 className="text-xl font-semibold text-white">Priya</h3>
-                <p className="text-sm text-slate-400">Head of QA Solutions</p>
+                <h3 className="text-xl font-semibold text-white">
+                  Anjali Mohan
+                </h3>
+                <p className="text-sm text-slate-400">Head of SAP CX</p>
 
                 <p className="mt-4 text-sm">
                   Email:{" "}
