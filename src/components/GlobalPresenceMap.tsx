@@ -578,8 +578,8 @@ export default function GlobalPresenceMap() {
         arcEndLng={(obj: any) => (obj as ArcData).endLng}
         arcColor={(obj: any) => (obj as ArcData).color}
         arcStroke={(obj: any) => (obj as ArcData).stroke ?? 1}
-        arcDashLength={0.6}
-        arcDashGap={0.3}
+        arcDashLength={0.3}
+        arcDashGap={0.8}
         arcDashInitialGap={() => Math.random() * 2}
         arcDashAnimateTime={2400}
       />
