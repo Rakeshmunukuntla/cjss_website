@@ -4,92 +4,6 @@
 // interface Props {
 //   navigateTo: (page: string) => void;
 //   currentPage?: string;
-// }
-
-// export const TechnologyDropdown = ({ navigateTo, currentPage }: Props) => {
-//   const [open, setOpen] = useState(false);
-//   const dropdownRef = useRef<HTMLDivElement>(null);
-
-//   const handleSelect = (id: string) => {
-//     // Navigate to service-specific page
-//     navigateTo(`service-${id}`);
-//     setOpen(false);
-//   };
-
-//   // Close dropdown when clicking outside
-//   useEffect(() => {
-//     const handleClickOutside = (event: MouseEvent) => {
-//       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-//         setOpen(false);
-//       }
-//     };
-
-//     if (open) {
-//       document.addEventListener('mousedown', handleClickOutside);
-//       return () => {
-//         document.removeEventListener('mousedown', handleClickOutside);
-//       };
-//     }
-//   }, [open]);
-
-//   const isActive = currentPage?.startsWith('service-');
-
-//   return (
-//     <div className="relative" ref={dropdownRef}>
-//       <button
-//         onClick={() => setOpen((v) => !v)}
-//         className={`text-sm font-medium px-4 py-2 transition-colors relative rounded-full ${
-//           isActive || open
-//             ? 'bg-purple-500/20 text-white font-bold border border-purple-400/40 shadow-lg shadow-purple-500/10'
-//             : 'text-white/80 hover:text-white hover:bg-neutral-800'
-//         }`}
-//       >
-//         <span className="relative z-10">Technology Services</span>
-//       </button>
-
-//       {open && (
-//         <div className="absolute right-0 z-50 mt-2 overflow-hidden border shadow-xl w-72 bg-neutral-900 border-neutral-800 rounded-2xl shadow-purple-500/10 animate-fadeIn">
-//           <div className="p-2">
-//             {TECHNOLOGY_SERVICES.map((s) => {
-//               const isSelected = currentPage === `service-${s.id}`;
-//               return (
-//                 <button
-//                   key={s.id}
-//                   onClick={() => handleSelect(s.id)}
-//                   className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 group ${
-//                     isSelected
-//                       ? 'bg-purple-500/20 border border-purple-500/30'
-//                       : 'hover:bg-neutral-800/80'
-//                   }`}
-//                 >
-//                   <div
-//                     className={`text-sm font-bold mb-1 ${
-//                       isSelected ? 'text-purple-300' : 'text-white group-hover:text-purple-200'
-//                     }`}
-//                   >
-//                     {s.title}
-//                   </div>
-//                   <div className="text-xs truncate text-white/70 group-hover:text-white">
-//                     {s.banner}
-//                   </div>
-//                 </button>
-//               );
-//             })}
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default TechnologyDropdown;
-
-// import { useEffect, useRef, useState } from 'react';
-// import { TECHNOLOGY_SERVICES } from '../lib/Constants';
-
-// interface Props {
-//   navigateTo: (page: string) => void;
-//   currentPage?: string;
 //   open?: boolean;
 //   onOpenChange?: (open: boolean) => void;
 //   hideHeader?: boolean;
@@ -138,7 +52,7 @@
 
 //   return (
 //     <div ref={dropdownRef}>
-//       {/* TRIGGER — unchanged */}
+//       {/* TRIGGER — unchanged for standalone usage */}
 //       {!hideHeader && (
 //         <button
 //           onClick={() => setOpen(!isOpen)}
@@ -154,40 +68,50 @@
 //         </button>
 //       )}
 
-//       {/* FIXED FULL POSITION — NO MORE BLUR OVER TEXT */}
+//       {/* DROPDOWN PANEL – no blur, glass-like border & bg */}
 //       {isOpen && (
 //         <div
 //           className="
 //             fixed
 //             z-[99999]
 //             left-[20px]
-//             pt-20                         /* align with sidebar */
-//             top-[calc(var(--tech-pos) + 6px)]      /* exactly below header link */
+//             pt-20
+//             top-[calc(var(--tech-pos) + 6px)]
 //             w-[380px] max-w-[92vw]
 //             animate-fadeIn
 //           "
 //         >
-//           <div className="">
+//           <div
+//             className="
+//     rounded-2xl
+//     bg-[#03101f]/40      /* dark bluish tint, 65% opacity */
+
+//     shadow-[0_12px_38px_rgba(0,0,0,0.65)]
+//     p-4
+//   "
+//           >
 //             {TECHNOLOGY_SERVICES.map((s) => {
 //               const selected = currentPage === `service-${s.id}`;
 //               return (
 //                 <button
 //                   key={s.id}
 //                   onClick={() => handleSelect(s.id)}
-//                   className="w-full px-4 py-3 text-left transition-all duration-200 rounded-xl group"
+//                   className="w-full px-4 py-3 text-left transition-all duration-300 rounded-xl group hover:bg-white/5"
 //                   style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
 //                 >
+//                   {/* Title: white by default, gradient on hover */}
 //                   <div
 //                     className={`
-//     text-sm font-bold mb-1 transition-all duration-300
-//     ${selected ? 'text-purple-300' : 'text-white'}
-//     group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
-//     group-hover:text-transparent group-hover:bg-clip-text
-//   `}
+//                       text-sm font-bold mb-1 transition-all duration-300
+//                       ${selected ? 'text-purple-300' : 'text-white'}
+//                       group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
+//                       group-hover:text-transparent group-hover:bg-clip-text
+//                     `}
 //                   >
 //                     {s.title}
 //                   </div>
 
+//                   {/* Subtitle: slightly dim, becomes white on hover */}
 //                   <div className="text-xs transition-all duration-300 text-white/70 group-hover:text-white">
 //                     {s.banner}
 //                   </div>
@@ -255,6 +179,55 @@ export const TechnologyDropdown = ({
 
   const isActive = currentPage?.startsWith('service-');
 
+  // 🔹 SHARED inner list (used for both desktop + mobile)
+  const renderList = () => (
+    <div
+      className="
+        rounded-2xl
+        bg-[#03101f]/40
+        shadow-[0_12px_38px_rgba(0,0,0,0.65)]
+        p-4
+      "
+    >
+      {TECHNOLOGY_SERVICES.map((s) => {
+        const selected = currentPage === `service-${s.id}`;
+        return (
+          <button
+            key={s.id}
+            onClick={() => handleSelect(s.id)}
+            className="w-full px-4 py-3 text-left transition-all duration-300  rounded-xl group hover:bg-white/5"
+            style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
+          >
+            {/* Title: white by default, gradient on hover */}
+            <div
+              className={`
+                text-sm font-bold mb-1 transition-all duration-300
+                ${selected ? 'text-purple-300' : 'text-white'}
+                group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
+                group-hover:text-transparent group-hover:bg-clip-text
+              `}
+            >
+              {s.title}
+            </div>
+
+            {/* Subtitle: slightly dim, becomes white on hover */}
+            <div className="text-xs transition-all duration-300 text-white/70 group-hover:text-white">
+              {s.banner}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  // 🔹 If parent (Header) hides trigger (hideHeader = true),
+  // we act as a pure "panel" (no fixed positioning here).
+  if (hideHeader) {
+    if (!isOpen) return null;
+    return <div ref={dropdownRef}>{renderList()}</div>;
+  }
+
+  // 🔹 Default: standalone usage (with its own trigger + fixed dropdown)
   return (
     <div ref={dropdownRef}>
       {/* TRIGGER — unchanged for standalone usage */}
@@ -273,7 +246,6 @@ export const TechnologyDropdown = ({
         </button>
       )}
 
-      {/* DROPDOWN PANEL – no blur, glass-like border & bg */}
       {isOpen && (
         <div
           className="
@@ -286,44 +258,7 @@ export const TechnologyDropdown = ({
             animate-fadeIn
           "
         >
-          <div
-            className="
-    rounded-2xl
-    bg-[#03101f]/40      /* dark bluish tint, 65% opacity */
-  
-    shadow-[0_12px_38px_rgba(0,0,0,0.65)]
-    p-4
-  "
-          >
-            {TECHNOLOGY_SERVICES.map((s) => {
-              const selected = currentPage === `service-${s.id}`;
-              return (
-                <button
-                  key={s.id}
-                  onClick={() => handleSelect(s.id)}
-                  className="w-full px-4 py-3 text-left transition-all duration-300 rounded-xl group hover:bg-white/5"
-                  style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
-                >
-                  {/* Title: white by default, gradient on hover */}
-                  <div
-                    className={`
-                      text-sm font-bold mb-1 transition-all duration-300
-                      ${selected ? 'text-purple-300' : 'text-white'}
-                      group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
-                      group-hover:text-transparent group-hover:bg-clip-text
-                    `}
-                  >
-                    {s.title}
-                  </div>
-
-                  {/* Subtitle: slightly dim, becomes white on hover */}
-                  <div className="text-xs transition-all duration-300 text-white/70 group-hover:text-white">
-                    {s.banner}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+          {renderList()}
         </div>
       )}
     </div>

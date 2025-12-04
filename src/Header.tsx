@@ -677,7 +677,8 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
               <div
                 className="
       fixed
-      left-[170px]
+      left-[10px]
+      mt-22
       top-[calc(var(--tech-pos) + 6px)]
       w-[380px] max-w-[92vw]
       z-[99999]
