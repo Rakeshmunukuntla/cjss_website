@@ -801,35 +801,35 @@
 
 // export default CarierLife;
 
-'use client'
+'use client';
 
-import CareerNavigationBar from '@/components/Career/CareeerNavigationBar'
-import { Handshake, Lightbulb, Sparkles, Target, TrendingUp, Users, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import CareerNavigationBar from '@/components/Career/CareeerNavigationBar';
+import { Handshake, Lightbulb, Sparkles, Target, TrendingUp, Users, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface CarrierLifeProps {
-  navigateTo: (page: string) => void
+  navigateTo: (page: string) => void;
 }
 
 const HERO_IMAGES = [
   { src: '/images/Herobanner1.jpeg', alt: 'CJSS team collaborating' },
   { src: '/images/Herobanner2.jpeg', alt: 'Innovation brainstorming session' },
   { src: '/images/Herobanner3.jpg', alt: 'CJSS culture celebration' },
-]
+];
 
 // ───────────────── CULTURE CARDS CONFIG ─────────────────
 
 type CultureCard = {
-  id: string
-  title: string
-  icon: any
-  shortDescription: string
-  image: string
-  fullDescription: string
-  bullets: string[]
-  gradientClass: string
-  borderClass: string
-}
+  id: string;
+  title: string;
+  icon: any;
+  shortDescription: string;
+  image: string;
+  fullDescription: string;
+  bullets: string[];
+  gradientClass: string;
+  borderClass: string;
+};
 
 const CULTURE_CARDS: CultureCard[] = [
   {
@@ -912,18 +912,18 @@ const CULTURE_CARDS: CultureCard[] = [
     gradientClass: 'from-teal-500/25 to-emerald-500/25',
     borderClass: 'border-teal-400/50',
   },
-]
+];
 
-type PodId = 'demos' | 'critiques' | 'coinnovation'
+type PodId = 'demos' | 'critiques' | 'coinnovation';
 
 interface PodItem {
-  id: PodId
-  label: string
-  eyebrow: string
-  title: string
-  description: string
-  bullets: string[]
-  image: string
+  id: PodId;
+  label: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  image: string;
 }
 
 const POD_ITEMS: PodItem[] = [
@@ -947,7 +947,7 @@ const POD_ITEMS: PodItem[] = [
     eyebrow: 'Inside pods',
     title: 'Sharpen ideas with honest critique',
     description:
-      'Design critiques bring product, design, and engineering together to stress-test flows, copy, and interactions. The aim is to make the experience clearer, simpler, and more human.',
+      'Design critiques bring product, design, and engineering together to stress-test flows, copy, and interactions. The aim is to make the experience clearer.',
     bullets: [
       'Open, respectful discussions focused on the work, not the person.',
       'Multiple perspectives that uncover edge cases and UX friction.',
@@ -969,7 +969,7 @@ const POD_ITEMS: PodItem[] = [
     ],
     image: '/images/co-innovation.jpg',
   },
-]
+];
 
 const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
   const links = [
@@ -978,26 +978,26 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
     { label: 'Job for Fresher', page: 'CarrierFresher' },
     { label: 'Job for Experienced', page: 'CarrierExperienced' },
     { label: 'Problems we solve', page: 'CarrierProblems' },
-  ]
+  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [activeCard, setActiveCard] = useState<CultureCard | null>(null)
-  const [activePod, setActivePod] = useState<PodId>('demos')
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeCard, setActiveCard] = useState<CultureCard | null>(null);
+  const [activePod, setActivePod] = useState<PodId>('demos');
 
   useEffect(() => {
     const interval = setInterval(
       () => setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length),
-      5000,
-    )
-    return () => clearInterval(interval)
-  }, [])
+      5000
+    );
+    return () => clearInterval(interval);
+  }, []);
 
   const handleScrollToCulture = () => {
-    const section = document.getElementById('culture-section')
-    section?.scrollIntoView({ behavior: 'smooth' })
-  }
+    const section = document.getElementById('culture-section');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-  const closeModal = () => setActiveCard(null)
+  const closeModal = () => setActiveCard(null);
 
   return (
     <>
@@ -1147,7 +1147,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
             {/* MAIN CARDS – CLICK TO OPEN MODAL */}
             <div className="grid gap-6 mt-10 sm:gap-8 sm:mt-12 md:grid-cols-2 xl:grid-cols-3">
               {CULTURE_CARDS.map((card, index) => {
-                const Icon = card.icon
+                const Icon = card.icon;
                 return (
                   <button
                     key={card.id}
@@ -1178,7 +1178,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
                       </p>
                     </div>
                   </button>
-                )
+                );
               })}
             </div>
           </div>
@@ -1216,8 +1216,8 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
                   <div className="flex flex-col gap-4 p-5 sm:p-6 md:p-8">
                     <div className="inline-flex items-center gap-2 rounded-full bg-slate-900/90 px-3 py-1 text-[11px] font-medium text-slate-200 border border-slate-700">
                       {(() => {
-                        const Icon = activeCard.icon
-                        return <Icon className="w-3.5 h-3.5" />
+                        const Icon = activeCard.icon;
+                        return <Icon className="w-3.5 h-3.5" />;
                       })()}
                       {activeCard.title}
                     </div>
@@ -1511,7 +1511,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
               {/* RIGHT: active pod panel */}
               <div className="relative animate-fadeInUp" style={{ animationDelay: '0.15s' }}>
                 {(() => {
-                  const active = POD_ITEMS.find((p) => p.id === activePod) ?? POD_ITEMS[0]
+                  const active = POD_ITEMS.find((p) => p.id === activePod) ?? POD_ITEMS[0];
                   return (
                     <div
                       key={active.id}
@@ -1533,7 +1533,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
                         </div>
 
                         {/* CONTENT */}
-                        <div className="relative flex flex-col justify-center w-full h-auto gap-3 px-4 py-5 md:h-full sm:px-6 sm:py-6 md:w-1/2 md:px-8">
+                        <div className="relative flex flex-col justify-center w-full h-auto gap-1 px-4 py-5 md:h-full sm:px-6 sm:py-6 md:w-1/2 md:px-8">
                           <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
                             {active.eyebrow}
                           </span>
@@ -1577,7 +1577,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
                         </div>
                       </div>
                     </div>
-                  )
+                  );
                 })()}
               </div>
             </div>
@@ -1608,7 +1608,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
         </section>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default CarierLife
+export default CarierLife;
