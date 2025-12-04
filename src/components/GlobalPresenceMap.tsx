@@ -52,9 +52,9 @@ const OFFICES: Location[] = [
     id: 'singapore',
     name: 'CJSS Singapore',
     country: 'SG',
-    lat: 1.3521,
-    lng: 103.8198,
-    color: '#06b6d4',
+    lat: -2.4,
+    lng: 105.6,
+    color: '#a855f7',
   },
 ]
 
