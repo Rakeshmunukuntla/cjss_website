@@ -167,6 +167,9 @@ export const AboutPage = () => {
 
   return (
     <div className="bg-neutral-950">
+      {/* Entire page content MUST go inside this */}
+      <div className="relative z-10">{/* -- your entire About page sections here -- */}</div>
+
       {/* About Section */}
       <section className="relative px-6 pt-32 pb-24 overflow-hidden">
         <div
@@ -562,9 +565,31 @@ export const AboutPage = () => {
         </div>
       </section> */}
 
-      <section className="py-28 bg-neutral-950">
+      {/* <section className="py-28 bg-neutral-950">
         <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
         <GlobalPresenceMerged />
+      </section> */}
+
+      <section className="relative py-28 overflow-hidden bg-[#010b19]">
+        {/* Shared background for heading + globe */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,100,255,0.35),_transparent_70%)] blur-2xl"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_20%,_rgba(0,150,255,0.25),_transparent_70%)]"></div>
+
+        {/* Stars */}
+        <div className="absolute inset-0 stars"></div>
+        <div className="absolute inset-0 stars2"></div>
+        <div className="absolute inset-0 stars3"></div>
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 pointer-events-none particles"></div>
+        <div className="absolute inset-0 pointer-events-none particles2"></div>
+        <div className="absolute inset-0 pointer-events-none particles3"></div>
+
+        {/* Content on top */}
+        <div className="relative z-10">
+          <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
+          <GlobalPresenceMerged />
+        </div>
       </section>
     </div>
   )
