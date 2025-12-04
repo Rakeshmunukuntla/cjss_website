@@ -9,8 +9,8 @@ export const DigitalPlatformsPage: React.FC = () => {
       <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
-            src="/images/bannerfortesting.png"
-            className="w-full h-full object-cover"
+            src="/images/hybrisBanner.jpg"
+            className="w-full   object-cover h-full"
             alt="Digital Platforms Banner"
           />
           <div className="absolute inset-0 bg-black/70" />
