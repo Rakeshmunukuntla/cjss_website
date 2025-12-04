@@ -15,7 +15,7 @@ import CarrierFresher from './pages/CarrierFresher';
 import CarrierHome from './pages/CarrierHome';
 import CarrierLife from './pages/CarrierLife';
 import CarrierProblems from './pages/CarrierProblems';
-import { AIServicesPage } from './pages/services/AIServicesPage';
+import AIServicesPage from './pages/services/AIServicesPage';
 import ApplicationServicesPage from './pages/services/ApplicationServicesPage';
 import CloudTechnologiesPage from './pages/services/CloudTechnologiesPage';
 import DigitalPlatformsPage from './pages/services/DigitalPlatformsPage';
