@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface FooterProps {
   navigateTo: (page: string) => void;
@@ -6,18 +6,18 @@ interface FooterProps {
 
 export const Footer = ({ navigateTo }: FooterProps) => {
   const companyLinks = [
-    { label: 'About Us', page: 'about' },
-    { label: 'Careers', page: 'careers' },
-    { label: 'Blog', page: 'resources' },
-    { label: 'Capabilities', page: 'capabilities' },
+    { label: "About Us", page: "about" },
+    { label: "Careers", page: "careers" },
+    { label: "Blog", page: "resources" },
+    { label: "Capabilities", page: "capabilities" },
   ];
 
   const serviceLinks = [
-    { label: 'Quality Engineering', page: 'service-quality-engineering' },
-    { label: 'Cloud Technologies', page: 'service-cloud-technologies' },
-    { label: 'Application Services', page: 'service-application-services' },
-    { label: 'Digital Platforms', page: 'service-digital-platforms' },
-    { label: 'AI Services', page: 'service-ai-services' },
+    { label: "Quality Engineering", page: "service-quality-engineering" },
+    { label: "Cloud Technologies", page: "service-cloud-technologies" },
+    { label: "Application Services", page: "service-application-services" },
+    { label: "Digital Platforms", page: "service-digital-platforms" },
+    { label: "AI Services", page: "service-ai-services" },
   ];
 
   return (
@@ -26,10 +26,10 @@ export const Footer = ({ navigateTo }: FooterProps) => {
         className="absolute inset-0 opacity-50"
         style={{
           backgroundImage: "url('/images/cjss-logo.png')",
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          filter: 'blur(20px)',
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          filter: "blur(20px)",
         }}
       ></div>
       <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-sm"></div>
@@ -47,7 +47,7 @@ export const Footer = ({ navigateTo }: FooterProps) => {
                   <li key={link.label}>
                     <button
                       onClick={() => navigateTo(link.page)}
-                      className="transition-colors hover:text-purple-400 cursor-hover"
+                      className="transition-colors hover:text-purple-400 cursor-pointer"
                     >
                       {link.label}
                     </button>
