@@ -174,14 +174,14 @@ export default function CloudTechnologiesPage() {
             </div>
 
             <img
-              src="/images/cloud_assessment.png"
+              src="/images/cloudtech1.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/cloud_migration.png"
+              src="/images/cloudtech2.png"
               className="w-full rounded-xl shadow-xl"
             />
             <div>
@@ -254,14 +254,14 @@ export default function CloudTechnologiesPage() {
             </div>
 
             <img
-              src="/images/cloud_iac.png"
+              src="/images/cloudtech3.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/cloud_observability.png"
+              src="/images/cloudtech4.png"
               className="w-full rounded-xl shadow-xl"
             />
             <div>
@@ -335,7 +335,7 @@ export default function CloudTechnologiesPage() {
             </div>
 
             <img
-              src="/images/cloud_governance.png"
+              src="/images/cloudtech5.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>
@@ -396,7 +396,7 @@ export default function CloudTechnologiesPage() {
             </div>
 
             <img
-              src="/images/cloud_cost.png"
+              src="/images/cloudtech6.png"
               className="w-full rounded-xl shadow-xl"
             />
           </div>

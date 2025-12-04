@@ -221,7 +221,7 @@ export const DigitalPlatformsPage: React.FC = () => {
             </div>
 
             <img
-              src="/images/hybris_platform.png"
+              src="/images/hybris1.png"
               className="w-full rounded-xl shadow-xl"
               alt="SAP Hybris platform"
             />
@@ -280,7 +280,7 @@ export const DigitalPlatformsPage: React.FC = () => {
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <img
-              src="/images/headless_commerce.png"
+              src="/images/hybris2.png"
               className="w-full rounded-xl shadow-xl"
               alt="Headless and composable commerce"
             />
@@ -515,43 +515,79 @@ export const DigitalPlatformsPage: React.FC = () => {
       {/* =====================================================
           TALK WITH US (your existing layout, adapted)
       ===================================================== */}
-      <section className="w-full py-16 bg-[#020617]">
-        <div className="max-w-6xl mx-auto px-6 md:px-10">
-          <div className="mt-8 bg-neutral-900 border border-neutral-800 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6 shadow-lg shadow-purple-500/10">
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold text-white">Talk with us</h3>
-              <p className="text-white/80 mt-2">
-                Ready to launch or modernize your SAP Hybris / SAP Commerce
-                platform? Reach out and we&apos;ll connect you with our digital
-                commerce experts.
-              </p>
-            </div>
-            <div className="w-full md:w-80 bg-neutral-950 border border-neutral-800 rounded-xl p-4">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center text-2xl font-bold text-purple-400">
-                  RG
-                </div>
-                <div>
-                  <div className="font-semibold text-white">Rajiv Gupta</div>
-                  <div className="text-sm text-white/70">
-                    Digital Commerce Lead
-                  </div>
-                </div>
-              </div>
+      <section className="w-full flex justify-center mt-20 mb-20">
+        <div
+          className="
+          w-[80%]
+          rounded-3xl
+          bg-slate-900/70
+          backdrop-blur-2xl
+          border border-white/10
+          shadow-[0_0_60px_rgba(34,211,238,0.20)]
+          p-10 md:p-14
+        "
+        >
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* LEFT TEXT BLOCK */}
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-300 via-sky-300 to-purple-300 bg-clip-text text-transparent">
+                Talk with us
+              </h2>
 
-              <div className="mt-4 text-sm">
-                <div className="text-white/80">
+              <p className="mt-4 text-base text-slate-300/90 leading-relaxed max-w-md">
+                Interested in quality engineering services? Reach out and we'll
+                connect you with the right specialist who fits your project
+                needs.
+              </p>
+
+              <div className="mt-6 h-[3px] w-28 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full opacity-70" />
+            </div>
+
+            {/* RIGHT CONTACT CARD */}
+            <div
+              className="
+              rounded-3xl
+              bg-slate-950/80
+              border border-white/10
+              shadow-[0_0_40px_rgba(0,0,0,0.55)]
+              p-8
+              flex gap-5
+              items-start
+              hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]
+              transition-all
+            "
+            >
+              {/* PROFILE IMAGE */}
+              <img
+                src="/images/priya.png"
+                alt="Priya"
+                className="
+                h-20 w-20
+                rounded-full
+                object-cover
+                border border-purple-500/40
+                shadow-[0_0_20px_rgba(168,85,247,0.35)]
+              "
+              />
+
+              {/* DETAILS */}
+              <div>
+                <h3 className="text-xl font-semibold text-white">Priya</h3>
+                <p className="text-sm text-slate-400">Head of QA Solutions</p>
+
+                <p className="mt-4 text-sm">
                   Email:{" "}
                   <a
-                    className="text-purple-300 hover:text-cyan-300 underline"
-                    href="mailto:commerce@cjss.example"
+                    href="mailto:qa@cjss.example"
+                    className="text-cyan-400 hover:underline"
                   >
-                    commerce@cjss.example
+                    qa@cjss.example
                   </a>
-                </div>
-                <div className="text-white/60 text-xs mt-2">
+                </p>
+
+                <p className="text-xs text-slate-500 mt-1">
                   We typically respond within 1 business day.
-                </div>
+                </p>
               </div>
             </div>
           </div>
