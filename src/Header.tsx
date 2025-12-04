@@ -616,27 +616,28 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
       <aside
         className="
-    relative                               /* ⬅ important for before: glow */
+    relative
     hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 md:z-40
     w-32 h-screen
 
-    /* BASE: dark → transparent */
-    bg-gradient-to-r from-[#05090d] via-[#05090d]/70 to-transparent
-    shadow-[4px_0_20px_rgba(0,0,0,0.45)]
+    /* BASE — dark → transparent */
+    bg-gradient-to-r from-[#03070c] via-[#03070c]/70 to-transparent
 
-    /* SMOOTH ANIMATION */
+    shadow-none
     transition-all duration-700 ease-out
 
-    /* LEFT EDGE GLOW STRIP */
-    before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-[3px]
-    before:bg-cyan-400/0
+    /* LEFT EDGE CYAN STRIP (glow on hover) */
+    before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-[4px]
+    before:bg-cyan-300/0
     before:shadow-[0_0_0_0_rgba(0,200,255,0)]
     before:transition-all before:duration-700
 
-    /* HOVER: slight glow, still dark */
-    hover:from-[#081019] hover:via-[#081019]/70 hover:to-transparent
-    hover:shadow-[6px_0_26px_rgba(0,180,220,0.32)]
-    hover:before:bg-cyan-300/70 hover:before:shadow-[0_0_18px_4px_rgba(0,200,255,0.55)]
+    /* DARK GLOW from left on hover */
+    hover:bg-gradient-to-r hover:from-[#030a13] hover:via-[#030a13]/75 hover:to-transparent
+    hover:shadow-[inset_45px_0_70px_-30px_rgba(0,0,0,0.75)]
+
+    /* Stronger cyan edge glow on hover */
+    hover:before:bg-cyan-300/70 hover:before:shadow-[0_0_22px_6px_rgba(0,200,255,0.55)]
   "
       >
         <div className="flex items-center w-full pt-6 pb-8 pl-4">
