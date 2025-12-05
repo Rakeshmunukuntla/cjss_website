@@ -1,7 +1,7 @@
 "use client";
 
 import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
-import type React from "react";
+
 import { useEffect, useRef, useState } from "react";
 import { LeadershipSection } from "../components/about/LeadershipSection";
 import ContactForm from "./ContactForm";
@@ -149,14 +149,6 @@ const TechUsageSection = () => {
 };
 
 export const AboutPage = () => {
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for subscribing!");
-    setEmail("");
-  };
-
   const heroStats = [
     { label: "Transformation Programs", value: "80+" },
     { label: "Experience Pods", value: "12" },
