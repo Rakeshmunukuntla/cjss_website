@@ -512,13 +512,22 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
       <button onClick={onClick} className="flex items-center w-full min-h-[52px] py-2">
         <Line active={active} />
       </button>
+
       <button
         onClick={onClick}
         className={`
-          pointer-events-auto text-[13px] sm:text-xs px-2 py-1 rounded-lg
-          max-w-[5.2rem] text-left leading-tight break-words whitespace-normal transition-colors
-          ${active ? 'text-white font-semibold' : 'text-white/90 hover:text-white'}
-        `}
+        text-[13px] sm:text-xs px-2 py-1 rounded-lg
+        max-w-[5.2rem] text-left leading-tight break-words whitespace-normal
+
+        /* HIDDEN BY DEFAULT */
+        opacity-0 translate-x-2 pointer-events-none
+        transition-all duration-300 ease-out
+
+        /* SHOW ON HOVER OF THIS ITEM */
+        group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto
+
+        ${active ? 'text-white font-semibold' : 'text-white/90 hover:text-white'}
+      `}
       >
         {label}
       </button>
@@ -616,36 +625,37 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
       <aside
         className="
-    relative                               /* ⬅ important for before: glow */
+    relative
     hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 md:z-40
-    w-32 h-screen
+    w-32 h-screen pl-2
 
-    /* BASE: dark → transparent */
-    bg-gradient-to-r from-[#05090d] via-[#05090d]/70 to-transparent
-    shadow-[4px_0_20px_rgba(0,0,0,0.45)]
+    /* BASE — dark → transparent */
+    bg-gradient-to-r from-[#03070c] via-[#03070c]/70 to-transparent
 
-    /* SMOOTH ANIMATION */
+    shadow-none
     transition-all duration-700 ease-out
 
-    /* LEFT EDGE GLOW STRIP */
-    before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-[3px]
-    before:bg-cyan-400/0
+    /* LEFT EDGE CYAN STRIP (glow on hover) */
+    before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-[4px]
+    before:bg-cyan-300/0
     before:shadow-[0_0_0_0_rgba(0,200,255,0)]
     before:transition-all before:duration-700
 
-    /* HOVER: slight glow, still dark */
-    hover:from-[#081019] hover:via-[#081019]/70 hover:to-transparent
-    hover:shadow-[6px_0_26px_rgba(0,180,220,0.32)]
-    hover:before:bg-cyan-300/70 hover:before:shadow-[0_0_18px_4px_rgba(0,200,255,0.55)]
+    /* DARK GLOW from left on hover */
+    hover:bg-gradient-to-r hover:from-[#030a13] hover:via-[#030a13]/75 hover:to-transparent
+    hover:shadow-[inset_45px_0_70px_-30px_rgba(0,0,0,0.75)]
+
+    /* Stronger cyan edge glow on hover */
+    hover:before:bg-cyan-300/70 hover:before:shadow-[0_0_22px_6px_rgba(0,200,255,0.55)]
   "
       >
-        <div className="flex items-center w-full pt-6 pb-8 pl-4">
+        <div className="flex items-center w-full pt-6 pb-8 pl-1">
           <button onClick={() => handleNavClick('home')}>
             <img src="/images/cjss-logo.png" alt="CJSS" className="w-auto h-12" />
           </button>
         </div>
 
-        <div className="flex flex-col flex-1 w-full gap-5 px-2 overflow-y-auto">
+        <div className="flex flex-col flex-1 w-full gap-5 px-2 pl-4 overflow-y-auto">
           <div className={blurredNavClass}>
             {NavItem({
               label: 'Overview',
@@ -656,7 +666,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
           </div>
 
           {/* TECHNOLOGY SERVICES */}
-          <div ref={techContainerRef} className="relative flex flex-col w-full">
+          <div ref={techContainerRef} className="relative flex flex-col w-full group">
             <div className="flex w-full min-h-[52px] py-2">
               <Line active={currentPage.startsWith('service-')} />
             </div>
@@ -668,7 +678,18 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
                 setDesktopTechOpen(!desktopTechOpen);
               }}
               aria-expanded={desktopTechOpen}
-              className="text-[11px] px-2 py-1 text-left leading-tight text-white/90 hover:text-white max-w-[5.2rem] break-words"
+              className="
+      text-[11px] px-1 py-[1px] -mt-5 -mb-5
+      text-left leading-tight text-white/90 hover:text-white
+      max-w-[5.2rem] break-words
+
+      /* HIDDEN BY DEFAULT */
+      opacity-0 translate-x-2 pointer-events-none
+      transition-all duration-300 ease-out
+
+      /* SHOW ON HOVER OF THIS ITEM */
+      group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto
+    "
             >
               Technology Services
             </button>
@@ -677,7 +698,8 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
               <div
                 className="
       fixed
-      left-[170px]
+      left-[10px]
+      mt-22
       top-[calc(var(--tech-pos) + 6px)]
       w-[380px] max-w-[92vw]
       z-[99999]
