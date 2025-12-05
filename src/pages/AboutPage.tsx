@@ -1,7 +1,7 @@
 "use client";
 
 import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
-// import type React from "react";
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { LeadershipSection } from "../components/about/LeadershipSection";
 import {
@@ -10,8 +10,6 @@ import {
   EXPERTISE,
   TECH_USAGE,
 } from "../lib/Constants";
-import Converstion from "./Conversation";
-import ContactForm from "./ContactForm";
 
 // Technology Usage Section Component with Counting Animation
 const TechUsageSection = () => {
@@ -149,13 +147,13 @@ const TechUsageSection = () => {
 };
 
 export const AboutPage = () => {
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   alert("Thank you for subscribing!");
-  //   setEmail("");
-  // };npm run
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Thank you for subscribing!");
+    setEmail("");
+  };
 
   const heroStats = [
     { label: "Transformation Programs", value: "80+" },
@@ -193,7 +191,9 @@ export const AboutPage = () => {
   return (
     <div className="bg-neutral-950">
       {/* Entire page content MUST go inside this */}
-      <div className="relative z-10">{/* -- your entire About page sections here -- */}</div>
+      <div className="relative z-10">
+        {/* -- your entire About page sections here -- */}
+      </div>
 
       {/* About Section */}
       <section className="relative px-6 pt-32 pb-24 overflow-hidden">
@@ -395,17 +395,20 @@ export const AboutPage = () => {
       </section>
 
       {/* Contact Section */}
-      {/* <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
+      <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-4xl border border-white/10 bg-neutral-900/70 backdrop-blur p-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="space-y-5">
               <p className="text-xs uppercase tracking-[0.5em] text-white/60">
                 Start a conversation
               </p>
-              <h2 className="text-4xl font-bold text-white">Let’s co-create your next release</h2>
+              <h2 className="text-4xl font-bold text-white">
+                Let’s co-create your next release
+              </h2>
               <p className="text-lg leading-relaxed text-white/70">
-                Tell us about your SAP Commerce upgrade, AEM personalization backlog, or platform
-                ambition. We will assemble a discovery squad within 48 hours.
+                Tell us about your SAP Commerce upgrade, AEM personalization
+                backlog, or platform ambition. We will assemble a discovery
+                squad within 48 hours.
               </p>
               <div className="flex flex-wrap gap-4 text-sm text-white/70">
                 <span className="px-4 py-2 border rounded-full border-white/15">
@@ -441,13 +444,7 @@ export const AboutPage = () => {
             </form>
           </div>
         </div>
-      </section> */}
-      {/* <Converstion ></Converstion> */}
-      <Converstion
-        onSuccess={() => {
-          console.log("Saved");
-        }}
-      />
+      </section>
 
       {/* Certifications Section */}
       <section className="px-6 py-32 bg-neutral-950">
@@ -585,8 +582,58 @@ export const AboutPage = () => {
           </div>
 
           {/* RIGHT SIDE — FORM */}
+          <div className="p-10 border shadow-2xl bg-gradient-to-br from-cyan-500/40 via-blue-500/40 to-purple-600/40 rounded-2xl border-white/10 backdrop-blur-xl">
+            <h2 className="mb-3 text-4xl font-bold text-white">
+              Ready to Get Started?
+            </h2>
+            <p className="mb-10 text-neutral-200">
+              Your email address will not be published. Required fields are
+              marked *
+            </p>
 
-          <ContactForm></ContactForm>
+            {/* Form */}
+            <form className="space-y-6">
+              <div>
+                <label className="block mb-1 text-sm text-neutral-200">
+                  Your Name *
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-neutral-200">
+                  Your Email *
+                </label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-neutral-200">
+                  Please tell us about your requirement
+                </label>
+                <textarea
+                  rows={5}
+                  placeholder="Message..."
+                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="px-8 py-3 font-bold text-black transition-all bg-white rounded-lg shadow-md hover:bg-neutral-200"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -606,15 +653,8 @@ export const AboutPage = () => {
         </div>
       </section> */}
 
-<<<<<<< HEAD
-      <section className="py-28 bg-neutral-950">
-        <h2 className="mb-12 text-4xl text-center text-white">
-          Our Global Presence
-        </h2>
-=======
       {/* <section className="py-28 bg-neutral-950">
         <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
->>>>>>> b2f9fa24a5512f2a051529063b6e32b90113f5f0
         <GlobalPresenceMerged />
       </section> */}
 
@@ -635,7 +675,9 @@ export const AboutPage = () => {
 
         {/* Content on top */}
         <div className="relative z-10">
-          <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
+          <h2 className="mb-12 text-4xl text-center text-white">
+            Our Global Presence
+          </h2>
           <GlobalPresenceMerged />
         </div>
       </section>
