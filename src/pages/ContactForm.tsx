@@ -11,7 +11,7 @@ export default function ContactForm() {
   >("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {  
     e.preventDefault();
     setStatus("loading");
     setErrorMsg("");
