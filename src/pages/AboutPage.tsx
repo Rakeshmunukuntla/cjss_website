@@ -1,61 +1,70 @@
-'use client'
+"use client";
 
-import GlobalPresenceMerged from '@/components/GlobalPresenceMap'
-import type React from 'react'
-import { useEffect, useRef, useState } from 'react'
-import { LeadershipSection } from '../components/about/LeadershipSection'
-import { ADVANTAGES, CERTIFICATIONS, EXPERTISE, TECH_USAGE } from '../lib/Constants'
+import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
+// import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import { LeadershipSection } from "../components/about/LeadershipSection";
+import {
+  ADVANTAGES,
+  CERTIFICATIONS,
+  EXPERTISE,
+  TECH_USAGE,
+} from "../lib/Constants";
+import Converstion from "./Conversation";
+import ContactForm from "./ContactForm";
 
 // Technology Usage Section Component with Counting Animation
 const TechUsageSection = () => {
-  const [counts, setCounts] = useState<number[]>(TECH_USAGE.map(() => 0))
-  const [hasAnimated, setHasAnimated] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const [counts, setCounts] = useState<number[]>(TECH_USAGE.map(() => 0));
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true)
+          setHasAnimated(true);
           // Start counting animation
-          const targets = TECH_USAGE.map((tech) => tech.percentage)
-          const duration = 2000 // 2 seconds
-          const steps = 60
-          const stepDuration = duration / steps
+          const targets = TECH_USAGE.map((tech) => tech.percentage);
+          const duration = 2000; // 2 seconds
+          const steps = 60;
+          const stepDuration = duration / steps;
 
-          let currentStep = 0
+          let currentStep = 0;
 
           const interval = setInterval(() => {
-            currentStep++
-            const progress = currentStep / steps
+            currentStep++;
+            const progress = currentStep / steps;
 
-            const newCounts = targets.map((target) => Math.floor(target * progress))
-            setCounts(newCounts)
+            const newCounts = targets.map((target) =>
+              Math.floor(target * progress)
+            );
+            setCounts(newCounts);
 
             if (currentStep >= steps) {
-              clearInterval(interval)
-              setCounts(targets)
+              clearInterval(interval);
+              setCounts(targets);
             }
-          }, stepDuration)
+          }, stepDuration);
 
-          return () => clearInterval(interval)
+          return () => clearInterval(interval);
         }
       },
-      { threshold: 0.3 },
-    )
+      { threshold: 0.3 }
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [hasAnimated])
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   return (
     <section ref={sectionRef} className="px-6 py-32 bg-neutral-950">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-6 text-5xl font-bold text-center text-white">
-          Technology{' '}
+          Technology{" "}
           <span className="text-transparent bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text">
             Usage
           </span>
@@ -87,26 +96,40 @@ const TechUsageSection = () => {
                     fill="none"
                     stroke="url(#gradientStroke)"
                     strokeWidth="6"
-                    strokeDasharray={`${(counts[idx] / 100) * 2 * Math.PI * 54} ${
-                      2 * Math.PI * 54
-                    }`}
+                    strokeDasharray={`${
+                      (counts[idx] / 100) * 2 * Math.PI * 54
+                    } ${2 * Math.PI * 54}`}
                     strokeLinecap="round"
                     className="transition-all ease-out group-hover:drop-shadow-lg"
                     style={{
-                      filter: 'drop-shadow(0 0 8px rgba(0, 221, 179, 0.5))',
+                      filter: "drop-shadow(0 0 8px rgba(0, 221, 179, 0.5))",
                     }}
                   />
                   <defs>
-                    <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: '#0066FF', stopOpacity: 1 }} />
-                      <stop offset="100%" style={{ stopColor: '#00DDB3', stopOpacity: 1 }} />
+                    <linearGradient
+                      id="gradientStroke"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        style={{ stopColor: "#0066FF", stopOpacity: 1 }}
+                      />
+                      <stop
+                        offset="100%"
+                        style={{ stopColor: "#00DDB3", stopOpacity: 1 }}
+                      />
                     </linearGradient>
                   </defs>
                 </svg>
 
                 {/* Center text with counting animation */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center animate-fadeIn">
-                  <span className="text-2xl font-bold text-white">{counts[idx]}%</span>
+                  <span className="text-2xl font-bold text-white">
+                    {counts[idx]}%
+                  </span>
                 </div>
 
                 {/* Pulsing ring on hover */}
@@ -114,56 +137,58 @@ const TechUsageSection = () => {
               </div>
 
               {/* Technology name */}
-              <h3 className="text-sm font-semibold text-center text-white">{tech.name}</h3>
+              <h3 className="text-sm font-semibold text-center text-white">
+                {tech.name}
+              </h3>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export const AboutPage = () => {
-  const [email, setEmail] = useState('')
+  // const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Thank you for subscribing!')
-    setEmail('')
-  }
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   alert("Thank you for subscribing!");
+  //   setEmail("");
+  // };npm run
 
   const heroStats = [
-    { label: 'Transformation Programs', value: '80+' },
-    { label: 'Experience Pods', value: '12' },
-    { label: 'Client NPS', value: '72' },
-  ]
+    { label: "Transformation Programs", value: "80+" },
+    { label: "Experience Pods", value: "12" },
+    { label: "Client NPS", value: "72" },
+  ];
 
   const heroHighlights = [
-    'SAP Commerce + AEM accelerators',
-    'Design-to-run DevOps',
-    'Global delivery hubs',
-  ]
+    "SAP Commerce + AEM accelerators",
+    "Design-to-run DevOps",
+    "Global delivery hubs",
+  ];
 
   const communitySpotlights = [
     {
-      title: 'STEM Mentorship',
+      title: "STEM Mentorship",
       description:
-        'Weekend SAP Commerce and AEM sandboxes where CJSS architects teach students how enterprise platforms power NGOs and civic portals.',
-      metric: '250+ mentees',
+        "Weekend SAP Commerce and AEM sandboxes where CJSS architects teach students how enterprise platforms power NGOs and civic portals.",
+      metric: "250+ mentees",
     },
     {
-      title: 'Green Stack Pledge',
+      title: "Green Stack Pledge",
       description:
-        'Reusable React component libraries donated to climate nonprofits so they can launch progressive web experiences without extra spend.',
-      metric: '3 cities',
+        "Reusable React component libraries donated to climate nonprofits so they can launch progressive web experiences without extra spend.",
+      metric: "3 cities",
     },
     {
-      title: 'Open Source Grants',
+      title: "Open Source Grants",
       description:
-        'Funding internal guilds that build testing harnesses, SAP accelerators, and AEM/React starter kits for social-impact founders.',
-      metric: '$40K funded',
+        "Funding internal guilds that build testing harnesses, SAP accelerators, and AEM/React starter kits for social-impact founders.",
+      metric: "$40K funded",
     },
-  ]
+  ];
 
   return (
     <div className="bg-neutral-950">
@@ -171,14 +196,17 @@ export const AboutPage = () => {
       <section className="relative px-6 pt-32 pb-24 overflow-hidden">
         <div
           className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: "url('/images/cjssfam.jpeg')", backgroundAttachment: 'fixed' }}
+          style={{
+            backgroundImage: "url('/images/cjssfam.jpeg')",
+            backgroundAttachment: "fixed",
+          }}
         ></div>
         <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-sm"></div>
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(168,85,247,0.25), transparent 50%)',
+              "radial-gradient(circle at 20% 20%, rgba(168,85,247,0.25), transparent 50%)",
           }}
         ></div>
 
@@ -193,9 +221,10 @@ export const AboutPage = () => {
                 Building experience-led platforms for courageous brands.
               </h1>
               <p className="text-lg leading-relaxed text-white/80">
-                CJSS Tech partners with enterprises and rising scale-ups to design, build, and run
-                composable commerce and customer experience stacks. We bring pods of strategists,
-                architects, engineers, and designers who obsess over measurable outcomes and
+                CJSS Tech partners with enterprises and rising scale-ups to
+                design, build, and run composable commerce and customer
+                experience stacks. We bring pods of strategists, architects,
+                engineers, and designers who obsess over measurable outcomes and
                 delightful journeys.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -214,7 +243,9 @@ export const AboutPage = () => {
                     key={stat.label}
                     className="p-4 border rounded-3xl border-white/10 bg-neutral-900/70 backdrop-blur"
                   >
-                    <p className="text-3xl font-semibold text-white">{stat.value}</p>
+                    <p className="text-3xl font-semibold text-white">
+                      {stat.value}
+                    </p>
                     <p className="text-xs uppercase tracking-[0.3em] text-white/50 mt-1">
                       {stat.label}
                     </p>
@@ -227,12 +258,15 @@ export const AboutPage = () => {
               <div className="absolute -inset-4 bg-linear-to-br from-purple-500/30 via-transparent to-cyan-500/30 blur-3xl"></div>
               <div className="relative p-8 space-y-6 border rounded-4xl border-white/10 bg-neutral-900/70 backdrop-blur-2xl">
                 <p className="text-lg leading-relaxed text-white/80">
-                  "Technology only matters when people feel the difference. We craft platforms with
-                  empathy, experimentation, and relentless delivery discipline."
+                  "Technology only matters when people feel the difference. We
+                  craft platforms with empathy, experimentation, and relentless
+                  delivery discipline."
                 </p>
                 <div className="grid grid-cols-2 gap-4 text-sm text-white/70">
                   <div>
-                    <p className="font-semibold text-white">SAP Commerce | AEM | Cloud</p>
+                    <p className="font-semibold text-white">
+                      SAP Commerce | AEM | Cloud
+                    </p>
                     <p>Strategy, build, run</p>
                   </div>
                   <div>
@@ -241,7 +275,8 @@ export const AboutPage = () => {
                   </div>
                 </div>
                 <div className="px-5 py-4 text-sm border rounded-3xl border-white/10 bg-white/5 text-white/70">
-                  Hyderabad HQ · Remote-first talent across APAC, EMEA, and North America.
+                  Hyderabad HQ · Remote-first talent across APAC, EMEA, and
+                  North America.
                 </div>
               </div>
             </div>
@@ -256,13 +291,15 @@ export const AboutPage = () => {
       <section className="px-6 py-28 bg-neutral-950">
         <div className="mx-auto space-y-12 max-w-7xl">
           <div className="space-y-4 text-center">
-            <p className="text-xs uppercase tracking-[0.5em] text-white/60">Why CJSS</p>
+            <p className="text-xs uppercase tracking-[0.5em] text-white/60">
+              Why CJSS
+            </p>
             <h2 className="text-4xl font-bold text-white md:text-5xl">
               Advantages Designed for Velocity
             </h2>
             <p className="max-w-3xl mx-auto text-white/70">
-              Every squad works from a shared playbook of engineering excellence so you get
-              predictable delivery and creative problem solving.
+              Every squad works from a shared playbook of engineering excellence
+              so you get predictable delivery and creative problem solving.
             </p>
           </div>
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
@@ -275,25 +312,33 @@ export const AboutPage = () => {
                   <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 via-transparent to-cyan-500/10 opacity-80"></div>
                   <div className="relative z-10 space-y-3">
                     <div className="text-4xl text-white">{adv.icon}</div>
-                    <h3 className="text-xl font-semibold text-white">{adv.title}</h3>
-                    <p className="text-sm leading-relaxed text-white/75">{adv.description}</p>
+                    <h3 className="text-xl font-semibold text-white">
+                      {adv.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-white/75">
+                      {adv.description}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="p-8 space-y-6 border rounded-4xl border-white/10 bg-neutral-900/70">
               <p className="text-lg leading-relaxed text-white/80">
-                We blend consulting rigor with product sensibilities. Engagements kick off with
-                immersion workshops, evolve into design sprints, and land with controlled releases
-                plus steady runbooks.
+                We blend consulting rigor with product sensibilities.
+                Engagements kick off with immersion workshops, evolve into
+                design sprints, and land with controlled releases plus steady
+                runbooks.
               </p>
               <div className="grid gap-4">
                 {[
-                  'Discovery → blueprint → pilot in 6 weeks',
-                  'Shift-left QA and Site Reliability squads',
-                  'Experience research plugged into every sprint',
+                  "Discovery → blueprint → pilot in 6 weeks",
+                  "Shift-left QA and Site Reliability squads",
+                  "Experience research plugged into every sprint",
                 ].map((line) => (
-                  <div key={line} className="flex items-start gap-3 text-white/75">
+                  <div
+                    key={line}
+                    className="flex items-start gap-3 text-white/75"
+                  >
                     <span className="mt-1 text-purple-400">◆</span>
                     <span>{line}</span>
                   </div>
@@ -311,11 +356,15 @@ export const AboutPage = () => {
       <section className="px-6 py-28 bg-neutral-950">
         <div className="mx-auto space-y-12 max-w-7xl">
           <div className="space-y-3 text-center">
-            <p className="text-xs uppercase tracking-[0.5em] text-white/60">What we ship</p>
-            <h2 className="text-4xl font-bold text-white md:text-5xl">Expertise you can plug in</h2>
+            <p className="text-xs uppercase tracking-[0.5em] text-white/60">
+              What we ship
+            </p>
+            <h2 className="text-4xl font-bold text-white md:text-5xl">
+              Expertise you can plug in
+            </h2>
             <p className="max-w-3xl mx-auto text-white/70">
-              From composable storefronts to AI copilots for operations, our guilds plug into your
-              roadmap as autonomous squads.
+              From composable storefronts to AI copilots for operations, our
+              guilds plug into your roadmap as autonomous squads.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -327,9 +376,13 @@ export const AboutPage = () => {
                 <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 via-transparent to-cyan-500/10 opacity-70"></div>
                 <div className="relative z-10 space-y-3">
                   <div className="text-4xl text-white">{exp.icon}</div>
-                  <h3 className="text-xl font-semibold text-white">{exp.name}</h3>
+                  <h3 className="text-xl font-semibold text-white">
+                    {exp.name}
+                  </h3>
                   {exp.description && (
-                    <p className="text-sm leading-relaxed text-white/75">{exp.description}</p>
+                    <p className="text-sm leading-relaxed text-white/75">
+                      {exp.description}
+                    </p>
                   )}
                 </div>
               </div>
@@ -339,7 +392,7 @@ export const AboutPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
+      {/* <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-4xl border border-white/10 bg-neutral-900/70 backdrop-blur p-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="space-y-5">
@@ -385,21 +438,33 @@ export const AboutPage = () => {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
+      {/* <Converstion ></Converstion> */}
+      <Converstion
+        onSuccess={() => {
+          console.log("Saved");
+        }}
+      />
 
       {/* Certifications Section */}
       <section className="px-6 py-32 bg-neutral-950">
         <div className="mx-auto max-w-7xl">
           <h2 className="mb-16 text-5xl font-bold text-center text-white">
-            CJSS{' '}
-            <span className="mb-16 text-5xl font-bold text-center text-white">Certifications</span>
+            CJSS{" "}
+            <span className="mb-16 text-5xl font-bold text-center text-white">
+              Certifications
+            </span>
           </h2>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {CERTIFICATIONS.map((cert, idx) => (
               <div key={idx} className="group cursor-hover">
                 <div className="p-8 text-center transition-all duration-300 border bg-neutral-900 border-neutral-800 rounded-2xl group-hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10">
-                  <div className="mb-4 text-6xl text-purple-400">{cert.icon}</div>
-                  <h3 className="mb-2 text-xl font-bold text-white">{cert.name}</h3>
+                  <div className="mb-4 text-6xl text-purple-400">
+                    {cert.icon}
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold text-white">
+                    {cert.name}
+                  </h3>
                   <p className="text-sm text-white">{cert.description}</p>
                 </div>
               </div>
@@ -412,9 +477,15 @@ export const AboutPage = () => {
       <section className="px-6 py-28 bg-neutral-950">
         <div className="max-w-6xl mx-auto space-y-10">
           <div className="space-y-3 text-center">
-            <p className="text-xs uppercase tracking-[0.5em] text-white/60">Community</p>
-            <h2 className="text-4xl font-bold text-white">How CJSS Gives Back</h2>
-            <p className="text-white/70">Impact programs run by CJSS volunteers and partners.</p>
+            <p className="text-xs uppercase tracking-[0.5em] text-white/60">
+              Community
+            </p>
+            <h2 className="text-4xl font-bold text-white">
+              How CJSS Gives Back
+            </h2>
+            <p className="text-white/70">
+              Impact programs run by CJSS volunteers and partners.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {communitySpotlights.map((item) => (
@@ -422,9 +493,15 @@ export const AboutPage = () => {
                 key={item.title}
                 className="p-6 space-y-4 border rounded-3xl border-white/10 bg-neutral-900/60"
               >
-                <p className="text-sm uppercase tracking-[0.3em] text-white/60">{item.metric}</p>
-                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-white/75">{item.description}</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-white/60">
+                  {item.metric}
+                </p>
+                <h3 className="text-xl font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/75">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -437,13 +514,16 @@ export const AboutPage = () => {
         <div className="relative z-10 grid grid-cols-1 gap-16 px-6 mx-auto max-w-7xl lg:grid-cols-2">
           {/* LEFT SIDE — CONTACT DETAILS */}
           <div>
-            <h4 className="mb-4 font-semibold tracking-wider text-purple-400">CONTACT DETAILS</h4>
+            <h4 className="mb-4 font-semibold tracking-wider text-purple-400">
+              CONTACT DETAILS
+            </h4>
 
             <h2 className="mb-4 text-4xl font-bold text-white">Contact us</h2>
 
             <p className="max-w-lg mb-10 leading-relaxed text-neutral-300">
-              Give us a call or drop by anytime. We endeavour to answer all enquiries within 24
-              hours on business days. We will be happy to answer your questions.
+              Give us a call or drop by anytime. We endeavour to answer all
+              enquiries within 24 hours on business days. We will be happy to
+              answer your questions.
             </p>
 
             {/* India Office */}
@@ -451,7 +531,9 @@ export const AboutPage = () => {
               <div className="flex items-start gap-4">
                 <div className="text-4xl text-purple-400">🌐</div>
                 <div>
-                  <h3 className="mb-2 font-semibold text-white">INDIA HEAD OFFICE</h3>
+                  <h3 className="mb-2 font-semibold text-white">
+                    INDIA HEAD OFFICE
+                  </h3>
                   <p className="text-sm leading-relaxed text-neutral-300">
                     CJSS Technologies Pvt. Ltd.
                     <br />
@@ -470,7 +552,9 @@ export const AboutPage = () => {
               <div className="flex items-start gap-4">
                 <div className="text-4xl text-purple-400">🌐</div>
                 <div>
-                  <h3 className="mb-2 font-semibold text-white">SINGAPORE OFFICE</h3>
+                  <h3 className="mb-2 font-semibold text-white">
+                    SINGAPORE OFFICE
+                  </h3>
                   <p className="text-sm leading-relaxed text-neutral-300">
                     CJSS Technologies Pte. Ltd.
                     <br />
@@ -498,51 +582,8 @@ export const AboutPage = () => {
           </div>
 
           {/* RIGHT SIDE — FORM */}
-          <div className="p-10 border shadow-2xl bg-gradient-to-br from-cyan-500/40 via-blue-500/40 to-purple-600/40 rounded-2xl border-white/10 backdrop-blur-xl">
-            <h2 className="mb-3 text-4xl font-bold text-white">Ready to Get Started?</h2>
-            <p className="mb-10 text-neutral-200">
-              Your email address will not be published. Required fields are marked *
-            </p>
 
-            {/* Form */}
-            <form className="space-y-6">
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">Your Name *</label>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">Your Email *</label>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">
-                  Please tell us about your requirement
-                </label>
-                <textarea
-                  rows={5}
-                  placeholder="Message..."
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="px-8 py-3 font-bold text-black transition-all bg-white rounded-lg shadow-md hover:bg-neutral-200"
-              >
-                SEND MESSAGE
-              </button>
-            </form>
-          </div>
+          <ContactForm></ContactForm>
         </div>
       </section>
 
@@ -563,9 +604,11 @@ export const AboutPage = () => {
       </section> */}
 
       <section className="py-28 bg-neutral-950">
-        <h2 className="mb-12 text-4xl text-center text-white">Our Global Presence</h2>
+        <h2 className="mb-12 text-4xl text-center text-white">
+          Our Global Presence
+        </h2>
         <GlobalPresenceMerged />
       </section>
     </div>
-  )
-}
+  );
+};
