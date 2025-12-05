@@ -4,6 +4,8 @@ import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { LeadershipSection } from "../components/about/LeadershipSection";
+import ContactForm from "./ContactForm";
+import Conversation from "./Conversation";
 import {
   ADVANTAGES,
   CERTIFICATIONS,
@@ -395,7 +397,7 @@ export const AboutPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
+      {/* <section className="px-6 py-28 bg-linear-to-b from-neutral-950 to-neutral-900">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-4xl border border-white/10 bg-neutral-900/70 backdrop-blur p-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="space-y-5">
@@ -444,7 +446,8 @@ export const AboutPage = () => {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
+      <Conversation></Conversation>
 
       {/* Certifications Section */}
       <section className="px-6 py-32 bg-neutral-950">
@@ -582,58 +585,8 @@ export const AboutPage = () => {
           </div>
 
           {/* RIGHT SIDE — FORM */}
-          <div className="p-10 border shadow-2xl bg-gradient-to-br from-cyan-500/40 via-blue-500/40 to-purple-600/40 rounded-2xl border-white/10 backdrop-blur-xl">
-            <h2 className="mb-3 text-4xl font-bold text-white">
-              Ready to Get Started?
-            </h2>
-            <p className="mb-10 text-neutral-200">
-              Your email address will not be published. Required fields are
-              marked *
-            </p>
 
-            {/* Form */}
-            <form className="space-y-6">
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">
-                  Your Email *
-                </label>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm text-neutral-200">
-                  Please tell us about your requirement
-                </label>
-                <textarea
-                  rows={5}
-                  placeholder="Message..."
-                  className="w-full px-4 py-3 text-white border rounded-lg bg-white/10 border-white/20 placeholder-neutral-300 focus:outline-none focus:border-purple-400"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="px-8 py-3 font-bold text-black transition-all bg-white rounded-lg shadow-md hover:bg-neutral-200"
-              >
-                SEND MESSAGE
-              </button>
-            </form>
-          </div>
+          <ContactForm></ContactForm>
         </div>
       </section>
 
