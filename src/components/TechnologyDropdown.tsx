@@ -186,7 +186,7 @@ export const TechnologyDropdown = ({
         rounded-2xl
         bg-[#03101f]/40
         shadow-[0_12px_38px_rgba(0,0,0,0.65)]
-        p-4
+        p-4 mt-15
       "
     >
       {TECHNOLOGY_SERVICES.map((s) => {
@@ -195,7 +195,7 @@ export const TechnologyDropdown = ({
           <button
             key={s.id}
             onClick={() => handleSelect(s.id)}
-            className="w-full px-4 py-3 text-left transition-all duration-300  rounded-xl group hover:bg-white/5"
+            className="w-full px-4 py-3 text-left transition-all duration-300 rounded-xl group hover:bg-white/5"
             style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
           >
             {/* Title: white by default, gradient on hover */}
@@ -253,7 +253,7 @@ export const TechnologyDropdown = ({
             z-[99999]
             left-[20px]
             pt-20
-            top-[calc(var(--tech-pos) + 6px)]
+            top-[calc(var(--tech-pos) + 32px)]
             w-[380px] max-w-[92vw]
             animate-fadeIn
           "
