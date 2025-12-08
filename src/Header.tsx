@@ -533,7 +533,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
               `}
             >
-              Technology Services
+              Technology Servicesn
             </button>
 
             {desktopTechOpen && (
