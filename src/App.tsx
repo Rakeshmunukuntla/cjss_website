@@ -5,7 +5,7 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { TECHNOLOGY_SERVICES } from "./lib/Constants";
 import { AboutPage } from "./pages/AboutPage";
-import { CapabilitiesPage } from "./pages/CapabilitiesPage";
+// import { CapabilitiesPage } from "./pages/CapabilitiesPage";
 import { HomePage } from "./pages/HomePage";
 import { ResourceDetailPage } from "./pages/ResourceDetailPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
@@ -55,9 +55,15 @@ export const App = () => {
             </div>
           )}
 
-          {currentPage === "capabilities" && (
+          {currentPage === "quality" && (
             <div className="animate-fadeIn">
-              <CapabilitiesPage />
+              <QualityEngineeringPage />
+            </div>
+          )}
+
+          {currentPage === "overview" && (
+            <div className="animate-fadeIn">
+              <HomePage />
             </div>
           )}
 

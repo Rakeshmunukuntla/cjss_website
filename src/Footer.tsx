@@ -1,5 +1,7 @@
 "use client";
 
+// import { label } from "framer-motion/client";
+
 interface FooterProps {
   navigateTo: (page: string) => void;
 }
@@ -9,7 +11,8 @@ export const Footer = ({ navigateTo }: FooterProps) => {
     { label: "About Us", page: "about" },
     { label: "Careers", page: "careers" },
     { label: "Blog", page: "resources" },
-    { label: "Capabilities", page: "capabilities" },
+    { label: "Technology Services", page: "quality" },
+    { label: "Overview ", page: "overview" },
   ];
 
   const serviceLinks = [
