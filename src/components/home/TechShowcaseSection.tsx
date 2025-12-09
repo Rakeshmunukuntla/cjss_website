@@ -240,9 +240,9 @@
 //   );
 // };
 
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface TestimonialCard {
   id: string;
@@ -255,111 +255,111 @@ interface TestimonialCard {
 const TESTIMONIAL_CARDS: TestimonialCard[] = [
   // Row 1
   {
-    id: '1',
-    text: 'SAP Hybris enables seamless e-commerce experiences across multiple channels.',
-    author: 'Tech Lead',
-    role: 'E-commerce',
-    tech: 'SAP Hybris',
+    id: "1",
+    text: "SAP Hybris enables seamless e-commerce experiences across multiple channels.",
+    author: "Tech Lead",
+    role: "E-commerce",
+    tech: "SAP Hybris",
   },
   {
-    id: '2',
-    text: 'Adobe Experience Manager transformed our content management workflow. Reduced publication time significantly.',
-    author: 'Content Director',
-    role: 'Digital Marketing',
-    tech: 'Adobe AEM',
+    id: "2",
+    text: "Adobe Experience Manager transformed our content management workflow. Reduced publication time significantly.",
+    author: "Content Director",
+    role: "Digital Marketing",
+    tech: "Adobe AEM",
   },
   {
-    id: '3',
-    text: 'React provides the flexibility and performance our modern applications demand.',
-    author: 'Frontend Architect',
-    role: 'Web Development',
-    tech: 'React',
+    id: "3",
+    text: "React provides the flexibility and performance our modern applications demand.",
+    author: "Frontend Architect",
+    role: "Web Development",
+    tech: "React",
   },
   {
-    id: '3b',
-    text: 'TypeScript ensures code quality and prevents runtime errors. Type safety is invaluable in large codebases.',
-    author: 'Code Lead',
-    role: 'Development',
-    tech: 'TypeScript',
+    id: "3b",
+    text: "TypeScript ensures code quality and prevents runtime errors. Type safety is invaluable in large codebases.",
+    author: "Code Lead",
+    role: "Development",
+    tech: "TypeScript",
   },
   {
-    id: '3c',
-    text: 'Next.js accelerates development with server-side rendering and static generation capabilities.',
-    author: 'Full Stack Dev',
-    role: 'Engineering',
-    tech: 'Next.js',
+    id: "3c",
+    text: "Next.js accelerates development with server-side rendering and static generation capabilities.",
+    author: "Full Stack Dev",
+    role: "Engineering",
+    tech: "Next.js",
   },
   // Row 2
   {
-    id: '4',
-    text: 'Java backend services power our enterprise infrastructure with reliability and scalability.',
-    author: 'Backend Engineer',
-    role: 'Infrastructure',
-    tech: 'Java',
+    id: "4",
+    text: "Java backend services power our enterprise infrastructure with reliability and scalability.",
+    author: "Backend Engineer",
+    role: "Infrastructure",
+    tech: "Java",
   },
   {
-    id: '5',
-    text: 'Cloud infrastructure provides unmatched scalability and reliability for our operations.',
-    author: 'Cloud Architect',
-    role: 'DevOps',
-    tech: 'Cloud Tech',
+    id: "5",
+    text: "Cloud infrastructure provides unmatched scalability and reliability for our operations.",
+    author: "Cloud Architect",
+    role: "DevOps",
+    tech: "Cloud Tech",
   },
   {
-    id: '6',
-    text: 'Automated testing frameworks ensure quality at scale. QA automation reduced bugs by 65%.',
-    author: 'QA Lead',
-    role: 'Quality Assurance',
-    tech: 'Automation',
+    id: "6",
+    text: "Automated testing frameworks ensure quality at scale. QA automation reduced bugs by 65%.",
+    author: "QA Lead",
+    role: "Quality Assurance",
+    tech: "Automation",
   },
   {
-    id: '6b',
-    text: 'Kubernetes orchestration simplified our container deployment and scaling processes.',
-    author: 'Platform Engineer',
-    role: 'DevOps',
-    tech: 'Kubernetes',
+    id: "6b",
+    text: "Kubernetes orchestration simplified our container deployment and scaling processes.",
+    author: "Platform Engineer",
+    role: "DevOps",
+    tech: "Kubernetes",
   },
   {
-    id: '6c',
-    text: 'PostgreSQL database provides reliable persistence and advanced query capabilities.',
-    author: 'Database Admin',
-    role: 'Infrastructure',
-    tech: 'PostgreSQL',
+    id: "6c",
+    text: "PostgreSQL database provides reliable persistence and advanced query capabilities.",
+    author: "Database Admin",
+    role: "Infrastructure",
+    tech: "PostgreSQL",
   },
   // Row 3
   {
-    id: '7',
-    text: 'Machine Learning capabilities drive intelligent decision-making in our platform.',
-    author: 'ML Engineer',
-    role: 'AI/ML',
-    tech: 'AI/ML',
+    id: "7",
+    text: "Machine Learning capabilities drive intelligent decision-making in our platform.",
+    author: "ML Engineer",
+    role: "AI/ML",
+    tech: "AI/ML",
   },
   {
-    id: '8',
-    text: 'DevOps practices streamlined our deployment pipeline and reduced time-to-market.',
-    author: 'DevOps Engineer',
-    role: 'Infrastructure',
-    tech: 'DevOps',
+    id: "8",
+    text: "DevOps practices streamlined our deployment pipeline and reduced time-to-market.",
+    author: "DevOps Engineer",
+    role: "Infrastructure",
+    tech: "DevOps",
   },
   {
-    id: '9',
-    text: 'Microservices architecture provided modularity for rapid feature development.',
-    author: 'System Architect',
-    role: 'Architecture',
-    tech: 'Microservices',
+    id: "9",
+    text: "Microservices architecture provided modularity for rapid feature development.",
+    author: "System Architect",
+    role: "Architecture",
+    tech: "Microservices",
   },
   {
-    id: '9b',
-    text: 'Docker containerization ensures consistency across development and production environments.',
-    author: 'Ops Engineer',
-    role: 'DevOps',
-    tech: 'Docker',
+    id: "9b",
+    text: "Docker containerization ensures consistency across development and production environments.",
+    author: "Ops Engineer",
+    role: "DevOps",
+    tech: "Docker",
   },
   {
-    id: '9c',
-    text: 'GraphQL provides flexible and efficient data querying for modern applications.',
-    author: 'API Designer',
-    role: 'Backend',
-    tech: 'GraphQL',
+    id: "9c",
+    text: "GraphQL provides flexible and efficient data querying for modern applications.",
+    author: "API Designer",
+    role: "Backend",
+    tech: "GraphQL",
   },
 ];
 
@@ -372,7 +372,7 @@ export const TechShowcaseSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const cardId = entry.target.getAttribute('data-card-id');
+            const cardId = entry.target.getAttribute("data-card-id");
             if (cardId) {
               setVisibleCards((prev) => new Set([...prev, cardId]));
             }
@@ -382,7 +382,7 @@ export const TechShowcaseSection = () => {
       { threshold: 0.1 }
     );
 
-    const cards = sectionRef.current?.querySelectorAll('[data-card-id]');
+    const cards = sectionRef.current?.querySelectorAll("[data-card-id]");
     cards?.forEach((card) => observer.observe(card));
 
     return () => {
@@ -391,9 +391,9 @@ export const TechShowcaseSection = () => {
   }, []);
 
   const groupedCards = [
-    TESTIMONIAL_CARDS.slice(0, 5), // Row 1: 5 cards
-    TESTIMONIAL_CARDS.slice(5, 10), // Row 2: 5 cards
-    TESTIMONIAL_CARDS.slice(10, 15), // Row 3: 5 cards
+    TESTIMONIAL_CARDS.slice(0, 8), // Row 1: 5 cards
+    TESTIMONIAL_CARDS.slice(8, 15), // Row 2: 5 cards
+    // TESTIMONIAL_CARDS.slice(10, 15), // Row 3: 5 cards
   ];
 
   return (
@@ -412,8 +412,8 @@ export const TechShowcaseSection = () => {
           className="absolute -inset-[30%] opacity-75 animate-conicFlow"
           style={{
             backgroundImage:
-              'conic-gradient(from 160deg at 85% 10%, transparent, rgba(56,189,248,0.20), transparent 40%, rgba(168,85,247,0.22), transparent 70%, rgba(59,130,246,0.20), transparent)',
-            transformOrigin: '85% 10%',
+              "conic-gradient(from 160deg at 85% 10%, transparent, rgba(56,189,248,0.20), transparent 40%, rgba(168,85,247,0.22), transparent 70%, rgba(59,130,246,0.20), transparent)",
+            transformOrigin: "85% 10%",
           }}
         />
 
@@ -422,8 +422,8 @@ export const TechShowcaseSection = () => {
           className="absolute inset-0 opacity-[0.14]"
           style={{
             backgroundImage:
-              'linear-gradient(0deg, transparent 24%, rgba(56,189,248,0.16) 25%, rgba(56,189,248,0.16) 26%, transparent 27%, transparent 74%, rgba(129,140,248,0.14) 75%, rgba(129,140,248,0.14) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(37,99,235,0.16) 25%, rgba(37,99,235,0.16) 26%, transparent 27%, transparent 74%, rgba(45,212,191,0.14) 75%, rgba(45,212,191,0.14) 76%, transparent 77%, transparent)',
-            backgroundSize: '80px 80px',
+              "linear-gradient(0deg, transparent 24%, rgba(56,189,248,0.16) 25%, rgba(56,189,248,0.16) 26%, transparent 27%, transparent 74%, rgba(129,140,248,0.14) 75%, rgba(129,140,248,0.14) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(37,99,235,0.16) 25%, rgba(37,99,235,0.16) 26%, transparent 27%, transparent 74%, rgba(45,212,191,0.14) 75%, rgba(45,212,191,0.14) 76%, transparent 77%, transparent)",
+            backgroundSize: "80px 80px",
           }}
         />
       </div>
@@ -452,24 +452,28 @@ export const TechShowcaseSection = () => {
           </h2>
           <p
             className="text-base md:text-lg text-slate-300/90 animate-fadeInUp"
-            style={{ animationDelay: '0.2s' }}
+            style={{ animationDelay: "0.2s" }}
           >
-            What engineering teams say about the platforms powering their digital commerce.
+            What engineering teams say about the platforms powering their
+            digital commerce.
           </p>
         </div>
 
         {/* Scrolling rows */}
         <div className="space-y-4 md:space-y-6">
           {groupedCards.map((row, rowIdx) => (
-            <div key={rowIdx} className="w-full py-4 overflow-x-hidden overflow-y-visible">
+            <div
+              key={rowIdx}
+              className="w-full py-4 overflow-x-hidden overflow-y-visible"
+            >
               <div
                 className="flex gap-6 px-6 pb-2 md:px-10"
                 style={{
                   animation:
                     rowIdx % 2 === 1
-                      ? 'scroll 22s linear infinite reverse'
-                      : 'scroll 22s linear infinite',
-                  direction: 'ltr',
+                      ? "scroll 22s linear infinite reverse"
+                      : "scroll 22s linear infinite",
+                  direction: "ltr",
                 }}
               >
                 {[...row, ...row].map((card, idx) => (
@@ -477,12 +481,12 @@ export const TechShowcaseSection = () => {
                     key={`${card.id}-${idx}`}
                     data-card-id={card.id}
                     className={`group relative shrink-0 w-80 rounded-2xl border border-slate-700/70 bg-gradient-to-br from-slate-950/85 via-slate-900/70 to-slate-950/90 p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/80 hover:shadow-[0_0_40px_rgba(34,211,238,0.45)] cursor-pointer ${
-                      visibleCards.has(card.id) ? 'opacity-100' : 'opacity-65'
+                      visibleCards.has(card.id) ? "opacity-100" : "opacity-65"
                     }`}
                     style={{
                       animation: visibleCards.has(card.id)
-                        ? 'revealUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards'
-                        : 'none',
+                        ? "revealUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards"
+                        : "none",
                     }}
                   >
                     {/* Hover glow */}
@@ -521,7 +525,9 @@ export const TechShowcaseSection = () => {
                         >
                           {card.author}
                         </p>
-                        <p className="text-xs truncate text-slate-400">{card.role}</p>
+                        <p className="text-xs truncate text-slate-400">
+                          {card.role}
+                        </p>
                       </div>
                     </div>
                   </div>

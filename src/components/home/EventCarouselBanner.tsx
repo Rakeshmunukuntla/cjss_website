@@ -29,7 +29,7 @@ export default function EventCarouselBanner({
     if (events.length === 0) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % events.length);
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [events]);
@@ -81,7 +81,7 @@ export default function EventCarouselBanner({
       ))}
 
       {/* Indicators */}
-      <div className="absolute flex gap-3 -translate-x-1/2 bottom-8 left-1/2">
+      {/* <div className="absolute flex gap-3 -translate-x-1/2 bottom-8 left-1/2">
         {events.map((_, i) => (
           <button
             key={i}
@@ -104,6 +104,27 @@ export default function EventCarouselBanner({
                   : "bg-white/40 hover:bg-white/70 hover:scale-110"
               }`}
             />
+          </button>
+        ))}
+      </div> */}
+      {/* Mentor-style indicators */}
+      <div className="absolute flex gap-3 -translate-x-1/2 bottom-8 left-1/2">
+        {events.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className="relative h-3 w-10 flex items-center justify-center"
+          >
+            <span
+              className={`
+          block rounded-full transition-all duration-300 
+          ${
+            current === i
+              ? "w-10 h-3 bg-gradient-to-r from-sky-300 to-purple-300 shadow-[0_0_12px_rgba(64,200,255,0.4)]"
+              : "w-3 h-3 bg-white/20 rounded-full hover:bg-white/50"
+          }
+        `}
+            ></span>
           </button>
         ))}
       </div>
