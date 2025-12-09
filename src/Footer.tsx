@@ -12,7 +12,7 @@ export const Footer = ({ navigateTo }: FooterProps) => {
     { label: "Careers", page: "careers" },
     { label: "Blog", page: "resources" },
     { label: "Technology Services", page: "quality" },
-    { label: "Overview ", page: "overview" },
+    { label: "Overview ", page: "home" },
   ];
 
   const serviceLinks = [
