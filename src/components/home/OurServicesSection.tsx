@@ -166,9 +166,9 @@
 //     </section>
 //   );
 // };
-import { TECHNOLOGY_SERVICES } from '../../lib/Constants';
-import { useState, useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { TECHNOLOGY_SERVICES } from "../../lib/Constants";
+import { useState, useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
 
 interface OurServicesSectionProps {
   navigateTo?: (page: string) => void;
@@ -184,7 +184,9 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const idx = parseInt(entry.target.getAttribute('data-index') || '0');
+            const idx = parseInt(
+              entry.target.getAttribute("data-index") || "0"
+            );
             setVisibleIndices((prev) => new Set([...prev, idx]));
           }
         });
@@ -192,7 +194,7 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
       { threshold: 0.1 }
     );
 
-    const items = sectionRef.current?.querySelectorAll('[data-index]');
+    const items = sectionRef.current?.querySelectorAll("[data-index]");
     items?.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
@@ -215,8 +217,8 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
           className="absolute inset-0 opacity-[0.12]"
           style={{
             backgroundImage:
-              'linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)',
-            backgroundSize: '80px 80px',
+              "linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)",
+            backgroundSize: "80px 80px",
           }}
         />
       </div>
@@ -228,12 +230,17 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
               <span className="absolute inline-flex w-full h-full bg-purple-400 rounded-full opacity-60 animate-ping" />
               <span className="relative inline-flex w-2 h-2 bg-purple-300 rounded-full" />
             </span>
-            <span style={{ fontFamily: '"Sora", system-ui, sans-serif' }}>Our services</span>
+            <span style={{ fontFamily: '"Sora", system-ui, sans-serif' }}>
+              Our services
+            </span>
           </div>
 
           <h2
             className="mb-6 text-5xl font-bold text-white md:text-7xl animate-slideUp"
-            style={{ fontFamily: '"Sora", system-ui, sans-serif', letterSpacing: '-0.04em' }}
+            style={{
+              fontFamily: '"Sora", system-ui, sans-serif',
+              letterSpacing: "-0.04em",
+            }}
           >
             Explore Our <br />
             <span className="text-transparent bg-gradient-to-r from-purple-400 via-cyan-300 to-sky-400 bg-clip-text">
@@ -242,10 +249,13 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
           </h2>
           <p
             className="max-w-2xl text-xl text-slate-200 animate-slideUp"
-            style={{ animationDelay: '0.2s', fontFamily: '"Sora", system-ui, sans-serif' }}
+            style={{
+              animationDelay: "0.2s",
+              fontFamily: '"Sora", system-ui, sans-serif',
+            }}
           >
-            We combine strategic insight with technical expertise to deliver solutions that drive
-            real business value.
+            We combine strategic insight with technical expertise to deliver
+            solutions that drive real business value.
           </p>
         </div>
 
@@ -257,15 +267,17 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`group relative flex flex-col gap-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#050816]/95 via-[#050816]/90 to-[#020617]/95 p-8 transition-all duration-600 ease-out md:flex-row md:gap-16 md:p-12 ${
-                visibleIndices.has(idx) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+                visibleIndices.has(idx)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-16"
               }`}
               style={{
                 boxShadow: visibleIndices.has(idx)
-                  ? '0 18px 50px rgba(15,23,42,0.85)'
-                  : '0 0 0 rgba(0,0,0,0)',
+                  ? "0 18px 50px rgba(15,23,42,0.85)"
+                  : "0 0 0 rgba(0,0,0,0)",
                 animation: visibleIndices.has(idx)
                   ? `revealUp 0.9s cubic-bezier(0.23, 1, 0.320, 1) forwards`
-                  : 'none',
+                  : "none",
                 animationDelay: `${idx * 0.15}s`,
               }}
             >
@@ -283,10 +295,10 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
                   className="relative z-10 text-6xl font-bold transition-all duration-500 md:text-8xl bg-gradient-to-r from-purple-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent group-hover:scale-[1.03]"
                   style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
                 >
-                  {String(idx + 1).padStart(2, '0')}
+                  {String(idx + 1).padStart(2, "0")}
                 </span>
                 <span className="absolute inset-0 text-6xl font-bold transition-all pointer-events-none text-purple-500/0 blur-2xl duration-600 group-hover:text-purple-400/40 md:text-8xl">
-                  {String(idx + 1).padStart(2, '0')}
+                  {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
 
@@ -322,8 +334,12 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
                         key={solution.id}
                         className="flex items-center gap-3 text-sm transition-all group/item text-slate-200 duration-400"
                         style={{
-                          transform: hoveredIndex === idx ? 'translateX(4px)' : 'translateX(0)',
-                          transitionDelay: hoveredIndex === idx ? `${sIdx * 40}ms` : '0ms',
+                          transform:
+                            hoveredIndex === idx
+                              ? "translateX(4px)"
+                              : "translateX(0)",
+                          transitionDelay:
+                            hoveredIndex === idx ? `${sIdx * 40}ms` : "0ms",
                         }}
                       >
                         <span className="inline-flex w-2 h-2 transition-transform rounded-full bg-gradient-to-r from-purple-400 via-cyan-300 to-sky-400 duration-400 group-hover/item:scale-125" />
@@ -336,7 +352,9 @@ export const OurServicesSection = ({ navigateTo }: OurServicesSectionProps) => {
                 </div>
 
                 <button
-                  onClick={() => navigateTo && navigateTo(`service-${service.id}`)}
+                  onClick={() =>
+                    navigateTo && navigateTo(`service-${service.id}`)
+                  }
                   className="group/btn mt-8 inline-flex items-center gap-3 rounded-full border border-purple-400/60 bg-purple-500/15 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-purple-100 transition-all duration-400 hover:bg-purple-500/35 hover:text-white"
                   style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
                 >

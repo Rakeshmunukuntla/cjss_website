@@ -4,22 +4,26 @@ import { useState } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { TECHNOLOGY_SERVICES } from "./lib/Constants";
+
 import { AboutPage } from "./pages/AboutPage";
-// import { CapabilitiesPage } from "./pages/CapabilitiesPage";
 import { HomePage } from "./pages/HomePage";
 import { ResourceDetailPage } from "./pages/ResourceDetailPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
-// import { CareersPage } from './pages/CareersPage';
+
 import CarrierExperienced from "./pages/CarrierExperienced";
 import CarrierFresher from "./pages/CarrierFresher";
 import CarrierHome from "./pages/CarrierHome";
 import CarrierLife from "./pages/CarrierLife";
 import CarrierProblems from "./pages/CarrierProblems";
+
 import AIServicesPage from "./pages/services/AIServicesPage";
 import ApplicationServicesPage from "./pages/services/ApplicationServicesPage";
 import CloudTechnologiesPage from "./pages/services/CloudTechnologiesPage";
 import DigitalPlatformsPage from "./pages/services/DigitalPlatformsPage";
 import QualityEngineeringPage from "./pages/services/QualityEngineeringPage";
+
+import EventDetailPage from "../src/components/home/EventDetailPage";
+import EventRegisterPage from "../src/components/home/EventRegisterPage";
 
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -33,7 +37,6 @@ export const App = () => {
     <div className="relative min-h-screen overflow-x-hidden text-white bg-neutral-950 selection:bg-purple-500/30">
       <Header currentPage={currentPage} navigateTo={navigateTo} />
 
-      {/* expose technology services to header mobile menu (safe client-side assignment) */}
       <script suppressHydrationWarning>
         {`(function(){ if(typeof window !== 'undefined'){ window.__TECH_SERVICES_LIST = ${JSON.stringify(
           TECHNOLOGY_SERVICES.map((s) => ({ id: s.id, title: s.title }))
@@ -42,33 +45,48 @@ export const App = () => {
 
       <main className="w-full pt-0">
         <div className="w-full" key={currentPage}>
-          {/* <div> */}
-          {currentPage === "home" && (
-            <div className="animate-fadeIn">
-              <HomePage navigateTo={navigateTo} />
-            </div>
+          {/* 6️⃣ EVENT DETAIL PAGE (moved lower so it doesn't override others) */}
+          {currentPage.startsWith("event-") && (
+            <EventDetailPage
+              key={currentPage}
+              eventId={currentPage.replace("event-", "")}
+              navigateTo={navigateTo}
+            />
           )}
 
-          {currentPage === "about" && (
-            <div className="animate-fadeIn">
-              <AboutPage />
-            </div>
+          {/* 7️⃣ EVENT REGISTRATION PAGE */}
+          {currentPage.startsWith("register-") && (
+            <EventRegisterPage
+              key={currentPage}
+              eventId={currentPage.replace("register-", "")}
+              navigateTo={navigateTo}
+            />
           )}
 
-          {currentPage === "quality" && (
-            <div className="animate-fadeIn">
-              <QualityEngineeringPage />
-            </div>
-          )}
+          {/* 1️⃣ HOME PAGE */}
+          {currentPage === "home" && <HomePage navigateTo={navigateTo} />}
 
-          {currentPage === "overview" && (
-            <div className="animate-fadeIn">
-              <HomePage />
-            </div>
-          )}
+          {/* 2️⃣ ABOUT */}
+          {currentPage === "about" && <AboutPage />}
 
+          {/* 3️⃣ SERVICES */}
+          {currentPage === "quality" && <QualityEngineeringPage />}
+          {currentPage === "service-quality-engineering" && (
+            <QualityEngineeringPage />
+          )}
+          {currentPage === "service-cloud-technologies" && (
+            <CloudTechnologiesPage />
+          )}
+          {currentPage === "service-application-services" && (
+            <ApplicationServicesPage />
+          )}
+          {currentPage === "service-digital-platforms" && (
+            <DigitalPlatformsPage />
+          )}
+          {currentPage === "service-ai-services" && <AIServicesPage />}
+
+          {/* 4️⃣ CAREERS */}
           {currentPage === "careers" && <CarrierHome navigateTo={navigateTo} />}
-
           {currentPage === "CarrierHome" && (
             <CarrierHome navigateTo={navigateTo} />
           )}
@@ -84,51 +102,19 @@ export const App = () => {
           {currentPage === "CarrierProblems" && (
             <CarrierProblems navigateTo={navigateTo} />
           )}
+
+          {/* 5️⃣ RESOURCES */}
           {currentPage === "resources" && (
-            <div className="animate-fadeIn">
-              <ResourcesPage navigateTo={navigateTo} />
-            </div>
+            <ResourcesPage navigateTo={navigateTo} />
           )}
 
           {currentPage.startsWith("resource-") && (
-            <div className="animate-fadeIn">
-              <ResourceDetailPage
-                resourceId={currentPage.split("-")[1]}
-                navigateTo={navigateTo}
-              />
-            </div>
-          )}
-          {currentPage === "service-quality-engineering" && (
-            <div className="animate-fadeIn">
-              <QualityEngineeringPage />
-            </div>
-          )}
-
-          {currentPage === "service-cloud-technologies" && (
-            <div className="animate-fadeIn">
-              <CloudTechnologiesPage />
-            </div>
-          )}
-
-          {currentPage === "service-application-services" && (
-            <div className="animate-fadeIn">
-              <ApplicationServicesPage />
-            </div>
-          )}
-
-          {currentPage === "service-digital-platforms" && (
-            <div className="animate-fadeIn">
-              <DigitalPlatformsPage />
-            </div>
-          )}
-
-          {currentPage === "service-ai-services" && (
-            <div className="animate-fadeIn">
-              <AIServicesPage />
-            </div>
+            <ResourceDetailPage
+              resourceId={currentPage.replace("resource-", "")}
+              navigateTo={navigateTo}
+            />
           )}
         </div>
-        {/* </div> */}
       </main>
 
       <Footer navigateTo={navigateTo} />
