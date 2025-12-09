@@ -29,7 +29,7 @@ export default function EventCarouselBanner({
     if (events.length === 0) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % events.length);
-    }, 1000);
+    }, 2500);
 
     return () => clearInterval(timer);
   }, [events]);
