@@ -15,7 +15,7 @@ export default function EventCarouselBanner({
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await fetch("http://localhost:5000/events");
+        const res = await fetch("https://server-node-cjss.onrender.com/events");
         const data = await res.json();
         setEvents(data.events || []);
       } catch (error) {
