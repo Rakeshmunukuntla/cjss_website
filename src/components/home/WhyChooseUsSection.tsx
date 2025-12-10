@@ -71,8 +71,8 @@
 //     </section>
 //   );
 // };
-import { WHY_CHOOSE_US } from '../../lib/Constants';
-import { useState, useEffect, useRef } from 'react';
+import { WHY_CHOOSE_US } from "../../lib/Constants";
+import { useState, useEffect, useRef } from "react";
 
 export const WhyChooseUsSection = () => {
   const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
@@ -83,7 +83,10 @@ export const WhyChooseUsSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const idx = parseInt(entry.target.getAttribute('data-index') || '0', 10);
+            const idx = parseInt(
+              entry.target.getAttribute("data-index") || "0",
+              10
+            );
             setVisibleIndices((prev) => new Set([...prev, idx]));
           }
         });
@@ -91,7 +94,7 @@ export const WhyChooseUsSection = () => {
       { threshold: 0.1 }
     );
 
-    const cards = sectionRef.current?.querySelectorAll('[data-index]');
+    const cards = sectionRef.current?.querySelectorAll("[data-index]");
     cards?.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
@@ -144,8 +147,8 @@ export const WhyChooseUsSection = () => {
           className="absolute inset-0 opacity-[0.12]"
           style={{
             backgroundImage:
-              'linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)',
-            backgroundSize: '80px 80px',
+              "linear-gradient(transparent 79px, rgba(148,163,184,0.16) 80px), linear-gradient(90deg, transparent 79px, rgba(148,163,184,0.16) 80px)",
+            backgroundSize: "80px 80px",
           }}
         />
       </div>
@@ -162,8 +165,8 @@ export const WhyChooseUsSection = () => {
               data-index={idx}
               className={`group relative overflow-hidden rounded-2xl border border-slate-700/70 bg-gradient-to-b from-[#0b1220]/95 via-[#111827]/92 to-[#020617]/95 p-6 backdrop-blur-xl shadow-[0_10px_30px_rgba(15,23,42,0.6)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(56,189,248,0.45)] ${
                 visibleIndices.has(idx)
-                  ? 'animate-scaleIn opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-4'
+                  ? "animate-scaleIn opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
@@ -175,7 +178,9 @@ export const WhyChooseUsSection = () => {
                 <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-500 shadow-[0_8px_18px_rgba(15,23,42,0.7)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-0.5 animate-iconFloat">
                   <span
                     className="w-6 h-6"
-                    dangerouslySetInnerHTML={{ __html: svgs[idx % svgs.length] }}
+                    dangerouslySetInnerHTML={{
+                      __html: svgs[idx % svgs.length],
+                    }}
                   />
                 </div>
               </div>

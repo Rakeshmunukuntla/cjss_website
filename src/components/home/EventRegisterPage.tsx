@@ -58,7 +58,7 @@ export default function EventRegisterPage({
     e.preventDefault();
     if (!validateForm()) return;
 
-    const res = await fetch("http://localhost:5000/events/register", {
+    const res = await fetch("/events/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, eventId }),
