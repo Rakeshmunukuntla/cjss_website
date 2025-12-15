@@ -17,7 +17,9 @@ export default function EventDetailPage({
   useEffect(() => {
     async function loadEvent() {
       try {
-        const res = await fetch(`/events/${eventId}`);
+        const res = await fetch(
+          `https://server-node-cjss.onrender.com/events/${eventId}`
+        );
         const data = await res.json();
         setEvent(data.event);
       } catch (error) {
