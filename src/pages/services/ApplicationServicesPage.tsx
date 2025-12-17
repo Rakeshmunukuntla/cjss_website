@@ -516,7 +516,7 @@ export default function ApplicationServicesPage() {
       {/* =====================================================
     TALK WITH US — NEHA
 ===================================================== */}
-      <section className="w-full flex justify-center mt-20 mb-20 px-4">
+      <section className="w-full flex justify-center mt-20 mb-20 px-4 ">
         <div
           className="
       w-full max-w-5xl
