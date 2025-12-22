@@ -2345,7 +2345,7 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("https://server-node-cjss.onrender.com/jobs");
+        const res = await fetch("http://172.16.16.33:5000/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (e) {
@@ -2486,13 +2486,10 @@ const JobOpeningsBase = ({
       formData.append("qualification", qualification);
       formData.append("resume", resumeFile);
 
-      const res = await fetch(
-        "https://server-node-cjss.onrender.com/applications/apply",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch("http://172.16.16.33:5000/applications/apply", {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
 

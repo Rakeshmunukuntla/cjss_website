@@ -191,16 +191,12 @@ export const ResourceDetailPage = ({
       try {
         // 1) Fetch main blog
         // const res = await fetch(`http://localhost:5000/blogs/${resourceId}`);
-        const res = await fetch(
-          `https://server-node-cjss.onrender.com/blogs/${resourceId}`
-        );
+        const res = await fetch(`http://172.16.16.33:5000/blogs/${resourceId}`);
         const data = await res.json();
         setResource(data);
 
         // 2) Fetch all blogs for related section
-        const listRes = await fetch(
-          "https://server-node-cjss.onrender.com/blogs"
-        );
+        const listRes = await fetch("http://172.16.16.33:5000/blogs");
         const allBlogs: Resource[] = await listRes.json();
 
         setRelated(

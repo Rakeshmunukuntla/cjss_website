@@ -195,13 +195,10 @@ export default function UploadResumeSection() {
     formData.append("resume", selectedFile);
 
     try {
-      const res = await fetch(
-        "https://server-node-cjss.onrender.com/resumes/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch("http://172.16.16.33:5000/resumes/upload", {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
 

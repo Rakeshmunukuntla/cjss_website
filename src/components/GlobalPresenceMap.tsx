@@ -422,83 +422,86 @@
 //   )
 // }
 
-'use client'
+"use client";
 
-import type { CSSProperties } from 'react'
-import { useEffect, useRef, useState } from 'react'
-import Globe, { type GlobeMethods } from 'react-globe.gl'
+import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
+import Globe, { type GlobeMethods } from "react-globe.gl";
 
 const countryCodeToEmoji = (code: string) =>
-  code.toUpperCase().replace(/./g, (char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
+  code
+    .toUpperCase()
+    .replace(/./g, (char) => String.fromCodePoint(127397 + char.charCodeAt(0)));
 
 type Location = {
-  id: string
-  name: string
-  country: string
-  lat: number
-  lng: number
-  color: string
-}
+  id: string;
+  name: string;
+  country: string;
+  lat: number;
+  lng: number;
+  color: string;
+};
 
-type PointData = Location & { altitude: number }
+type PointData = Location & { altitude: number };
 
 type ArcData = {
-  startLat: number
-  startLng: number
-  endLat: number
-  endLng: number
-  color: string[] | string
-  stroke?: number
-}
+  startLat: number;
+  startLng: number;
+  endLat: number;
+  endLng: number;
+  color: string[] | string;
+  stroke?: number;
+};
 
 const OFFICES: Location[] = [
   {
-    id: 'hyderabad',
-    name: 'CJSS Hyderabad',
-    country: 'IN',
+    id: "hyderabad",
+    name: "CJSS Hyderabad",
+    country: "IN",
     lat: 17.4366,
     lng: 78.3644,
-    color: '#a855f7',
+    color: "#a855f7",
   },
   {
-    id: 'singapore',
-    name: 'CJSS Singapore',
-    country: 'SG',
+    id: "singapore",
+    name: "CJSS Singapore",
+    country: "SG",
     lat: -2.4,
     lng: 105.6,
-    color: '#a855f7',
+    color: "#a855f7",
   },
-]
+];
 
 export default function GlobalPresenceMap() {
-  const globeRef = useRef<GlobeMethods | undefined>(undefined)
+  const globeRef = useRef<GlobeMethods | undefined>(undefined);
 
   // --- Rename for TypeScript unused variable fix ---
   const [_points, setPoints] = useState<PointData[]>(
     OFFICES.map((o) => ({
       ...o,
       altitude: 0.02,
-    })),
-  )
+    }))
+  );
 
   // Bounce animation
-  const phaseRef = useRef(0)
+  const phaseRef = useRef(0);
 
   useEffect(() => {
-    let raf = 0
+    let raf = 0;
     const animate = () => {
-      phaseRef.current += 0.03
+      phaseRef.current += 0.03;
       setPoints((prev) =>
         prev.map((p, i) => ({
           ...p,
-          altitude: 0.015 + 0.015 * Math.abs(Math.sin(phaseRef.current + i * 0.8)),
-        })),
-      )
-      raf = requestAnimationFrame(animate)
-    }
-    raf = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(raf)
-  }, [])
+          altitude:
+            0.015 + 0.015 * Math.abs(Math.sin(phaseRef.current + i * 0.8)),
+        }))
+      );
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   // --- Rename arcs for TS fix ---
   const _arcs: ArcData[] = [
@@ -510,39 +513,39 @@ export default function GlobalPresenceMap() {
       color: [OFFICES[0].color, OFFICES[1].color],
       stroke: 0.8,
     },
-  ]
+  ];
 
   const focusOn = (lat: number, lng: number, altitude = 2.4) => {
-    globeRef.current?.pointOfView({ lat, lng, altitude }, 900)
-  }
+    globeRef.current?.pointOfView({ lat, lng, altitude }, 900);
+  };
 
   // Auto rotate
   useEffect(() => {
-    const g = globeRef.current
-    if (!g) return
+    const g = globeRef.current;
+    if (!g) return;
 
     setTimeout(() => {
-      const controls = g.controls()
-      controls.autoRotate = true
-      controls.autoRotateSpeed = 0.3
-      controls.enableZoom = false
-      controls.enableDamping = true
-      controls.dampingFactor = 0.08
+      const controls = g.controls();
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.3;
+      controls.enableZoom = false;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
 
-      const sceneObj = g.scene?.() as any
-      if (sceneObj?.fog) sceneObj.fog = null
-    }, 300)
-  }, [])
+      const sceneObj = g.scene?.() as any;
+      if (sceneObj?.fog) sceneObj.fog = null;
+    }, 300);
+  }, []);
 
   const rightListStyle: CSSProperties = {
-    position: 'absolute',
+    position: "absolute",
     right: 28,
-    top: '38%',
-    display: 'flex',
-    flexDirection: 'column',
+    top: "38%",
+    display: "flex",
+    flexDirection: "column",
     gap: 18,
     zIndex: 30,
-  }
+  };
 
   return (
     <div className="relative w-full h-[680px] flex items-center justify-center overflow-hidden">
@@ -568,8 +571,8 @@ export default function GlobalPresenceMap() {
           }</div>`
         }
         onPointClick={(obj) => {
-          const p = obj as PointData
-          focusOn(p.lat, p.lng, 2.2)
+          const p = obj as PointData;
+          focusOn(p.lat, p.lng, 2.2);
         }}
         arcsData={_arcs}
         arcStartLat={(obj: any) => (obj as ArcData).startLat}
@@ -591,17 +594,18 @@ export default function GlobalPresenceMap() {
             onClick={() => focusOn(loc.lat, loc.lng, 2.2)}
             onMouseEnter={() => focusOn(loc.lat, loc.lng, 2.6)}
             style={{
-              display: 'flex',
-              alignItems: 'center',
+              display: "flex",
+              alignItems: "center",
               gap: 12,
               minWidth: 210,
-              padding: '12px 16px',
-              background: 'rgba(0,0,0,0.55)',
-              color: '#fff',
+              padding: "12px 16px",
+              background: "rgba(0,0,0,0.55)",
+              color: "#fff",
               borderRadius: 12,
-              border: '1px solid rgba(255,255,255,0.04)',
-              boxShadow: '0 6px 20px rgba(0,0,0,0.6), inset 0 -2px 8px rgba(255,255,255,0.02)',
-              cursor: 'pointer',
+              border: "1px solid rgba(255,255,255,0.04)",
+              boxShadow:
+                "0 6px 20px rgba(0,0,0,0.6), inset 0 -2px 8px rgba(255,255,255,0.02)",
+              cursor: "pointer",
             }}
           >
             {/* Flag */}
@@ -610,23 +614,27 @@ export default function GlobalPresenceMap() {
                 minWidth: 36,
                 height: 36,
                 borderRadius: 8,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(255,255,255,0.03)',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(255,255,255,0.03)",
                 fontWeight: 700,
               }}
             >
-              <span style={{ fontSize: 14 }}>{countryCodeToEmoji(loc.country)}</span>
+              <span style={{ fontSize: 14 }}>
+                {countryCodeToEmoji(loc.country)}
+              </span>
             </div>
 
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>{loc.name}</div>
-              <div style={{ fontSize: 12, opacity: 0.72 }}>{loc.country.toUpperCase()}</div>
+              <div style={{ fontSize: 12, opacity: 0.72 }}>
+                {loc.country.toUpperCase()}
+              </div>
             </div>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }

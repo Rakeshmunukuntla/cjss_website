@@ -253,14 +253,11 @@ export default function EventRegisterPage({
     e.preventDefault();
     if (!validateForm()) return;
 
-    const res = await fetch(
-      "https://server-node-cjss.onrender.com/events/register",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, eventId }),
-      }
-    );
+    const res = await fetch("http://172.16.16.33:5000/events/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...form, eventId }),
+    });
 
     const data = await res.json();
 
