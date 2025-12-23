@@ -130,8 +130,8 @@
 //   );
 // };
 
-import { useEffect, useRef, useState } from 'react';
-import Globe from '../Globe';
+import { useEffect, useRef, useState } from "react";
+import Globe from "../Globe";
 
 export const GlobeSection = () => {
   const [visibility, setVisibility] = useState(0); // 0 = hidden, 1 = fully visible
@@ -159,12 +159,12 @@ export const GlobeSection = () => {
     };
 
     handleScroll(); // initial state on load
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -202,7 +202,7 @@ export const GlobeSection = () => {
             className="absolute inset-[6%] md:inset-[8%] rounded-full blur-3xl animate-glow-pulse"
             style={{
               background:
-                'radial-gradient(circle at center, rgba(56,189,248,0.85), transparent 70%)',
+                "radial-gradient(circle at center, rgba(56,189,248,0.85), transparent 70%)",
             }}
           />
 
@@ -211,7 +211,7 @@ export const GlobeSection = () => {
             className="absolute inset-[14%] md:inset-[16%] rounded-full blur-2xl opacity-80 animate-glow-spin"
             style={{
               background:
-                'conic-gradient(from 220deg, rgba(59,130,246,0) 0deg, rgba(59,130,246,0.9) 110deg, rgba(45,212,191,0) 210deg, rgba(59,130,246,0.8) 280deg, rgba(59,130,246,0) 360deg)',
+                "conic-gradient(from 220deg, rgba(59,130,246,0) 0deg, rgba(59,130,246,0.9) 110deg, rgba(45,212,191,0) 210deg, rgba(59,130,246,0.8) 280deg, rgba(59,130,246,0) 360deg)",
             }}
           />
 
@@ -220,7 +220,7 @@ export const GlobeSection = () => {
             className="absolute inset-[26%] md:inset-[28%] rounded-full blur-2xl animate-glow-breathe"
             style={{
               background:
-                'radial-gradient(circle at center, rgba(34,211,238,0.9), transparent 65%)',
+                "radial-gradient(circle at center, rgba(34,211,238,0.9), transparent 65%)",
             }}
           />
         </div>
@@ -232,10 +232,10 @@ export const GlobeSection = () => {
       </div>
 
       {/* Text Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
+      {/* <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
         <div className="w-full px-6 py-20 mx-auto max-w-7xl">
           <div ref={textRef} className="mb-12 text-center">
-            {/* visibility (0–1) controls fade + subtle slide */}
+           
             <div
               style={{
                 opacity: visibility,
@@ -279,6 +279,47 @@ export const GlobeSection = () => {
               >
                 Empowering businesses with transformative technology solutions driven by our
                 expertise in cloud, AI, and digital transformation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
+        <div className="w-full px-6 py-20 mx-auto max-w-7xl">
+          <div ref={textRef} className="mb-12 text-center">
+            <div
+              style={{
+                opacity: visibility,
+                transform: `translateY(${(1 - visibility) * 24}px)`,
+                transition: "opacity 0.25s ease-out, transform 0.25s ease-out",
+              }}
+            >
+              <span className="text-xs font-semibold tracking-wide text-teal-300 uppercase">
+                Global Reach
+              </span>
+
+              <h2
+                className="mb-4 text-4xl leading-tight text-white md:text-5xl"
+                style={{ fontWeight: 800, letterSpacing: "-0.7px" }}
+              >
+                Customer Journey
+                <br />
+                <span
+                  className="text-transparent bg-gradient-to-r from-purple-300 via-indigo-300 to-sky-300 bg-clip-text"
+                  style={{
+                    fontWeight: 800,
+                    letterSpacing: "-0.7px",
+                    textShadow: "0 0 14px rgba(129, 140, 248, 0.45)",
+                  }}
+                >
+                  Smart Solutions
+                </span>
+              </h2>
+
+              <p className="max-w-2xl mx-auto mb-6 text-base leading-relaxed text-blue-100">
+                Empowering businesses with transformative technology solutions
+                driven by our expertise in cloud, AI, and digital
+                transformation.
               </p>
             </div>
           </div>

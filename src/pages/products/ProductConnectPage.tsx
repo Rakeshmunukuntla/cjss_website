@@ -5,12 +5,19 @@ interface ProductConnectPageProps {
   navigateTo: (page: string) => void;
 }
 
-export const ProductConnectPage = ({}: ProductConnectPageProps) => {
+export const ProductConnectPage = ({ navigateTo }: ProductConnectPageProps) => {
   const eventBtn =
     "rounded-full border border-white/40 px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white backdrop-blur transition-all hover:bg-white/10 hover:border-white/70";
 
   return (
-    <section className="bg-neutral-950 text-white">
+    <section className="bg-neutral-950 text-white min-h-screen pt-20 md:pt-0">
+      {/* ================= BACK BUTTON ================= */}
+      <div className="max-w-7xl mx-auto px-6 pt-4 md:pt-6">
+        <button onClick={() => navigateTo("products")} className={eventBtn}>
+          ← Back to Products
+        </button>
+      </div>
+
       {/* ================= HERO ================= */}
       <div className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
         <div>
@@ -41,7 +48,7 @@ export const ProductConnectPage = ({}: ProductConnectPageProps) => {
           </p>
         </div>
 
-        {/* Dashboard carousel */}
+        {/* ================= DASHBOARD CAROUSEL ================= */}
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 h-[360px]">
           <AutoScrollCarousel />
         </div>
