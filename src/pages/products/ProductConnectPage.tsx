@@ -6,6 +6,9 @@ interface ProductConnectPageProps {
 }
 
 export const ProductConnectPage = ({}: ProductConnectPageProps) => {
+  const eventBtn =
+    "rounded-full border border-white/40 px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white backdrop-blur transition-all hover:bg-white/10 hover:border-white/70";
+
   return (
     <section className="bg-neutral-950 text-white">
       {/* ================= HERO ================= */}
@@ -29,25 +32,16 @@ export const ProductConnectPage = ({}: ProductConnectPageProps) => {
           </p>
 
           <div className="flex gap-4">
-            <button
-              // onClick={() => navigateTo("contact")}
-              className="px-6 py-3 rounded-full bg-red-500 font-semibold hover:bg-red-600 transition"
-            >
-              Schedule Demo →
-            </button>
-
-            <button
-              // onClick={() => navigateTo("contact")}
-              className="px-6 py-3 rounded-full border border-white/20 text-white/80 hover:text-white hover:border-white transition"
-            >
-              Check Plans
-            </button>
+            <button className={eventBtn}>Schedule Demo →</button>
+            <button className={eventBtn}>Check Plans</button>
           </div>
 
           <p className="mt-4 text-sm text-white/50">
             ✓ No manual tracking ✓ Real-time insights ✓ Secure access
           </p>
         </div>
+
+        {/* Dashboard carousel */}
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 h-[360px]">
           <AutoScrollCarousel />
         </div>
@@ -141,38 +135,7 @@ export const ProductConnectPage = ({}: ProductConnectPageProps) => {
                 <h4 className="font-semibold mb-2">{plan.name}</h4>
                 <p className="text-3xl font-bold mb-2">{plan.price}</p>
                 <p className="text-sm text-white/60 mb-6">{plan.users}</p>
-                <button
-                  // onClick={() => navigateTo("contact")}
-                  className="w-full py-2 rounded-full bg-red-500 font-semibold hover:bg-red-600 transition"
-                >
-                  Get Started
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ================= FAQ ================= */}
-      <div className="py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-10">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="space-y-4">
-            {[
-              "Is Connect suitable for large organizations?",
-              "Can Connect handle multiple office locations?",
-              "Is employee data secure?",
-              "Does Connect support role-based access?",
-              "Can reports be exported?",
-            ].map((q) => (
-              <div
-                key={q}
-                className="rounded-xl bg-neutral-900/70 border border-white/10 p-4"
-              >
-                <p className="font-medium">{q}</p>
+                <button className={`${eventBtn} w-full`}>Get Started</button>
               </div>
             ))}
           </div>
@@ -190,19 +153,8 @@ export const ProductConnectPage = ({}: ProductConnectPageProps) => {
           </div>
 
           <div className="flex gap-4">
-            <button
-              // onClick={() => navigateTo("contact")}
-              className="px-6 py-3 rounded-full bg-red-500 font-semibold hover:bg-red-600 transition"
-            >
-              Schedule a Demo →
-            </button>
-
-            <button
-              // onClick={() => navigateTo("contact")}
-              className="px-6 py-3 rounded-full border border-white/20 text-white/80 hover:text-white hover:border-white transition"
-            >
-              Know More
-            </button>
+            <button className={eventBtn}>Schedule a Demo →</button>
+            <button className={eventBtn}>Know More</button>
           </div>
         </div>
       </div>
