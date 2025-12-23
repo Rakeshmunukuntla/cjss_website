@@ -24,6 +24,8 @@ import QualityEngineeringPage from "./pages/services/QualityEngineeringPage";
 
 import EventDetailPage from "../src/components/home/EventDetailPage";
 import EventRegisterPage from "../src/components/home/EventRegisterPage";
+import ProductsPage from "./pages/products/ProductsPage";
+import ProductConnectPage from "./pages/products/ProductConnectPage";
 
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -114,7 +116,15 @@ export const App = () => {
               navigateTo={navigateTo}
             />
           )}
+          {/* 🔹 PRODUCTS */}
+          {currentPage === "products" && (
+            <ProductsPage navigateTo={navigateTo} />
+          )}
         </div>
+        {/* CONNECT PRODUCT DETAIL PAGE */}
+        {currentPage === "product-connect" && (
+          <ProductConnectPage navigateTo={navigateTo} />
+        )}
       </main>
 
       <Footer navigateTo={navigateTo} />
