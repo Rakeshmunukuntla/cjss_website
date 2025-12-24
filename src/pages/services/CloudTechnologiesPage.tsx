@@ -6,7 +6,7 @@ export default function CloudTechnologiesPage() {
       {/* =====================================================
           HERO SECTION (Same as Quality Engineering)
       ===================================================== */}
-      <section className="relative w-full min-h-[80vh]">
+      {/* <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
             src="/images/cloudtechBanner.jpeg"
@@ -32,6 +32,37 @@ export default function CloudTechnologiesPage() {
             Modernize your architecture with cloud-native engineering, automated
             platforms, and scalable infrastructure designed for global
             performance.
+          </p>
+        </div>
+      </section> */}
+      <section className="relative w-full min-h-[80vh] overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src="/images/cloudtechBanner.jpeg"
+            className="w-full h-full object-cover animate-slow-zoom"
+            alt="Application Services Banner"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
+          <span className="text-xs tracking-widest text-cyan-300">
+            Application Services
+          </span>
+
+          <h1 className="mt-3 text-5xl font-semibold leading-tight">
+            BUILD{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-300">
+              MODERN APPLICATIONS
+            </span>{" "}
+            THAT SCALE WITH YOUR BUSINESS
+          </h1>
+
+          <p className="mt-4 max-w-2xl text-slate-200/90">
+            From legacy modernization to frontend, Node.js, APIs and DevOps, we
+            help you design, build and run high-performing digital experiences.
           </p>
         </div>
       </section>

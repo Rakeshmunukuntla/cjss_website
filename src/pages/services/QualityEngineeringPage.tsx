@@ -6,7 +6,7 @@ export default function QualityEngineeringPage() {
       {/* --------------------------------------------------------
           HERO SECTION (Dark)
       --------------------------------------------------------- */}
-      <section className="relative w-full min-h-[80vh]">
+      {/* <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
             src="/images/testingBanner.png"
@@ -15,6 +15,37 @@ export default function QualityEngineeringPage() {
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
+        <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
+          <span className="text-xs tracking-widest text-cyan-300">
+            Quality Engineering
+          </span>
+
+          <h1 className="mt-3 text-5xl font-semibold leading-tight">
+            BUILD{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-300">
+              QUALITY
+            </span>{" "}
+            INTO EVERY RELEASE
+          </h1>
+
+          <p className="mt-4 max-w-2xl text-slate-200/90">
+            We help you move from traditional QA to engineering-driven quality
+            with automation and observability built across the SDLC.
+          </p>
+        </div>
+      </section> */}
+      <section className="relative w-full min-h-[80vh] overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src="/images/testingBanner.png"
+            className="w-full h-full object-cover animate-slow-zoom"
+            alt="Quality Engineering Banner"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
           <span className="text-xs tracking-widest text-cyan-300">
             Quality Engineering

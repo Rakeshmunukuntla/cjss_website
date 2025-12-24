@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -134,7 +134,7 @@ section {
 .particles::before,
 .particles2::before,
 .particles3::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 4px;
   height: 4px;
@@ -178,4 +178,16 @@ section {
     transform: translate3d(90vw, -10vh, 0) scale(0.7);
     opacity: 0;
   }
+}
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 8s ease-out forwards;
 }

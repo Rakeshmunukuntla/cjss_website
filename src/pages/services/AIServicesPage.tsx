@@ -6,7 +6,7 @@ const AIServicesPage: React.FC = () => {
       {/* =====================================================
           HERO SECTION (same banner feel)
       ===================================================== */}
-      <section className="relative w-full min-h-[80vh]">
+      {/* <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
             src="/images/aibanner.jpg"
@@ -16,6 +16,37 @@ const AIServicesPage: React.FC = () => {
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
+        <div className="max-w-7xl mx-auto px-10 md:px-20 flex flex-col justify-center min-h-[80vh]">
+          <span className="text-xs tracking-widest text-blue-300">
+            AI Services
+          </span>
+
+          <h1 className="mt-3 text-5xl font-semibold leading-tight animate-fade-up">
+            TRANSFORM YOUR BUSINESS WITH{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">
+              AI & INTELLIGENCE
+            </span>
+          </h1>
+
+          <p className="mt-4 max-w-3xl text-slate-200/90 animate-fade-up [animation-delay:0.12s]">
+            We help enterprises adopt AI/ML, Generative AI, automation and
+            intelligent decision systems to improve accuracy, efficiency and
+            business speed.
+          </p>
+        </div>
+      </section> */}
+      <section className="relative w-full min-h-[80vh] overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src="/images/aibanner.jpg"
+            className="w-full h-full object-cover animate-slow-zoom"
+            alt="AI Services Banner"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-20 flex flex-col justify-center min-h-[80vh]">
           <span className="text-xs tracking-widest text-blue-300">
             AI Services

@@ -6,7 +6,7 @@ export const DigitalPlatformsPage: React.FC = () => {
       {/* =====================================================
           HERO SECTION (same banner style)
       ===================================================== */}
-      <section className="relative w-full min-h-[80vh]">
+      {/* <section className="relative w-full min-h-[80vh]">
         <div className="absolute inset-0 -z-10">
           <img
             src="/images/hybrisBanner.jpg"
@@ -16,6 +16,38 @@ export const DigitalPlatformsPage: React.FC = () => {
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
+        <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
+          <span className="text-xs tracking-widest text-cyan-300">
+            Digital Platforms
+          </span>
+
+          <h1 className="mt-3 text-5xl font-semibold leading-tight">
+            BUILD{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-300">
+              COMPOSABLE COMMERCE
+            </span>{" "}
+            ON SAP HYBRIS / SAP COMMERCE CLOUD
+          </h1>
+
+          <p className="mt-4 max-w-3xl text-slate-200/90">
+            We design, implement and evolve digital commerce platforms on SAP
+            Hybris / SAP Commerce Cloud—integrated with your ecosystem and ready
+            for global scale.
+          </p>
+        </div>
+      </section> */}
+      <section className="relative w-full min-h-[80vh] overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src="/images/hybrisBanner.jpg"
+            className="w-full h-full object-cover  animate-slow-zoom"
+            alt="Digital Platforms Banner"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
           <span className="text-xs tracking-widest text-cyan-300">
             Digital Platforms
