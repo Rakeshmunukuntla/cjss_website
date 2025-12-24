@@ -1534,7 +1534,7 @@ export default function OurServicesSection({
 
           {/* SERVICE VIEW */}
           <div className="flex-1 min-h-0 relative">
-            <div className="h-full rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl overflow-hidden">
+            <div className="h-full rounded-2xl  shadow-2xl overflow-hidden">
               {/* Ambient background */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
