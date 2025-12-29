@@ -1176,6 +1176,570 @@
 //     </section>
 //   );
 // }
+// "use client";
+
+// import { TECHNOLOGY_SERVICES } from "../../lib/Constants";
+// import { useEffect, useRef, useState, useCallback } from "react";
+// import {
+//   ArrowRight,
+//   Sparkles,
+//   CheckCircle2,
+//   Zap,
+//   Shield,
+//   Target,
+// } from "lucide-react";
+
+// interface OurServicesSectionProps {
+//   navigateTo?: (page: string) => void;
+// }
+
+// const solutionIcons = [CheckCircle2, Zap, Shield, Target, Sparkles];
+
+// export default function OurServicesSection({
+//   navigateTo,
+// }: OurServicesSectionProps) {
+//   const sectionRef = useRef<HTMLDivElement>(null);
+//   const [activeIndex, setActiveIndex] = useState(0);
+//   const [isTransitioning, setIsTransitioning] = useState(false);
+//   const [isLocked, setIsLocked] = useState(false);
+//   const [hasCompletedCycle, setHasCompletedCycle] = useState(false);
+//   const [entryDirection, setEntryDirection] = useState<"top" | "bottom" | null>(
+//     null
+//   );
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   const accumulatedDelta = useRef(0);
+//   const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null); // Fixed type
+//   const cooldownRef = useRef(false);
+
+//   const totalServices = TECHNOLOGY_SERVICES.length;
+
+//   // Check for mobile
+//   useEffect(() => {
+//     const checkMobile = () => {
+//       setIsMobile(window.innerWidth < 1024);
+//     };
+//     checkMobile();
+//     window.addEventListener("resize", checkMobile);
+//     return () => window.removeEventListener("resize", checkMobile);
+//   }, []);
+
+//   const scrollToSection = useCallback(() => {
+//     const section = sectionRef.current;
+//     if (!section) return;
+//     const rect = section.getBoundingClientRect();
+//     window.scrollTo({
+//       top: window.scrollY + rect.top,
+//       behavior: "smooth",
+//     });
+//   }, []);
+
+//   // Desktop scroll handling only
+//   useEffect(() => {
+//     if (isMobile) return;
+
+//     const section = sectionRef.current;
+//     if (!section) return;
+
+//     const SCROLL_THRESHOLD = 100;
+//     const COOLDOWN_TIME = 700;
+
+//     const onWheel = (e: WheelEvent) => {
+//       const rect = section.getBoundingClientRect();
+//       const viewportHeight = window.innerHeight;
+//       const scrollingDown = e.deltaY > 0;
+//       const scrollingUp = e.deltaY < 0;
+
+//       const sectionTop = rect.top;
+//       const sectionBottom = rect.bottom;
+//       const sectionCoversViewport = sectionTop <= 5 && sectionTop >= -5;
+
+//       const approachingFromTop =
+//         sectionTop > 0 &&
+//         sectionTop < viewportHeight * 0.8 &&
+//         scrollingDown &&
+//         !isLocked;
+
+//       const approachingFromBottom =
+//         sectionBottom > viewportHeight * 0.2 &&
+//         sectionBottom < viewportHeight &&
+//         scrollingUp &&
+//         !isLocked;
+
+//       if (approachingFromTop) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         setActiveIndex(0);
+//         setEntryDirection("top");
+//         setHasCompletedCycle(false);
+//         scrollToSection();
+//         setIsLocked(true);
+//         accumulatedDelta.current = 0;
+//         cooldownRef.current = true;
+//         setTimeout(() => {
+//           cooldownRef.current = false;
+//         }, COOLDOWN_TIME);
+//         return;
+//       }
+
+//       if (approachingFromBottom) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         setActiveIndex(totalServices - 1);
+//         setEntryDirection("bottom");
+//         setHasCompletedCycle(false);
+//         scrollToSection();
+//         setIsLocked(true);
+//         accumulatedDelta.current = 0;
+//         cooldownRef.current = true;
+//         setTimeout(() => {
+//           cooldownRef.current = false;
+//         }, COOLDOWN_TIME);
+//         return;
+//       }
+
+//       if (!sectionCoversViewport && !isLocked) return;
+
+//       const atFirstElement = activeIndex === 0;
+//       const atLastElement = activeIndex === totalServices - 1;
+
+//       const canExitTop =
+//         atFirstElement &&
+//         scrollingUp &&
+//         hasCompletedCycle &&
+//         entryDirection === "bottom";
+//       const canExitBottom =
+//         atLastElement &&
+//         scrollingDown &&
+//         hasCompletedCycle &&
+//         entryDirection === "top";
+//       const forceExitTop =
+//         atFirstElement && scrollingUp && entryDirection === "top";
+//       const forceExitBottom =
+//         atLastElement && scrollingDown && entryDirection === "bottom";
+
+//       if (canExitTop || canExitBottom || forceExitTop || forceExitBottom) {
+//         setIsLocked(false);
+//         setHasCompletedCycle(false);
+//         setEntryDirection(null);
+//         accumulatedDelta.current = 0;
+//         return;
+//       }
+
+//       e.preventDefault();
+//       e.stopPropagation();
+
+//       if (cooldownRef.current || isTransitioning) return;
+
+//       accumulatedDelta.current += e.deltaY;
+
+//       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+//       scrollTimeout.current = setTimeout(() => {
+//         accumulatedDelta.current = 0;
+//       }, 150);
+
+//       if (Math.abs(accumulatedDelta.current) >= SCROLL_THRESHOLD) {
+//         const direction = accumulatedDelta.current > 0 ? 1 : -1;
+
+//         setActiveIndex((prev) => {
+//           const newIndex = Math.max(
+//             0,
+//             Math.min(prev + direction, totalServices - 1)
+//           );
+
+//           if (newIndex !== prev) {
+//             setIsTransitioning(true);
+//             cooldownRef.current = true;
+
+//             if (
+//               (entryDirection === "top" && newIndex === totalServices - 1) ||
+//               (entryDirection === "bottom" && newIndex === 0)
+//             ) {
+//               setHasCompletedCycle(true);
+//             }
+
+//             setTimeout(() => {
+//               setIsTransitioning(false);
+//               cooldownRef.current = false;
+//             }, COOLDOWN_TIME);
+//           }
+//           return newIndex;
+//         });
+
+//         accumulatedDelta.current = 0;
+//       }
+//     };
+
+//     const onScroll = () => {
+//       const rect = section.getBoundingClientRect();
+//       const viewportHeight = window.innerHeight;
+
+//       if (rect.bottom < -200 || rect.top > viewportHeight + 200) {
+//         setIsLocked(false);
+//         setHasCompletedCycle(false);
+//         setEntryDirection(null);
+//         accumulatedDelta.current = 0;
+//       }
+//     };
+
+//     window.addEventListener("wheel", onWheel, { passive: false });
+//     window.addEventListener("scroll", onScroll, { passive: true });
+
+//     return () => {
+//       window.removeEventListener("wheel", onWheel);
+//       window.removeEventListener("scroll", onScroll);
+//       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+//     };
+//   }, [
+//     isTransitioning,
+//     activeIndex,
+//     isLocked,
+//     totalServices,
+//     scrollToSection,
+//     hasCompletedCycle,
+//     entryDirection,
+//     isMobile,
+//   ]);
+
+//   // ==================== MOBILE VIEW ====================
+//   if (isMobile) {
+//     return (
+//       <section className="relative bg-black py-12 px-4">
+//         {/* Background effects */}
+//         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+//         <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+//         <div className="relative z-10 max-w-lg mx-auto">
+//           {/* Header */}
+//           <div className="mb-8 text-center">
+//             <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 text-[10px] font-semibold tracking-widest uppercase rounded-full border border-purple-400/40 bg-purple-500/10 text-purple-200">
+//               <Sparkles className="w-3 h-3" />
+//               OUR SERVICES
+//             </div>
+//             <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">
+//               Explore Our{" "}
+//               <span className="text-transparent bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400 bg-clip-text">
+//                 Services
+//               </span>
+//             </h2>
+//             <p className="text-sm text-slate-400 leading-relaxed">
+//               Strategic insight with technical expertise for real business
+//               value.
+//             </p>
+//           </div>
+
+//           {/* Service Cards */}
+//           <div className="space-y-4">
+//             {TECHNOLOGY_SERVICES.map((svc) => (
+//               <div
+//                 key={svc.id}
+//                 className="rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-white/10 p-4 sm:p-5"
+//               >
+//                 {/* Service Header */}
+//                 <div className="flex items-start gap-3 mb-4">
+//                   <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg flex-shrink-0">
+//                     <Sparkles className="w-5 h-5 text-white" />
+//                   </div>
+//                   <div className="flex-1">
+//                     <h3 className="text-lg font-bold text-white mb-1">
+//                       {svc.title}
+//                     </h3>
+//                     <div className="flex items-center gap-2 flex-wrap">
+//                       <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-medium">
+//                         <CheckCircle2 className="w-3 h-3" />
+//                         Enterprise Ready
+//                       </span>
+//                       <span className="inline-flex items-center gap-1 text-[10px] text-cyan-400 font-medium">
+//                         <Zap className="w-3 h-3" />
+//                         Fast Delivery
+//                       </span>
+//                     </div>
+//                   </div>
+//                 </div>
+
+//                 {/* Approach */}
+//                 <div className="flex items-start gap-2 mb-4 p-3 rounded-lg bg-white/5 border border-white/5">
+//                   <Target className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+//                   <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+//                     {svc.approach}
+//                   </p>
+//                 </div>
+
+//                 {/* Solutions */}
+//                 <div className="space-y-2 mb-4">
+//                   {svc.solutions.slice(0, 3).map((sol, solIdx) => {
+//                     const SolIcon =
+//                       solutionIcons[solIdx % solutionIcons.length];
+//                     return (
+//                       <div
+//                         key={sol.id}
+//                         className="flex items-start gap-2 p-2.5 rounded-lg bg-neutral-800/50 border border-white/5"
+//                       >
+//                         <div className="p-1 rounded bg-cyan-500/10 border border-cyan-500/20 flex-shrink-0">
+//                           <SolIcon className="w-3 h-3 text-cyan-400" />
+//                         </div>
+//                         <div className="flex-1 min-w-0">
+//                           <h5 className="text-white font-medium text-sm">
+//                             {sol.title}
+//                           </h5>
+//                           <p className="text-[11px] text-slate-400 leading-relaxed mt-0.5">
+//                             {sol.summary}
+//                           </p>
+//                         </div>
+//                       </div>
+//                     );
+//                   })}
+//                 </div>
+
+//                 {/* CTA Button */}
+//                 <button
+//                   onClick={() => navigateTo?.(`service-${svc.id}`)}
+//                   className="w-full py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-sm font-semibold flex items-center justify-center gap-2 hover:from-purple-600 hover:to-cyan-600 transition-all"
+//                 >
+//                   Learn More
+//                   <ArrowRight className="w-4 h-4" />
+//                 </button>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+//     );
+//   }
+
+//   // ==================== DESKTOP VIEW ====================
+//   return (
+//     <section ref={sectionRef} className="relative bg-black h-screen">
+//       <div className="sticky top-0 h-screen overflow-hidden">
+//         <div className="mx-auto max-w-7xl h-full flex flex-col px-6 md:px-10 lg:px-12 py-4">
+//           {/* HEADER */}
+//           <div className="mb-4 flex-shrink-0">
+//             <div className="flex flex-col gap-2">
+//               <div className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-semibold tracking-widest uppercase rounded-full border border-purple-400/40 bg-purple-500/10 text-purple-200 w-fit">
+//                 <Sparkles className="w-2.5 h-2.5" />
+//                 OUR SERVICES
+//               </div>
+//               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+//                 Explore Our{" "}
+//                 <span className="text-transparent bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400 bg-clip-text">
+//                   Services
+//                 </span>
+//               </h2>
+//               <p className="max-w-md text-xs lg:text-sm text-slate-400 leading-relaxed">
+//                 Strategic insight with technical expertise for real business
+//                 value.
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* SERVICE VIEW */}
+//           <div className="flex-1 min-h-0 relative">
+//             <div className="h-full rounded-2xl  shadow-2xl overflow-hidden">
+//               {/* Ambient background */}
+//               <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
+//               <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+//               <div className="grid grid-cols-12 gap-6 h-full px-6 py-5 relative z-10">
+//                 {/* LEFT NAV */}
+//                 <div className="col-span-4 flex items-center border-r border-white/5">
+//                   <div className="space-y-4 w-full pr-4">
+//                     {TECHNOLOGY_SERVICES.map((item, i) => {
+//                       const active = i === activeIndex;
+//                       return (
+//                         <div key={item.id} className="relative pl-4">
+//                           <div
+//                             className={`absolute left-0 top-1 h-6 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full transition-all duration-500 shadow-lg shadow-cyan-500/50 ${
+//                               active
+//                                 ? "opacity-100 scale-y-100"
+//                                 : "opacity-0 scale-y-50"
+//                             }`}
+//                           />
+
+//                           <div
+//                             onClick={() => {
+//                               setActiveIndex(i);
+//                               accumulatedDelta.current = 0;
+//                             }}
+//                             className="text-left w-full group cursor-pointer"
+//                             role="button"
+//                             tabIndex={0}
+//                             onKeyDown={(e) => {
+//                               if (e.key === "Enter" || e.key === " ") {
+//                                 e.preventDefault();
+//                                 setActiveIndex(i);
+//                                 accumulatedDelta.current = 0;
+//                               }
+//                             }}
+//                           >
+//                             <h4
+//                               className={`text-sm lg:text-base transition-all duration-500 ${
+//                                 active
+//                                   ? "text-white font-bold"
+//                                   : "text-slate-500 hover:text-slate-300 font-medium"
+//                               }`}
+//                             >
+//                               {item.title}
+//                             </h4>
+
+//                             <div
+//                               className={`overflow-hidden transition-all duration-500 ${
+//                                 active
+//                                   ? "max-h-32 opacity-100 mt-2"
+//                                   : "max-h-0 opacity-0"
+//                               }`}
+//                             >
+//                               <div className="space-y-2">
+//                                 <p className="text-xs text-slate-400 leading-relaxed">
+//                                   {item.banner}
+//                                 </p>
+//                                 <button
+//                                   onClick={(e) => {
+//                                     e.stopPropagation();
+//                                     navigateTo?.(`service-${item.id}`);
+//                                   }}
+//                                   className="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-all font-medium"
+//                                 >
+//                                   Learn more
+//                                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+//                                 </button>
+//                               </div>
+//                             </div>
+//                           </div>
+//                         </div>
+//                       );
+//                     })}
+//                   </div>
+//                 </div>
+
+//                 {/* RIGHT CONTENT */}
+//                 <div className="col-span-8 relative h-full">
+//                   {TECHNOLOGY_SERVICES.map((svc, idx) => (
+//                     <div
+//                       key={svc.id}
+//                       className={`absolute inset-0 transition-all duration-700 ${
+//                         idx === activeIndex
+//                           ? "opacity-100 translate-x-0"
+//                           : idx < activeIndex
+//                           ? "opacity-0 -translate-x-12 pointer-events-none"
+//                           : "opacity-0 translate-x-12 pointer-events-none"
+//                       }`}
+//                     >
+//                       <div className="w-full h-full rounded-xl bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 border border-white/10 backdrop-blur-sm p-5 lg:p-6 flex flex-col relative overflow-hidden">
+//                         {/* Glow effects */}
+//                         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+//                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+//                         {/* Content */}
+//                         <div className="relative z-10 h-full flex flex-col">
+//                           {/* Title */}
+//                           <div className="flex items-center gap-3 mb-4">
+//                             <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-purple-500/25">
+//                               <Sparkles className="w-5 h-5 text-white" />
+//                             </div>
+//                             <div>
+//                               <h3 className="text-xl lg:text-2xl font-bold text-white">
+//                                 {svc.title}
+//                               </h3>
+//                               <div className="flex items-center gap-2 mt-0.5">
+//                                 <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-medium">
+//                                   <CheckCircle2 className="w-3 h-3" />
+//                                   Enterprise Ready
+//                                 </span>
+//                                 <span className="text-slate-600">•</span>
+//                                 <span className="inline-flex items-center gap-1 text-[10px] text-cyan-400 font-medium">
+//                                   <Zap className="w-3 h-3" />
+//                                   Fast Delivery
+//                                 </span>
+//                               </div>
+//                             </div>
+//                           </div>
+
+//                           {/* Approach */}
+//                           <div className="flex items-start gap-2 mb-4 p-3 rounded-lg bg-gradient-to-r from-purple-500/5 to-cyan-500/5 border border-white/5">
+//                             <Target className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+//                             <p className="text-slate-300 text-sm leading-relaxed">
+//                               {svc.approach}
+//                             </p>
+//                           </div>
+
+//                           {/* Solutions Grid */}
+//                           <div className="flex-1 grid grid-cols-2 gap-2 content-start">
+//                             {svc.solutions.slice(0, 4).map((sol, solIdx) => {
+//                               const SolIcon =
+//                                 solutionIcons[solIdx % solutionIcons.length];
+//                               return (
+//                                 <div
+//                                   key={sol.id}
+//                                   className={`group rounded-lg bg-neutral-800/50 border border-white/10 p-3 hover:bg-neutral-800 hover:border-cyan-400/30 transition-all duration-500 ${
+//                                     idx === activeIndex
+//                                       ? "opacity-100 translate-y-0"
+//                                       : "opacity-0 translate-y-4"
+//                                   }`}
+//                                   style={{
+//                                     transitionDelay:
+//                                       idx === activeIndex
+//                                         ? `${solIdx * 100 + 200}ms`
+//                                         : "0ms",
+//                                   }}
+//                                 >
+//                                   <div className="flex items-start gap-2">
+//                                     <div className="p-1.5 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/20 flex-shrink-0">
+//                                       <SolIcon className="w-3.5 h-3.5 text-cyan-400" />
+//                                     </div>
+//                                     <div className="flex-1 min-w-0">
+//                                       <h5 className="text-white font-semibold text-xs lg:text-sm group-hover:text-cyan-400 transition-colors truncate">
+//                                         {sol.title}
+//                                       </h5>
+//                                       <p className="text-[10px] lg:text-xs text-slate-400 leading-relaxed line-clamp-2 mt-0.5">
+//                                         {sol.summary}
+//                                       </p>
+//                                     </div>
+//                                   </div>
+//                                 </div>
+//                               );
+//                             })}
+//                           </div>
+
+//                           {/* CTA */}
+//                           <button
+//                             onClick={() => navigateTo?.(`service-${svc.id}`)}
+//                             className="mt-4 py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-sm font-semibold hover:from-purple-600 hover:to-cyan-600 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-500/20"
+//                           >
+//                             Explore {svc.title}
+//                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+//                           </button>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Desktop Scroll Indicator */}
+//           <div className="flex justify-center gap-2 mt-3 flex-shrink-0">
+//             {TECHNOLOGY_SERVICES.map((_, i) => (
+//               <button
+//                 key={i}
+//                 onClick={() => {
+//                   setActiveIndex(i);
+//                   accumulatedDelta.current = 0;
+//                 }}
+//                 className={`h-1.5 rounded-full transition-all duration-500 ${
+//                   i === activeIndex
+//                     ? "w-8 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg shadow-cyan-500/50"
+//                     : "w-1.5 bg-slate-700 hover:bg-slate-600"
+//                 }`}
+//                 aria-label={`Go to service ${i + 1}`}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 "use client";
 
 import { TECHNOLOGY_SERVICES } from "../../lib/Constants";
@@ -1201,18 +1765,25 @@ export default function OurServicesSection({
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isLocked, setIsLocked] = useState(false);
-  const [hasCompletedCycle, setHasCompletedCycle] = useState(false);
-  const [entryDirection, setEntryDirection] = useState<"top" | "bottom" | null>(
-    null
-  );
   const [isMobile, setIsMobile] = useState(false);
 
+  // All scroll-related state as refs to avoid stale closures
+  const stateRef = useRef({
+    isLocked: false,
+    hasCompletedCycle: false,
+    entryDirection: null as "top" | "bottom" | null,
+    activeIndex: 0,
+    exitAttempts: 0, // Track consecutive exit attempts
+    lastExitDirection: null as "up" | "down" | null,
+  });
+
   const accumulatedDelta = useRef(0);
-  const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null); // Fixed type
+  const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cooldownRef = useRef(false);
+  const safetyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const totalServices = TECHNOLOGY_SERVICES.length;
+  const EXIT_ATTEMPTS_THRESHOLD = 2; // Release after 2 attempts to exit
 
   // Check for mobile
   useEffect(() => {
@@ -1234,15 +1805,44 @@ export default function OurServicesSection({
     });
   }, []);
 
-  // Desktop scroll handling only
+  const releaseLock = useCallback(() => {
+    stateRef.current = {
+      isLocked: false,
+      hasCompletedCycle: false,
+      entryDirection: null,
+      activeIndex: stateRef.current.activeIndex,
+      exitAttempts: 0,
+      lastExitDirection: null,
+    };
+    accumulatedDelta.current = 0;
+    cooldownRef.current = false;
+    if (safetyTimeoutRef.current) {
+      clearTimeout(safetyTimeoutRef.current);
+    }
+  }, []);
+
+  // Safety timeout to prevent permanent lock
+  const startSafetyTimeout = useCallback(() => {
+    if (safetyTimeoutRef.current) {
+      clearTimeout(safetyTimeoutRef.current);
+    }
+    safetyTimeoutRef.current = setTimeout(() => {
+      if (stateRef.current.isLocked) {
+        console.log("Safety timeout: releasing lock");
+        releaseLock();
+      }
+    }, 4000);
+  }, [releaseLock]);
+
+  // Desktop scroll handling
   useEffect(() => {
     if (isMobile) return;
 
     const section = sectionRef.current;
     if (!section) return;
 
-    const SCROLL_THRESHOLD = 100;
-    const COOLDOWN_TIME = 700;
+    const SCROLL_THRESHOLD = 70;
+    const COOLDOWN_TIME = 400;
 
     const onWheel = (e: WheelEvent) => {
       const rect = section.getBoundingClientRect();
@@ -1250,167 +1850,246 @@ export default function OurServicesSection({
       const scrollingDown = e.deltaY > 0;
       const scrollingUp = e.deltaY < 0;
 
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      const sectionCoversViewport = sectionTop <= 5 && sectionTop >= -5;
+      const state = stateRef.current;
+      const currentIndex = state.activeIndex;
 
+      // Check if section is centered in viewport (with tolerance)
+      // const sectionCentered = Math.abs(rect.top) <= 15;
+
+      // ===== ENTRY DETECTION =====
+
+      // Approaching from top (scrolling down into section)
       const approachingFromTop =
-        sectionTop > 0 &&
-        sectionTop < viewportHeight * 0.8 &&
+        rect.top > 0 &&
+        rect.top < viewportHeight * 0.6 &&
         scrollingDown &&
-        !isLocked;
+        !state.isLocked;
 
+      // Approaching from bottom (scrolling up into section)
       const approachingFromBottom =
-        sectionBottom > viewportHeight * 0.2 &&
-        sectionBottom < viewportHeight &&
+        rect.bottom > viewportHeight * 0.4 &&
+        rect.bottom <= viewportHeight &&
+        rect.top < 0 &&
         scrollingUp &&
-        !isLocked;
+        !state.isLocked;
 
       if (approachingFromTop) {
         e.preventDefault();
         e.stopPropagation();
-        setActiveIndex(0);
-        setEntryDirection("top");
-        setHasCompletedCycle(false);
+
+        const newIndex = 0;
+        setActiveIndex(newIndex);
+        stateRef.current = {
+          ...stateRef.current,
+          isLocked: true,
+          activeIndex: newIndex,
+          entryDirection: "top",
+          hasCompletedCycle: false,
+          exitAttempts: 0,
+          lastExitDirection: null,
+        };
+
         scrollToSection();
-        setIsLocked(true);
         accumulatedDelta.current = 0;
         cooldownRef.current = true;
-        setTimeout(() => {
-          cooldownRef.current = false;
-        }, COOLDOWN_TIME);
+        setTimeout(() => (cooldownRef.current = false), COOLDOWN_TIME);
+        startSafetyTimeout();
         return;
       }
 
       if (approachingFromBottom) {
         e.preventDefault();
         e.stopPropagation();
-        setActiveIndex(totalServices - 1);
-        setEntryDirection("bottom");
-        setHasCompletedCycle(false);
+
+        const newIndex = totalServices - 1;
+        setActiveIndex(newIndex);
+        stateRef.current = {
+          ...stateRef.current,
+          isLocked: true,
+          activeIndex: newIndex,
+          entryDirection: "bottom",
+          hasCompletedCycle: false,
+          exitAttempts: 0,
+          lastExitDirection: null,
+        };
+
         scrollToSection();
-        setIsLocked(true);
         accumulatedDelta.current = 0;
         cooldownRef.current = true;
-        setTimeout(() => {
-          cooldownRef.current = false;
-        }, COOLDOWN_TIME);
+        setTimeout(() => (cooldownRef.current = false), COOLDOWN_TIME);
+        startSafetyTimeout();
         return;
       }
 
-      if (!sectionCoversViewport && !isLocked) return;
-
-      const atFirstElement = activeIndex === 0;
-      const atLastElement = activeIndex === totalServices - 1;
-
-      const canExitTop =
-        atFirstElement &&
-        scrollingUp &&
-        hasCompletedCycle &&
-        entryDirection === "bottom";
-      const canExitBottom =
-        atLastElement &&
-        scrollingDown &&
-        hasCompletedCycle &&
-        entryDirection === "top";
-      const forceExitTop =
-        atFirstElement && scrollingUp && entryDirection === "top";
-      const forceExitBottom =
-        atLastElement && scrollingDown && entryDirection === "bottom";
-
-      if (canExitTop || canExitBottom || forceExitTop || forceExitBottom) {
-        setIsLocked(false);
-        setHasCompletedCycle(false);
-        setEntryDirection(null);
-        accumulatedDelta.current = 0;
+      // ===== NOT LOCKED AND NOT IN VIEW - ALLOW NORMAL SCROLL =====
+      if (!state.isLocked) {
         return;
       }
 
+      // ===== EXIT DETECTION (when locked) =====
+      const atFirstElement = currentIndex === 0;
+      const atLastElement = currentIndex === totalServices - 1;
+
+      // Determine if user is trying to exit
+      const tryingToExitUp = atFirstElement && scrollingUp;
+      const tryingToExitDown = atLastElement && scrollingDown;
+
+      if (tryingToExitUp || tryingToExitDown) {
+        const exitDirection = scrollingUp ? "up" : "down";
+
+        // Track exit attempts
+        if (state.lastExitDirection === exitDirection) {
+          stateRef.current.exitAttempts += 1;
+        } else {
+          stateRef.current.exitAttempts = 1;
+          stateRef.current.lastExitDirection = exitDirection;
+        }
+
+        // Conditions to allow exit:
+        // 1. Completed full cycle (went from one end to the other)
+        // 2. Trying to exit in same direction as entry (immediate exit)
+        // 3. Multiple exit attempts (force exit)
+        const completedCycle = state.hasCompletedCycle;
+        const sameAsEntry =
+          (tryingToExitUp && state.entryDirection === "top") ||
+          (tryingToExitDown && state.entryDirection === "bottom");
+        const forcedExit =
+          stateRef.current.exitAttempts >= EXIT_ATTEMPTS_THRESHOLD;
+
+        if (completedCycle || sameAsEntry || forcedExit) {
+          console.log("Releasing lock:", {
+            completedCycle,
+            sameAsEntry,
+            forcedExit,
+          });
+          releaseLock();
+          return; // Allow natural scroll
+        }
+
+        // Still trying to exit but conditions not met - block but don't navigate
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      // ===== LOCKED AND NAVIGATING WITHIN SECTION =====
       e.preventDefault();
       e.stopPropagation();
 
-      if (cooldownRef.current || isTransitioning) return;
+      // Reset exit attempts since user is navigating normally
+      stateRef.current.exitAttempts = 0;
+      stateRef.current.lastExitDirection = null;
+
+      if (cooldownRef.current || isTransitioning) {
+        return;
+      }
 
       accumulatedDelta.current += e.deltaY;
 
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
         accumulatedDelta.current = 0;
-      }, 150);
+      }, 100);
 
       if (Math.abs(accumulatedDelta.current) >= SCROLL_THRESHOLD) {
         const direction = accumulatedDelta.current > 0 ? 1 : -1;
+        const newIndex = Math.max(
+          0,
+          Math.min(currentIndex + direction, totalServices - 1)
+        );
 
-        setActiveIndex((prev) => {
-          const newIndex = Math.max(
-            0,
-            Math.min(prev + direction, totalServices - 1)
-          );
+        if (newIndex !== currentIndex) {
+          setIsTransitioning(true);
+          cooldownRef.current = true;
 
-          if (newIndex !== prev) {
-            setIsTransitioning(true);
-            cooldownRef.current = true;
+          setActiveIndex(newIndex);
+          stateRef.current.activeIndex = newIndex;
 
-            if (
-              (entryDirection === "top" && newIndex === totalServices - 1) ||
-              (entryDirection === "bottom" && newIndex === 0)
-            ) {
-              setHasCompletedCycle(true);
-            }
-
-            setTimeout(() => {
-              setIsTransitioning(false);
-              cooldownRef.current = false;
-            }, COOLDOWN_TIME);
+          // Check if cycle is complete
+          if (
+            (state.entryDirection === "top" &&
+              newIndex === totalServices - 1) ||
+            (state.entryDirection === "bottom" && newIndex === 0)
+          ) {
+            stateRef.current.hasCompletedCycle = true;
           }
-          return newIndex;
-        });
+
+          setTimeout(() => {
+            setIsTransitioning(false);
+            cooldownRef.current = false;
+          }, COOLDOWN_TIME);
+        }
 
         accumulatedDelta.current = 0;
+        startSafetyTimeout(); // Reset safety timeout on activity
       }
     };
 
+    // Handle keyboard navigation
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (!stateRef.current.isLocked) return;
+
+      const currentIndex = stateRef.current.activeIndex;
+
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        const newIndex = Math.min(currentIndex + 1, totalServices - 1);
+        if (newIndex !== currentIndex) {
+          setActiveIndex(newIndex);
+          stateRef.current.activeIndex = newIndex;
+        }
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        const newIndex = Math.max(currentIndex - 1, 0);
+        if (newIndex !== currentIndex) {
+          setActiveIndex(newIndex);
+          stateRef.current.activeIndex = newIndex;
+        }
+      } else if (e.key === "Escape") {
+        releaseLock();
+      }
+    };
+
+    // Release lock when section is far out of view
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      if (rect.bottom < -200 || rect.top > viewportHeight + 200) {
-        setIsLocked(false);
-        setHasCompletedCycle(false);
-        setEntryDirection(null);
-        accumulatedDelta.current = 0;
+      if (rect.bottom < -150 || rect.top > viewportHeight + 150) {
+        if (stateRef.current.isLocked) {
+          releaseLock();
+        }
       }
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("keydown", onKeyDown);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      if (safetyTimeoutRef.current) clearTimeout(safetyTimeoutRef.current);
     };
   }, [
-    isTransitioning,
-    activeIndex,
-    isLocked,
     totalServices,
     scrollToSection,
-    hasCompletedCycle,
-    entryDirection,
     isMobile,
+    startSafetyTimeout,
+    releaseLock,
+    isTransitioning,
   ]);
 
   // ==================== MOBILE VIEW ====================
   if (isMobile) {
     return (
       <section className="relative bg-black py-12 px-4">
-        {/* Background effects */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative z-10 max-w-lg mx-auto">
-          {/* Header */}
           <div className="mb-8 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 text-[10px] font-semibold tracking-widest uppercase rounded-full border border-purple-400/40 bg-purple-500/10 text-purple-200">
               <Sparkles className="w-3 h-3" />
@@ -1428,14 +2107,12 @@ export default function OurServicesSection({
             </p>
           </div>
 
-          {/* Service Cards */}
           <div className="space-y-4">
             {TECHNOLOGY_SERVICES.map((svc) => (
               <div
                 key={svc.id}
                 className="rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-white/10 p-4 sm:p-5"
               >
-                {/* Service Header */}
                 <div className="flex items-start gap-3 mb-4">
                   <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg flex-shrink-0">
                     <Sparkles className="w-5 h-5 text-white" />
@@ -1457,7 +2134,6 @@ export default function OurServicesSection({
                   </div>
                 </div>
 
-                {/* Approach */}
                 <div className="flex items-start gap-2 mb-4 p-3 rounded-lg bg-white/5 border border-white/5">
                   <Target className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                   <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -1465,7 +2141,6 @@ export default function OurServicesSection({
                   </p>
                 </div>
 
-                {/* Solutions */}
                 <div className="space-y-2 mb-4">
                   {svc.solutions.slice(0, 3).map((sol, solIdx) => {
                     const SolIcon =
@@ -1491,7 +2166,6 @@ export default function OurServicesSection({
                   })}
                 </div>
 
-                {/* CTA Button */}
                 <button
                   onClick={() => navigateTo?.(`service-${svc.id}`)}
                   className="w-full py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-sm font-semibold flex items-center justify-center gap-2 hover:from-purple-600 hover:to-cyan-600 transition-all"
@@ -1534,8 +2208,7 @@ export default function OurServicesSection({
 
           {/* SERVICE VIEW */}
           <div className="flex-1 min-h-0 relative">
-            <div className="h-full rounded-2xl  shadow-2xl overflow-hidden">
-              {/* Ambient background */}
+            <div className="h-full rounded-2xl shadow-2xl overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -1558,6 +2231,7 @@ export default function OurServicesSection({
                           <div
                             onClick={() => {
                               setActiveIndex(i);
+                              stateRef.current.activeIndex = i;
                               accumulatedDelta.current = 0;
                             }}
                             className="text-left w-full group cursor-pointer"
@@ -1567,6 +2241,7 @@ export default function OurServicesSection({
                               if (e.key === "Enter" || e.key === " ") {
                                 e.preventDefault();
                                 setActiveIndex(i);
+                                stateRef.current.activeIndex = i;
                                 accumulatedDelta.current = 0;
                               }
                             }}
@@ -1616,22 +2291,19 @@ export default function OurServicesSection({
                   {TECHNOLOGY_SERVICES.map((svc, idx) => (
                     <div
                       key={svc.id}
-                      className={`absolute inset-0 transition-all duration-700 ${
+                      className={`absolute inset-0 transition-all duration-500 ${
                         idx === activeIndex
                           ? "opacity-100 translate-x-0"
                           : idx < activeIndex
-                          ? "opacity-0 -translate-x-12 pointer-events-none"
-                          : "opacity-0 translate-x-12 pointer-events-none"
+                          ? "opacity-0 -translate-x-8 pointer-events-none"
+                          : "opacity-0 translate-x-8 pointer-events-none"
                       }`}
                     >
                       <div className="w-full h-full rounded-xl bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 border border-white/10 backdrop-blur-sm p-5 lg:p-6 flex flex-col relative overflow-hidden">
-                        {/* Glow effects */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                        {/* Content */}
                         <div className="relative z-10 h-full flex flex-col">
-                          {/* Title */}
                           <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 shadow-lg shadow-purple-500/25">
                               <Sparkles className="w-5 h-5 text-white" />
@@ -1654,7 +2326,6 @@ export default function OurServicesSection({
                             </div>
                           </div>
 
-                          {/* Approach */}
                           <div className="flex items-start gap-2 mb-4 p-3 rounded-lg bg-gradient-to-r from-purple-500/5 to-cyan-500/5 border border-white/5">
                             <Target className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                             <p className="text-slate-300 text-sm leading-relaxed">
@@ -1662,7 +2333,6 @@ export default function OurServicesSection({
                             </p>
                           </div>
 
-                          {/* Solutions Grid */}
                           <div className="flex-1 grid grid-cols-2 gap-2 content-start">
                             {svc.solutions.slice(0, 4).map((sol, solIdx) => {
                               const SolIcon =
@@ -1670,7 +2340,7 @@ export default function OurServicesSection({
                               return (
                                 <div
                                   key={sol.id}
-                                  className={`group rounded-lg bg-neutral-800/50 border border-white/10 p-3 hover:bg-neutral-800 hover:border-cyan-400/30 transition-all duration-500 ${
+                                  className={`group rounded-lg bg-neutral-800/50 border border-white/10 p-3 hover:bg-neutral-800 hover:border-cyan-400/30 transition-all duration-300 ${
                                     idx === activeIndex
                                       ? "opacity-100 translate-y-0"
                                       : "opacity-0 translate-y-4"
@@ -1678,7 +2348,7 @@ export default function OurServicesSection({
                                   style={{
                                     transitionDelay:
                                       idx === activeIndex
-                                        ? `${solIdx * 100 + 200}ms`
+                                        ? `${solIdx * 50 + 100}ms`
                                         : "0ms",
                                   }}
                                 >
@@ -1700,7 +2370,6 @@ export default function OurServicesSection({
                             })}
                           </div>
 
-                          {/* CTA */}
                           <button
                             onClick={() => navigateTo?.(`service-${svc.id}`)}
                             className="mt-4 py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-sm font-semibold hover:from-purple-600 hover:to-cyan-600 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-500/20"
@@ -1717,13 +2386,14 @@ export default function OurServicesSection({
             </div>
           </div>
 
-          {/* Desktop Scroll Indicator */}
+          {/* Scroll Indicator */}
           <div className="flex justify-center gap-2 mt-3 flex-shrink-0">
             {TECHNOLOGY_SERVICES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => {
                   setActiveIndex(i);
+                  stateRef.current.activeIndex = i;
                   accumulatedDelta.current = 0;
                 }}
                 className={`h-1.5 rounded-full transition-all duration-500 ${

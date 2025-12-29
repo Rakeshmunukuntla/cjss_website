@@ -352,7 +352,7 @@ He actively mentors frontend engineers and promotes modern UI engineering practi
     id: 11,
     name: "Vinay Manthani",
     role: "Front-end Lead (React)",
-    image: "/images/vinay.png",
+    image: "/images/vinay.jpg",
     shortStory: "Delivering intuitive and responsive web experiences.",
     fullStory: `Vinay specializes in building responsive, accessible, and user-friendly interfaces. He works closely with UX teams to translate designs into high-quality React applications.
 
@@ -820,7 +820,9 @@ const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
                     <img
                       src={mentor.image}
                       alt={mentor.name}
-                      className="block object-cover w-full h-48 sm:h-56 rounded-xl"
+                      // className="block object-cover w-full h-48 sm:h-56 rounded-xl"
+                      // className="block w-full h-48 sm:h-56 object-cover object-top rounded-xl"
+                      className="block w-full h-48 sm:h-56 object-cover object-[50%_25%] rounded-xl"
                     />
                   </div>
 
