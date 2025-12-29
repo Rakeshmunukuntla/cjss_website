@@ -141,7 +141,7 @@ export const TECHNOLOGIES = [
 
 export const CLIENTS = [
   { name: "Changi Airport Group", icon: "✈️", image: "/images/changilogo.png" },
-  { name: "Harman - Samsung", icon: "🎧", image: "/images/harman.png" },
+  { name: "Samsung SDS", icon: "🎧", image: "/images/samsungsdslogo.png" },
   { name: "CliffIT", icon: "💻", image: "/images/cliffit.png" },
 ];
 
