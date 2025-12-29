@@ -10,7 +10,7 @@ import { HomePage } from "./pages/HomePage";
 import { ResourceDetailPage } from "./pages/ResourceDetailPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
 
-import CarrierExperienced from "./pages/CarrierExperienced";
+// import CarrierExperienced from "./pages/CarrierExperienced";
 import CarrierFresher from "./pages/CarrierFresher";
 import CarrierHome from "./pages/CarrierHome";
 import CarrierLife from "./pages/CarrierLife";
@@ -99,7 +99,8 @@ export const App = () => {
             <CarrierFresher navigateTo={navigateTo} />
           )}
           {currentPage === "CarrierExperienced" && (
-            <CarrierExperienced navigateTo={navigateTo} />
+            // <CarrierExperienced navigateTo={navigateTo} />
+            <CarrierFresher navigateTo={navigateTo}></CarrierFresher>
           )}
           {currentPage === "CarrierProblems" && (
             <CarrierProblems navigateTo={navigateTo} />

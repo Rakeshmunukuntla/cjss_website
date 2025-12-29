@@ -184,8 +184,8 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
   const links = [
     { label: "Home", page: "CarrierHome" },
     { label: "Life at CJSS", page: "CarrierLife" },
-    { label: "Job for Fresher", page: "CarrierFresher" },
-    { label: "Job for Experienced", page: "CarrierExperienced" },
+    { label: "Jobs", page: "CarrierFresher" },
+    // { label: "Job for Experienced", page: "CarrierExperienced" },
     { label: "Problems we solve", page: "CarrierProblems" },
   ];
 

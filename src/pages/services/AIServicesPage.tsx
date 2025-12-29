@@ -48,8 +48,21 @@ const AIServicesPage: React.FC = () => {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-20 flex flex-col justify-center min-h-[80vh]">
-          <span className="text-xs tracking-widest text-blue-300">
+          {/* <span className="text-xs tracking-widest text-blue-300">
             AI Services
+          </span> */}
+          <span
+            className="
+                  inline-block
+                  text-sm sm:text-base
+                  font-semibold
+                  tracking-[0.42em]
+                  text-blue-300
+                  animate-aiLabel
+                  animate-aiPulse
+                  "
+          >
+            AI SERVICES
           </span>
 
           <h1 className="mt-3 text-5xl font-semibold leading-tight animate-fade-up">

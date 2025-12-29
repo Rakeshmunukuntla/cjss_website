@@ -3426,7 +3426,7 @@ const JobOpeningsBase = ({
 };
 
 const JobOpeningsFresher = () => {
-  return <JobOpeningsBase filterMode="fresher" pageSize={6} />;
+  return <JobOpeningsBase filterMode="all" pageSize={6} />;
 };
 
 export default JobOpeningsFresher;

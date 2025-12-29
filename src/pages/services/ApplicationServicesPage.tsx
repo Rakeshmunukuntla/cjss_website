@@ -48,7 +48,20 @@ export default function ApplicationServicesPage() {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
-          <span className="text-xs tracking-widest text-cyan-300">
+          {/* <span className="text-xs tracking-widest text-cyan-300">
+            Application Services
+          </span> */}
+          <span
+            className="
+                  inline-block
+                  text-sm sm:text-base
+                  font-semibold
+                  tracking-[0.42em]
+                  text-blue-300
+                  animate-aiLabel
+                  animate-aiPulse
+                  "
+          >
             Application Services
           </span>
 

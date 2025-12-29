@@ -48,8 +48,21 @@ export default function CloudTechnologiesPage() {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28 flex flex-col justify-center min-h-[80vh]">
-          <span className="text-xs tracking-widest text-cyan-300">
-            Application Services
+          {/* <span className="text-xs tracking-widest text-cyan-300">
+            Cloud Services
+          </span> */}
+          <span
+            className="
+  inline-block
+  text-sm sm:text-base
+  font-semibold
+  tracking-[0.42em]
+  text-blue-300
+  animate-aiLabel
+  animate-aiPulse
+"
+          >
+            Cloud Services
           </span>
 
           <h1 className="mt-3 text-5xl font-semibold leading-tight">
