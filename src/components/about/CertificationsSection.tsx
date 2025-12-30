@@ -1,5 +1,5 @@
-import { CERTIFICATIONS } from "../../lib/Constants"
-import Icon from "../Icon"
+import { CERTIFICATIONS } from "../../lib/Constants";
+import Icon from "../Icon";
 
 export const CertificationsSection = () => {
   return (
@@ -15,7 +15,9 @@ export const CertificationsSection = () => {
           {CERTIFICATIONS.map((cert, idx) => (
             <div key={idx} className="group cursor-hover">
               <div className="bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl p-8 text-center transition-all duration-300 group-hover:scale-105">
-                <div className="text-white mb-4 flex justify-center"><Icon name={cert.icon} className="w-12 h-12" /></div>
+                <div className="text-white mb-4 flex justify-center">
+                  <Icon name={cert.symbol} className="w-12 h-12" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">{cert.name}</h3>
                 <p className="text-white text-sm">{cert.description}</p>
               </div>
@@ -24,5 +26,5 @@ export const CertificationsSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -228,7 +228,7 @@ export const LEADERS = [
     designation: "Director",
     info: "20+ years in technology leadership driving innovation and digital transformation across enterprises",
     image: "👨‍💼",
-    profileImage: "/images/Venkat.png",
+    profileImage: "/images/Krishna2.png",
     bio: "Venkat has extensive experience working in the information technology industry and leading web experience, content management, and e-commerce engagements, and global teams. He has a long track record in delivery management, managing customer relationships, solution conceptualization, and championing technology Centers of Excellence (CoE).",
   },
   {
@@ -236,7 +236,7 @@ export const LEADERS = [
     designation: "Director",
     info: "15+ years in enterprise architecture and cloud solutions with expertise in strategic technology planning",
     image: "👨‍💻",
-    profileImage: "/images/Srikanth.png",
+    profileImage: "/images/Srikanth_2.png",
     bio: "Srikanth brings extensive expertise in enterprise architecture, cloud transformation, and strategic technology planning. With a proven track record in managing large-scale digital initiatives and building high-performing teams, he drives innovation and operational excellence across the organization.",
   },
 ];
@@ -291,21 +291,44 @@ export const TECH_USAGE = [
   { name: "AI", percentage: 25, color: "from-violet-500 to-purple-500" },
 ];
 
+// export const CERTIFICATIONS = [
+//   {
+//     name: "ISO 27001",
+//     icon: "🏆",
+//     description: "Information Security Management",
+//   },
+//   {
+//     name: "PCI-DSS",
+//     icon: "🔒",
+//     description: "Payment Card Industry Compliance",
+//   },
+//   { name: "CyberGRX", icon: "🛡️", description: "Cyber Risk Assessment" },
+//   {
+//     name: "Great Place to Work",
+//     icon: "⭐",
+//     description: "Employee Satisfaction Certified",
+//   },
+// ];
+
 export const CERTIFICATIONS = [
   {
     name: "ISO 27001",
-    icon: "🏆",
+    symbol: "🛡︎", // security / protection
     description: "Information Security Management",
   },
   {
     name: "PCI-DSS",
-    icon: "🔒",
+    symbol: "⌁⌁", // compliance / standards
     description: "Payment Card Industry Compliance",
   },
-  { name: "CyberGRX", icon: "🛡️", description: "Cyber Risk Assessment" },
+  {
+    name: "CyberGRX",
+    symbol: "◈", // risk / assessment / trust
+    description: "Cyber Risk Assessment",
+  },
   {
     name: "Great Place to Work",
-    icon: "⭐",
+    symbol: "✦", // excellence / recognition
     description: "Employee Satisfaction Certified",
   },
 ];

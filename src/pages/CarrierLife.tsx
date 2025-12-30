@@ -552,7 +552,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
               <div className="group relative flex flex-col overflow-hidden rounded-3xl sm:rounded-4xl border border-white/10 bg-[#0a0a0a]/80 shadow-[0_24px_70px_rgba(0,0,0,0.7)] transition-shadow duration-700 hover:shadow-[0_32px_90px_rgba(34,197,235,0.25)] md:flex-row md:h-[260px]">
                 <div className="relative w-full h-48 sm:h-56 md:h-full md:w-64 shrink-0">
                   <img
-                    src="/images/Venkat.png"
+                    src="/images/Krishna3.jpg"
                     alt="Leadership review session"
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   />
@@ -620,7 +620,7 @@ const CarierLife = ({ navigateTo }: CarrierLifeProps) => {
               <div className="group relative flex flex-col overflow-hidden rounded-3xl sm:rounded-4xl border border-white/10 bg-[#0a0a0a]/80 shadow-[0_24px_70px_rgba(0,0,0,0.7)] transition-shadow duration-700 hover:shadow-[0_32px_90px_rgba(168,85,247,0.25)] md:flex-row-reverse md:h-[260px]">
                 <div className="relative w-full h-48 sm:h-56 md:h-full md:w-64 shrink-0">
                   <img
-                    src="/images/Srikanth.png"
+                    src="/images/Srikanth_2.png"
                     alt="Architecture jam session"
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   />

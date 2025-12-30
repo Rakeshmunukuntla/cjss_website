@@ -308,7 +308,7 @@ export const AboutPage = () => {
                 >
                   <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 via-transparent to-cyan-500/10 opacity-80"></div>
                   <div className="relative z-10 space-y-3">
-                    <div className="text-4xl text-white">{adv.icon}</div>
+                    {/* <div className="text-4xl text-white">{adv.icon}</div> */}
                     <h3 className="text-xl font-semibold text-white">
                       {adv.title}
                     </h3>
@@ -372,7 +372,7 @@ export const AboutPage = () => {
               >
                 <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 via-transparent to-cyan-500/10 opacity-70"></div>
                 <div className="relative z-10 space-y-3">
-                  <div className="text-4xl text-white">{exp.icon}</div>
+                  {/* <div className="text-4xl text-white">{exp.icon}</div> */}
                   <h3 className="text-xl font-semibold text-white">
                     {exp.name}
                   </h3>
@@ -455,7 +455,7 @@ export const AboutPage = () => {
               <div key={idx} className="group cursor-hover">
                 <div className="p-8 text-center transition-all duration-300 border bg-neutral-900 border-neutral-800 rounded-2xl group-hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10">
                   <div className="mb-4 text-6xl text-purple-400">
-                    {cert.icon}
+                    {cert.symbol}
                   </div>
                   <h3 className="mb-2 text-xl font-bold text-white">
                     {cert.name}

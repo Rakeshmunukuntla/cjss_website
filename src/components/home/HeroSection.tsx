@@ -364,10 +364,10 @@ export const HeroSection = () => {
           {/* LEFT CONTENT */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-[11px] sm:text-sm font-semibold border rounded-full text-cyan-100 bg-cyan-500/10 border-cyan-400/30">
-              <span className="relative flex w-3 h-3">
+              {/* <span className="relative flex w-3 h-3">
                 <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-cyan-400 animate-ping" />
                 <span className="relative inline-flex w-3 h-3 rounded-full bg-cyan-300" />
-              </span>
+              </span> */}
               <span className="uppercase tracking-[0.18em]">
                 Transforming Digital Experiences
               </span>
