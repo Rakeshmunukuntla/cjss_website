@@ -948,30 +948,30 @@ interface Mentor {
 
 export const mentors: Mentor[] = [
   {
-    id: 1,
-    name: "Venkat K",
-    role: "Director",
-    image: "/images/Krishna3.jpg",
-    shortStory: "Driving strategic direction and delivery excellence.",
-    fullStory:
-      "Venkat provides strategic leadership across CJSS, aligning business vision with execution excellence. He works closely with clients and leadership teams to ensure long-term growth, operational discipline, and strong delivery outcomes.",
-    yearsAtCompany: "10+ Years",
-    achievements: ["Enterprise leadership", "Client partnerships"],
-    quote: "Strong leadership is about clarity, trust, and execution.",
-  },
-  {
-    id: 2,
-    name: "Srikanth Banthu",
-    role: "Director",
-    image: "/images/Srikanth_2.png",
-    shortStory: "Leading business transformation through technology.",
-    fullStory:
-      "Srikanth drives enterprise transformation by combining technology strategy with operational excellence. He focuses on scaling delivery models, improving execution maturity, and ensuring sustained customer success.",
-    yearsAtCompany: "9+ Years",
-    achievements: ["Digital transformation", "Team scaling"],
-    quote: "Technology succeeds when it solves real business problems.",
-  },
-  {
+    //   id: 1,
+    //   name: "Venkat K",
+    //   role: "Director",
+    //   image: "/images/Krishna3.jpg",
+    //   shortStory: "Driving strategic direction and delivery excellence.",
+    //   fullStory:
+    //     "Venkat provides strategic leadership across CJSS, aligning business vision with execution excellence. He works closely with clients and leadership teams to ensure long-term growth, operational discipline, and strong delivery outcomes.",
+    //   yearsAtCompany: "10+ Years",
+    //   achievements: ["Enterprise leadership", "Client partnerships"],
+    //   quote: "Strong leadership is about clarity, trust, and execution.",
+    // },
+    // {
+    //   id: 2,
+    //   name: "Srikanth Banthu",
+    //   role: "Director",
+    //   image: "/images/Srikanth_2.png",
+    //   shortStory: "Leading business transformation through technology.",
+    //   fullStory:
+    //     "Srikanth drives enterprise transformation by combining technology strategy with operational excellence. He focuses on scaling delivery models, improving execution maturity, and ensuring sustained customer success.",
+    //   yearsAtCompany: "9+ Years",
+    //   achievements: ["Digital transformation", "Team scaling"],
+    //   quote: "Technology succeeds when it solves real business problems.",
+    // },
+    // {
     id: 3,
     name: "Narmendran Yentrapati",
     role: "Program Manager",
@@ -1048,7 +1048,7 @@ export const mentors: Mentor[] = [
     id: 9,
     name: "Srinivas Moole",
     role: "AI Architect",
-    image: "/images/srinivas.png",
+    image: "/images/srinivasmoole.jpg",
     shortStory: "Designing practical and scalable AI solutions.",
     fullStory:
       "Srinivas leads AI architecture and data-driven initiatives, designing intelligent systems that integrate with enterprise platforms. His focus is on real-world, production-ready AI solutions.",

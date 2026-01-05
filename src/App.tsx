@@ -118,7 +118,9 @@ export const App = () => {
             />
           )}
           {/* 🔹 PRODUCTS */}
-          {currentPage === "products" && <ProductsPage />}
+          {currentPage === "products" && (
+            <ProductsPage navigateTo={navigateTo} />
+          )}
         </div>
         {/* CONNECT PRODUCT DETAIL PAGE */}
         {currentPage === "product-connect" && (
