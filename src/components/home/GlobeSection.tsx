@@ -318,8 +318,7 @@ export const GlobeSection = () => {
 
               <p className="max-w-2xl mx-auto mb-6 text-base leading-relaxed text-blue-100">
                 Empowering businesses with transformative technology solutions
-                driven by our expertise in cloud, AI, and digital
-                transformation.
+                driven by our expertise in cloud, AI, SAP and AEM.
               </p>
             </div>
           </div>

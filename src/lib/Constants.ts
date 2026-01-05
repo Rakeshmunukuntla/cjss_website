@@ -214,11 +214,17 @@ export const EXPERTISE = [
     description:
       "Cloud-native architectures, CI/CD pipelines, and DevOps practices that enable faster, reliable, and secure releases.",
   },
+  // {
+  //   name: "Security & Compliance",
+  //   icon: "🔐",
+  //   description:
+  //     "Secure-by-design implementations with enterprise-grade security, compliance readiness, and DevSecOps best practices.",
+  // },
   {
-    name: "Security & Compliance",
-    icon: "🔐",
+    name: "AI & Intelligent Systems",
+    icon: "🤖",
     description:
-      "Secure-by-design implementations with enterprise-grade security, compliance readiness, and DevSecOps best practices.",
+      "AI-driven solutions leveraging machine learning, generative AI, and intelligent automation to enhance decision-making, efficiency, and customer experiences.",
   },
 ];
 
