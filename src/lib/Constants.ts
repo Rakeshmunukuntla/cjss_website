@@ -234,7 +234,7 @@ export const LEADERS = [
     designation: "Director",
     info: "20+ years in technology leadership driving innovation and digital transformation across enterprises",
     image: "👨‍💼",
-    profileImage: "/images/Krishna2.png",
+    profileImage: "/images/Krishna3.jpg",
     bio: "Venkat has extensive experience working in the information technology industry and leading web experience, content management, and e-commerce engagements, and global teams. He has a long track record in delivery management, managing customer relationships, solution conceptualization, and championing technology Centers of Excellence (CoE).",
   },
   {

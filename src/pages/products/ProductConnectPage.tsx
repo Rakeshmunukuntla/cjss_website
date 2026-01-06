@@ -395,8 +395,6 @@ export const ProductConnectPage = ({ navigateTo }: ProductConnectPageProps) => {
         </div>
       </div>
 
-      {/* ================= PRICING ================= */}
-
       {/* ================= FINAL CTA ================= */}
       <div className="relative z-10 py-28 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">

@@ -26,6 +26,7 @@ import EventDetailPage from "../src/components/home/EventDetailPage";
 import EventRegisterPage from "../src/components/home/EventRegisterPage";
 import ProductsPage from "./pages/products/ProductsPage";
 import ProductConnectPage from "./pages/products/ProductConnectPage";
+import ProductEcomAgent from "./pages/products/ProductEcomAgent";
 
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -125,6 +126,10 @@ export const App = () => {
         {/* CONNECT PRODUCT DETAIL PAGE */}
         {currentPage === "product-connect" && (
           <ProductConnectPage navigateTo={navigateTo} />
+        )}
+        {/* ECOM-AGENT PRODUCT DETAIL PAGE */}
+        {currentPage === "product-ecom-agent" && (
+          <ProductEcomAgent navigateTo={navigateTo} />
         )}
       </main>
 
