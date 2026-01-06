@@ -1,6 +1,24 @@
 // import TalkWithUs from "./TalkUsWith";
+import { useEffect, useState } from "react";
 
 export default function QualityEngineeringPage() {
+  const [showScrollBtn, setShowScrollBtn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const solutionsSection = document.getElementById("solutions");
+      if (!solutionsSection) return;
+
+      const sectionTop = solutionsSection.getBoundingClientRect().top;
+
+      // when section is above viewport top
+      setShowScrollBtn(sectionTop < -100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="w-full min-h-screen text-white bg-[#020617]">
       {/* --------------------------------------------------------
@@ -83,7 +101,7 @@ export default function QualityEngineeringPage() {
           SOLUTIONS SECTION (Dark Navy)
       ========================================================== */}
       <section
-        id="solutions-section"
+        id="solutions"
         className="w-full py-20 bg-[#0d1320] border-t border-white/10"
       >
         <div className="max-w-7xl mx-auto px-10 md:px-16 lg:px-28">
@@ -543,6 +561,32 @@ export default function QualityEngineeringPage() {
           </div>
         </div>
       </section>
+      {showScrollBtn && (
+        <button
+          onClick={() => {
+            document
+              .getElementById("solutions")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="
+      fixed bottom-6 right-1/2 z-50
+      h-12 w-12
+      rounded-full
+      flex items-center justify-center
+      bg-slate-900/80 backdrop-blur-md
+      border border-cyan-400/30
+      text-cyan-300
+      shadow-[0_0_25px_rgba(34,211,238,0.45)]
+      hover:scale-110
+      hover:shadow-[0_0_40px_rgba(34,211,238,0.65)]
+      transition-all duration-300
+      animate-bounce-slow
+    "
+          aria-label="Scroll to Solutions"
+        >
+          ↑
+        </button>
+      )}
     </main>
   );
 }

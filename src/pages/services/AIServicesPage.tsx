@@ -1,6 +1,24 @@
-import React from "react";
+// import React from "react";
+import React, { useEffect, useState } from "react";
 
 const AIServicesPage: React.FC = () => {
+  const [showScrollBtn, setShowScrollBtn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const solutionsSection = document.getElementById("solutions");
+      if (!solutionsSection) return;
+
+      const sectionTop = solutionsSection.getBoundingClientRect().top;
+
+      // when section is above viewport top
+      setShowScrollBtn(sectionTop < -100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="w-full min-h-screen text-white bg-[#020617]">
       {/* =====================================================
@@ -83,7 +101,10 @@ const AIServicesPage: React.FC = () => {
       {/* =====================================================
           SOLUTIONS WE OFFER
       ===================================================== */}
-      <section className="w-full py-20 bg-[#0d1320] border-t border-white/10">
+      <section
+        id="solutions"
+        className="w-full py-20 bg-[#0d1320] border-t border-white/10"
+      >
         <div className="max-w-7xl mx-auto px-10 md:px-20">
           <h2 className="text-4xl font-light animate-fade-up">
             <span className="font-semibold">Solutions</span> we Offer
@@ -676,6 +697,32 @@ const AIServicesPage: React.FC = () => {
           </div>
         </div>
       </section>
+      {showScrollBtn && (
+        <button
+          onClick={() => {
+            document
+              .getElementById("solutions")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="
+      fixed bottom-6 right-1/2 z-50
+      h-12 w-12
+      rounded-full
+      flex items-center justify-center
+      bg-slate-900/80 backdrop-blur-md
+      border border-cyan-400/30
+      text-cyan-300
+      shadow-[0_0_25px_rgba(34,211,238,0.45)]
+      hover:scale-110
+      hover:shadow-[0_0_40px_rgba(34,211,238,0.65)]
+      transition-all duration-300
+      animate-bounce-slow
+    "
+          aria-label="Scroll to Solutions"
+        >
+          ↑
+        </button>
+      )}
 
       {/* =====================================================
           ANIMATION STYLES
@@ -703,6 +750,21 @@ const AIServicesPage: React.FC = () => {
         }
         .animate-slide-right {
           animation: slideRight 0.7s ease-out both;
+        }
+          @keyframes fadeUp {
+          0% { opacity: 0; transform: translateY(18px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+          animation: fadeUp 0.7s ease-out both;
+        }
+
+        @keyframes bounceSlow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        .animate-bounce-slow {
+          animation: bounceSlow 2.2s infinite;
         }
       `}</style>
     </main>
