@@ -602,8 +602,8 @@ const PRODUCTS = [
   },
   {
     id: "ecom-agent",
-    title: "Ecom-Agent",
-    shortLabel: "ECOM",
+    title: "",
+    shortLabel: "NexaGen",
     description:
       "An AI-powered eCommerce chatbot built for GCP, Bedrock, and Azure to assist customers, automate support, and enhance shopping experiences",
     route: "product-ecom-agent",

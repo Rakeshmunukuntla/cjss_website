@@ -11,7 +11,7 @@ export default function EcomAgentPage({}: EcomAgentPageProps) {
         {/* ================= HERO ================= */}
         <div className="text-center mb-24">
           <span className="text-sm tracking-widest text-cyan-300 uppercase">
-            Ecom-Agent
+            NexaGen
           </span>
 
           <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">

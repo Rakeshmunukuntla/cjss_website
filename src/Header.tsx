@@ -1275,7 +1275,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
 
           <NavButton
             label="Technology Services"
-            active={currentPage.startsWith("service-") || desktopTechOpen}
+            active={currentPage.startsWith("service-")}
             onClick={() => setDesktopTechOpen(!desktopTechOpen)}
           />
 
