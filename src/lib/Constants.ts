@@ -143,6 +143,7 @@ export const CLIENTS = [
   { name: "Changi Airport Group", icon: "✈️", image: "/images/changilogo.png" },
   { name: "Samsung SDS", icon: "🎧", image: "/images/samsungsdslogo.png" },
   { name: "CliffIT", icon: "💻", image: "/images/cliffit.png" },
+  { name: "Systex Asia", icon: "💻", image: "/images/systexlogo.png" },
 ];
 
 // export const EXPERTISE = [

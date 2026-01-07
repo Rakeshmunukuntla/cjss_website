@@ -93,14 +93,15 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
                 onClick={() => navigateTo("CarrierFresher")}
                 className="rounded-full border border-white/40 px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-white/10 backdrop-blur hover:border-white/70 transition-all"
               >
-                Job for Fresher
+                {/* Job at CJSS */}
+                Job Openings
               </button>
-              <button
+              {/* <button
                 onClick={() => navigateTo("CarrierExperienced")}
                 className="rounded-full border border-white/40 px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-white/10 backdrop-blur hover:border-white/70 transition-all"
               >
                 Job for Experienced
-              </button>
+              </button> */}
             </div>
           </div>
         </section>

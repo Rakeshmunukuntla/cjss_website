@@ -539,7 +539,7 @@ export default function QualityEngineeringPage() {
               {/* DETAILS */}
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white">
-                  Priya
+                  Lekhya Pypuri
                 </h3>
                 <p className="text-sm text-slate-400">Head of QA Solutions</p>
 

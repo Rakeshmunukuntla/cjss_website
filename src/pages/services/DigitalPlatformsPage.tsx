@@ -848,7 +848,7 @@ export const DigitalPlatformsPage: React.FC = () => {
               "
             >
               <img
-                src="/images/priya.png"
+                src="/images/sathyasir.jpeg"
                 alt="Priya"
                 className="
                   h-16 w-16 sm:h-20 sm:w-20
@@ -861,7 +861,7 @@ export const DigitalPlatformsPage: React.FC = () => {
 
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white">
-                  Priya
+                  Y Sathyanarayana
                 </h3>
                 <p className="text-sm text-slate-400">
                   Head of Digital Platforms

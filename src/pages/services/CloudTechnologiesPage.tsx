@@ -677,8 +677,8 @@ export default function CloudTechnologiesPage() {
             >
               {/* PROFILE IMAGE */}
               <img
-                src="/images/priya.png"
-                alt="Priya"
+                src="/images/japa.png"
+                alt="japa Vivek"
                 className="
                   h-16 w-16 sm:h-20 sm:w-20
                   rounded-full
@@ -691,7 +691,7 @@ export default function CloudTechnologiesPage() {
               {/* DETAILS */}
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white">
-                  Priya
+                  Japa Vivek
                 </h3>
                 <p className="text-sm text-slate-400">
                   Head of Cloud Engineering

@@ -661,7 +661,7 @@ const AIServicesPage: React.FC = () => {
             >
               {/* PROFILE IMAGE */}
               <img
-                src="/images/priya.png"
+                src="/images/srinivasmoole.jpg"
                 alt="Priya"
                 className="
             h-16 w-16 sm:h-20 sm:w-20
@@ -675,7 +675,7 @@ const AIServicesPage: React.FC = () => {
               {/* DETAILS */}
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white">
-                  Priya
+                  Srinivas Moole
                 </h3>
                 <p className="text-sm text-slate-400">Head of QA Solutions</p>
 
