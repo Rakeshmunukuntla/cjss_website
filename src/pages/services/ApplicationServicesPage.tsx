@@ -852,7 +852,7 @@ export default function ApplicationServicesPage() {
               ?.scrollIntoView({ behavior: "smooth" });
           }}
           className="
-      fixed bottom-6 right-1/2 z-50
+      fixed bottom-10 right-10 z-50
       h-12 w-12
       rounded-full
       flex items-center justify-center
