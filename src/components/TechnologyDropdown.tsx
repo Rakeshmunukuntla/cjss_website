@@ -484,13 +484,13 @@ import { TECHNOLOGY_SERVICES } from "../lib/Constants";
 /* =====================================================
    SYMBOLS PER TECHNOLOGY (data-driven)
 ===================================================== */
-const TECH_SYMBOLS: Record<string, string> = {
-  "quality-engineering": "✔",
-  "cloud-technologies": "☁",
-  "application-services": "🧩",
-  "digital-platforms": "🛒",
-  "ai-services": "🤖",
-};
+// const TECH_SYMBOLS: Record<string, string> = {
+//   "quality-engineering": "✔",
+//   "cloud-technologies": "☁",
+//   "application-services": "🧩",
+//   "digital-platforms": "🛒",
+//   "ai-services": "🤖",
+// };
 
 interface Props {
   navigateTo: (page: string) => void;
@@ -591,7 +591,7 @@ export const TechnologyDropdown = ({
                   }
                 `}
               >
-                {TECH_SYMBOLS[s.id] ?? "•"}
+                {/* {TECH_SYMBOLS[s.id] ?? "•"} */}
               </span>
 
               {/* TEXT */}

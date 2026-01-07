@@ -27,7 +27,7 @@
 //     </>
 //   );
 // };
-import { HeroSection } from "../components/home/HeroSection";
+// import { HeroSection } from "../components/home/HeroSection";
 import { AboutUsSection } from "../components/home/AboutUsSection";
 import { WhyChooseUsSection } from "../components/home/WhyChooseUsSection";
 import OurServicesSection from "../components/home/OurServicesSection";
@@ -49,7 +49,7 @@ export const HomePage = ({ navigateTo }: HomePageProps) => {
       {/* MUST receive navigateTo */}
       <EventCarouselBanner navigateTo={navigateTo} />
 
-      <HeroSection />
+      {/* <HeroSection /> */}
       <TechShowcaseSection />
       <AboutUsSection />
       <WhyChooseUsSection />

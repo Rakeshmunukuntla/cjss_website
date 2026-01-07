@@ -367,7 +367,8 @@ import { useEffect, useRef } from "react";
 
 /* Gradient used everywhere */
 const SOFT_GRADIENT =
-  "text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-sky-300 to-cyan-300";
+  // "text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-sky-300 to-cyan-300";
+  "text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-sky-300";
 
 export default function ISOSection() {
   const ref = useRef<HTMLDivElement>(null);

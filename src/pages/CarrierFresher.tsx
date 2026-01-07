@@ -32,7 +32,11 @@ const CarrierFresher = ({ navigateTo }: CarrierFresherProps) => {
       <div className="hidden md:block fixed top-20 left-10 w-[300px] h-[300px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none -z-10" />
       <div className="hidden md:block fixed bottom-20 right-10 w-[350px] h-[350px] bg-purple-500/10 blur-[180px] rounded-full pointer-events-none -z-10" />
 
-      <CareerNavigationBar links={links} navigateTo={navigateTo} />
+      <CareerNavigationBar
+        links={links}
+        navigateTo={navigateTo}
+        activePage="CarrierFresher"
+      />
 
       {/* Push content down to avoid navbar overlap */}
       <div className="h-[80px] md:h-[80px]" />

@@ -48,7 +48,11 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
     <>
       {/* ⭐ FIXED NAVBAR - Always visible, not blurred */}
       <div className={`${isModalOpen ? "relative z-[9998]" : ""}`}>
-        <CareerNavigationBar links={links} navigateTo={navigateTo} />
+        <CareerNavigationBar
+          links={links}
+          navigateTo={navigateTo}
+          activePage="CarrierHome"
+        />
       </div>
 
       {/* Main content wrapper with blur effect when modal is open */}

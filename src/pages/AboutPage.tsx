@@ -2,7 +2,7 @@
 
 import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
 
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 import { LeadershipSection } from "../components/about/LeadershipSection";
 import ContactForm from "./ContactForm";
 import Conversation from "./Conversation";
@@ -10,143 +10,143 @@ import {
   ADVANTAGES,
   CERTIFICATIONS,
   EXPERTISE,
-  TECH_USAGE,
+  // TECH_USAGE,
 } from "../lib/Constants";
 
 // Technology Usage Section Component with Counting Animation
-const TechUsageSection = () => {
-  const [counts, setCounts] = useState<number[]>(TECH_USAGE.map(() => 0));
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+// const TechUsageSection = () => {
+//   const [counts, setCounts] = useState<number[]>(TECH_USAGE.map(() => 0));
+//   const [hasAnimated, setHasAnimated] = useState(false);
+//   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          // Start counting animation
-          const targets = TECH_USAGE.map((tech) => tech.percentage);
-          const duration = 2000; // 2 seconds
-          const steps = 60;
-          const stepDuration = duration / steps;
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       (entries) => {
+//         if (entries[0].isIntersecting && !hasAnimated) {
+//           setHasAnimated(true);
+//           // Start counting animation
+//           const targets = TECH_USAGE.map((tech) => tech.percentage);
+//           const duration = 2000; // 2 seconds
+//           const steps = 60;
+//           const stepDuration = duration / steps;
 
-          let currentStep = 0;
+//           let currentStep = 0;
 
-          const interval = setInterval(() => {
-            currentStep++;
-            const progress = currentStep / steps;
+//           const interval = setInterval(() => {
+//             currentStep++;
+//             const progress = currentStep / steps;
 
-            const newCounts = targets.map((target) =>
-              Math.floor(target * progress)
-            );
-            setCounts(newCounts);
+//             const newCounts = targets.map((target) =>
+//               Math.floor(target * progress)
+//             );
+//             setCounts(newCounts);
 
-            if (currentStep >= steps) {
-              clearInterval(interval);
-              setCounts(targets);
-            }
-          }, stepDuration);
+//             if (currentStep >= steps) {
+//               clearInterval(interval);
+//               setCounts(targets);
+//             }
+//           }, stepDuration);
 
-          return () => clearInterval(interval);
-        }
-      },
-      { threshold: 0.3 }
-    );
+//           return () => clearInterval(interval);
+//         }
+//       },
+//       { threshold: 0.3 }
+//     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+//     if (sectionRef.current) {
+//       observer.observe(sectionRef.current);
+//     }
 
-    return () => observer.disconnect();
-  }, [hasAnimated]);
+//     return () => observer.disconnect();
+//   }, [hasAnimated]);
 
-  return (
-    <section ref={sectionRef} className="px-6 py-32 bg-neutral-950">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="mb-6 text-5xl font-bold text-center text-white">
-          Technology{" "}
-          <span className="text-transparent bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text">
-            Usage
-          </span>
-        </h2>
-        <p className="mb-16 text-lg text-center text-white">
-          Best for showing multiple technologies at once
-        </p>
+//   return (
+//     <section ref={sectionRef} className="px-6 py-32 bg-neutral-950">
+//       <div className="mx-auto max-w-7xl">
+//         <h2 className="mb-6 text-5xl font-bold text-center text-white">
+//           Technology{" "}
+//           <span className="text-transparent bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text">
+//             Usage
+//           </span>
+//         </h2>
+//         <p className="mb-16 text-lg text-center text-white">
+//           Best for showing multiple technologies at once
+//         </p>
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-          {TECH_USAGE.map((tech, idx) => (
-            <div key={idx} className="flex flex-col items-center group">
-              {/* Circular Progress */}
-              <div className="relative w-32 h-32 mb-4">
-                {/* Background circle */}
-                <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="54"
-                    fill="none"
-                    stroke="rgba(200, 200, 200, 0.3)"
-                    strokeWidth="6"
-                  />
-                  {/* Animated progress circle */}
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="54"
-                    fill="none"
-                    stroke="url(#gradientStroke)"
-                    strokeWidth="6"
-                    strokeDasharray={`${
-                      (counts[idx] / 100) * 2 * Math.PI * 54
-                    } ${2 * Math.PI * 54}`}
-                    strokeLinecap="round"
-                    className="transition-all ease-out group-hover:drop-shadow-lg"
-                    style={{
-                      filter: "drop-shadow(0 0 8px rgba(0, 221, 179, 0.5))",
-                    }}
-                  />
-                  <defs>
-                    <linearGradient
-                      id="gradientStroke"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop
-                        offset="0%"
-                        style={{ stopColor: "#0066FF", stopOpacity: 1 }}
-                      />
-                      <stop
-                        offset="100%"
-                        style={{ stopColor: "#00DDB3", stopOpacity: 1 }}
-                      />
-                    </linearGradient>
-                  </defs>
-                </svg>
+//         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
+//           {TECH_USAGE.map((tech, idx) => (
+//             <div key={idx} className="flex flex-col items-center group">
+//               {/* Circular Progress */}
+//               <div className="relative w-32 h-32 mb-4">
+//                 {/* Background circle */}
+//                 <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+//                   <circle
+//                     cx="60"
+//                     cy="60"
+//                     r="54"
+//                     fill="none"
+//                     stroke="rgba(200, 200, 200, 0.3)"
+//                     strokeWidth="6"
+//                   />
+//                   {/* Animated progress circle */}
+//                   <circle
+//                     cx="60"
+//                     cy="60"
+//                     r="54"
+//                     fill="none"
+//                     stroke="url(#gradientStroke)"
+//                     strokeWidth="6"
+//                     strokeDasharray={`${
+//                       (counts[idx] / 100) * 2 * Math.PI * 54
+//                     } ${2 * Math.PI * 54}`}
+//                     strokeLinecap="round"
+//                     className="transition-all ease-out group-hover:drop-shadow-lg"
+//                     style={{
+//                       filter: "drop-shadow(0 0 8px rgba(0, 221, 179, 0.5))",
+//                     }}
+//                   />
+//                   <defs>
+//                     <linearGradient
+//                       id="gradientStroke"
+//                       x1="0%"
+//                       y1="0%"
+//                       x2="100%"
+//                       y2="100%"
+//                     >
+//                       <stop
+//                         offset="0%"
+//                         style={{ stopColor: "#0066FF", stopOpacity: 1 }}
+//                       />
+//                       <stop
+//                         offset="100%"
+//                         style={{ stopColor: "#00DDB3", stopOpacity: 1 }}
+//                       />
+//                     </linearGradient>
+//                   </defs>
+//                 </svg>
 
-                {/* Center text with counting animation */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center animate-fadeIn">
-                  <span className="text-2xl font-bold text-white">
-                    {counts[idx]}%
-                  </span>
-                </div>
+//                 {/* Center text with counting animation */}
+//                 <div className="absolute inset-0 flex flex-col items-center justify-center animate-fadeIn">
+//                   <span className="text-2xl font-bold text-white">
+//                     {counts[idx]}%
+//                   </span>
+//                 </div>
 
-                {/* Pulsing ring on hover */}
-                <div className="absolute inset-0 transition-all duration-500 border-2 rounded-full border-purple-400/0 group-hover:border-purple-400/50 group-hover:animate-pulse"></div>
-              </div>
+//                 {/* Pulsing ring on hover */}
+//                 <div className="absolute inset-0 transition-all duration-500 border-2 rounded-full border-purple-400/0 group-hover:border-purple-400/50 group-hover:animate-pulse"></div>
+//               </div>
 
-              {/* Technology name */}
-              <h3 className="text-sm font-semibold text-center text-white">
-                {tech.name}
-              </h3>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//               {/* Technology name */}
+//               <h3 className="text-sm font-semibold text-center text-white">
+//                 {tech.name}
+//               </h3>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 export const AboutPage = () => {
   const heroStats = [
@@ -347,7 +347,7 @@ export const AboutPage = () => {
       </section>
 
       {/* Technology Usage Section */}
-      <TechUsageSection />
+      {/* <TechUsageSection /> */}
 
       {/* Expertise Section */}
       <section className="px-6 py-28 bg-neutral-950">

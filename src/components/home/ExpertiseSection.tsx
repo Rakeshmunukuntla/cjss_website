@@ -48,8 +48,11 @@ export const ExpertiseSection = () => {
         <div className="absolute inset-0 bg-black" />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
 
-        <div className="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-sky-300/10 blur-3xl animate-blob" />
-        <div className="absolute -bottom-40 -right-24 w-[460px] h-[460px] rounded-full bg-emerald-300/10 blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-purple-300/10 blur-3xl animate-blob" />
+        <div
+          className="absolute -bottom-40 -right-24 w-[460px] h-[460px] rounded-full bg-sky-300/10
+ blur-3xl animate-blob animation-delay-2000"
+        />
 
         <div
           className="absolute inset-0 opacity-[0.02]"
@@ -87,8 +90,8 @@ export const ExpertiseSection = () => {
                     shadow-[0_10px_30px_rgba(0,0,0,0.6)]
                     transition-all duration-500 ease-out
                     hover:-translate-y-2
-                    hover:shadow-[0_0_40px_rgba(56,189,248,0.18)]
-                    hover:border-cyan-400/40
+                   hover:shadow-[0_0_45px_rgba(168,85,247,0.25)]
+                   hover:border-purple-300/50
                     ${
                       visibleIndices.has(item.idx)
                         ? "animate-fadeInUp opacity-100"
@@ -97,7 +100,11 @@ export const ExpertiseSection = () => {
                   `}
                 >
                   {/* Hover Glow */}
-                  <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.12),transparent_75%)]" />
+                  {/* <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.12),transparent_75%)]" /> */}
+                  <div
+                    className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out
+                      bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.16),rgba(56,189,248,0.10),transparent_75%)]"
+                  />
 
                   {/* Header */}
                   <div className="flex items-center justify-between relative z-10">

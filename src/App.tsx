@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { TECHNOLOGY_SERVICES } from "./lib/Constants";
@@ -30,7 +30,12 @@ import ProductEcomAgent from "./pages/products/ProductEcomAgent";
 
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
-
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
   const navigateTo = (page: string) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });

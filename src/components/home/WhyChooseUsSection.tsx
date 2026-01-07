@@ -98,7 +98,7 @@ export const WhyChooseUsSection = () => {
             <div
               key={idx}
               data-index={idx}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a]/80 p-6 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(56,189,248,0.2)] hover:border-cyan-400/40 ${
+              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a]/80 p-6 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_0_45px_rgba(168,85,247,0.25)] hover:border-purple-300/50 ${
                 visibleIndices.has(idx)
                   ? "animate-scaleIn opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
@@ -106,11 +106,18 @@ export const WhyChooseUsSection = () => {
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Smooth hover glow */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.10),transparent_75%)]" />
+              {/* <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.10),transparent_75%)]" /> */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out
+                      bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.16),rgba(56,189,248,0.10),transparent_75%)]"
+              />
 
               {/* Inline SVG inside the blue box */}
               <div className="relative mb-4">
-                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-500 shadow-[0_8px_18px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-0.5 animate-iconFloat">
+                <div
+                  className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-purple-400 to-sky-400
+ shadow-[0_8px_18px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-0.5 animate-iconFloat"
+                >
                   <span
                     className="w-6 h-6"
                     dangerouslySetInnerHTML={{
