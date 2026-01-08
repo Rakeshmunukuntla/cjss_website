@@ -169,7 +169,7 @@ export const GlobeSection = () => {
   }, []);
 
   return (
-    <section className="globe-section relative overflow-visible min-h-[110vh] flex flex-col items-center justify-center text-white">
+    <section className="globe-section relative overflow-visible min-h-[120vh] flex flex-col items-center justify-center text-white">
       {/* 🌌 Background */}
       <div className="absolute inset-0 overflow-hidden -z-30">
         {/* Main vertical gradient */}
@@ -228,7 +228,7 @@ export const GlobeSection = () => {
 
       {/* 🌍 Globe in front */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <Globe scale={1.8} theta={0.3} dark={1} />
+        <Globe scale={1.65} theta={0.3} dark={1} />
       </div>
 
       {/* Text Content */}
