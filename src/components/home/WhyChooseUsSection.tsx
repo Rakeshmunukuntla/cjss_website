@@ -482,11 +482,7 @@ export const WhyChooseUsSection = () => {
         </h2>
 
         {/* Decorative Divider */}
-        <div className="flex items-center justify-center gap-4 mb-16 animate-fadeInUp">
-          <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent to-purple-400" />
-          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-sky-400" />
-          <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-l from-transparent to-sky-400" />
-        </div>
+        <div className="flex items-center justify-center gap-4 mb-16 animate-fadeInUp"></div>
 
         {/* Cards Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

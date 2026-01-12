@@ -184,7 +184,8 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
           <MentorStoriesSection onModalOpen={setIsModalOpen} />
           <BenefitsSection />
           <ISOSection />
-          <UploadResumeSection />
+          {/* <UploadResumeSection  /> */}
+          <UploadResumeSection navigateTo={navigateTo} />
         </CareerBackgroundWrapper>
       </div>
     </>

@@ -229,22 +229,52 @@ export const EXPERTISE = [
   },
 ];
 
+// export const LEADERS = [
+//   {
+//     name: "Venkat Krishna",
+//     designation: "Director",
+//     info: "20+ years in technology leadership driving innovation and digital transformation across enterprises",
+//     image: "👨‍💼",
+//     profileImage: "/images/Krishna3.jpg",
+//     bio: "Venkat has extensive experience working in the information technology industry and leading web experience, content management, and e-commerce engagements, and global teams. He has a long track record in delivery management, managing customer relationships, solution conceptualization, and championing technology Centers of Excellence (CoE).",
+//   },
+//   {
+//     name: "Srikanth Banthu",
+//     designation: "Director",
+//     info: "15+ years in enterprise architecture and cloud solutions with expertise in strategic technology planning",
+//     image: "👨‍💻",
+//     profileImage: "/images/Srikanth_2.png",
+//     bio: "Srikanth brings extensive expertise in enterprise architecture, cloud transformation, and strategic technology planning. With a proven track record in managing large-scale digital initiatives and building high-performing teams, he drives innovation and operational excellence across the organization.",
+//   },
+// ];
 export const LEADERS = [
   {
-    name: "Venkat Krishna",
-    designation: "Director",
-    info: "20+ years in technology leadership driving innovation and digital transformation across enterprises",
-    image: "👨‍💼",
+    name: "Venkatkrishna",
+    designation: "Director, CJSS Technologies",
     profileImage: "/images/Krishna3.jpg",
-    bio: "Venkat has extensive experience working in the information technology industry and leading web experience, content management, and e-commerce engagements, and global teams. He has a long track record in delivery management, managing customer relationships, solution conceptualization, and championing technology Centers of Excellence (CoE).",
+    bio: [
+      "Venkatkrishna is the Director of CJSS Technologies, with a strong foundation in building and delivering scalable digital platforms for global enterprises. He has led the successful implementation of complex digital commerce and enterprise systems, helping organizations adopt technology that is reliable, adaptable, and future-ready.",
+
+      "With deep expertise in SAP Commerce (Hybris) and headless commerce architectures, Venkatkrishna works closely with clients and teams to define clear technology roadmaps and practical implementation strategies that balance performance, scalability, and long-term sustainability.",
+
+      "Beyond technology, Venkatkrishna believes that strong teams build strong solutions. His leadership is rooted in trust, collaboration, and continuous learning, fostering a culture where quality, accountability, and innovation come naturally. Under his guidance, CJSS Technologies has grown into a trusted technology partner for enterprises worldwide.",
+    ],
+    quote:
+      "Technology succeeds when it is built with clarity, purpose, and people at the center.",
   },
   {
     name: "Srikanth Banthu",
-    designation: "Director",
-    info: "15+ years in enterprise architecture and cloud solutions with expertise in strategic technology planning",
-    image: "👨‍💻",
+    designation: "Director, CJSS Technologies",
     profileImage: "/images/Srikanth_2.png",
-    bio: "Srikanth brings extensive expertise in enterprise architecture, cloud transformation, and strategic technology planning. With a proven track record in managing large-scale digital initiatives and building high-performing teams, he drives innovation and operational excellence across the organization.",
+    bio: [
+      "Srikanth Banthu is a Director at CJSS Technologies, with strong expertise in Java-based enterprise application development and system architecture. He has played a key role in designing and delivering secure, scalable, and high-performance backend systems for enterprise clients.",
+
+      "With deep proficiency in Java, Spring frameworks, and API-driven architectures, Srikanth focuses on building clean, maintainable, and resilient systems that support long-term business growth. He works closely with engineering teams to establish strong technical foundations, best practices, and efficient development processes.",
+
+      "As a leader, Srikanth values discipline, ownership, and continuous improvement. He believes in empowering teams through mentorship and collaboration, creating an environment where engineering excellence and quality-driven execution are standard—not optional.",
+    ],
+    quote:
+      "Well-built systems earn trust—both from businesses and the people who depend on them.",
   },
 ];
 

@@ -185,7 +185,7 @@ export const mentors: Mentor[] = [
     id: 1,
     name: "Narmendran Yentrapati",
     role: "Program Manager",
-    image: "/images/narmen.png",
+    image: "/images/narmensir.jpg",
     shortStory: "Managing complex programs with precision.",
     fullStory:
       "Narmendran leads large, multi-stream enterprise programs with strong governance and predictability. He ensures alignment across stakeholders, mitigates risks, and delivers programs on time and within scope.",
@@ -221,7 +221,7 @@ export const mentors: Mentor[] = [
     id: 4,
     name: "Jagadeesh Guddati",
     role: "SAP CX Lead",
-    image: "/images/jairam.png",
+    image: "/images/jagadishg.jpg",
     shortStory: "Leading customer-centric SAP CX platforms.",
     fullStory:
       "Jagadeesh heads SAP CX initiatives, delivering scalable and high-performing commerce platforms. He ensures best practices across SAP Commerce implementations for global clients.",
@@ -517,6 +517,7 @@ const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-cyan-300 to-purple-400">
               {typingText}
             </span>
+
             <span className="ml-1 border-r-2 border-purple-400 animate-pulse"></span>
           </h2>
 

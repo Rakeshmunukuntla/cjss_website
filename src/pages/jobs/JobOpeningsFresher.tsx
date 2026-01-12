@@ -40,6 +40,23 @@
 //   pageSize?: number;
 // }
 
+// // ⭐ Gradient Text Component
+// const GradientText = ({
+//   children,
+//   className = "",
+// }: {
+//   children: React.ReactNode;
+//   className?: string;
+// }) => {
+//   return (
+//     <span
+//       className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 ${className}`}
+//     >
+//       {children}
+//     </span>
+//   );
+// };
+
 // const JobOpeningsBase = ({
 //   filterMode,
 //   pageSize = 9,
@@ -106,7 +123,8 @@
 //     async function loadJobs() {
 //       try {
 //         setLoading(true);
-//         const res = await fetch("http://172.16.16.33:5000/jobs");
+//         // const res = await fetch("http://172.16.16.33:5000/jobs");
+//         const res = await fetch("http://localhost:5000/jobs/");
 //         const data = await res.json();
 //         setJobs(data);
 //       } catch (e) {
@@ -296,31 +314,30 @@
 //         </div>
 
 //         <div className="relative z-10 mx-auto max-w-6xl">
-//           {/* HEADER */}
+//           {/* HEADER - ⭐ Updated text colors */}
 //           <div className="text-center mb-16">
-//             <div className="inline-flex items-center gap-2 px-4 py-1 mb-4 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full border border-purple-400/10 bg-purple-500/10 text-purple-100/90 backdrop-blur-md">
-//               {/* <span className="relative flex items-center justify-center w-3 h-3">
-//                 <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-purple-400 animate-ping" />
-//                 <span className="relative inline-flex w-2 h-2 rounded-full bg-purple-300" />
-//               </span> */}
-//               <span>
+//             <div className="inline-flex items-center gap-2 px-4 py-1 mb-4 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full border border-purple-400/20 bg-purple-500/10 backdrop-blur-md">
+//               <GradientText>
 //                 {filterMode === "fresher"
 //                   ? "Fresher Opportunities"
 //                   : filterMode === "experienced"
 //                   ? "Experienced Roles"
 //                   : "Career Opportunities"}
-//               </span>
+//               </GradientText>
 //             </div>
 
-//             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-gradient-to-r from-purple-300 via-cyan-300 to-purple-300 bg-clip-text">
-//               {filterMode === "fresher"
-//                 ? "Fresher Job Opportunities"
-//                 : filterMode === "experienced"
-//                 ? "Experienced Job Openings"
-//                 : "Open Positions"}
+//             <h2 className="text-4xl md:text-5xl font-bold mb-6">
+//               <GradientText>
+//                 {filterMode === "fresher"
+//                   ? "Fresher Job Opportunities"
+//                   : filterMode === "experienced"
+//                   ? "Experienced Job Openings"
+//                   : "Open Positions"}
+//               </GradientText>
 //             </h2>
 //             <p className="text-xl text-white/60 max-w-3xl mx-auto">
-//               Search, filter & apply for your dream role.
+//               Search, filter & apply for your{" "}
+//               <GradientText className="font-semibold">dream role</GradientText>.
 //             </p>
 //           </div>
 
@@ -328,7 +345,7 @@
 //           <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-4 mb-8">
 //             {/* SEARCH */}
 //             <div className="relative w-full lg:w-[60%]">
-//               <Search className="absolute -translate-y-1/2 left-4 top-1/2 text-white/40 w-5 h-5" />
+//               <Search className="absolute -translate-y-1/2 left-4 top-1/2 text-purple-400/60 w-5 h-5" />
 //               <input
 //                 placeholder="Search by title, skills, or description…"
 //                 className="
@@ -359,15 +376,18 @@
 //                   flex items-center justify-between
 //                   ${
 //                     sortDropdownOpen
-//                       ? "text-purple-300 border-purple-400/40"
-//                       : "text-white/80 hover:text-white"
+//                       ? "border-purple-400/40"
+//                       : "hover:border-purple-400/30"
 //                   }
 //                 `}
 //               >
-//                 <span>
-//                   Sort: {sortOptions.find((o) => o.value === sortBy)?.label}
+//                 <span className="flex items-center gap-2">
+//                   <span className="text-white/60">Sort:</span>
+//                   <GradientText className="font-semibold">
+//                     {sortOptions.find((o) => o.value === sortBy)?.label}
+//                   </GradientText>
 //                 </span>
-//                 <span className="ml-2 text-xs">
+//                 <span className="ml-2 text-xs text-purple-400">
 //                   {sortDropdownOpen ? "▲" : "▼"}
 //                 </span>
 //               </button>
@@ -384,7 +404,7 @@
 //                       absolute top-full left-0 right-0 mt-2 z-50
 //                       rounded-2xl
 //                       bg-[#0a0a0a]/95 backdrop-blur-xl
-//                       border border-white/10
+//                       border border-purple-400/20
 //                       shadow-[0_12px_38px_rgba(0,0,0,0.65)]
 //                       p-2
 //                     "
@@ -398,18 +418,17 @@
 //                             setSortBy(option.value as SortOption);
 //                             setSortDropdownOpen(false);
 //                           }}
-//                           className="w-full px-4 py-3 text-left transition-all duration-300 rounded-xl group hover:bg-white/5"
+//                           className={`w-full px-4 py-3 text-left transition-all duration-300 rounded-xl hover:bg-purple-500/10 ${
+//                             isSelected ? "bg-purple-500/10" : ""
+//                           }`}
 //                         >
-//                           <div
-//                             className={`
-//                               text-sm font-bold transition-all duration-300
-//                               ${isSelected ? "text-purple-300" : "text-white"}
-//                               group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
-//                               group-hover:text-transparent group-hover:bg-clip-text
-//                             `}
+//                           <GradientText
+//                             className={`text-sm font-bold ${
+//                               !isSelected && "opacity-70"
+//                             }`}
 //                           >
 //                             {option.label}
-//                           </div>
+//                           </GradientText>
 //                         </button>
 //                       );
 //                     })}
@@ -419,7 +438,7 @@
 //             </div>
 //           </div>
 
-//           {/* CATEGORY FILTER - Updated for black theme */}
+//           {/* CATEGORY FILTER */}
 //           <div className="flex flex-wrap justify-center gap-4 mb-12">
 //             {categories.map((cat) => (
 //               <button
@@ -430,7 +449,7 @@
 //                 }}
 //                 className={`px-6 py-2 rounded-full font-medium text-sm transition-all ${
 //                   selectedCategory === cat
-//                     ? "bg-purple-600 text-white shadow-md shadow-purple-500/30"
+//                     ? "bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 text-white shadow-md shadow-purple-500/30"
 //                     : "bg-[#0a0a0a]/80 border border-white/10 hover:border-purple-400/50 text-white/80"
 //                 }`}
 //               >
@@ -439,17 +458,19 @@
 //             ))}
 //           </div>
 
-//           {/* JOB CARDS */}
+//           {/* JOB CARDS - ⭐ Updated text colors and hover effects */}
 //           {loading ? (
 //             <div className="py-20 text-center">
-//               <div className="inline-flex items-center gap-3 text-white/70">
+//               <div className="inline-flex items-center gap-3">
 //                 <div className="w-5 h-5 border-2 border-purple-400 rounded-full border-t-transparent animate-spin" />
-//                 Loading jobs…
+//                 <GradientText>Loading jobs…</GradientText>
 //               </div>
 //             </div>
 //           ) : paginatedRoles.length === 0 ? (
-//             <div className="py-20 text-center text-white/60">
-//               No jobs found for the selected filters.
+//             <div className="py-20 text-center">
+//               <GradientText className="text-lg">
+//                 No jobs found for the selected filters.
+//               </GradientText>
 //             </div>
 //           ) : (
 //             <div className="grid gap-8 lg:grid-cols-3">
@@ -472,30 +493,36 @@
 //                         animate={{ opacity: 1, y: 0 }}
 //                         transition={{ delay: index * 0.1 }}
 //                         className="
-//                           group relative rounded-3xl border border-white/10
+//                           group relative rounded-3xl border border-purple-400/20
 //                           bg-[#0a0a0a]/80
 //                           backdrop-blur-md
 //                           px-6 py-7 flex flex-col gap-5
 //                           transition-all duration-500
 //                           hover:-translate-y-3 hover:scale-[1.02]
-//                           hover:border-purple-400/50
-//                           hover:shadow-[0_0_40px_rgba(139,92,246,0.2)]
+//                           hover:border-purple-400/60
+//                           hover:shadow-[0_0_50px_rgba(139,92,246,0.25)]
 //                         "
 //                       >
-//                         {/* Hover glow effect */}
-//                         <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.1),transparent_50%)]" />
+//                         {/* Hover glow effect - ⭐ Enhanced */}
+//                         <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.15),transparent_50%)]" />
 
 //                         <div className="relative flex items-start justify-between gap-3">
 //                           <div className="flex-1">
-//                             <p className="text-xs uppercase tracking-[0.3em] text-white/40 mb-2">
-//                               Open role
+//                             <p className="text-xs uppercase tracking-[0.3em] mb-2">
+//                               <GradientText className="opacity-60">
+//                                 Open role
+//                               </GradientText>
 //                             </p>
-//                             <h3 className="text-xl font-bold text-white transition-colors group-hover:text-purple-200">
-//                               {role.title}
+//                             {/* ⭐ Job title with gradient */}
+//                             <h3 className="text-xl font-bold transition-colors">
+//                               <GradientText className="group-hover:opacity-100 opacity-90">
+//                                 {role.title}
+//                               </GradientText>
 //                             </h3>
 //                           </div>
-//                           <span className="shrink-0 px-3 py-1 text-xs font-medium border rounded-full text-white/70 border-white/10 bg-white/5">
-//                             {role.category}
+//                           {/* ⭐ Category badge with gradient border */}
+//                           <span className="shrink-0 px-3 py-1 text-xs font-medium border rounded-full border-purple-400/30 bg-purple-500/10">
+//                             <GradientText>{role.category}</GradientText>
 //                           </span>
 //                         </div>
 
@@ -506,34 +533,39 @@
 //                         <div className="relative flex items-center justify-between text-xs text-white/50">
 //                           <div className="flex items-center gap-2">
 //                             <Brain className="w-4 h-4 text-purple-400 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.8)] transition-all" />
-//                             <span>{role.experience}</span>
+//                             <GradientText>{role.experience}</GradientText>
 //                           </div>
 //                           <div className="flex items-center gap-2">
 //                             <MapPin className="w-4 h-4 text-cyan-400 group-hover:drop-shadow-[0_0_8px_rgba(94,231,255,0.8)] transition-all" />
-//                             <span>{role.location}</span>
+//                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+//                               {role.location}
+//                             </span>
 //                           </div>
 //                         </div>
 
-//                         <div className="relative flex flex-wrap gap-2 pt-4 border-t border-white/5">
+//                         {/* ⭐ Skills with gradient text on hover */}
+//                         <div className="relative flex flex-wrap gap-2 pt-4 border-t border-purple-400/10">
 //                           {role.skills.slice(0, 3).map((skill, idx) => (
 //                             <span
 //                               key={idx}
-//                               className="text-[11px] text-white/70 border border-white/10 rounded-full px-3 py-1 bg-white/5"
+//                               className="text-[11px] text-white/70 border border-purple-400/20 rounded-full px-3 py-1 bg-purple-500/5 hover:border-purple-400/40 transition-all"
 //                             >
 //                               {skill}
 //                             </span>
 //                           ))}
 //                           {role.skills.length > 3 && (
-//                             <span className="text-[11px] text-purple-300/80 px-2 py-1">
-//                               +{role.skills.length - 3} more
+//                             <span className="text-[11px] px-2 py-1">
+//                               <GradientText>
+//                                 +{role.skills.length - 3} more
+//                               </GradientText>
 //                             </span>
 //                           )}
 //                         </div>
 
-//                         {/* Expandable section on hover */}
-//                         <div className="relative pt-4 overflow-hidden text-sm transition-all duration-500 ease-out border-t opacity-0 border-white/5 text-white/60 max-h-0 group-hover:max-h-32 group-hover:opacity-100">
-//                           <p className="mb-1 font-semibold text-white/80">
-//                             What you'll do
+//                         {/* Expandable section on hover - ⭐ Updated text */}
+//                         <div className="relative pt-4 overflow-hidden text-sm transition-all duration-500 ease-out border-t opacity-0 border-purple-400/10 text-white/60 max-h-0 group-hover:max-h-32 group-hover:opacity-100">
+//                           <p className="mb-1 font-semibold">
+//                             <GradientText>What you'll do</GradientText>
 //                           </p>
 //                           <p className="text-white/50 text-xs leading-relaxed">
 //                             Work with cross-functional squads delivering
@@ -541,7 +573,7 @@
 //                           </p>
 //                         </div>
 
-//                         {/* Action Buttons - Updated style */}
+//                         {/* Action Buttons - NOT CHANGED */}
 //                         <div className="relative flex gap-3 mt-auto pt-2">
 //                           <button
 //                             onClick={() => setSelectedJob(role)}
@@ -577,7 +609,7 @@
 //             </div>
 //           )}
 
-//           {/* PAGINATION - Updated style */}
+//           {/* PAGINATION - NOT CHANGED */}
 //           {totalPages > 1 && (
 //             <div className="flex justify-center gap-3 mt-16">
 //               {Array.from({ length: totalPages }).map((_, idx) => (
@@ -602,7 +634,7 @@
 //         </div>
 //       </section>
 
-//       {/* JOB DETAILS POPUP */}
+//       {/* JOB DETAILS POPUP - ⭐ Updated text colors only */}
 //       <AnimatePresence>
 //         {selectedJob && (
 //           <motion.div
@@ -620,11 +652,11 @@
 //                 w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-8 rounded-3xl
 //                 bg-[#0a0a0a]/98
 //                 shadow-[0_0_60px_rgba(0,0,0,0.8)]
-//                 border border-white/10
+//                 border border-purple-400/20
 //                 backdrop-blur-2xl
 //               "
 //             >
-//               {/* Close */}
+//               {/* Close - NOT CHANGED */}
 //               <button
 //                 onClick={() => setSelectedJob(null)}
 //                 className="
@@ -637,52 +669,62 @@
 //                 <X className="w-5 h-5 text-white" />
 //               </button>
 
-//               {/* Title */}
-//               <h3 className="text-3xl font-extrabold text-transparent bg-gradient-to-r from-purple-300 via-cyan-300 to-purple-300 bg-clip-text pr-10">
-//                 {selectedJob.title}
+//               {/* Title - ⭐ Gradient */}
+//               <h3 className="text-3xl font-extrabold pr-10">
+//                 <GradientText>{selectedJob.title}</GradientText>
 //               </h3>
 
-//               <p className="mt-3 inline-block px-3 py-1 text-xs rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-purple-300">
-//                 {selectedJob.category}
+//               <p className="mt-3 inline-block px-3 py-1 text-xs rounded-full bg-purple-500/10 backdrop-blur-md border border-purple-400/20">
+//                 <GradientText>{selectedJob.category}</GradientText>
 //               </p>
 
-//               {/* Experience */}
+//               {/* Experience - ⭐ Gradient text */}
 //               <div className="flex items-center gap-3 mt-6 text-white/80">
-//                 <span className="flex items-center gap-2 text-purple-300">
-//                   <Brain className="w-5 h-5" /> Experience:
+//                 <span className="flex items-center gap-2">
+//                   <Brain className="w-5 h-5 text-purple-400" />
+//                   <GradientText>Experience:</GradientText>
 //                 </span>
-//                 <span className="font-semibold">{selectedJob.experience}</span>
+//                 <span className="font-semibold text-white">
+//                   {selectedJob.experience}
+//                 </span>
 //               </div>
 
-//               {/* Location */}
+//               {/* Location - ⭐ Gradient text */}
 //               <div className="flex items-center gap-3 mt-3 text-white/80">
-//                 <span className="flex items-center gap-2 text-cyan-300">
-//                   <MapPin className="w-5 h-5" /> Location:
+//                 <span className="flex items-center gap-2">
+//                   <MapPin className="w-5 h-5 text-cyan-400" />
+//                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+//                     Location:
+//                   </span>
 //                 </span>
-//                 <span className="font-semibold">{selectedJob.location}</span>
+//                 <span className="font-semibold text-white">
+//                   {selectedJob.location}
+//                 </span>
 //               </div>
 
 //               {/* Posted Date */}
 //               {selectedJob.createdAt && (
 //                 <p className="mt-3 text-sm text-white/50">
 //                   Posted on:{" "}
-//                   <span className="text-white/70">
+//                   <GradientText className="font-medium">
 //                     {new Date(selectedJob.createdAt).toDateString()}
-//                   </span>
+//                   </GradientText>
 //                 </p>
 //               )}
 
-//               {/* Description */}
-//               <h4 className="mt-8 mb-3 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300">
-//                 Job Description
+//               {/* Description - ⭐ Gradient heading */}
+//               <h4 className="mt-8 mb-3 text-lg font-semibold">
+//                 <GradientText>Job Description</GradientText>
 //               </h4>
 //               <p className="leading-relaxed text-white/70">
 //                 {selectedJob.description}
 //               </p>
 
-//               {/* Skills */}
-//               <h4 className="mt-8 mb-3 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">
-//                 Skills Required
+//               {/* Skills - ⭐ Gradient heading */}
+//               <h4 className="mt-8 mb-3 text-lg font-semibold">
+//                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+//                   Skills Required
+//                 </span>
 //               </h4>
 //               <div className="flex flex-wrap gap-2">
 //                 {selectedJob.skills.map((skill, i) => (
@@ -690,7 +732,7 @@
 //                     key={i}
 //                     className="
 //                       px-4 py-1.5 text-sm rounded-full
-//                       bg-white/10 border border-white/15 backdrop-blur-md
+//                       bg-purple-500/10 border border-purple-400/20 backdrop-blur-md
 //                       text-white/80
 //                     "
 //                   >
@@ -699,7 +741,7 @@
 //                 ))}
 //               </div>
 
-//               {/* Apply Button - Updated style */}
+//               {/* Apply Button - NOT CHANGED */}
 //               <button
 //                 onClick={() => {
 //                   setApplyJob(selectedJob);
@@ -721,7 +763,7 @@
 //         )}
 //       </AnimatePresence>
 
-//       {/* APPLY FORM POPUP (MULTI-STEP) */}
+//       {/* APPLY FORM POPUP (MULTI-STEP) - ⭐ Updated text colors only */}
 //       <AnimatePresence>
 //         {applyJob && (
 //           <motion.div
@@ -739,7 +781,7 @@
 //                 w-full max-w-xl max-h-[90vh] overflow-y-auto p-8 relative rounded-3xl
 //                 bg-[#0a0a0a]/98
 //                 backdrop-blur-2xl
-//                 border border-white/10
+//                 border border-purple-400/20
 //                 shadow-[0_0_50px_rgba(0,0,0,0.8)]
 //               "
 //             >
@@ -757,11 +799,12 @@
 //                 <X className="w-5 h-5 text-white" />
 //               </button>
 
-//               <h3 className="mb-6 text-2xl font-bold text-transparent bg-gradient-to-r from-purple-300 via-cyan-300 to-purple-300 bg-clip-text pr-10">
-//                 Apply for {applyJob.title}
+//               {/* ⭐ Gradient title */}
+//               <h3 className="mb-6 text-2xl font-bold pr-10">
+//                 Apply for <GradientText>{applyJob.title}</GradientText>
 //               </h3>
 
-//               {/* Step indicators */}
+//               {/* Step indicators - NOT CHANGED */}
 //               <div className="flex justify-center gap-3 mb-8">
 //                 {[1, 2, 3, 4].map((s) => (
 //                   <div
@@ -783,7 +826,7 @@
 //                 ))}
 //               </div>
 
-//               {/* Error banner */}
+//               {/* Error banner - NOT CHANGED */}
 //               {formError && (
 //                 <motion.p
 //                   initial={{ opacity: 0, y: -10 }}
@@ -794,7 +837,7 @@
 //                 </motion.p>
 //               )}
 
-//               {/* STEP 1 – Personal Info */}
+//               {/* STEP 1 – Personal Info - ⭐ Updated labels */}
 //               {applyStep === 1 && (
 //                 <motion.div
 //                   initial={{ opacity: 0, x: 20 }}
@@ -802,16 +845,16 @@
 //                   className="space-y-5"
 //                 >
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       First Name
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>First Name</GradientText>
 //                     </label>
 //                     <input
 //                       className="
 //                         w-full px-4 py-3 rounded-xl
 //                         bg-white/5 backdrop-blur-md
-//                         border border-white/10
-//                         focus:border-white/40
-//                         focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                         border border-purple-400/20
+//                         focus:border-purple-400/60
+//                         focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                         outline-none
 //                         transition-all
 //                         text-white
@@ -824,16 +867,16 @@
 //                   </div>
 
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       Last Name
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>Last Name</GradientText>
 //                     </label>
 //                     <input
 //                       className="
 //                         w-full px-4 py-3 rounded-xl
 //                         bg-white/5 backdrop-blur-md
-//                         border border-white/10
-//                         focus:border-white/40
-//                         focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                         border border-purple-400/20
+//                         focus:border-purple-400/60
+//                         focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                         outline-none
 //                         transition-all
 //                         text-white
@@ -846,17 +889,17 @@
 //                   </div>
 
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       Email
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>Email</GradientText>
 //                     </label>
 //                     <input
 //                       type="email"
 //                       className="
 //                         w-full px-4 py-3 rounded-xl
 //                         bg-white/5 backdrop-blur-md
-//                         border border-white/10
-//                         focus:border-white/40
-//                         focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                         border border-purple-400/20
+//                         focus:border-purple-400/60
+//                         focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                         outline-none
 //                         transition-all
 //                         text-white
@@ -869,17 +912,17 @@
 //                   </div>
 
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       Mobile Number
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>Mobile Number</GradientText>
 //                     </label>
 //                     <input
 //                       type="tel"
 //                       className="
 //                         w-full px-4 py-3 rounded-xl
 //                         bg-white/5 backdrop-blur-md
-//                         border border-white/10
-//                         focus:border-white/40
-//                         focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                         border border-purple-400/20
+//                         focus:border-purple-400/60
+//                         focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                         outline-none
 //                         transition-all
 //                         text-white
@@ -926,7 +969,7 @@
 //                 </motion.div>
 //               )}
 
-//               {/* STEP 2 – Education */}
+//               {/* STEP 2 – Education - ⭐ Updated label */}
 //               {applyStep === 2 && (
 //                 <motion.div
 //                   initial={{ opacity: 0, x: 20 }}
@@ -934,17 +977,19 @@
 //                   className="space-y-5"
 //                 >
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       Highest Education Qualification
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>
+//                         Highest Education Qualification
+//                       </GradientText>
 //                     </label>
 //                     <div className="relative">
 //                       <select
 //                         className="
 //                           w-full px-4 py-3 rounded-xl
 //                           bg-white/5 backdrop-blur-md
-//                           border border-white/10
-//                           focus:border-white/40
-//                           focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                           border border-purple-400/20
+//                           focus:border-purple-400/60
+//                           focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                           outline-none
 //                           transition-all
 //                           text-white
@@ -973,7 +1018,7 @@
 //                           Degree
 //                         </option>
 //                       </select>
-//                       <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+//                       <span className="absolute right-4 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none">
 //                         ▼
 //                       </span>
 //                     </div>
@@ -1016,7 +1061,7 @@
 //                 </motion.div>
 //               )}
 
-//               {/* STEP 3 – Resume Upload */}
+//               {/* STEP 3 – Resume Upload - ⭐ Updated label */}
 //               {applyStep === 3 && (
 //                 <motion.div
 //                   initial={{ opacity: 0, x: 20 }}
@@ -1024,8 +1069,10 @@
 //                   className="space-y-5"
 //                 >
 //                   <div>
-//                     <label className="text-sm text-white/70 mb-1 block">
-//                       Upload Resume (PDF / DOC / DOCX)
+//                     <label className="text-sm mb-1 block">
+//                       <GradientText>
+//                         Upload Resume (PDF / DOC / DOCX)
+//                       </GradientText>
 //                     </label>
 //                     <div className="relative">
 //                       <input
@@ -1034,9 +1081,9 @@
 //                         className="
 //                           w-full px-4 py-3 rounded-xl
 //                           bg-white/5 backdrop-blur-md
-//                           border border-white/10 border-dashed
-//                           focus:border-white/40
-//                           focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+//                           border border-purple-400/20 border-dashed
+//                           focus:border-purple-400/60
+//                           focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
 //                           outline-none
 //                           transition-all
 //                           text-white/70
@@ -1053,8 +1100,9 @@
 //                       />
 //                     </div>
 //                     {resumeFile && (
-//                       <p className="mt-2 text-sm text-green-400">
-//                         ✓ {resumeFile.name}
+//                       <p className="mt-2 text-sm flex items-center gap-2">
+//                         <span className="text-green-400">✓</span>
+//                         <GradientText>{resumeFile.name}</GradientText>
 //                       </p>
 //                     )}
 //                   </div>
@@ -1094,44 +1142,48 @@
 //                 </motion.div>
 //               )}
 
-//               {/* STEP 4 – Review & Submit */}
+//               {/* STEP 4 – Review & Submit - ⭐ Updated text colors */}
 //               {applyStep === 4 && (
 //                 <motion.div
 //                   initial={{ opacity: 0, x: 20 }}
 //                   animate={{ opacity: 1, x: 0 }}
 //                   className="space-y-6"
 //                 >
-//                   <h4 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300">
-//                     Review Your Details
+//                   <h4 className="text-lg font-semibold">
+//                     <GradientText>Review Your Details</GradientText>
 //                   </h4>
 
 //                   <div
 //                     className="
 //                       bg-white/5 p-5 rounded-xl
 //                       backdrop-blur-xl
-//                       border border-white/10
+//                       border border-purple-400/20
 //                       space-y-3
 //                     "
 //                   >
 //                     <div className="flex justify-between">
 //                       <span className="text-white/50">Name</span>
-//                       <span className="text-white font-medium">
+//                       <GradientText className="font-medium">
 //                         {firstName} {lastName}
-//                       </span>
+//                       </GradientText>
 //                     </div>
 //                     <div className="flex justify-between">
 //                       <span className="text-white/50">Email</span>
-//                       <span className="text-white font-medium">{email}</span>
+//                       <GradientText className="font-medium">
+//                         {email}
+//                       </GradientText>
 //                     </div>
 //                     <div className="flex justify-between">
 //                       <span className="text-white/50">Mobile</span>
-//                       <span className="text-white font-medium">{phone}</span>
+//                       <GradientText className="font-medium">
+//                         {phone}
+//                       </GradientText>
 //                     </div>
 //                     <div className="flex justify-between">
 //                       <span className="text-white/50">Qualification</span>
-//                       <span className="text-white font-medium">
+//                       <GradientText className="font-medium">
 //                         {qualification}
-//                       </span>
+//                       </GradientText>
 //                     </div>
 //                     <div className="flex justify-between">
 //                       <span className="text-white/50">Resume</span>
@@ -1183,7 +1235,7 @@
 //         )}
 //       </AnimatePresence>
 
-//       {/* SUCCESS TOAST */}
+//       {/* SUCCESS TOAST - ⭐ Updated text */}
 //       <AnimatePresence>
 //         {showSuccess && (
 //           <motion.div
@@ -1202,7 +1254,7 @@
 //                 bg-[#0a0a0a]
 //                 text-white font-semibold text-xl
 //                 shadow-[0_0_60px_rgba(0,0,0,0.8)]
-//                 border border-white/20
+//                 border border-green-400/30
 //               "
 //             >
 //               <div className="flex items-center gap-4">
@@ -1210,7 +1262,11 @@
 //                   ✓
 //                 </span>
 //                 <div>
-//                   <p className="text-xl font-bold">Application Submitted!</p>
+//                   <p className="text-xl font-bold">
+//                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-green-400">
+//                       Application Submitted!
+//                     </span>
+//                   </p>
 //                   <p className="text-sm text-white/60 font-normal mt-1">
 //                     We'll get back to you soon.
 //                   </p>
@@ -1271,8 +1327,8 @@ interface JobOpeningsBaseProps {
   pageSize?: number;
 }
 
-// ⭐ Gradient Text Component
-const GradientText = ({
+// ⭐ Gradient Text Component - Only for main headings
+const GradientHeading = ({
   children,
   className = "",
 }: {
@@ -1281,7 +1337,7 @@ const GradientText = ({
 }) => {
   return (
     <span
-      className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 ${className}`}
+      className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-cyan-300 to-purple-400 ${className}`}
     >
       {children}
     </span>
@@ -1354,7 +1410,7 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("http://172.16.16.33:5000/jobs");
+        const res = await fetch("http://localhost:5000/jobs/");
         const data = await res.json();
         setJobs(data);
       } catch (e) {
@@ -1423,7 +1479,7 @@ const JobOpeningsBase = ({
 
   // Sort
   const sortedRoles = useMemo(() => {
-    let arr = [...rolesBySearch];
+    const arr = [...rolesBySearch];
     switch (sortBy) {
       case "title-asc":
         return arr.sort((a, b) => a.title.localeCompare(b.title));
@@ -1544,30 +1600,30 @@ const JobOpeningsBase = ({
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl">
-          {/* HEADER - ⭐ Updated text colors */}
+          {/* HEADER */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1 mb-4 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full border border-purple-400/20 bg-purple-500/10 backdrop-blur-md">
-              <GradientText>
+            <div className="inline-flex items-center gap-2 px-4 py-1 mb-4 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
+              <span className="text-white">
                 {filterMode === "fresher"
                   ? "Fresher Opportunities"
                   : filterMode === "experienced"
                   ? "Experienced Roles"
                   : "Career Opportunities"}
-              </GradientText>
+              </span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <GradientText>
+              <GradientHeading>
                 {filterMode === "fresher"
                   ? "Fresher Job Opportunities"
                   : filterMode === "experienced"
                   ? "Experienced Job Openings"
                   : "Open Positions"}
-              </GradientText>
+              </GradientHeading>
             </h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
               Search, filter & apply for your{" "}
-              <GradientText className="font-semibold">dream role</GradientText>.
+              <span className="text-white font-semibold">dream role</span>.
             </p>
           </div>
 
@@ -1575,16 +1631,15 @@ const JobOpeningsBase = ({
           <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-4 mb-8">
             {/* SEARCH */}
             <div className="relative w-full lg:w-[60%]">
-              <Search className="absolute -translate-y-1/2 left-4 top-1/2 text-purple-400/60 w-5 h-5" />
+              <Search className="absolute -translate-y-1/2 left-4 top-1/2 text-white/50 w-5 h-5" />
               <input
                 placeholder="Search by title, skills, or description…"
                 className="
                   w-full py-3 pl-12 pr-4 text-white 
                   bg-[#0a0a0a]/80 backdrop-blur-md
-                  border border-white/10 
-                  rounded-2xl 
-                  focus:border-purple-400/60 
-                  focus:shadow-[0_0_20px_rgba(139,92,246,0.3)]
+                  border border-white/20 
+                  rounded-full 
+                  focus:border-white/50 
                   outline-none
                   transition-all
                   placeholder:text-white/40
@@ -1598,26 +1653,23 @@ const JobOpeningsBase = ({
             <div className="relative w-full lg:w-[35%]" ref={sortDropdownRef}>
               <button
                 onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
-                className={`
-                  w-full text-sm font-medium px-4 py-3 transition-colors relative
-                  bg-[#0a0a0a]/80 backdrop-blur-md
-                  border border-white/10 
-                  rounded-2xl 
+                className="
+                  w-full text-sm font-medium px-4 py-3 transition-all relative
+                  bg-transparent backdrop-blur-md
+                  border border-white/40 
+                  rounded-full 
                   flex items-center justify-between
-                  ${
-                    sortDropdownOpen
-                      ? "border-purple-400/40"
-                      : "hover:border-purple-400/30"
-                  }
-                `}
+                  hover:border-white/70 hover:bg-white/10
+                  text-white
+                "
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-white/60">Sort:</span>
-                  <GradientText className="font-semibold">
+                  <span className="text-white/70">Sort:</span>
+                  <span className="text-white font-semibold">
                     {sortOptions.find((o) => o.value === sortBy)?.label}
-                  </GradientText>
+                  </span>
                 </span>
-                <span className="ml-2 text-xs text-purple-400">
+                <span className="ml-2 text-xs text-white/70">
                   {sortDropdownOpen ? "▲" : "▼"}
                 </span>
               </button>
@@ -1634,7 +1686,7 @@ const JobOpeningsBase = ({
                       absolute top-full left-0 right-0 mt-2 z-50
                       rounded-2xl
                       bg-[#0a0a0a]/95 backdrop-blur-xl
-                      border border-purple-400/20
+                      border border-white/20
                       shadow-[0_12px_38px_rgba(0,0,0,0.65)]
                       p-2
                     "
@@ -1648,17 +1700,17 @@ const JobOpeningsBase = ({
                             setSortBy(option.value as SortOption);
                             setSortDropdownOpen(false);
                           }}
-                          className={`w-full px-4 py-3 text-left transition-all duration-300 rounded-xl hover:bg-purple-500/10 ${
-                            isSelected ? "bg-purple-500/10" : ""
+                          className={`w-full px-4 py-3 text-left transition-all duration-300 rounded-xl hover:bg-white/10 ${
+                            isSelected ? "bg-white/10" : ""
                           }`}
                         >
-                          <GradientText
-                            className={`text-sm font-bold ${
+                          <span
+                            className={`text-sm font-medium text-white ${
                               !isSelected && "opacity-70"
                             }`}
                           >
                             {option.label}
-                          </GradientText>
+                          </span>
                         </button>
                       );
                     })}
@@ -1668,7 +1720,7 @@ const JobOpeningsBase = ({
             </div>
           </div>
 
-          {/* CATEGORY FILTER */}
+          {/* CATEGORY FILTER - All buttons like Apply button style */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((cat) => (
               <button
@@ -1677,30 +1729,34 @@ const JobOpeningsBase = ({
                   setSelectedCategory(cat);
                   setCurrentPage(1);
                 }}
-                className={`px-6 py-2 rounded-full font-medium text-sm transition-all ${
-                  selectedCategory === cat
-                    ? "bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 text-white shadow-md shadow-purple-500/30"
-                    : "bg-[#0a0a0a]/80 border border-white/10 hover:border-purple-400/50 text-white/80"
-                }`}
+                className={`
+                  px-6 py-2 rounded-full font-medium text-sm transition-all
+                  border backdrop-blur
+                  ${
+                    selectedCategory === cat
+                      ? "bg-white/10 border-white/70 text-white"
+                      : "bg-transparent border-white/40 text-white hover:border-white/70 hover:bg-white/10"
+                  }
+                `}
               >
                 {cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>
             ))}
           </div>
 
-          {/* JOB CARDS - ⭐ Updated text colors and hover effects */}
+          {/* JOB CARDS */}
           {loading ? (
             <div className="py-20 text-center">
               <div className="inline-flex items-center gap-3">
-                <div className="w-5 h-5 border-2 border-purple-400 rounded-full border-t-transparent animate-spin" />
-                <GradientText>Loading jobs…</GradientText>
+                <div className="w-5 h-5 border-2 border-white rounded-full border-t-transparent animate-spin" />
+                <span className="text-white">Loading jobs…</span>
               </div>
             </div>
           ) : paginatedRoles.length === 0 ? (
             <div className="py-20 text-center">
-              <GradientText className="text-lg">
+              <span className="text-lg text-white/70">
                 No jobs found for the selected filters.
-              </GradientText>
+              </span>
             </div>
           ) : (
             <div className="grid gap-8 lg:grid-cols-3">
@@ -1723,36 +1779,34 @@ const JobOpeningsBase = ({
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         className="
-                          group relative rounded-3xl border border-purple-400/20 
+                          group relative rounded-3xl border border-white/10 
                           bg-[#0a0a0a]/80
                           backdrop-blur-md
                           px-6 py-7 flex flex-col gap-5 
                           transition-all duration-500 
                           hover:-translate-y-3 hover:scale-[1.02] 
-                          hover:border-purple-400/60 
-                          hover:shadow-[0_0_50px_rgba(139,92,246,0.25)]
+                          hover:border-white/30 
+                          hover:shadow-[0_0_50px_rgba(255,255,255,0.1)]
                         "
                       >
-                        {/* Hover glow effect - ⭐ Enhanced */}
-                        <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.15),transparent_50%)]" />
+                        {/* Hover glow effect */}
+                        <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),transparent_50%)]" />
 
                         <div className="relative flex items-start justify-between gap-3">
                           <div className="flex-1">
-                            <p className="text-xs uppercase tracking-[0.3em] mb-2">
-                              <GradientText className="opacity-60">
-                                Open role
-                              </GradientText>
+                            <p className="text-xs uppercase tracking-[0.3em] mb-2 text-white/50">
+                              Open role
                             </p>
-                            {/* ⭐ Job title with gradient */}
-                            <h3 className="text-xl font-bold transition-colors">
-                              <GradientText className="group-hover:opacity-100 opacity-90">
+                            {/* Job title with gradient */}
+                            <h3 className="text-xl font-bold">
+                              <GradientHeading className="group-hover:opacity-100 opacity-90">
                                 {role.title}
-                              </GradientText>
+                              </GradientHeading>
                             </h3>
                           </div>
-                          {/* ⭐ Category badge with gradient border */}
-                          <span className="shrink-0 px-3 py-1 text-xs font-medium border rounded-full border-purple-400/30 bg-purple-500/10">
-                            <GradientText>{role.category}</GradientText>
+                          {/* Category badge */}
+                          <span className="shrink-0 px-3 py-1 text-xs font-medium border rounded-full border-white/20 bg-white/5 text-white">
+                            {role.category}
                           </span>
                         </div>
 
@@ -1760,42 +1814,40 @@ const JobOpeningsBase = ({
                           {role.description}
                         </p>
 
-                        <div className="relative flex items-center justify-between text-xs text-white/50">
+                        <div className="relative flex items-center justify-between text-xs text-white/60">
                           <div className="flex items-center gap-2">
-                            <Brain className="w-4 h-4 text-purple-400 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.8)] transition-all" />
-                            <GradientText>{role.experience}</GradientText>
+                            <Brain className="w-4 h-4 text-white/50" />
+                            <span className="text-white">
+                              {role.experience}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-cyan-400 group-hover:drop-shadow-[0_0_8px_rgba(94,231,255,0.8)] transition-all" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                              {role.location}
-                            </span>
+                            <MapPin className="w-4 h-4 text-white/50" />
+                            <span className="text-white">{role.location}</span>
                           </div>
                         </div>
 
-                        {/* ⭐ Skills with gradient text on hover */}
-                        <div className="relative flex flex-wrap gap-2 pt-4 border-t border-purple-400/10">
+                        {/* Skills */}
+                        <div className="relative flex flex-wrap gap-2 pt-4 border-t border-white/10">
                           {role.skills.slice(0, 3).map((skill, idx) => (
                             <span
                               key={idx}
-                              className="text-[11px] text-white/70 border border-purple-400/20 rounded-full px-3 py-1 bg-purple-500/5 hover:border-purple-400/40 transition-all"
+                              className="text-[11px] text-white/70 border border-white/20 rounded-full px-3 py-1 bg-white/5 hover:border-white/40 transition-all"
                             >
                               {skill}
                             </span>
                           ))}
                           {role.skills.length > 3 && (
-                            <span className="text-[11px] px-2 py-1">
-                              <GradientText>
-                                +{role.skills.length - 3} more
-                              </GradientText>
+                            <span className="text-[11px] px-2 py-1 text-white/50">
+                              +{role.skills.length - 3} more
                             </span>
                           )}
                         </div>
 
-                        {/* Expandable section on hover - ⭐ Updated text */}
-                        <div className="relative pt-4 overflow-hidden text-sm transition-all duration-500 ease-out border-t opacity-0 border-purple-400/10 text-white/60 max-h-0 group-hover:max-h-32 group-hover:opacity-100">
-                          <p className="mb-1 font-semibold">
-                            <GradientText>What you'll do</GradientText>
+                        {/* Expandable section on hover */}
+                        <div className="relative pt-4 overflow-hidden text-sm transition-all duration-500 ease-out border-t border-white/10 text-white/60 max-h-0 group-hover:max-h-32 group-hover:opacity-100 opacity-0">
+                          <p className="mb-1 font-semibold text-white">
+                            What you'll do
                           </p>
                           <p className="text-white/50 text-xs leading-relaxed">
                             Work with cross-functional squads delivering
@@ -1803,15 +1855,15 @@ const JobOpeningsBase = ({
                           </p>
                         </div>
 
-                        {/* Action Buttons - NOT CHANGED */}
+                        {/* Action Buttons */}
                         <div className="relative flex gap-3 mt-auto pt-2">
                           <button
                             onClick={() => setSelectedJob(role)}
                             className="
-                              flex-1 py-2.5 text-sm font-medium text-white/80 
+                              flex-1 py-2.5 text-sm font-medium text-white 
                               transition-all border rounded-full border-white/40
                               hover:border-white/70 hover:bg-white/10
-                              hover:text-white backdrop-blur
+                              backdrop-blur
                             "
                           >
                             View Details
@@ -1839,7 +1891,7 @@ const JobOpeningsBase = ({
             </div>
           )}
 
-          {/* PAGINATION - NOT CHANGED */}
+          {/* PAGINATION */}
           {totalPages > 1 && (
             <div className="flex justify-center gap-3 mt-16">
               {Array.from({ length: totalPages }).map((_, idx) => (
@@ -1852,7 +1904,7 @@ const JobOpeningsBase = ({
                     ${
                       currentPage === idx + 1
                         ? "border-white bg-white text-black"
-                        : "border-white/40 bg-transparent text-white/60 hover:border-white/70 hover:bg-white/10"
+                        : "border-white/40 bg-transparent text-white hover:border-white/70 hover:bg-white/10"
                     }
                   `}
                 >
@@ -1864,7 +1916,7 @@ const JobOpeningsBase = ({
         </div>
       </section>
 
-      {/* JOB DETAILS POPUP - ⭐ Updated text colors only */}
+      {/* JOB DETAILS POPUP */}
       <AnimatePresence>
         {selectedJob && (
           <motion.div
@@ -1882,11 +1934,11 @@ const JobOpeningsBase = ({
                 w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-8 rounded-3xl
                 bg-[#0a0a0a]/98
                 shadow-[0_0_60px_rgba(0,0,0,0.8)]
-                border border-purple-400/20 
+                border border-white/20 
                 backdrop-blur-2xl
               "
             >
-              {/* Close - NOT CHANGED */}
+              {/* Close */}
               <button
                 onClick={() => setSelectedJob(null)}
                 className="
@@ -1899,33 +1951,31 @@ const JobOpeningsBase = ({
                 <X className="w-5 h-5 text-white" />
               </button>
 
-              {/* Title - ⭐ Gradient */}
+              {/* Title - Gradient */}
               <h3 className="text-3xl font-extrabold pr-10">
-                <GradientText>{selectedJob.title}</GradientText>
+                <GradientHeading>{selectedJob.title}</GradientHeading>
               </h3>
 
-              <p className="mt-3 inline-block px-3 py-1 text-xs rounded-full bg-purple-500/10 backdrop-blur-md border border-purple-400/20">
-                <GradientText>{selectedJob.category}</GradientText>
+              <p className="mt-3 inline-block px-3 py-1 text-xs rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white">
+                {selectedJob.category}
               </p>
 
-              {/* Experience - ⭐ Gradient text */}
+              {/* Experience */}
               <div className="flex items-center gap-3 mt-6 text-white/80">
                 <span className="flex items-center gap-2">
-                  <Brain className="w-5 h-5 text-purple-400" />
-                  <GradientText>Experience:</GradientText>
+                  <Brain className="w-5 h-5 text-white/50" />
+                  <span className="text-white">Experience:</span>
                 </span>
                 <span className="font-semibold text-white">
                   {selectedJob.experience}
                 </span>
               </div>
 
-              {/* Location - ⭐ Gradient text */}
+              {/* Location */}
               <div className="flex items-center gap-3 mt-3 text-white/80">
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-cyan-400" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                    Location:
-                  </span>
+                  <MapPin className="w-5 h-5 text-white/50" />
+                  <span className="text-white">Location:</span>
                 </span>
                 <span className="font-semibold text-white">
                   {selectedJob.location}
@@ -1936,25 +1986,23 @@ const JobOpeningsBase = ({
               {selectedJob.createdAt && (
                 <p className="mt-3 text-sm text-white/50">
                   Posted on:{" "}
-                  <GradientText className="font-medium">
+                  <span className="font-medium text-white">
                     {new Date(selectedJob.createdAt).toDateString()}
-                  </GradientText>
+                  </span>
                 </p>
               )}
 
-              {/* Description - ⭐ Gradient heading */}
+              {/* Description - Gradient heading */}
               <h4 className="mt-8 mb-3 text-lg font-semibold">
-                <GradientText>Job Description</GradientText>
+                <GradientHeading>Job Description</GradientHeading>
               </h4>
               <p className="leading-relaxed text-white/70">
                 {selectedJob.description}
               </p>
 
-              {/* Skills - ⭐ Gradient heading */}
+              {/* Skills - Gradient heading */}
               <h4 className="mt-8 mb-3 text-lg font-semibold">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                  Skills Required
-                </span>
+                <GradientHeading>Skills Required</GradientHeading>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {selectedJob.skills.map((skill, i) => (
@@ -1962,8 +2010,8 @@ const JobOpeningsBase = ({
                     key={i}
                     className="
                       px-4 py-1.5 text-sm rounded-full
-                      bg-purple-500/10 border border-purple-400/20 backdrop-blur-md
-                      text-white/80
+                      bg-white/10 border border-white/20 backdrop-blur-md
+                      text-white
                     "
                   >
                     {skill}
@@ -1971,7 +2019,7 @@ const JobOpeningsBase = ({
                 ))}
               </div>
 
-              {/* Apply Button - NOT CHANGED */}
+              {/* Apply Button */}
               <button
                 onClick={() => {
                   setApplyJob(selectedJob);
@@ -1993,7 +2041,7 @@ const JobOpeningsBase = ({
         )}
       </AnimatePresence>
 
-      {/* APPLY FORM POPUP (MULTI-STEP) - ⭐ Updated text colors only */}
+      {/* APPLY FORM POPUP (MULTI-STEP) */}
       <AnimatePresence>
         {applyJob && (
           <motion.div
@@ -2011,7 +2059,7 @@ const JobOpeningsBase = ({
                 w-full max-w-xl max-h-[90vh] overflow-y-auto p-8 relative rounded-3xl
                 bg-[#0a0a0a]/98
                 backdrop-blur-2xl
-                border border-purple-400/20 
+                border border-white/20 
                 shadow-[0_0_50px_rgba(0,0,0,0.8)]
               "
             >
@@ -2029,12 +2077,13 @@ const JobOpeningsBase = ({
                 <X className="w-5 h-5 text-white" />
               </button>
 
-              {/* ⭐ Gradient title */}
+              {/* Gradient title */}
               <h3 className="mb-6 text-2xl font-bold pr-10">
-                Apply for <GradientText>{applyJob.title}</GradientText>
+                <span className="text-white">Apply for </span>
+                <GradientHeading>{applyJob.title}</GradientHeading>
               </h3>
 
-              {/* Step indicators - NOT CHANGED */}
+              {/* Step indicators */}
               <div className="flex justify-center gap-3 mb-8">
                 {[1, 2, 3, 4].map((s) => (
                   <div
@@ -2056,7 +2105,7 @@ const JobOpeningsBase = ({
                 ))}
               </div>
 
-              {/* Error banner - NOT CHANGED */}
+              {/* Error banner */}
               {formError && (
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
@@ -2067,7 +2116,7 @@ const JobOpeningsBase = ({
                 </motion.p>
               )}
 
-              {/* STEP 1 – Personal Info - ⭐ Updated labels */}
+              {/* STEP 1 – Personal Info */}
               {applyStep === 1 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -2075,16 +2124,15 @@ const JobOpeningsBase = ({
                   className="space-y-5"
                 >
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>First Name</GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      First Name
                     </label>
                     <input
                       className="
                         w-full px-4 py-3 rounded-xl 
                         bg-white/5 backdrop-blur-md
-                        border border-purple-400/20 
-                        focus:border-purple-400/60
-                        focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                        border border-white/20 
+                        focus:border-white/50
                         outline-none
                         transition-all
                         text-white
@@ -2097,16 +2145,15 @@ const JobOpeningsBase = ({
                   </div>
 
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>Last Name</GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      Last Name
                     </label>
                     <input
                       className="
                         w-full px-4 py-3 rounded-xl 
                         bg-white/5 backdrop-blur-md
-                        border border-purple-400/20 
-                        focus:border-purple-400/60
-                        focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                        border border-white/20 
+                        focus:border-white/50
                         outline-none
                         transition-all
                         text-white
@@ -2119,17 +2166,16 @@ const JobOpeningsBase = ({
                   </div>
 
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>Email</GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      Email
                     </label>
                     <input
                       type="email"
                       className="
                         w-full px-4 py-3 rounded-xl 
                         bg-white/5 backdrop-blur-md
-                        border border-purple-400/20 
-                        focus:border-purple-400/60
-                        focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                        border border-white/20 
+                        focus:border-white/50
                         outline-none
                         transition-all
                         text-white
@@ -2142,17 +2188,16 @@ const JobOpeningsBase = ({
                   </div>
 
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>Mobile Number</GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      Mobile Number
                     </label>
                     <input
                       type="tel"
                       className="
                         w-full px-4 py-3 rounded-xl 
                         bg-white/5 backdrop-blur-md
-                        border border-purple-400/20 
-                        focus:border-purple-400/60
-                        focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                        border border-white/20 
+                        focus:border-white/50
                         outline-none
                         transition-all
                         text-white
@@ -2199,7 +2244,7 @@ const JobOpeningsBase = ({
                 </motion.div>
               )}
 
-              {/* STEP 2 – Education - ⭐ Updated label */}
+              {/* STEP 2 – Education */}
               {applyStep === 2 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -2207,19 +2252,16 @@ const JobOpeningsBase = ({
                   className="space-y-5"
                 >
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>
-                        Highest Education Qualification
-                      </GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      Highest Education Qualification
                     </label>
                     <div className="relative">
                       <select
                         className="
                           w-full px-4 py-3 rounded-xl 
                           bg-white/5 backdrop-blur-md
-                          border border-purple-400/20 
-                          focus:border-purple-400/60
-                          focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                          border border-white/20 
+                          focus:border-white/50
                           outline-none
                           transition-all 
                           text-white
@@ -2248,7 +2290,7 @@ const JobOpeningsBase = ({
                           Degree
                         </option>
                       </select>
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none">
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
                         ▼
                       </span>
                     </div>
@@ -2259,9 +2301,9 @@ const JobOpeningsBase = ({
                       onClick={() => setApplyStep(1)}
                       className="
                         px-6 py-3 transition-all border rounded-full 
-                        bg-white/5 backdrop-blur-md border-white/10 
-                        hover:bg-white/10 hover:border-white/20
-                        text-white/80
+                        bg-transparent backdrop-blur-md border-white/40 
+                        hover:bg-white/10 hover:border-white/70
+                        text-white
                       "
                     >
                       ← Back
@@ -2291,7 +2333,7 @@ const JobOpeningsBase = ({
                 </motion.div>
               )}
 
-              {/* STEP 3 – Resume Upload - ⭐ Updated label */}
+              {/* STEP 3 – Resume Upload */}
               {applyStep === 3 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -2299,10 +2341,8 @@ const JobOpeningsBase = ({
                   className="space-y-5"
                 >
                   <div>
-                    <label className="text-sm mb-1 block">
-                      <GradientText>
-                        Upload Resume (PDF / DOC / DOCX)
-                      </GradientText>
+                    <label className="text-sm mb-1 block text-white">
+                      Upload Resume (PDF / DOC / DOCX)
                     </label>
                     <div className="relative">
                       <input
@@ -2311,9 +2351,8 @@ const JobOpeningsBase = ({
                         className="
                           w-full px-4 py-3 rounded-xl 
                           bg-white/5 backdrop-blur-md
-                          border border-purple-400/20 border-dashed
-                          focus:border-purple-400/60
-                          focus:shadow-[0_0_15px_rgba(139,92,246,0.2)]
+                          border border-white/20 border-dashed
+                          focus:border-white/50
                           outline-none
                           transition-all
                           text-white/70
@@ -2332,7 +2371,7 @@ const JobOpeningsBase = ({
                     {resumeFile && (
                       <p className="mt-2 text-sm flex items-center gap-2">
                         <span className="text-green-400">✓</span>
-                        <GradientText>{resumeFile.name}</GradientText>
+                        <span className="text-white">{resumeFile.name}</span>
                       </p>
                     )}
                   </div>
@@ -2342,9 +2381,9 @@ const JobOpeningsBase = ({
                       onClick={() => setApplyStep(2)}
                       className="
                         px-6 py-3 transition-all border rounded-full 
-                        bg-white/5 backdrop-blur-md border-white/10 
-                        hover:bg-white/10 hover:border-white/20
-                        text-white/80
+                        bg-transparent backdrop-blur-md border-white/40 
+                        hover:bg-white/10 hover:border-white/70
+                        text-white
                       "
                     >
                       ← Back
@@ -2372,7 +2411,7 @@ const JobOpeningsBase = ({
                 </motion.div>
               )}
 
-              {/* STEP 4 – Review & Submit - ⭐ Updated text colors */}
+              {/* STEP 4 – Review & Submit */}
               {applyStep === 4 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -2380,40 +2419,36 @@ const JobOpeningsBase = ({
                   className="space-y-6"
                 >
                   <h4 className="text-lg font-semibold">
-                    <GradientText>Review Your Details</GradientText>
+                    <GradientHeading>Review Your Details</GradientHeading>
                   </h4>
 
                   <div
                     className="
                       bg-white/5 p-5 rounded-xl 
                       backdrop-blur-xl 
-                      border border-purple-400/20 
+                      border border-white/20 
                       space-y-3
                     "
                   >
                     <div className="flex justify-between">
                       <span className="text-white/50">Name</span>
-                      <GradientText className="font-medium">
+                      <span className="font-medium text-white">
                         {firstName} {lastName}
-                      </GradientText>
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/50">Email</span>
-                      <GradientText className="font-medium">
-                        {email}
-                      </GradientText>
+                      <span className="font-medium text-white">{email}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/50">Mobile</span>
-                      <GradientText className="font-medium">
-                        {phone}
-                      </GradientText>
+                      <span className="font-medium text-white">{phone}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/50">Qualification</span>
-                      <GradientText className="font-medium">
+                      <span className="font-medium text-white">
                         {qualification}
-                      </GradientText>
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/50">Resume</span>
@@ -2428,9 +2463,9 @@ const JobOpeningsBase = ({
                       onClick={() => setApplyStep(3)}
                       className="
                         px-6 py-3 transition-all border rounded-full 
-                        bg-white/5 backdrop-blur-md border-white/10 
-                        hover:bg-white/10 hover:border-white/20
-                        text-white/80
+                        bg-transparent backdrop-blur-md border-white/40 
+                        hover:bg-white/10 hover:border-white/70
+                        text-white
                       "
                     >
                       ← Back
@@ -2465,7 +2500,7 @@ const JobOpeningsBase = ({
         )}
       </AnimatePresence>
 
-      {/* SUCCESS TOAST - ⭐ Updated text */}
+      {/* SUCCESS TOAST */}
       <AnimatePresence>
         {showSuccess && (
           <motion.div
@@ -2493,9 +2528,7 @@ const JobOpeningsBase = ({
                 </span>
                 <div>
                   <p className="text-xl font-bold">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-green-400">
-                      Application Submitted!
-                    </span>
+                    <GradientHeading>Application Submitted!</GradientHeading>
                   </p>
                   <p className="text-sm text-white/60 font-normal mt-1">
                     We'll get back to you soon.

@@ -173,7 +173,8 @@ export const GlobeSection = () => {
       {/* 🌌 Background */}
       <div className="absolute inset-0 overflow-hidden -z-30">
         {/* Main vertical gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00172f] via-[#004b9f] to-[#4fc7ff]" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#00172f] via-[#004b9f] to-[#4fc7ff]" /> */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#00172f]  to-[#212121]" />
 
         {/* Twinkling atoms */}
         <div className="absolute inset-0 pointer-events-none">
