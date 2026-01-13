@@ -220,7 +220,7 @@ export default function UploadResumeSection({
                        text-sm text-white hover:bg-white/10
                        hover:border-white/70 transition-all"
           >
-            Job Openings
+            View Job Openings
           </button>
         </div>
       </div>
