@@ -169,12 +169,12 @@ export const GlobeSection = () => {
   }, []);
 
   return (
-    <section className="globe-section relative overflow-visible min-h-[120vh] flex flex-col items-center justify-center text-white">
+    <section className="globe-section relative overflow-visible min-h-[100vh] flex flex-col items-center justify-center text-white">
       {/* 🌌 Background */}
       <div className="absolute inset-0 overflow-hidden -z-30">
         {/* Main vertical gradient */}
         {/* <div className="absolute inset-0 bg-gradient-to-b from-[#00172f] via-[#004b9f] to-[#4fc7ff]" /> */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00172f]  to-[#212121]" />
+        <div className="absolute inset-0 bg-black" />
 
         {/* Twinkling atoms */}
         <div className="absolute inset-0 pointer-events-none">
@@ -229,7 +229,7 @@ export const GlobeSection = () => {
 
       {/* 🌍 Globe in front */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <Globe scale={1.65} theta={0.3} dark={1} />
+        <Globe scale={1.7} theta={0.3} dark={1} />
       </div>
 
       {/* Text Content */}

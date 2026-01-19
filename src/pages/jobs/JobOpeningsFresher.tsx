@@ -123,7 +123,7 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/jobs/");
+        const res = await fetch("http://172.16.16.33:5000/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (e) {
