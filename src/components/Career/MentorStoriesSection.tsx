@@ -182,55 +182,6 @@ interface Mentor {
 // Modal Component using Portal
 export const mentors: Mentor[] = [
   {
-    id: 1,
-    name: "Narmendran Yentrapati",
-    role: "Program Manager",
-    image: "/images/narmensir.jpg",
-    shortStory: "Managing complex programs with precision.",
-    fullStory:
-      "Narmendran leads large, multi-stream enterprise programs with strong governance and predictability. He ensures alignment across stakeholders, mitigates risks, and delivers programs on time and within scope.",
-    yearsAtCompany: "7+ Years",
-    achievements: ["Program governance", "Stakeholder management"],
-    quote: "Successful programs are built on trust and discipline.",
-  },
-  {
-    id: 2,
-    name: "Sathyanarayana Y",
-    role: "Solution Architect (Manager)",
-    image: "/images/sathyasir.jpeg",
-    shortStory: "Designing scalable and future-ready architectures.",
-    fullStory:
-      "Sathyanarayana leads enterprise solution architecture with a focus on scalability, security, and performance. He translates complex business requirements into robust technical designs while mentoring architects and engineers.",
-    yearsAtCompany: "8+ Years",
-    achievements: ["Enterprise architecture", "Technical mentoring"],
-    quote: "Good architecture balances today's needs with tomorrow's growth.",
-  },
-  {
-    id: 3,
-    name: "Srinivas Moole",
-    role: "AI Architect",
-    image: "/images/srinivasmoole.jpg",
-    shortStory: "Designing practical and scalable AI solutions.",
-    fullStory:
-      "Srinivas leads AI architecture and data-driven initiatives, designing intelligent systems that integrate with enterprise platforms. His focus is on real-world, production-ready AI solutions.",
-    yearsAtCompany: "7+ Years",
-    achievements: ["AI architecture", "ML integration"],
-    quote: "AI succeeds when it is practical, scalable, and responsible.",
-  },
-  {
-    id: 4,
-    name: "Jagadeesh Guddati",
-    role: "SAP CX Lead",
-    image: "/images/jagadishg.jpg",
-    shortStory: "Leading customer-centric SAP CX platforms.",
-    fullStory:
-      "Jagadeesh heads SAP CX initiatives, delivering scalable and high-performing commerce platforms. He ensures best practices across SAP Commerce implementations for global clients.",
-    yearsAtCompany: "8+ Years",
-    achievements: ["SAP Commerce delivery", "Team leadership"],
-    quote:
-      "Customer experience is the true differentiator in digital commerce.",
-  },
-  {
     id: 5,
     name: "Anjalimohan Uppu",
     role: "SAP CX Lead",
@@ -627,11 +578,11 @@ const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
                         }deg) rotateY(${(px - 0.5) * 8}deg) scale(1.03)`;
                         el.style.setProperty(
                           "--lx",
-                          `${e.clientX - rect.left}px`
+                          `${e.clientX - rect.left}px`,
                         );
                         el.style.setProperty(
                           "--ly",
-                          `${e.clientY - rect.top}px`
+                          `${e.clientY - rect.top}px`,
                         );
                       }}
                       onMouseLeave={(e) => {
