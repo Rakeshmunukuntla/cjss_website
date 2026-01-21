@@ -186,30 +186,58 @@
 import { Quote } from "lucide-react";
 
 // Executive Leadership data
+// const LEADERS_DATA = [
+//   {
+//     name: "Venkatkrishna",
+//     designation: "Director",
+//     profileImage: "/images/Krishna3.jpg",
+//     bio: [
+//       "Venkatkrishna is the Director of CJSS Technologies, with a strong foundation in building and delivering scalable digital platforms for global enterprises. He has led the successful implementation of complex digital commerce and enterprise systems, helping organizations adopt technology that is reliable, adaptable, and future-ready.",
+//       "With deep expertise in SAP Commerce (Hybris) and headless commerce architectures, Venkatkrishna works closely with clients and teams to define clear technology roadmaps and practical implementation strategies that balance performance, scalability, and long-term sustainability.",
+//       "Beyond technology, Venkatkrishna believes that strong teams build strong solutions. His leadership is rooted in trust, collaboration, and continuous learning, fostering a culture where quality, accountability, and innovation come naturally. Under his guidance, CJSS Technologies has grown into a trusted technology partner for enterprises worldwide.",
+//     ],
+//     quote:
+//       "Technology succeeds when it is built with clarity, purpose, and people at the center.",
+//   },
+//   {
+//     name: "Srikanth Banthu",
+//     designation: "Director",
+//     profileImage: "/images/Srikanth_2.png",
+//     bio: [
+//       "Srikanth Banthu is a Director at CJSS Technologies, with strong expertise in Java-based enterprise application development and system architecture. He has played a key role in designing and delivering secure, scalable, and high-performance backend systems for enterprise clients.",
+//       "With deep proficiency in Java, Spring frameworks, and API-driven architectures, Srikanth focuses on building clean, maintainable, and resilient systems that support long-term business growth. He works closely with engineering teams to establish strong technical foundations, best practices, and efficient development processes.",
+//       "As a leader, Srikanth values discipline, ownership, and continuous improvement. He believes in empowering teams through mentorship and collaboration, creating an environment where engineering excellence and quality-driven execution are standard—not optional.",
+//     ],
+//     quote:
+//       "Well-built systems earn trust—both from businesses and the people who depend on them.",
+//   },
+// ];
+
+// Executive Leadership data
 const LEADERS_DATA = [
   {
     name: "Venkatkrishna",
     designation: "Director",
     profileImage: "/images/Krishna3.jpg",
     bio: [
-      "Venkatkrishna is the Director of CJSS Technologies, with a strong foundation in building and delivering scalable digital platforms for global enterprises. He has led the successful implementation of complex digital commerce and enterprise systems, helping organizations adopt technology that is reliable, adaptable, and future-ready.",
-      "With deep expertise in SAP Commerce (Hybris) and headless commerce architectures, Venkatkrishna works closely with clients and teams to define clear technology roadmaps and practical implementation strategies that balance performance, scalability, and long-term sustainability.",
-      "Beyond technology, Venkatkrishna believes that strong teams build strong solutions. His leadership is rooted in trust, collaboration, and continuous learning, fostering a culture where quality, accountability, and innovation come naturally. Under his guidance, CJSS Technologies has grown into a trusted technology partner for enterprises worldwide.",
+      "Venkatkrishna is the Director of CJSS Technologies and a driving force behind the company’s ability to deliver scalable, future-ready digital platforms for global enterprises. He has successfully led the design and execution of complex digital commerce and enterprise solutions, helping organizations transform ambitious ideas into reliable, high-impact technology outcomes.",
+      "With deep expertise in SAP Commerce (Hybris) and modern headless architectures, Venkatkrishna works closely with clients and delivery teams to shape clear technology visions and practical execution roadmaps. His strength lies in bridging business goals with technical excellence—ensuring solutions are not only powerful today, but adaptable for the future.",
+      "A strong believer in people-centric leadership, Venkatkrishna fosters an environment built on trust, ownership, and continuous learning. He empowers teams to think critically, execute confidently, and innovate responsibly. Under his leadership, CJSS Technologies has earned a reputation as a trusted digital transformation partner for enterprises worldwide.",
     ],
     quote:
-      "Technology succeeds when it is built with clarity, purpose, and people at the center.",
+      "Great technology is built when clear vision, thoughtful execution, and empowered people come together.",
   },
   {
     name: "Srikanth Banthu",
     designation: "Director",
     profileImage: "/images/Srikanth_2.png",
     bio: [
-      "Srikanth Banthu is a Director at CJSS Technologies, with strong expertise in Java-based enterprise application development and system architecture. He has played a key role in designing and delivering secure, scalable, and high-performance backend systems for enterprise clients.",
-      "With deep proficiency in Java, Spring frameworks, and API-driven architectures, Srikanth focuses on building clean, maintainable, and resilient systems that support long-term business growth. He works closely with engineering teams to establish strong technical foundations, best practices, and efficient development processes.",
-      "As a leader, Srikanth values discipline, ownership, and continuous improvement. He believes in empowering teams through mentorship and collaboration, creating an environment where engineering excellence and quality-driven execution are standard—not optional.",
+      "Srikanth Banthu is a Director at CJSS Technologies, known for his strong technical leadership and deep expertise in building robust, enterprise-grade backend systems. He has played a key role in architecting and delivering secure, scalable, and high-performance platforms that support critical business operations across industries.",
+      "Specializing in Java, Spring frameworks, and API-driven architectures, Srikanth focuses on creating clean, resilient, and maintainable systems that stand the test of scale and complexity. He works closely with engineering teams to establish solid architectural foundations, enforce best practices, and ensure consistent quality across all stages of delivery.",
+      "As a leader, Srikanth values discipline, accountability, and continuous improvement. He is deeply invested in mentoring engineers and building teams that take pride in craftsmanship and reliability. His leadership style encourages ownership and excellence—ensuring that every solution delivered reflects trust, stability, and long-term value.",
     ],
     quote:
-      "Well-built systems earn trust—both from businesses and the people who depend on them.",
+      "Strong systems are built with discipline, clarity of thought, and a relentless focus on quality.",
   },
 ];
 

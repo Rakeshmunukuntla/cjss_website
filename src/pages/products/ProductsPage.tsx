@@ -155,8 +155,8 @@ const PRODUCTS = [
     description:
       "A unified employee management platform to track attendance, manage leaves, monitor employee activities, and centralize organizational data — built to scale effortlessly for modern enterprises.",
     route: "product-connect",
-    logo: "/images/connect-logo.jpeg",
-    logoBg: "bg-[#1e3a5f]", // Deep blue to match Connect logo background
+    logo: "/images/connect-logo.png",
+    logoBg: "bg-[#2d3a8c]", // Deep blue to match Connect logo background
     accentColor: "purple",
   },
   {
@@ -166,7 +166,7 @@ const PRODUCTS = [
     description:
       "An AI-powered eCommerce chatbot built for GCP, Bedrock, and Azure to assist customers, automate support, and enhance shopping experiences",
     route: "product-ecom-agent",
-    logo: "/images/nexagen.png",
+    logo: "/images/nexagen-logo.png",
     logoBg: "bg-[#2d3a8c]", // Blue-purple to match NexaGen logo background
     accentColor: "sky",
   },
