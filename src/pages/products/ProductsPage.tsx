@@ -174,7 +174,7 @@ const PRODUCTS = [
 
 export const ProductsPage = ({ navigateTo }: ProductsPageProps) => {
   return (
-    <section className="min-h-screen bg-neutral-950 text-white px-4 sm:px-6 py-20 sm:py-28">
+    <section className="min-h-screen bg-neutral-956 text-white px-4 sm:px-6 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto">
         {/* ================= HEADER ================= */}
         <div className="text-center mb-12 sm:mb-20">
