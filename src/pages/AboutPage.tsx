@@ -1149,7 +1149,7 @@ export const AboutPage = () => {
                       <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm text-white/70">
                         <div>
                           <p className="font-semibold text-white text-[10px] sm:text-xs lg:text-sm">
-                            AI | AEM | Cloud | SAP
+                            AI | AEM | Cloud | SAP Hybris
                           </p>
                           <p className="text-[10px] sm:text-xs">
                             Strategy, build, run
