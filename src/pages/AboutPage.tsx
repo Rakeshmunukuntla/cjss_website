@@ -821,7 +821,7 @@ import GlobalPresenceMerged from "@/components/GlobalPresenceMap";
 import { LeadershipSection } from "../components/about/LeadershipSection";
 import ContactForm from "./ContactForm";
 import Conversation from "./Conversation";
-import { ADVANTAGES, CERTIFICATIONS, EXPERTISE } from "../lib/Constants";
+import { ADVANTAGES, EXPERTISE } from "../lib/Constants";
 import ISOImageSection from "./ISOImageSection";
 import {
   Zap,
@@ -1419,7 +1419,7 @@ export const AboutPage = () => {
             />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl">
+          {/* <div className="relative z-10 mx-auto max-w-7xl">
             <div className="mb-10 sm:mb-16 text-center">
               <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] text-transparent bg-gradient-to-r from-purple-300 to-sky-300 bg-clip-text uppercase mb-3 sm:mb-4">
                 Our Credentials
@@ -1466,7 +1466,7 @@ export const AboutPage = () => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
           <ISOImageSection />
         </section>
 

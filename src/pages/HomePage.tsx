@@ -74,6 +74,7 @@ import { ExpertiseSection } from "../components/home/ExpertiseSection";
 import { GlobeSection } from "../components/home/GlobeSection";
 import { TechShowcaseSection } from "../components/home/TechShowcaseSection";
 import EventCarouselBanner from "@/components/home/EventCarouselBanner";
+import EnterpriseCertificationTrust from "@/components/home/EnterpriseCertificationTrust";
 
 interface HomePageProps {
   navigateTo: (page: string) => void;
@@ -128,6 +129,7 @@ export const HomePage = ({ navigateTo }: HomePageProps) => {
           <TechShowcaseSection />
           <AboutUsSection />
           <WhyChooseUsSection />
+          <EnterpriseCertificationTrust></EnterpriseCertificationTrust>
 
           <OurServicesSection navigateTo={navigateTo} />
 
