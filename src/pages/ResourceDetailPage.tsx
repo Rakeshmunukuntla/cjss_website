@@ -419,7 +419,7 @@ export const ResourceDetailPage = ({
         setRelated(
           allBlogs
             .filter((b) => b.category === data.category && b._id !== data._id)
-            .slice(0, 4)
+            .slice(0, 4),
         );
       } catch (e) {
         console.error("Error fetching blog:", e);
@@ -517,9 +517,16 @@ export const ResourceDetailPage = ({
           </div>
 
           {/* Content */}
-          <section className="bg-neutral-900/70 border border-neutral-800 rounded-3xl p-8">
+          {/* <section className="bg-neutral-900/70 border border-neutral-800 rounded-3xl p-8">
             <h2 className="text-2xl font-semibold text-white mb-4">Overview</h2>
             <p className="text-white/80 leading-relaxed">{resource.content}</p>
+          </section> */}
+          <section className="bg-neutral-900/70 border border-neutral-800 rounded-3xl p-8">
+            <h2 className="text-2xl font-semibold text-white mb-4">Overview</h2>
+
+            <div className="text-white/80 leading-relaxed whitespace-pre-line">
+              {resource.content}
+            </div>
           </section>
 
           {/* Related */}

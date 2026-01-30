@@ -370,215 +370,242 @@ export const CERTIFICATIONS = [
   },
 ];
 
+// export const TECHNOLOGY_SERVICES = [
+//   {
+//     id: "quality-engineering",
+//     title: "Quality Engineering & Assurance",
+//     banner:
+//       "Delivering high-quality software through automation, shift-left testing and continuous validation.",
+//     approach:
+//       "We blend automated and manual testing with CI/CD integration, performance engineering and test data management to ensure resilient releases.",
+//     solutions: [
+//       {
+//         id: "test-automation",
+//         title: "Automated Testing",
+//         summary:
+//           "Build and run automated test suites across UI, API and integration layers.",
+//         details:
+//           "Capabilities include test strategy, automation frameworks, CI integration, regression suites and reporting.",
+//         bullets: [
+//           "Test design & strategy",
+//           "Automation frameworks",
+//           "Regression & nightly runs",
+//           "Reporting & dashboards",
+//         ],
+//         flow: {
+//           title: "Automated Testing Process Flow",
+//           subtitle:
+//             "From environment preparation to reporting with parity checks",
+//           stages: [
+//             {
+//               type: "sequence",
+//               steps: [
+//                 { id: "start", label: "Start" },
+//                 { id: "init", label: "Init setup" },
+//                 {
+//                   id: "manager-data",
+//                   label: "Get data from Test Manager file",
+//                 },
+//               ],
+//             },
+//             {
+//               type: "parallel",
+//               joinLabel: "Navigate to required page",
+//               steps: [
+//                 {
+//                   id: "mobile-login",
+//                   label: "App installation + mobile login",
+//                   note: "Cloud Appium Service",
+//                 },
+//                 {
+//                   id: "web-login",
+//                   label: "Launch web browser & login",
+//                 },
+//               ],
+//             },
+//             {
+//               type: "parallel",
+//               joinLabel: "Compare two data sets",
+//               steps: [
+//                 {
+//                   id: "db-query",
+//                   label: "Retrieve backend data (RDBMS query)",
+//                   note: "Database",
+//                 },
+//                 {
+//                   id: "scrape",
+//                   label: "Data scrapping",
+//                 },
+//               ],
+//             },
+//             {
+//               type: "sequence",
+//               steps: [{ id: "compare", label: "Compare two data sets" }],
+//             },
+//             {
+//               type: "decision",
+//               question: "Is data matching?",
+//               yes: {
+//                 id: "update",
+//                 label: "Update Test Manager file",
+//                 accent: "success",
+//               },
+//               no: {
+//                 id: "notify",
+//                 label: "Send notification to concerned team",
+//                 accent: "danger",
+//               },
+//             },
+//             {
+//               type: "sequence",
+//               steps: [{ id: "close", label: "Update Test Manager file" }],
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         id: "performance-engineering",
+//         title: "Performance Engineering",
+//         summary:
+//           "Load, stress and scalability testing to validate non-functional requirements.",
+//         details:
+//           "We run realistic performance tests, tune infrastructure and provide remediation guidance to meet SLAs.",
+//         bullets: [
+//           "Workload modelling",
+//           "Distributed load tests",
+//           "Bottleneck analysis",
+//           "Capacity planning",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     id: "cloud-technologies",
+//     title: "Cloud Technologies",
+//     banner:
+//       "Modern cloud platforms, migrations, and automation to accelerate business outcomes.",
+//     approach:
+//       "We design cloud-native architectures, automate infrastructure provisioning and implement secure, cost-optimized migrations.",
+//     solutions: [
+//       {
+//         id: "cicd-pipelines",
+//         title: "CI/CD Pipelines",
+//         summary:
+//           "Automated build, test and deploy pipelines for faster, safer releases.",
+//         details:
+//           "Capabilities cover pipeline design, build, package, deploy, and repeat — integrating security, testing and observability into every stage.",
+//         bullets: [
+//           "Build",
+//           "Package",
+//           "Deploy",
+//           "Repeat (promote across environments)",
+//         ],
+//       },
+//       {
+//         id: "cloud-migration",
+//         title: "Cloud Migration",
+//         summary:
+//           "Lift-and-shift, replatforming and cloud-native rewrites to move workloads to cloud.",
+//         details:
+//           "We handle discovery, readiness, migration planning, execution and post-migration optimization.",
+//         bullets: [
+//           "Assessment & planning",
+//           "Migration runbooks",
+//           "Cutover automation",
+//           "Post-migration tuning",
+//         ],
+//       },
+//       {
+//         id: "automation",
+//         title: "Cloud Automation",
+//         summary:
+//           "Infrastructure as code, policy-as-code and automated runbooks for repeatable operations.",
+//         details:
+//           "IaC templates, automated provisioning, configuration management and self-healing operational playbooks.",
+//         bullets: [
+//           "IaC (Terraform/ARM/CloudFormation)",
+//           "Configuration management",
+//           "GitOps & drift detection",
+//           "Automated runbooks",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     id: "application-services",
+//     title: "Application Services & Modernization",
+//     banner:
+//       "Modernize legacy applications and build cloud-ready services with APIs and microservices.",
+//     approach:
+//       "We assess portfolio, prioritize modernization, and deliver modular, observable services built for scale.",
+//     solutions: [
+//       {
+//         id: "app-modernization",
+//         title: "Modernization",
+//         summary:
+//           "Strangler patterns, modularization and containerization to modernize monoliths.",
+//         details:
+//           "Re-architecture, re-platforming and incremental modernization with CI/CD, testing and observability.",
+//         bullets: [
+//           "Strangler design",
+//           "Containerization",
+//           "API-first modernization",
+//           "Observability",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     id: "digital-platforms",
+//     title: "Digital Platform Services & Commerce Solutions",
+//     banner:
+//       "End-to-end digital commerce platforms and customer experience engineering.",
+//     approach:
+//       "We combine commerce platforms, headless architectures and integrations for seamless customer journeys.",
+//     solutions: [
+//       {
+//         id: "commerce-platforms",
+//         title: "Commerce Platforms",
+//         summary:
+//           "Headless commerce, storefronts and integrations to payments and fulfillment.",
+//         details:
+//           "Platform selection, integrations, personalization and performance tuning for commerce workloads.",
+//         bullets: [
+//           "Headless architecture",
+//           "Integrations (payments/fulfillment)",
+//           "Personalization",
+//           "Performance",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     id: "ai-services",
+//     title: "AI",
+//     banner:
+//       "Applied AI and ML solutions to augment decision making and automate processes.",
+//     approach:
+//       "We focus on responsible AI, prototype quickly, and operationalize models for production use.",
+//     solutions: [
+//       {
+//         id: "ai-ml",
+//         title: "AI / ML Solutions",
+//         summary:
+//           "Model development, MLOps and production-ready deployment for intelligent applications.",
+//         details:
+//           "Data engineering, model training, validation, monitoring and governance for AI systems.",
+//         bullets: [
+//           "Data pipelines",
+//           "Model training & evaluation",
+//           "MLOps & deployment",
+//           "Monitoring & governance",
+//         ],
+//       },
+//     ],
+//   },
+// ];
 export const TECHNOLOGY_SERVICES = [
-  {
-    id: "quality-engineering",
-    title: "Quality Engineering & Assurance",
-    banner:
-      "Delivering high-quality software through automation, shift-left testing and continuous validation.",
-    approach:
-      "We blend automated and manual testing with CI/CD integration, performance engineering and test data management to ensure resilient releases.",
-    solutions: [
-      {
-        id: "test-automation",
-        title: "Automated Testing",
-        summary:
-          "Build and run automated test suites across UI, API and integration layers.",
-        details:
-          "Capabilities include test strategy, automation frameworks, CI integration, regression suites and reporting.",
-        bullets: [
-          "Test design & strategy",
-          "Automation frameworks",
-          "Regression & nightly runs",
-          "Reporting & dashboards",
-        ],
-        flow: {
-          title: "Automated Testing Process Flow",
-          subtitle:
-            "From environment preparation to reporting with parity checks",
-          stages: [
-            {
-              type: "sequence",
-              steps: [
-                { id: "start", label: "Start" },
-                { id: "init", label: "Init setup" },
-                {
-                  id: "manager-data",
-                  label: "Get data from Test Manager file",
-                },
-              ],
-            },
-            {
-              type: "parallel",
-              joinLabel: "Navigate to required page",
-              steps: [
-                {
-                  id: "mobile-login",
-                  label: "App installation + mobile login",
-                  note: "Cloud Appium Service",
-                },
-                {
-                  id: "web-login",
-                  label: "Launch web browser & login",
-                },
-              ],
-            },
-            {
-              type: "parallel",
-              joinLabel: "Compare two data sets",
-              steps: [
-                {
-                  id: "db-query",
-                  label: "Retrieve backend data (RDBMS query)",
-                  note: "Database",
-                },
-                {
-                  id: "scrape",
-                  label: "Data scrapping",
-                },
-              ],
-            },
-            {
-              type: "sequence",
-              steps: [{ id: "compare", label: "Compare two data sets" }],
-            },
-            {
-              type: "decision",
-              question: "Is data matching?",
-              yes: {
-                id: "update",
-                label: "Update Test Manager file",
-                accent: "success",
-              },
-              no: {
-                id: "notify",
-                label: "Send notification to concerned team",
-                accent: "danger",
-              },
-            },
-            {
-              type: "sequence",
-              steps: [{ id: "close", label: "Update Test Manager file" }],
-            },
-          ],
-        },
-      },
-      {
-        id: "performance-engineering",
-        title: "Performance Engineering",
-        summary:
-          "Load, stress and scalability testing to validate non-functional requirements.",
-        details:
-          "We run realistic performance tests, tune infrastructure and provide remediation guidance to meet SLAs.",
-        bullets: [
-          "Workload modelling",
-          "Distributed load tests",
-          "Bottleneck analysis",
-          "Capacity planning",
-        ],
-      },
-    ],
-  },
-  {
-    id: "cloud-technologies",
-    title: "Cloud Technologies",
-    banner:
-      "Modern cloud platforms, migrations, and automation to accelerate business outcomes.",
-    approach:
-      "We design cloud-native architectures, automate infrastructure provisioning and implement secure, cost-optimized migrations.",
-    solutions: [
-      {
-        id: "cicd-pipelines",
-        title: "CI/CD Pipelines",
-        summary:
-          "Automated build, test and deploy pipelines for faster, safer releases.",
-        details:
-          "Capabilities cover pipeline design, build, package, deploy, and repeat — integrating security, testing and observability into every stage.",
-        bullets: [
-          "Build",
-          "Package",
-          "Deploy",
-          "Repeat (promote across environments)",
-        ],
-      },
-      {
-        id: "cloud-migration",
-        title: "Cloud Migration",
-        summary:
-          "Lift-and-shift, replatforming and cloud-native rewrites to move workloads to cloud.",
-        details:
-          "We handle discovery, readiness, migration planning, execution and post-migration optimization.",
-        bullets: [
-          "Assessment & planning",
-          "Migration runbooks",
-          "Cutover automation",
-          "Post-migration tuning",
-        ],
-      },
-      {
-        id: "automation",
-        title: "Cloud Automation",
-        summary:
-          "Infrastructure as code, policy-as-code and automated runbooks for repeatable operations.",
-        details:
-          "IaC templates, automated provisioning, configuration management and self-healing operational playbooks.",
-        bullets: [
-          "IaC (Terraform/ARM/CloudFormation)",
-          "Configuration management",
-          "GitOps & drift detection",
-          "Automated runbooks",
-        ],
-      },
-    ],
-  },
-  {
-    id: "application-services",
-    title: "Application Services & Modernization",
-    banner:
-      "Modernize legacy applications and build cloud-ready services with APIs and microservices.",
-    approach:
-      "We assess portfolio, prioritize modernization, and deliver modular, observable services built for scale.",
-    solutions: [
-      {
-        id: "app-modernization",
-        title: "Modernization",
-        summary:
-          "Strangler patterns, modularization and containerization to modernize monoliths.",
-        details:
-          "Re-architecture, re-platforming and incremental modernization with CI/CD, testing and observability.",
-        bullets: [
-          "Strangler design",
-          "Containerization",
-          "API-first modernization",
-          "Observability",
-        ],
-      },
-    ],
-  },
-  {
-    id: "digital-platforms",
-    title: "Digital Platform Services & Commerce Solutions",
-    banner:
-      "End-to-end digital commerce platforms and customer experience engineering.",
-    approach:
-      "We combine commerce platforms, headless architectures and integrations for seamless customer journeys.",
-    solutions: [
-      {
-        id: "commerce-platforms",
-        title: "Commerce Platforms",
-        summary:
-          "Headless commerce, storefronts and integrations to payments and fulfillment.",
-        details:
-          "Platform selection, integrations, personalization and performance tuning for commerce workloads.",
-        bullets: [
-          "Headless architecture",
-          "Integrations (payments/fulfillment)",
-          "Personalization",
-          "Performance",
-        ],
-      },
-    ],
-  },
+  // 1. AI Services (First)
   {
     id: "ai-services",
     title: "AI",
@@ -588,23 +615,266 @@ export const TECHNOLOGY_SERVICES = [
       "We focus on responsible AI, prototype quickly, and operationalize models for production use.",
     solutions: [
       {
-        id: "ai-ml",
-        title: "AI / ML Solutions",
+        id: "ai-commerce-operations",
+        title: "AI-Enabled Commerce Operations Workflow",
         summary:
-          "Model development, MLOps and production-ready deployment for intelligent applications.",
-        details:
-          "Data engineering, model training, validation, monitoring and governance for AI systems.",
-        bullets: [
-          "Data pipelines",
-          "Model training & evaluation",
-          "MLOps & deployment",
-          "Monitoring & governance",
-        ],
+          "We help you apply AI to commerce operations workflows by continuously understanding customer behavior, transactional patterns, and operational signals.",
+        category: "Commerce Operations",
+      },
+      {
+        id: "ai-content-experience",
+        title: "AI-Assisted Content & Experience Workflow",
+        summary:
+          "We help you enhance content workflows by using AI to understand how content performs, how users engage with experiences, and where improvements are needed.",
+        category: "Content & Experience",
+      },
+      {
+        id: "ai-software-delivery",
+        title: "AI-Driven Software Delivery Workflow",
+        summary:
+          "We help you improve software delivery workflows by applying AI to how applications are built, tested, and maintained.",
+        category: "Software Delivery",
+      },
+      {
+        id: "ai-it-operations",
+        title: "AI-Powered IT Operations & Support Workflow",
+        summary:
+          "We help you apply AI to operational workflows by continuously analyzing system behavior, operational events, and support data.",
+        category: "IT Operations",
+      },
+      {
+        id: "ai-decision-planning",
+        title: "AI-Enhanced Decision & Planning Workflow",
+        summary:
+          "We help you strengthen decision-making workflows by using AI to interpret complex data across business and technology operations.",
+        category: "Decision & Planning",
+      },
+      {
+        id: "ai-operational-efficiency",
+        title: "AI-Driven Operational Efficiency & Automation",
+        summary:
+          "We help you optimize everyday operational workflows by using AI to identify repetitive, high-effort activities and process bottlenecks.",
+        category: "Operational Efficiency",
+      },
+    ],
+  },
+
+  // 2. Application Services & Modernization
+  {
+    id: "application-services",
+    title: "Application Services & Modernization",
+    banner:
+      "Modernize legacy applications and build cloud-ready services with APIs and microservices.",
+    approach:
+      "We assess portfolio, prioritize modernization, and deliver modular, observable services built for scale.",
+    solutions: [
+      {
+        id: "app-management-support",
+        title: "Application Management & Support Services",
+        summary:
+          "We provide end-to-end application management services by combining AI-assisted monitoring, predictive issue detection, and intelligent workload prioritization.",
+        category: "Support",
+      },
+      {
+        id: "app-modernization",
+        title: "Application Modernization Services",
+        summary:
+          "We modernize legacy applications by analyzing business workflows, architectural limitations, and scalability constraints.",
+        category: "Modernization",
+      },
+      {
+        id: "ui-experience-modernization",
+        title: "UI & Experience Modernization Services",
+        summary:
+          "We modernize application user experiences by evaluating user journeys, interaction flows, and experience bottlenecks.",
+        category: "UI/UX",
+      },
+      {
+        id: "enterprise-integration",
+        title: "Enterprise Integration & Platform Enablement",
+        summary:
+          "We enable seamless enterprise integration by analyzing application dependencies, data flows, and process interactions across systems.",
+        category: "Integration",
+      },
+      {
+        id: "marketplace-transition",
+        title: "Marketplace Platform Transition & Modernization",
+        summary:
+          "We help organizations modernize and transition high-scale digital marketplaces from rigid or platform-constrained environments to flexible, custom, or headless architectures.",
+        category: "Marketplace",
+      },
+      {
+        id: "phased-migration",
+        title: "Phased Migration & Minimal-Disruption Strategy",
+        summary:
+          "We design phased and parallel migration strategies that allow legacy and modern platforms to operate side by side.",
+        category: "Migration",
+      },
+    ],
+  },
+
+  // 3. Cloud & DevOps
+  {
+    id: "cloud-technologies",
+    title: "Cloud & DevOps",
+    banner:
+      "Modern cloud platforms, migrations, and automation to accelerate business outcomes.",
+    approach:
+      "We design cloud-native architectures, automate infrastructure provisioning and implement secure, cost-optimized migrations.",
+    solutions: [
+      {
+        id: "cloud-strategy",
+        title: "Cloud Strategy & Architecture Services",
+        summary:
+          "We help organizations define cloud strategies by assessing existing workloads, operational constraints, and future growth plans.",
+        category: "Strategy",
+      },
+      {
+        id: "cloud-migration",
+        title: "Cloud Migration & Modernization Services",
+        summary:
+          "We design and execute cloud migrations by analyzing application dependencies, data flows, and operational risks.",
+        category: "Migration",
+      },
+      {
+        id: "devops-enablement",
+        title: "DevOps Enablement & CI/CD Automation",
+        summary:
+          "We help organizations establish DevOps practices by automating build, test, and deployment workflows.",
+        category: "DevOps",
+      },
+      {
+        id: "infrastructure-code",
+        title: "Infrastructure as Code & Environment Automation",
+        summary:
+          "We enable infrastructure automation by defining environments through code and standardized templates.",
+        category: "Infrastructure",
+      },
+      {
+        id: "containerization",
+        title: "Containerization & Cloud-Native Enablement",
+        summary:
+          "We help organizations adopt cloud-native architectures by enabling containerization and orchestration strategies that improve portability, scalability, and resilience.",
+        category: "Cloud-Native",
+      },
+      {
+        id: "devsecops",
+        title: "DevSecOps & Cloud Security Enablement",
+        summary:
+          "We integrate security into cloud and DevOps workflows by embedding automated security controls, policy enforcement, and compliance checks throughout the delivery pipeline.",
+        category: "Security",
+      },
+    ],
+  },
+
+  // 4. Digital Platform Services & Commerce Solutions
+  {
+    id: "digital-platforms",
+    title: "Digital Platform Services & Commerce Solutions",
+    banner:
+      "End-to-end digital commerce platforms and customer experience engineering.",
+    approach:
+      "We combine commerce platforms, headless architectures and integrations for seamless customer journeys.",
+    solutions: [
+      {
+        id: "enterprise-commerce",
+        title: "Enterprise Commerce Platform Services",
+        summary:
+          "We help organizations design, implement, and manage enterprise commerce platforms that support complex business models, high transaction volumes, and omnichannel customer journeys.",
+        category: "Commerce",
+      },
+      {
+        id: "digital-experience",
+        title: "Digital Experience & Content Platform Services",
+        summary:
+          "We help organizations manage and optimize digital experiences by enabling content-driven, personalized, and consistent customer journeys using Adobe Experience Manager.",
+        category: "Experience",
+      },
+      {
+        id: "headless-platforms",
+        title: "Headless & Composable Digital Platforms",
+        summary:
+          "We help businesses adopt headless and composable architectures that decouple frontend experiences from backend platforms.",
+        category: "Headless",
+      },
+      {
+        id: "platform-modernization",
+        title: "Platform Modernization & Evolution Services",
+        summary:
+          "We modernize existing digital platforms by assessing current implementations, identifying scalability and performance constraints, and aligning platform capabilities with evolving business needs.",
+        category: "Modernization",
+      },
+      {
+        id: "commerce-integration",
+        title: "Commerce & Experience Integration Services",
+        summary:
+          "We enable seamless integration between commerce, content, and enterprise systems to ensure unified customer journeys and operational visibility.",
+        category: "Integration",
+      },
+      {
+        id: "platform-operations",
+        title: "Digital Platform Operations & Optimization",
+        summary:
+          "We manage and optimize digital platforms by applying proactive monitoring, performance engineering, and AI-assisted insights.",
+        category: "Operations",
+      },
+    ],
+  },
+
+  // 5. Quality Engineering & Assurance
+  {
+    id: "quality-engineering",
+    title: "Quality Engineering & Assurance",
+    banner:
+      "Delivering high-quality software through automation, shift-left testing and continuous validation.",
+    approach:
+      "We blend automated and manual testing with CI/CD integration, performance engineering and test data management to ensure resilient releases.",
+    solutions: [
+      {
+        id: "quality-strategy",
+        title: "Quality Engineering Strategy & Enablement",
+        summary:
+          "We help organizations define a quality engineering strategy that aligns with business objectives, delivery velocity, and platform complexity.",
+        category: "Strategy",
+      },
+      {
+        id: "test-automation",
+        title: "Test Automation & Continuous Validation",
+        summary:
+          "We enable automation-driven quality practices across functional, regression, and integration workflows.",
+        category: "Automation",
+      },
+      {
+        id: "workflow-testing",
+        title: "End-to-End Workflow & Integration Testing",
+        summary:
+          "We validate end-to-end business workflows across interconnected systems to ensure data consistency, process reliability, and seamless user journeys.",
+        category: "Integration",
+      },
+      {
+        id: "performance-testing",
+        title: "Performance, Load & Scalability Assurance",
+        summary:
+          "We help organizations assess how systems behave under real-world load, concurrency, and stress conditions.",
+        category: "Performance",
+      },
+      {
+        id: "security-quality",
+        title: "Security-Focused Quality & Risk Assurance",
+        summary:
+          "We embed security and risk validation into quality workflows by identifying vulnerabilities, configuration risks, and compliance gaps early in the delivery lifecycle.",
+        category: "Security",
+      },
+      {
+        id: "continuous-monitoring",
+        title: "Continuous Quality Monitoring & Optimization",
+        summary:
+          "We enable continuous quality monitoring by analyzing test results, system behavior, and production signals.",
+        category: "Monitoring",
       },
     ],
   },
 ];
-
 export const RESOURCES = [
   {
     id: 1,
