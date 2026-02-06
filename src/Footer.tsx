@@ -229,7 +229,7 @@ export const Footer = ({ navigateTo }: FooterProps) => {
             </div>
           </div>
           <div className="pt-8 text-center text-white border-t border-neutral-800">
-            <p>&copy; 2025 CJSS Technologies. All rights reserved.</p>
+            <p>&copy; 2026 CJSS Technologies. All rights reserved.</p>
           </div>
         </div>
       </div>

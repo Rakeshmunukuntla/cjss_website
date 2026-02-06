@@ -267,18 +267,18 @@ interface Mentor {
 //   },
 // ];
 export const mentors = [
-  {
-    id: 5,
-    name: "Anjali Mohan",
-    role: "Lead SAP Commerce (Hybris) Customer Experience",
-    image: "/images/anjalimohan.png",
-    shortStory: "Leading scalable SAP Commerce customer experiences.",
-    fullStory:
-      "I joined CJSS Technologies four years ago, at a time when both the company and my role were evolving.\n\nFrom the beginning, I had the opportunity to work closely with SAP Commerce (Hybris) on real, live projects. What stood out to me was how quickly I was trusted with responsibility. I wasn’t just asked to deliver tasks — I was encouraged to understand the platform, the customer journeys, and the impact of what we were building.\n\nA lot of my learning came from everyday work. Design discussions, code reviews, and problem-solving sessions were constant, and I was always encouraged to ask questions and explore better approaches. That environment pushed me to think beyond implementation and focus on building scalable and reliable customer experience solutions.\n\nAs the projects grew, so did my role. I gradually moved into owning customer experience components, making technical decisions, and guiding delivery. Over time, my focus became firmly centered on SAP Hybris Customer Experience development, working across complex commerce flows and integrations.\n\nOne of the most meaningful parts of my journey has been contributing to enterprise platforms for clients like the Changi Group of Airports. Working at that scale brings a different level of responsibility — attention to detail, performance, and long-term stability really matter. Those experiences shaped how I approach both development and leadership.\n\nToday, I lead SAP Hybris Customer Experience initiatives at CJSS Technologies. I work closely with teams, mentor developers, and take ownership of quality and outcomes. The growth I’ve experienced here feels natural — driven by trust, learning, and consistent effort over time.\n\nCJSS Technologies has given me the space to grow, take ownership, and keep learning. It’s a journey that continues to challenge me, and one that I’m proud to be part of.",
-    yearsAtCompany: "4+ Years",
-    achievements: ["SAP CX Leadership", "Enterprise CX Delivery"],
-    quote: "Quality and consistency define long-term success.",
-  },
+  // {
+  //   id: 5,
+  //   name: "Anjali Mohan",
+  //   role: "Lead SAP Commerce (Hybris) Customer Experience",
+  //   image: "/images/anjalimohan.png",
+  //   shortStory: "Leading scalable SAP Commerce customer experiences.",
+  //   fullStory:
+  //     "I joined CJSS Technologies four years ago, at a time when both the company and my role were evolving.\n\nFrom the beginning, I had the opportunity to work closely with SAP Commerce (Hybris) on real, live projects. What stood out to me was how quickly I was trusted with responsibility. I wasn’t just asked to deliver tasks — I was encouraged to understand the platform, the customer journeys, and the impact of what we were building.\n\nA lot of my learning came from everyday work. Design discussions, code reviews, and problem-solving sessions were constant, and I was always encouraged to ask questions and explore better approaches. That environment pushed me to think beyond implementation and focus on building scalable and reliable customer experience solutions.\n\nAs the projects grew, so did my role. I gradually moved into owning customer experience components, making technical decisions, and guiding delivery. Over time, my focus became firmly centered on SAP Hybris Customer Experience development, working across complex commerce flows and integrations.\n\nOne of the most meaningful parts of my journey has been contributing to enterprise platforms for clients like the Changi Group of Airports. Working at that scale brings a different level of responsibility — attention to detail, performance, and long-term stability really matter. Those experiences shaped how I approach both development and leadership.\n\nToday, I lead SAP Hybris Customer Experience initiatives at CJSS Technologies. I work closely with teams, mentor developers, and take ownership of quality and outcomes. The growth I’ve experienced here feels natural — driven by trust, learning, and consistent effort over time.\n\nCJSS Technologies has given me the space to grow, take ownership, and keep learning. It’s a journey that continues to challenge me, and one that I’m proud to be part of.",
+  //   yearsAtCompany: "4+ Years",
+  //   achievements: ["SAP CX Leadership", "Enterprise CX Delivery"],
+  //   quote: "Quality and consistency define long-term success.",
+  // },
 
   {
     id: 6,
@@ -293,18 +293,18 @@ export const mentors = [
     quote: "Growth comes from collaboration and real-world experience.",
   },
 
-  {
-    id: 7,
-    name: "Saikiran Vemula",
-    role: "Lead – TechOps",
-    image: "/images/saikiran.png",
-    shortStory: "Driving operational excellence behind the scenes.",
-    fullStory:
-      "Keeping systems running smoothly is something I’ve always enjoyed, and CJSS Technologies gave me the space to turn that responsibility into impact.\n\nFrom the start, my focus has been on TechOps and operational excellence — making sure platforms, environments, and services work reliably for the teams that depend on them every day. The work isn’t always visible, but it’s critical. When systems are stable, teams can focus on building and delivering.\n\nWhat shaped my journey here is the level of ownership I was trusted with. Handling operations across projects meant understanding not just infrastructure, but also how development teams work, how deployments affect users, and how downtime impacts business. That pushed me to think beyond tasks and focus on reliability, performance, and continuous improvement.\n\nAs the company grew, the operational landscape became more complex. My role evolved into leading TechOps, supporting multiple teams and services, and ensuring that systems scale without compromising stability. Coordinating with developers, architects, and leadership became a key part of my work.\n\nToday, I lead the TechOps function at CJSS Technologies, handling operational services that support the entire organization. From environment management and deployments to monitoring and issue resolution, my responsibility is to ensure everything runs smoothly behind the scenes.\n\nWhat keeps this role interesting is the constant learning. Technology changes, systems grow, and expectations rise. CJSS Technologies provides an environment where operations are valued, collaboration is encouraged, and reliability is treated as a shared responsibility.\n\nBeing part of this journey has been rewarding, and it continues to challenge me in the best way.",
-    yearsAtCompany: "6+ Years",
-    achievements: ["Operational Excellence", "Platform Reliability"],
-    quote: "Operations excellence is invisible when done right.",
-  },
+  // {
+  //   id: 7,
+  //   name: "Saikiran Vemula",
+  //   role: "Lead – TechOps",
+  //   image: "/images/saikiran.png",
+  //   shortStory: "Driving operational excellence behind the scenes.",
+  //   fullStory:
+  //     "Keeping systems running smoothly is something I’ve always enjoyed, and CJSS Technologies gave me the space to turn that responsibility into impact.\n\nFrom the start, my focus has been on TechOps and operational excellence — making sure platforms, environments, and services work reliably for the teams that depend on them every day. The work isn’t always visible, but it’s critical. When systems are stable, teams can focus on building and delivering.\n\nWhat shaped my journey here is the level of ownership I was trusted with. Handling operations across projects meant understanding not just infrastructure, but also how development teams work, how deployments affect users, and how downtime impacts business. That pushed me to think beyond tasks and focus on reliability, performance, and continuous improvement.\n\nAs the company grew, the operational landscape became more complex. My role evolved into leading TechOps, supporting multiple teams and services, and ensuring that systems scale without compromising stability. Coordinating with developers, architects, and leadership became a key part of my work.\n\nToday, I lead the TechOps function at CJSS Technologies, handling operational services that support the entire organization. From environment management and deployments to monitoring and issue resolution, my responsibility is to ensure everything runs smoothly behind the scenes.\n\nWhat keeps this role interesting is the constant learning. Technology changes, systems grow, and expectations rise. CJSS Technologies provides an environment where operations are valued, collaboration is encouraged, and reliability is treated as a shared responsibility.\n\nBeing part of this journey has been rewarding, and it continues to challenge me in the best way.",
+  //   yearsAtCompany: "6+ Years",
+  //   achievements: ["Operational Excellence", "Platform Reliability"],
+  //   quote: "Operations excellence is invisible when done right.",
+  // },
 
   {
     id: 8,
@@ -343,6 +343,23 @@ export const mentors = [
     yearsAtCompany: "6+ Years",
     achievements: ["Frontend Leadership", "UX Consistency"],
     quote: "User experience is built one interaction at a time.",
+  },
+  {
+    id: 11,
+    name: "Devaraju",
+    role: "Lead – AEM Developer",
+    image: "/images/devaraju.png",
+    shortStory:
+      "Growing with CJSS by building scalable and reliable AEM backend solutions.",
+    fullStory:
+      "My journey at CJSS Technologies has been one of growth, learning, and long-term commitment. Being part of the organization from its early stages, I have had the unique opportunity to grow alongside the company and contribute to its evolution over the years.\n\nWhen I joined CJSS Technologies, the focus was on building strong foundations. As an AEM Backend Developer, my early responsibilities involved understanding the platform deeply and delivering reliable backend solutions using Adobe Experience Manager. Working on core AEM concepts such as OSGi services, Sling Models, workflows, schedulers, and integrations gave me a solid technical base and a clear understanding of enterprise-level content management systems.\n\nAs the company expanded, so did the scale and complexity of the projects. With that growth came greater responsibility. My role evolved from executing individual tasks to owning backend components, contributing to design decisions, and ensuring that implementations followed best practices. I became more involved in reviewing code, supporting deployments, troubleshooting production issues, and helping maintain stable and scalable AEM platforms.\n\nOver time, I also grew professionally in how I collaborated across teams. Working closely with frontend developers, QA, DevOps, and stakeholders helped me understand the complete delivery lifecycle. This exposure strengthened my ability to think beyond isolated features and focus on system reliability, performance, and long-term maintainability.\n\nWhat truly defines my experience at CJSS Technologies is the work culture. The organization promotes trust, ownership, and open communication. Developers are encouraged to ask questions, share ideas, and continuously improve. The leadership provides guidance while also allowing the freedom to take responsibility, which has played a key role in my technical and professional growth.\n\nToday, I continue to work as an AEM Backend Developer at CJSS Technologies, contributing to enterprise solutions that support both internal platforms and client deliveries. My focus is on building clean backend architectures, ensuring quality and consistency, and supporting the team with the experience I’ve gained over the years.\n\nLooking back, CJSS Technologies has been more than just a place of work for me—it has been a space where my skills, confidence, and mindset have evolved naturally. Growing with the company from its early days to where it stands today has been deeply rewarding, and it is a journey I am proud to be part of and continue forward.",
+    yearsAtCompany: "4+ Years",
+    achievements: [
+      "AEM Backend Architecture",
+      "Platform Stability & Scalability",
+      "Code Quality & Best Practices",
+    ],
+    quote: "Growth comes from building, learning, and evolving together.",
   },
 ];
 
