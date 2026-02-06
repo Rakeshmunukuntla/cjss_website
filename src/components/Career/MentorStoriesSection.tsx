@@ -308,7 +308,7 @@ export const mentors = [
 
   {
     id: 8,
-    name: "Lekhya Puri",
+    name: "Lekhya Pypuri",
     role: "Lead – Quality Assurance",
     image: "/images/lekhya.png",
     shortStory: "Building trust through quality and discipline.",
@@ -346,7 +346,7 @@ export const mentors = [
   },
   {
     id: 11,
-    name: "Devaraju",
+    name: "Devaraju Polasi",
     role: "Lead – AEM Developer",
     image: "/images/devaraju.png",
     shortStory:
