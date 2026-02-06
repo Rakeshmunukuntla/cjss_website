@@ -128,7 +128,7 @@ export const AboutUsSection = () => {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     const cards = sectionRef.current?.querySelectorAll("[data-card]");
@@ -158,7 +158,7 @@ export const AboutUsSection = () => {
 
   const statHighlights = [
     { value: "20+", label: "Years Engineering" },
-    { value: "50+", label: "Experts" },
+    { value: "75+", label: "Experts" },
     { value: "7", label: "Delivery Hubs" },
   ];
 

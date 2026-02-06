@@ -305,10 +305,10 @@ const CarrierHome = ({ navigateTo }: CarrierHomeProps) => {
               <div className="mt-14 md:mt-20 flex justify-center">
                 <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 md:gap-12">
                   {[
-                    { value: 200, label: "Happy Employees", suffix: "+" },
+                    { value: 220, label: "Happy Employees", suffix: "+" },
                     { value: 4, label: "Years of Transformation", suffix: "+" },
                     { value: 2, label: "Global Locations", suffix: "" },
-                    { value: 3, label: "Clients Worldwide", suffix: "" },
+                    { value: 4, label: "Clients Worldwide", suffix: "" },
                   ].map((item, i) => (
                     <div key={i} className="flex flex-col items-center">
                       <h3 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">

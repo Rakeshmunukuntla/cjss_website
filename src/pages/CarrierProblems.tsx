@@ -533,7 +533,7 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
                         />
 
                         {/* IMAGE TAGS */}
-                        <div className="absolute z-20 flex flex-wrap gap-2 bottom-6 left-6 right-6">
+                        {/* <div className="absolute z-20 flex flex-wrap gap-2 bottom-6 left-6 right-6">
                           {item.imageTags.map((tag, tagIndex) => {
                             const TagIcon = tag.icon;
                             return (
@@ -556,7 +556,7 @@ const CarrierProblems = ({ navigateTo }: CarrierProblemsProps) => {
                               </span>
                             );
                           })}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>

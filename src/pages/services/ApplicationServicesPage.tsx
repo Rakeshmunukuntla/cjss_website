@@ -1828,7 +1828,7 @@ export default function ApplicationServicesPage() {
                       href="mailto:apps@cjss.example"
                       className="text-purple-300 hover:text-sky-300 hover:underline transition-colors"
                     >
-                      apps@cjss.example
+                      connect@cjsstech.com
                     </a>
                   </p>
 

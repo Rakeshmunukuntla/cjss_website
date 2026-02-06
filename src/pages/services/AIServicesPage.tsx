@@ -2262,7 +2262,7 @@ const AIServicesPage: React.FC = () => {
                       href="mailto:ai@cjss.example"
                       className="text-purple-300 hover:text-sky-300 hover:underline transition-colors"
                     >
-                      ai@cjss.example
+                      connect@cjsstech.com
                     </a>
                   </p>
 

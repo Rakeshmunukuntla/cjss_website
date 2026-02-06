@@ -1619,7 +1619,7 @@ const DigitalPlatformsPage: React.FC = () => {
 
               <div className="rounded-3xl bg-slate-950/80 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.55)] p-6 sm:p-8 flex gap-4 sm:gap-5 items-start hover:shadow-[0_0_60px_rgba(168,85,247,0.35)] transition-all">
                 <img
-                  src="/images/sathyasir.jpeg"
+                  src="/images/satyasirAI.jpg"
                   alt="Y Sathyanarayana"
                   className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover border border-purple-300/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]"
                 />
@@ -1638,7 +1638,7 @@ const DigitalPlatformsPage: React.FC = () => {
                       href="mailto:platforms@cjss.example"
                       className="text-purple-300 hover:text-sky-300 hover:underline transition-colors"
                     >
-                      platforms@cjss.example
+                      connect@cjsstech.com
                     </a>
                   </p>
 

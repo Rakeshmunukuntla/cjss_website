@@ -1724,7 +1724,7 @@ const QualityEngineeringPage: React.FC = () => {
                       href="mailto:qa@cjss.example"
                       className="text-purple-300 hover:text-sky-300 hover:underline transition-colors"
                     >
-                      qa@cjss.example
+                      connect@cjsstech.com
                     </a>
                   </p>
                   <p className="text-xs text-slate-500 mt-1">

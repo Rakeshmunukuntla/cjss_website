@@ -69,7 +69,7 @@ import { useEffect, useState } from "react";
 import { AboutUsSection } from "../components/home/AboutUsSection";
 import { WhyChooseUsSection } from "../components/home/WhyChooseUsSection";
 import OurServicesSection from "../components/home/OurServicesSection";
-import { ClientsSection } from "../components/home/ClientsSection";
+// import { ClientsSection } from "../components/home/ClientsSection";
 import { ExpertiseSection } from "../components/home/ExpertiseSection";
 import { GlobeSection } from "../components/home/GlobeSection";
 import { TechShowcaseSection } from "../components/home/TechShowcaseSection";
@@ -133,7 +133,7 @@ export const HomePage = ({ navigateTo }: HomePageProps) => {
 
           <OurServicesSection navigateTo={navigateTo} />
 
-          <ClientsSection />
+          {/* <ClientsSection /> */}
           <ExpertiseSection />
         </div>
       </div>
