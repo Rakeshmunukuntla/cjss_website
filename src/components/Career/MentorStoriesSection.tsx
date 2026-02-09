@@ -268,6 +268,23 @@ interface Mentor {
 // ];
 export const mentors = [
   {
+    id: 4,
+    name: "Devaraju Polasi",
+    role: "Lead – AEM Developer",
+    image: "/images/deva.png",
+    shortStory:
+      "Growing with CJSS by building scalable and reliable AEM backend solutions.",
+    fullStory:
+      "My journey at CJSS Technologies has been one of growth, learning, and long-term commitment. Being part of the organization from its early stages, I have had the unique opportunity to grow alongside the company and contribute to its evolution over the years.\n\nWhen I joined CJSS Technologies, the focus was on building strong foundations. As an AEM Backend Developer, my early responsibilities involved understanding the platform deeply and delivering reliable backend solutions using Adobe Experience Manager. Working on core AEM concepts such as OSGi services, Sling Models, workflows, schedulers, and integrations gave me a solid technical base and a clear understanding of enterprise-level content management systems.\n\nAs the company expanded, so did the scale and complexity of the projects. With that growth came greater responsibility. My role evolved from executing individual tasks to owning backend components, contributing to design decisions, and ensuring that implementations followed best practices. I became more involved in reviewing code, supporting deployments, troubleshooting production issues, and helping maintain stable and scalable AEM platforms.\n\nOver time, I also grew professionally in how I collaborated across teams. Working closely with frontend developers, QA, DevOps, and stakeholders helped me understand the complete delivery lifecycle. This exposure strengthened my ability to think beyond isolated features and focus on system reliability, performance, and long-term maintainability.\n\nWhat truly defines my experience at CJSS Technologies is the work culture. The organization promotes trust, ownership, and open communication. Developers are encouraged to ask questions, share ideas, and continuously improve. The leadership provides guidance while also allowing the freedom to take responsibility, which has played a key role in my technical and professional growth.\n\nToday, I continue to work as an AEM Backend Developer at CJSS Technologies, contributing to enterprise solutions that support both internal platforms and client deliveries. My focus is on building clean backend architectures, ensuring quality and consistency, and supporting the team with the experience I’ve gained over the years.\n\nLooking back, CJSS Technologies has been more than just a place of work for me—it has been a space where my skills, confidence, and mindset have evolved naturally. Growing with the company from its early days to where it stands today has been deeply rewarding, and it is a journey I am proud to be part of and continue forward.",
+    yearsAtCompany: "4+ Years",
+    achievements: [
+      "AEM Backend Architecture",
+      "Platform Stability & Scalability",
+      "Code Quality & Best Practices",
+    ],
+    quote: "Growth comes from building, learning, and evolving together.",
+  },
+  {
     id: 5,
     name: "Anjali Mohan",
     role: "Lead SAP Commerce (Hybris) Customer Experience",
@@ -343,23 +360,6 @@ export const mentors = [
     yearsAtCompany: "6+ Years",
     achievements: ["Frontend Leadership", "UX Consistency"],
     quote: "User experience is built one interaction at a time.",
-  },
-  {
-    id: 11,
-    name: "Devaraju Polasi",
-    role: "Lead – AEM Developer",
-    image: "/images/deva.png",
-    shortStory:
-      "Growing with CJSS by building scalable and reliable AEM backend solutions.",
-    fullStory:
-      "My journey at CJSS Technologies has been one of growth, learning, and long-term commitment. Being part of the organization from its early stages, I have had the unique opportunity to grow alongside the company and contribute to its evolution over the years.\n\nWhen I joined CJSS Technologies, the focus was on building strong foundations. As an AEM Backend Developer, my early responsibilities involved understanding the platform deeply and delivering reliable backend solutions using Adobe Experience Manager. Working on core AEM concepts such as OSGi services, Sling Models, workflows, schedulers, and integrations gave me a solid technical base and a clear understanding of enterprise-level content management systems.\n\nAs the company expanded, so did the scale and complexity of the projects. With that growth came greater responsibility. My role evolved from executing individual tasks to owning backend components, contributing to design decisions, and ensuring that implementations followed best practices. I became more involved in reviewing code, supporting deployments, troubleshooting production issues, and helping maintain stable and scalable AEM platforms.\n\nOver time, I also grew professionally in how I collaborated across teams. Working closely with frontend developers, QA, DevOps, and stakeholders helped me understand the complete delivery lifecycle. This exposure strengthened my ability to think beyond isolated features and focus on system reliability, performance, and long-term maintainability.\n\nWhat truly defines my experience at CJSS Technologies is the work culture. The organization promotes trust, ownership, and open communication. Developers are encouraged to ask questions, share ideas, and continuously improve. The leadership provides guidance while also allowing the freedom to take responsibility, which has played a key role in my technical and professional growth.\n\nToday, I continue to work as an AEM Backend Developer at CJSS Technologies, contributing to enterprise solutions that support both internal platforms and client deliveries. My focus is on building clean backend architectures, ensuring quality and consistency, and supporting the team with the experience I’ve gained over the years.\n\nLooking back, CJSS Technologies has been more than just a place of work for me—it has been a space where my skills, confidence, and mindset have evolved naturally. Growing with the company from its early days to where it stands today has been deeply rewarding, and it is a journey I am proud to be part of and continue forward.",
-    yearsAtCompany: "4+ Years",
-    achievements: [
-      "AEM Backend Architecture",
-      "Platform Stability & Scalability",
-      "Code Quality & Best Practices",
-    ],
-    quote: "Growth comes from building, learning, and evolving together.",
   },
 ];
 
