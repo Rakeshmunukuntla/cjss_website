@@ -47,7 +47,7 @@ export const App = () => {
 
       <script suppressHydrationWarning>
         {`(function(){ if(typeof window !== 'undefined'){ window.__TECH_SERVICES_LIST = ${JSON.stringify(
-          TECHNOLOGY_SERVICES.map((s) => ({ id: s.id, title: s.title }))
+          TECHNOLOGY_SERVICES.map((s) => ({ id: s.id, title: s.title })),
         )} } })()`}
       </script>
 

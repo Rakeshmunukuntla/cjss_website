@@ -101,7 +101,7 @@ const PRACTICE_LEADERS = [
     id: 2,
     name: "Sathyanarayana Y",
     role: "Solution Architect",
-    image: "/images/satyasirAI.jpg",
+    image: "/images/satyasir.jpg",
     fullStory:
       "Sathyanarayana leads enterprise solution architecture with a focus on scalability, security, and performance. He translates complex business requirements into robust technical designs while mentoring architects and engineers.",
     yearsAtCompany: "8+ Years",

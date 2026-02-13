@@ -35,7 +35,7 @@ export const ResourcesPage = ({ navigateTo }: ResourcesPageProps) => {
 
   const filteredResources = useMemo(
     () => resources.filter((r) => r.category === selectedCategory),
-    [resources, selectedCategory]
+    [resources, selectedCategory],
   );
 
   return (
@@ -43,7 +43,7 @@ export const ResourcesPage = ({ navigateTo }: ResourcesPageProps) => {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Sidebar - Categories (Fixed/Sticky) */}
-          <aside className="lg:w-80 shrink-0">
+          <aside className="lg:w-60 shrink-0">
             <div className="space-y-8 lg:sticky lg:top-28">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">
@@ -92,8 +92,8 @@ export const ResourcesPage = ({ navigateTo }: ResourcesPageProps) => {
                 {selectedCategory === "whitepapers"
                   ? "Whitepapers"
                   : selectedCategory === "publications"
-                  ? "Publications"
-                  : "Blogs"}
+                    ? "Publications"
+                    : "Blogs"}
               </h2>
               <p className="max-w-2xl mt-2 text-white/70">
                 {selectedCategory === "blogs" &&
