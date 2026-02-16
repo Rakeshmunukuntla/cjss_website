@@ -630,7 +630,7 @@ export const Header = ({ currentPage, navigateTo }: HeaderProps) => {
   return (
     <>
       {/* ================= MOBILE ================= */}
-      <header className="fixed top-0 left-0 right-0 z-40 border-b border-neutral-800 bg-neutral-950 md:hidden">
+      <header className="fixed top-0 left-0 right-0 z-40 border-b border-neutral-800 bg-transparent md:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <button onClick={() => handleNavClick("home")}>
             <img src="/images/cjss-logo.png" alt="CJSS" className="h-12" />

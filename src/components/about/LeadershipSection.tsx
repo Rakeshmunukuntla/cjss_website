@@ -60,7 +60,7 @@ import { Quote } from "lucide-react";
 
 const LEADERS_DATA = [
   {
-    name: "Venkatkrishna",
+    name: "Venkata Krishna",
     designation: "Director",
     profileImage: "/images/Krishna3.jpg",
     bio: [
