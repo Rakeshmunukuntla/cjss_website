@@ -272,6 +272,7 @@ export const mentors = [
     name: "Devaraju Polasi",
     role: "Lead – AEM Developer",
     image: "/images/deva.png",
+
     shortStory:
       "Growing with CJSS by building scalable and reliable AEM backend solutions.",
     fullStory:
