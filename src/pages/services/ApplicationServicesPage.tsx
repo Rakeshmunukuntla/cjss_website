@@ -1825,7 +1825,7 @@ export default function ApplicationServicesPage() {
                   <p className="mt-3 sm:mt-4 text-sm">
                     Email:{" "}
                     <a
-                      href="mailto:apps@cjss.example"
+                      href="mailto:connect@cjsstech.com"
                       className="text-purple-300 hover:text-sky-300 hover:underline transition-colors"
                     >
                       connect@cjsstech.com

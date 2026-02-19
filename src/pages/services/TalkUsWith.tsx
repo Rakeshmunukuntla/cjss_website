@@ -62,10 +62,10 @@ const TalkWithUs = () => {
               <p className="mt-4 text-sm">
                 Email:{" "}
                 <a
-                  href="mailto:qa@cjss.example"
+                  href="mailto:connect@cjsstech.com"
                   className="text-cyan-400 hover:underline"
                 >
-                  qa@cjss.example
+                  connect@cjsstech.com
                 </a>
               </p>
 
