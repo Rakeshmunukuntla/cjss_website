@@ -43,7 +43,7 @@ const NotFound = () => {
           <p className="text-gray-500 mb-4">Or try these popular pages:</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => navigate("/about-us")}
               className="text-purple-400 hover:text-purple-300 underline"
             >
               About Us

@@ -1557,7 +1557,7 @@ export const AboutPage = () => {
                     className="text-sm sm:text-base font-medium text-purple-300 hover:text-purple-200 transition-colors"
                     href="mailto:info@cjsstechnologies.com"
                   >
-                    info@cjsstechnologies.com
+                    info@cjsstech.com
                   </a>
                 </div>
               </div>

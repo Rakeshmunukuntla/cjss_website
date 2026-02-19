@@ -190,7 +190,7 @@ export const App = () => {
         <Header />
 
         <MobileIsoBadge />
-        
+
         <script suppressHydrationWarning>
           {`(function(){ if(typeof window !== 'undefined'){ window.__TECH_SERVICES_LIST = ${JSON.stringify(
             TECHNOLOGY_SERVICES.map((s) => ({ id: s.id, title: s.title })),
@@ -206,7 +206,8 @@ export const App = () => {
             <Route path="/home" element={<HomePage />} />
 
             {/* 2️⃣ ABOUT */}
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/contacts" element={<AboutPage />} />
 
             {/* 3️⃣ SERVICES */}
             <Route

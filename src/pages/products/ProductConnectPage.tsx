@@ -812,7 +812,7 @@ export const ProductConnectPage = () => {
   const handleContactSales = () => {
     // Navigate to contact page or open email
     window.location.href =
-      "mailto:sales@cjss.com?subject=Connect HRMS Demo Request";
+      "mailto:connect@cjsstech.com?subject=Connect HRMS Demo Request";
   };
 
   return (

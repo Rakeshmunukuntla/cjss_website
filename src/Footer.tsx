@@ -251,7 +251,7 @@ export const Footer = () => {
 
   const companyLinks = [
     { label: "Overview", path: "/" },
-    { label: "About Us", path: "/about" },
+    { label: "About Us", path: "/about-us" },
     { label: "Careers", path: "/careers" },
     { label: "Resources", path: "/resources" },
     { label: "Products", path: "/products" },
@@ -344,7 +344,7 @@ export const Footer = () => {
                 href="mailto:contact@cjss.com"
                 className="text-purple-400 hover:text-purple-300 transition-colors text-sm"
               >
-                contact@cjss.com
+                connect@cjsstech.com
               </a>
             </div>
 
