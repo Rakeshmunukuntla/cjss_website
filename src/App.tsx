@@ -205,6 +205,8 @@ export const App = () => {
             <Route path="/services" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
 
+            <Route path="/overview" element={<HomePage />} />
+
             {/* 2️⃣ ABOUT */}
             <Route path="/about-us" element={<AboutPage />} />
             <Route path="/contacts" element={<AboutPage />} />
