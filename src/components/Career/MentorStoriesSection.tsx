@@ -799,9 +799,21 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { createPortal } from "react-dom";
 import type { Swiper as SwiperType } from "swiper";
+import { mentorsData } from "./mentorsData";
 
+// interface Mentor {
+//   id: number;
+//   name: string;
+//   role: string;
+//   image: string;
+//   shortStory: string;
+//   fullStory: string;
+//   yearsAtCompany: string;
+//   achievements: string[];
+//   quote: string;
+// }
 interface Mentor {
-  id: number;
+  _id: string;
   name: string;
   role: string;
   image: string;
@@ -810,8 +822,10 @@ interface Mentor {
   yearsAtCompany: string;
   achievements: string[];
   quote: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
-
 const MentorModal = ({
   mentor,
   onClose,
@@ -969,9 +983,14 @@ interface MentorStoriesSectionProps {
 }
 
 const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
-  const [mentors, setMentors] = useState<Mentor[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [mentors, setMentors] = useState<Mentor[]>([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
+
+  const [mentors] = useState<Mentor[]>(mentorsData);
+  const loading = false;
+  const error = null;
+
   const [openStory, setOpenStory] = useState<Mentor | null>(null);
   const [typingText, setTypingText] = useState("");
   const fullText = "Career Growth & Mentor Stories";
@@ -980,27 +999,27 @@ const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
   const [isEnd, setIsEnd] = useState(false);
 
   // Fetch mentors from server
-  useEffect(() => {
-    const fetchMentors = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch("http://172.16.16.33:5000/mentors");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch mentors: ${response.statusText}`);
-        }
-        const data = await response.json();
-        setMentors(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load mentors");
-        console.error("Error fetching mentors:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchMentors = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError(null);
+  //       const response = await fetch("http://172.16.16.33:5000/mentors");
+  //       if (!response.ok) {
+  //         throw new Error(`Failed to fetch mentors: ${response.statusText}`);
+  //       }
+  //       const data = await response.json();
+  //       setMentors(data);
+  //     } catch (err) {
+  //       setError(err instanceof Error ? err.message : "Failed to load mentors");
+  //       console.error("Error fetching mentors:", err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchMentors();
-  }, []);
+  //   fetchMentors();
+  // }, []);
 
   useEffect(() => {
     onModalOpen?.(openStory !== null);
@@ -1161,7 +1180,7 @@ const MentorStoriesSection = ({ onModalOpen }: MentorStoriesSectionProps) => {
                   className="mx-auto"
                 >
                   {mentors.map((mentor) => (
-                    <SwiperSlide key={mentor.id}>
+                    <SwiperSlide key={mentor._id}>
                       <div
                         className="relative p-5 overflow-visible cursor-pointer sm:p-6 mentor-card group rounded-2xl"
                         style={{
