@@ -247,14 +247,16 @@ export const ResourceDetailPage = () => {
 
     const load = async () => {
       try {
-        const res = await fetch(`http://172.16.16.33:5000/blogs/${resourceId}`);
+        const res = await fetch(
+          `https://cjsstech.com/api//blogs/${resourceId}`,
+        );
         if (!res.ok) throw new Error("Resource not found");
 
         const data = await res.json();
         setResource(data);
 
         // Fetch related resources
-        const listRes = await fetch("http://172.16.16.33:5000/blogs");
+        const listRes = await fetch("https://cjsstech.com/api/blogs");
         const allBlogs: Resource[] = await listRes.json();
 
         setRelated(

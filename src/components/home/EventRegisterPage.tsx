@@ -826,7 +826,7 @@ export default function EventRegisterPage() {
 
     async function loadEvent() {
       try {
-        const res = await fetch(`http://172.16.16.33:5000/events/${eventId}`);
+        const res = await fetch(`https://cjsstech.com/api/events/${eventId}`);
         // const res = await fetch(`http://localhost:5000/events/${eventId}`);
         const data = await res.json();
         setEvent(data.event);
@@ -874,7 +874,7 @@ export default function EventRegisterPage() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("http://172.16.16.33:5000/events/register", {
+      const res = await fetch("https://cjsstech.com/api//events/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, eventId }),

@@ -1397,7 +1397,7 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("http://172.16.16.33:5000/jobs");
+        const res = await fetch("https://cjsstech.com/api/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (e) {
@@ -1529,7 +1529,7 @@ const JobOpeningsBase = ({
       formData.append("qualification", qualification);
       formData.append("resume", resumeFile);
 
-      const res = await fetch("http://172.16.16.33:5000/applications/apply", {
+      const res = await fetch("https://cjsstech.com/api/applications/apply", {
         method: "POST",
         body: formData,
       });

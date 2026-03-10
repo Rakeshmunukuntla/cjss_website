@@ -579,7 +579,7 @@ export default function EventDetailPage() {
       setIsLoading(true);
       setError(null);
       try {
-        const res = await fetch(`http://172.16.16.33:5000/events/${eventId}`);
+        const res = await fetch(`https://cjsstech.com/api/events/${eventId}`);
         // const res = await fetch(`http://localhost:5000/events/${eventId}`);
 
         if (!res.ok) throw new Error("Event not found");

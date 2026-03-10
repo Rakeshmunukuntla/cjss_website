@@ -226,7 +226,7 @@ export default function EventCarouselBanner() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await fetch("http://172.16.16.33:5000/events");
+        const res = await fetch("https://cjsstech.com/api/events");
         // const res = await fetch("http://localhost:5000/events");
         const data = await res.json();
         setEvents(data.events || []);

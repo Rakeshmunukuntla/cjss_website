@@ -182,7 +182,7 @@ export default function UploadResumeSection() {
     formData.append("resume", selectedFile);
 
     try {
-      const res = await fetch("http://172.16.16.33:5000/resumes/upload", {
+      const res = await fetch("https://cjsstech.com/api/resumes/upload", {
         method: "POST",
         body: formData,
       });

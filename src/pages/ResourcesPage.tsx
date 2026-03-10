@@ -184,7 +184,7 @@ export const ResourcesPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://172.16.16.33:5000/blogs")
+    fetch("https://cjsstech.com/api/blogs")
       .then((res) => res.json())
       .then((data) => {
         setResources(data);

@@ -147,7 +147,7 @@ export default function Conversation({
   const [initiative, setInitiative] = useState("");
 
   const [errors, setErrors] = useState<{ email?: string; initiative?: string }>(
-    {}
+    {},
   );
 
   const [status, setStatus] = useState<
@@ -189,7 +189,7 @@ export default function Conversation({
     setStatus("loading");
 
     try {
-      const res = await fetch("http://172.16.16.33:5000/conversations", {
+      const res = await fetch("https://cjsstech.com/api/conversations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, initiative }),

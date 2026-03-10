@@ -2345,7 +2345,7 @@ const JobOpeningsBase = ({
     async function loadJobs() {
       try {
         setLoading(true);
-        const res = await fetch("http://172.16.16.33:5000/jobs");
+        const res = await fetch("https://cjsstech.com/api/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (e) {
@@ -2370,7 +2370,7 @@ const JobOpeningsBase = ({
         location: j.locationType,
         createdAt: j.createdAt,
       })),
-    [jobs]
+    [jobs],
   );
 
   const isFresher = (exp: string) => exp.trim().startsWith("0");
@@ -2398,7 +2398,7 @@ const JobOpeningsBase = ({
   const rolesBySearch = rolesByCategory.filter((r) =>
     (r.title + " " + r.description + " " + r.skills.join(" "))
       .toLowerCase()
-      .includes(searchTerm.toLowerCase())
+      .includes(searchTerm.toLowerCase()),
   );
 
   const expNum = (exp: string) => Number(exp.match(/\d+/)?.[0] ?? 0);
@@ -2433,7 +2433,7 @@ const JobOpeningsBase = ({
   const totalPages = Math.ceil(sortedRoles.length / pageSize) || 1;
   const paginatedRoles = sortedRoles.slice(
     (currentPage - 1) * pageSize,
-    currentPage * pageSize
+    currentPage * pageSize,
   );
 
   // Submit handler
@@ -2486,7 +2486,7 @@ const JobOpeningsBase = ({
       formData.append("qualification", qualification);
       formData.append("resume", resumeFile);
 
-      const res = await fetch("http://172.16.16.33:5000/applications/apply", {
+      const res = await fetch("https://cjsstech.com/api/applications/apply", {
         method: "POST",
         body: formData,
       });
@@ -2546,8 +2546,8 @@ const JobOpeningsBase = ({
                 {filterMode === "fresher"
                   ? "Fresher Opportunities"
                   : filterMode === "experienced"
-                  ? "Experienced Roles"
-                  : "Career Opportunities"}
+                    ? "Experienced Roles"
+                    : "Career Opportunities"}
               </span>
             </div>
 
@@ -2555,8 +2555,8 @@ const JobOpeningsBase = ({
               {filterMode === "fresher"
                 ? "Fresher Job Opportunities"
                 : filterMode === "experienced"
-                ? "Experienced Job Openings"
-                : "Open Positions"}
+                  ? "Experienced Job Openings"
+                  : "Open Positions"}
             </h2>
             <p className="text-xl text-white/60 max-w-3xl mx-auto">
               Search, filter & apply for your dream role.
@@ -2695,7 +2695,7 @@ const JobOpeningsBase = ({
               {Array.from({ length: 3 }, (_, colIdx) =>
                 paginatedRoles
                   .map((role, idx) => ({ ...role, originalIndex: idx }))
-                  .filter((_, idx) => idx % 3 === colIdx)
+                  .filter((_, idx) => idx % 3 === colIdx),
               ).map((column, colIdx) => (
                 <div
                   key={colIdx}
@@ -3012,8 +3012,8 @@ const JobOpeningsBase = ({
                         applyStep === s
                           ? "bg-white text-black border-white scale-110"
                           : applyStep > s
-                          ? "bg-white/30 text-white border-white/50"
-                          : "bg-white/5 text-white/40 border-white/10"
+                            ? "bg-white/30 text-white border-white/50"
+                            : "bg-white/5 text-white/40 border-white/10"
                       }
                     `}
                   >
@@ -3144,7 +3144,7 @@ const JobOpeningsBase = ({
                         }
                         if (!phone.match(/^[0-9]{10}$/)) {
                           setFormError(
-                            "Please enter a valid 10-digit mobile number."
+                            "Please enter a valid 10-digit mobile number.",
                           );
                           return;
                         }
@@ -3234,7 +3234,7 @@ const JobOpeningsBase = ({
                       onClick={() => {
                         if (!qualification) {
                           setFormError(
-                            "Please select your highest qualification."
+                            "Please select your highest qualification.",
                           );
                           return;
                         }
